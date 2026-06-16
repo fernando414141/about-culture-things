@@ -2066,6 +2066,641 @@ footer::after {
   .hero-scroll-line::after, .pill-dot { animation: none; }
   * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ─── 2026 PREMIUM PASS ─── */
+:root {
+  --nav-h: 3rem;
+  --max: 72rem;
+  --content-x: clamp(1.125rem, 2.5vw, 2rem);
+  --content-y: clamp(4.5rem, 7vw, 7rem);
+  --r-card: 1.25rem;
+  --r-xl: 1.25rem;
+  --r-lg: 1rem;
+  --outline: rgba(13,34,56,.08);
+  --outline-v: rgba(13,34,56,.14);
+  --elev-1: 0 1px 2px rgba(13,34,56,.04), 0 10px 24px rgba(13,34,56,.03);
+  --elev-2: 0 8px 24px rgba(13,34,56,.05), 0 2px 6px rgba(13,34,56,.04);
+  --elev-3: 0 18px 40px rgba(13,34,56,.08), 0 4px 12px rgba(13,34,56,.05);
+  --elev-4: 0 24px 56px rgba(13,34,56,.1), 0 6px 16px rgba(13,34,56,.05);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; overflow-x: clip; margin: 0; }
+img, video { max-width: 100%; }
+body {
+  color-scheme: light;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.45), transparent 32%),
+    linear-gradient(180deg, #f7f3ea 0%, #f3eee3 100%);
+}
+main, section, footer, .nav, .mob-nav, .hero, .content { overflow-x: clip; }
+body::before { opacity: .14; }
+
+.nav {
+  background: rgba(247,244,235,.88);
+  height: var(--nav-h);
+  border-bottom: 1px solid rgba(13,34,56,.06);
+}
+.nav-inner { gap: 1rem; }
+.logo { padding-right: 0; margin-right: 0; }
+.logo-img { height: 1.55rem; }
+.logo-name { font-size: .95rem; }
+.nav-tabs { gap: .15rem; }
+.nav-tabs a {
+  color: var(--text-secondary);
+  padding: .6rem .9rem;
+  font-size: .9rem;
+}
+.nav-actions { gap: .5rem; }
+.nav-actions .btn-filled,
+.btn-filled,
+.btn-outlined,
+.btn-massive {
+  border-radius: 999px;
+}
+.btn-filled {
+  background: linear-gradient(135deg, #566627 0%, #2f4220 100%);
+  box-shadow: 0 10px 24px rgba(46,66,32,.18);
+}
+.btn-filled:hover {
+  box-shadow: 0 14px 30px rgba(46,66,32,.22);
+}
+.btn-outlined {
+  border-color: rgba(13,34,56,.12);
+}
+
+.mob-nav {
+  background: rgba(247,244,235,.96);
+}
+.mob-nav a {
+  border-radius: 999px;
+  background: rgba(255,255,255,.66);
+  border: 1px solid rgba(13,34,56,.06);
+}
+
+.content {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+section[id] {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  padding: var(--content-y) var(--content-x);
+}
+#why {
+  padding: var(--content-y) var(--content-x);
+}
+.sec-head,
+.pricing-trust,
+.tours-row,
+.why-grid,
+.about-grid,
+.reviews-panel,
+.faq-list,
+.faq-cta-note,
+.final-cta-shell,
+.reviews-header,
+.reviews-grid,
+.reviews-footer {
+  width: min(100%, var(--max));
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+.sec-head {
+  max-width: 38rem;
+  margin-bottom: 2rem;
+}
+h2 {
+  font-size: clamp(2.35rem, 4.8vw, 4rem);
+  line-height: .98;
+  margin-bottom: .75rem;
+}
+.sec-desc {
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.hero {
+  min-height: min(calc(100svh - var(--nav-h)), 48rem);
+  min-height: min(calc(100dvh - var(--nav-h)), 48rem);
+  padding: clamp(3rem, 8vw, 5.75rem) var(--content-x) clamp(2.25rem, 6vw, 4rem);
+  align-items: flex-end;
+}
+.hero::before {
+  background:
+    linear-gradient(90deg, rgba(8,13,10,.86) 0%, rgba(8,13,10,.56) 38%, rgba(8,13,10,.16) 70%, rgba(8,13,10,.04) 100%),
+    linear-gradient(to top, rgba(8,13,10,.9) 0%, rgba(8,13,10,.45) 28%, transparent 54%);
+}
+.hero::after {
+  background:
+    radial-gradient(ellipse 70% 60% at 0% 100%, rgba(92,107,42,.18) 0%, transparent 54%),
+    linear-gradient(180deg, transparent 55%, rgba(8,13,10,.22) 100%);
+}
+.hero-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.hero-copy {
+  width: min(100%, 36rem);
+}
+.hero h1 {
+  font-size: clamp(3.2rem, 7.8vw, 5.6rem);
+  max-width: 11ch;
+  margin-bottom: 1rem;
+}
+.hero-desc {
+  max-width: 31rem;
+  margin-bottom: 1.4rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.82);
+}
+.hero-trust-bar {
+  margin-bottom: 1.15rem;
+  gap: .5rem;
+}
+.hero-trust-bar span {
+  min-height: 2.15rem;
+  padding: .45rem .8rem;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.1);
+}
+.hero-ctas {
+  align-items: flex-start;
+  gap: .65rem;
+}
+.hero-ctas .btn-filled {
+  min-height: 3.25rem;
+  padding-inline: 1.3rem;
+  background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(246,246,241,.95) 100%);
+  color: #21301b;
+  box-shadow: 0 14px 30px rgba(0,0,0,.24);
+}
+.hero-ctas .btn-outlined {
+  min-height: auto;
+  padding: .15rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  box-shadow: none;
+}
+.hero-ctas .btn-outlined:hover {
+  background: transparent;
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+section.section--light {
+  background: transparent;
+}
+section.section--tinted {
+  background: linear-gradient(180deg, rgba(255,255,255,.34) 0%, rgba(232,226,214,.42) 100%);
+}
+section[id]::before {
+  opacity: .15;
+}
+
+.why-grid {
+  gap: 1rem;
+}
+.why-item {
+  padding: 1.25rem;
+  border-radius: var(--r-card);
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(12px);
+}
+.why-item h3 {
+  font-size: 1.35rem;
+  margin-bottom: .55rem;
+}
+.why-item p {
+  font-size: .94rem;
+  line-height: 1.62;
+}
+
+.pricing-trust {
+  margin-bottom: 1.5rem;
+  gap: .5rem 1.1rem;
+}
+.pricing-trust span {
+  font-size: .9rem;
+}
+.tours-row {
+  align-items: stretch;
+  gap: 1.15rem;
+}
+.pricing-card {
+  padding: 1rem 1rem 1.05rem;
+  border-radius: calc(var(--r-card) + .1rem);
+  min-height: 100%;
+}
+.pricing-card.featured,
+.pricing-card.alt {
+  background-clip: padding-box;
+}
+.pricing-card.featured {
+  background: linear-gradient(160deg, #182516 0%, #24331e 45%, #0d2238 100%);
+}
+.pricing-card.alt {
+  background: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(244,241,232,.92) 100%);
+}
+.pricing-card.featured::before,
+.pricing-card.alt::before {
+  top: .9rem;
+  right: .9rem;
+  font-size: .64rem;
+  padding: .42rem .7rem;
+}
+.pc-img-wrap {
+  margin: -1rem -1rem 1rem;
+}
+.pc-img-wrap img {
+  aspect-ratio: 1.45 / 1;
+}
+.pricing-card:nth-child(1) .pc-img-wrap img {
+  object-position: center 62%;
+}
+.pricing-card:nth-child(2) .pc-img-wrap img {
+  object-position: center 55%;
+}
+.pc-name {
+  font-size: 1.5rem;
+  line-height: 1.04;
+}
+.pc-tag {
+  margin-bottom: .6rem;
+}
+.pc-places {
+  margin-bottom: .75rem;
+  line-height: 1.55;
+}
+.pc-highlights {
+  display: grid;
+  gap: .45rem;
+  margin: 0 0 .8rem;
+  padding: 0;
+  list-style: none;
+}
+.pc-highlights li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: .88rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.pc-highlights li::before {
+  content: '';
+  position: absolute;
+  top: .45rem;
+  left: 0;
+  width: .36rem;
+  height: .36rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .65;
+}
+.pricing-card.featured .pc-highlights li {
+  color: rgba(255,255,255,.82);
+}
+.pc-details {
+  margin-bottom: .8rem;
+}
+.pc-divider {
+  margin: .8rem 0 .65rem;
+}
+.pc-price {
+  font-size: clamp(3rem, 6vw, 4rem);
+}
+.pc-note {
+  margin-bottom: .9rem;
+}
+.pc-cta .btn-filled,
+.pc-cta .btn-outlined {
+  min-height: 3rem;
+}
+
+.about-grid {
+  gap: 1.4rem 2rem;
+  align-items: center;
+}
+.about-photo {
+  max-width: 18rem;
+  margin: 0 auto;
+  border-radius: calc(var(--r-card) + .1rem);
+  box-shadow: var(--elev-3);
+}
+.about-photo img {
+  aspect-ratio: .88 / 1;
+  object-position: center 25%;
+}
+.about-name {
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+}
+.about-role {
+  margin-bottom: 1rem;
+}
+.about-bio {
+  max-width: 33rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.about-pull {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.42;
+}
+.about-credentials {
+  gap: .75rem;
+  margin-bottom: 1.15rem;
+}
+.about-cred {
+  padding: .95rem 1rem;
+  background: rgba(255,255,255,.6);
+}
+.about-cred-value {
+  font-size: .94rem;
+}
+
+.reviews-panel {
+  border: 1px solid var(--outline);
+  border-radius: calc(var(--r-card) + .15rem);
+  overflow: hidden;
+  background: rgba(255,255,255,.56);
+  backdrop-filter: blur(12px);
+}
+.reviews-header,
+.reviews-grid,
+.reviews-footer {
+  width: 100%;
+  max-width: none;
+}
+.reviews-header {
+  padding: 1.1rem 1.2rem;
+  background: rgba(255,255,255,.58);
+}
+.g-number {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+}
+.reviews-grid {
+  gap: .9rem;
+  padding: 1.2rem;
+  background: transparent;
+}
+.review-card {
+  padding: 1rem;
+  background: rgba(255,255,255,.84);
+}
+.review-card::before {
+  font-size: 4.6rem;
+  top: -.6rem;
+}
+.rv-text {
+  margin-bottom: .7rem;
+  font-size: 1rem;
+  -webkit-line-clamp: 4;
+}
+.reviews-footer {
+  justify-content: flex-start;
+  padding: .95rem 1.2rem 1.1rem;
+  background: rgba(255,255,255,.48);
+}
+.reviews-tripadvisor-link,
+.reviews-more-btn {
+  margin-left: 0;
+}
+
+.faq-list {
+  border-top: 1px solid var(--outline);
+}
+.faq-item {
+  background: transparent;
+}
+.faq-item:hover {
+  background: rgba(255,255,255,.36);
+}
+.faq-item summary {
+  padding: 1.15rem 0;
+}
+.faq-q {
+  font-size: 1rem;
+}
+.faq-a {
+  max-width: 44rem;
+  padding-bottom: 1rem;
+}
+.faq-cta-note {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+#final-cta {
+  padding-top: 1rem;
+  padding-bottom: var(--content-y);
+}
+.final-cta-shell {
+  background:
+    linear-gradient(160deg, rgba(10,18,8,.98) 0%, rgba(24,37,22,.96) 42%, rgba(13,34,56,.94) 100%);
+  color: #fff;
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: 0 28px 60px rgba(10,18,8,.24);
+  position: relative;
+  overflow: hidden;
+}
+.final-cta-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 110%, rgba(200,168,75,.18), transparent 32%),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,.08), transparent 26%);
+  pointer-events: none;
+}
+.final-cta-shell .sec-eyebrow,
+.final-cta-shell h2,
+.final-cta-shell .final-cta-copy,
+.final-cta-shell .cta-points,
+.final-cta-shell .cta-actions {
+  position: relative;
+  z-index: 1;
+}
+.final-cta-shell h2 {
+  max-width: 11ch;
+  margin-bottom: .9rem;
+  color: #fff;
+}
+.final-cta-copy {
+  max-width: 36rem;
+  color: rgba(255,255,255,.78);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+.cta-points {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+.cta-actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .85rem 1rem;
+}
+.btn-massive {
+  min-height: 3.35rem;
+  padding: .95rem 1.45rem;
+  font-size: 1rem;
+  color: #1b2817;
+}
+.cta-note {
+  margin: 0;
+  color: rgba(255,255,255,.56);
+}
+
+footer {
+  padding: 2.5rem var(--content-x) 1.4rem;
+}
+.footer-inner {
+  width: min(100%, var(--max));
+}
+.footer-shell {
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 1.2rem;
+  padding-bottom: 1.15rem;
+}
+.footer-note {
+  max-width: 22rem;
+}
+.footer-links a,
+.footer-action {
+  min-height: 2rem;
+  padding: .2rem 0;
+}
+.footer-bottom {
+  padding-top: 1rem;
+}
+
+.back-to-top {
+  bottom: max(4.6rem, calc(1rem + env(safe-area-inset-bottom)));
+}
+.fab-wa {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+@media (max-width: 63.99rem) {
+  .tours-row,
+  .why-grid,
+  .reviews-grid,
+  .about-grid,
+  .footer-shell {
+    grid-template-columns: 1fr;
+  }
+  .about-grid {
+    align-items: start;
+  }
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --content-y: 3.75rem;
+  }
+  .hero {
+    min-height: min(calc(100dvh - var(--nav-h)), 42rem);
+    padding-top: 2.4rem;
+  }
+  .hero-copy {
+    width: 100%;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+  .hero-desc {
+    max-width: 22rem;
+  }
+  .hero-ctas {
+    align-items: stretch;
+  }
+  .hero-ctas .btn-filled {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-ctas .btn-outlined {
+    width: fit-content;
+  }
+  .pricing-trust {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .reviews-header,
+  .reviews-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .final-cta-shell {
+    border-radius: 1.25rem;
+  }
+  .cta-actions {
+    align-items: flex-start;
+  }
+  .btn-massive {
+    width: 100%;
+    justify-content: center;
+  }
+  .footer-shell {
+    gap: 1rem;
+  }
+  .footer-bottom {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 29.99rem) {
+  :root {
+    --content-x: 1rem;
+    --nav-h: 2.9rem;
+  }
+  .nav {
+    padding-inline: .95rem;
+  }
+  .hero-trust-bar span {
+    font-size: .64rem;
+  }
+  .pricing-trust {
+    grid-template-columns: 1fr;
+  }
+  .pricing-card {
+    padding: .9rem;
+  }
+  .pc-img-wrap {
+    margin: -.9rem -.9rem .9rem;
+  }
+  .about-photo {
+    max-width: 15rem;
+  }
+  .fab-wa {
+    width: 3rem;
+    height: 3rem;
+    right: max(.9rem, env(safe-area-inset-right));
+    bottom: max(.9rem, env(safe-area-inset-bottom));
+  }
+}
 </style>
 </head>
 <body>
@@ -2195,24 +2830,25 @@ footer::after {
     <source src="hero.mp4" type="video/mp4" media="(min-width: 48rem) and (prefers-reduced-motion: no-preference)">
   </video>
   <div class="hero-inner">
-    <div>
+    <div class="hero-copy">
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-line" aria-hidden="true"></span>
-        <p class="hero-kicker" data-i18n="hero-kicker">Private Tours · Local Experiences</p>
+        <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
       </div>
-      <h1 data-i18n="hero-h1">Discover Portugal<br>with <em>Rita Almeida</em></h1>
-      <p class="hero-desc" data-i18n="hero-desc">Exclusive private Sintra journeys, curated just for you. <strong>5.0★</strong> TripAdvisor.</p>
+      <h1 data-i18n="hero-h1">Private Sintra,<br><em>beautifully guided.</em></h1>
+      <p class="hero-desc" data-i18n="hero-desc">Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.</p>
       <div class="hero-trust-bar" role="list" aria-label="Key facts">
+        <span role="listitem" data-i18n="hero-trust-1">Private tours only</span>
         <span role="listitem" data-i18n="hero-trust-2">5.0 ★ TripAdvisor</span>
-        <span role="listitem" data-i18n="hero-trust-3">Lisbon Pickup Included</span>
-        <span role="listitem" data-i18n="hero-trust-4">Max 4 people</span>
+        <span role="listitem" data-i18n="hero-trust-3">Lisbon pickup included</span>
+        <span role="listitem" data-i18n="hero-trust-4">Up to 4 guests</span>
       </div>
       <div class="hero-ctas">
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled" target="_blank" rel="noopener noreferrer">
           <svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
           <span data-i18n="hero-cta-primary">Check Availability</span>
         </a>
-        <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">View tours</a>
+        <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">See tours</a>
       </div>
     </div>
   </div>
@@ -2222,27 +2858,27 @@ footer::after {
 </section>
 
 <!-- ── WHY RITA ── -->
-<section id="why" class="reveal section--tinted" aria-labelledby="why-heading">
+<section id="why" class="section--tinted" aria-labelledby="why-heading">
   <div class="sec-head">
     <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="why-kicker">Why Rita</span></div>
-    <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Small group feel.<br><em>Private by design.</em></h2>
-    <p class="sec-desc" data-i18n="why-desc">A straightforward reason to book: local knowledge, private pacing, and places most visitors never reach.</p>
+    <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Quiet luxury.<br><em>Local access.</em></h2>
+    <p class="sec-desc" data-i18n="why-desc">A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.</p>
   </div>
   <div class="why-grid" role="list" aria-label="Why book with Rita">
     <article class="why-item reveal d1" role="listitem">
       <div class="why-kicker" data-i18n="why1-kicker">Sintra native</div>
-      <h3 data-i18n="why1-h3">Born &amp; raised in Sintra</h3>
-      <p data-i18n="why1-p">You’re booking a guide who knows the landscape, the rhythm, and the shortcuts that only locals learn.</p>
+      <h3 data-i18n="why1-h3">Born and raised in Sintra</h3>
+      <p data-i18n="why1-p">Rita knows the roads, timing, viewpoints, and quieter corners that typical day trips miss.</p>
     </article>
     <article class="why-item reveal d2" role="listitem">
       <div class="why-kicker" data-i18n="why2-kicker">Private only</div>
-      <h3 data-i18n="why2-h3">Private tours only</h3>
-      <p data-i18n="why2-p">Every tour is one-to-one, tailored to your pace, interests, and the kind of day you want to have.</p>
+      <h3 data-i18n="why2-h3">Only your group, never mixed</h3>
+      <p data-i18n="why2-p">Every route, stop, and tempo is adapted to your interests instead of a rigid group schedule.</p>
     </article>
     <article class="why-item reveal d3" role="listitem">
       <div class="why-kicker" data-i18n="why3-kicker">Hidden spots</div>
-      <h3 data-i18n="why3-h3">Hidden places tourists never find</h3>
-      <p data-i18n="why3-p">Expect quieter viewpoints, local stops, and the kind of places that don’t make the standard itinerary.</p>
+      <h3 data-i18n="why3-h3">Iconic views, minus the rush</h3>
+      <p data-i18n="why3-p">Expect scenic detours, local perspective, and a calmer experience of Sintra and the coast.</p>
     </article>
   </div>
 </section>
@@ -2251,11 +2887,11 @@ footer::after {
 <main id="main" class="content">
 
   <!-- TOURS -->
-  <section id="tours" class="reveal section--light" aria-labelledby="tours-heading">
+  <section id="tours" class="section--light" aria-labelledby="tours-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="tours-kicker">Tours</span></div>
-      <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Sintra experiences.</h2>
-      <p class="sec-desc" data-i18n="tours-desc">Private tours for up to 4 people — pickup in Lisbon, palace tickets not included.</p>
+      <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Choose your day.</h2>
+      <p class="sec-desc" data-i18n="tours-desc">Two private routes, one standard: elegant pacing, local insight, and direct booking with Rita.</p>
     </div>
     <div class="pricing-trust" role="list" aria-label="Tour trust points">
       <span role="listitem"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="trust-1">5.0 TripAdvisor</span></span>
@@ -2274,6 +2910,10 @@ footer::after {
         <div class="pc-name" data-i18n="tour1-name">Sintra Complete Experience &amp; Atlantic Coast</div>
         <div class="pc-tag" data-i18n="tour1-tag">7 hours · Max 4 people</div>
         <p class="pc-places" data-i18n="tour1-summary">Historic Sintra · Pena area · Cabo da Roca · Cascais</p>
+        <ul class="pc-highlights" aria-label="Tour highlights">
+          <li data-i18n="tour1-highlight-1">Best for a full first day in Sintra</li>
+          <li data-i18n="tour1-highlight-2">Combines palaces, coast, and Cascais</li>
+        </ul>
         <details class="pc-details">
           <summary data-i18n="tour-details-open">Full itinerary</summary>
           <p data-i18n="tour1-places">Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais</p>
@@ -2301,6 +2941,10 @@ footer::after {
         <div class="pc-name" data-i18n="tour2-name">Sintra &amp; Hidden Beaches Experience</div>
         <div class="pc-tag" data-i18n="tour2-tag">5 hours · Max 4 people</div>
         <p class="pc-places" data-i18n="tour2-summary">Sintra hills · Hidden coves · Azenhas do Mar</p>
+        <ul class="pc-highlights" aria-label="Tour highlights">
+          <li data-i18n="tour2-highlight-1">Best for a shorter coastal escape</li>
+          <li data-i18n="tour2-highlight-2">Focused on hidden beaches and sea views</li>
+        </ul>
         <details class="pc-details">
           <summary data-i18n="tour-details-open">Full itinerary</summary>
           <p data-i18n="tour2-places">Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda</p>
@@ -2322,23 +2966,23 @@ footer::after {
   </section>
 
   <!-- ABOUT RITA -->
-  <section id="about" class="reveal section--tinted" aria-labelledby="about-heading">
+  <section id="about" class="section--tinted" aria-labelledby="about-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="about-kicker">About Rita</span></div>
-      <h2 id="about-heading" class="anim-ready" data-i18n="about-h2">Your guide to<br><em>Portugal.</em></h2>
+      <h2 id="about-heading" class="anim-ready" data-i18n="about-h2">The person behind<br><em>the day.</em></h2>
     </div>
     <div class="about-grid">
       <div class="about-photo reveal">
         <picture>
           <source srcset="rita.webp" type="image/webp">
-          <img src="rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="280" height="373">
+          <img src="rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="640" height="640">
         </picture>
       </div>
       <div class="about-body reveal d1">
         <div class="about-name" data-i18n="about-name">Rita Almeida</div>
         <div class="about-role" data-i18n="about-role">Founder · Private Tour Guide</div>
-        <p class="about-bio" data-i18n="about-bio">Hi, I’m Rita. I was born and raised in Sintra and guide private tours across the region with a local perspective, relaxed pacing, and a focus on the places most visitors miss. I speak Portuguese, English, and Spanish, and I love sharing the history, culture, and quiet details that make this part of Portugal special.</p>
-        <blockquote class="about-pull" data-i18n="about-pull">"Part historian, part storyteller — 100% passionate about Portugal."</blockquote>
+        <p class="about-bio" data-i18n="about-bio">Rita was born and raised in Sintra and hosts private tours with a calm pace, thoughtful storytelling, and an instinct for what makes the region feel personal rather than rushed.</p>
+        <blockquote class="about-pull" data-i18n="about-pull">"Private guiding with warmth, local instinct, and room to actually enjoy the day."</blockquote>
         <div class="about-credentials" data-i18n-aria="about-creds-aria" aria-label="Rita Almeida's skills and credentials">
           <div class="about-cred">
             <span class="about-cred-label" data-i18n="about-cred-1-label">Local guide</span>
@@ -2354,7 +2998,7 @@ footer::after {
           </div>
           <div class="about-cred">
             <span class="about-cred-label" data-i18n="about-cred-4-label">Years guiding</span>
-            <span class="about-cred-value" data-i18n="about-cred-4-value">Experienced local host</span>
+            <span class="about-cred-value" data-i18n="about-cred-4-value">Private host with local experience</span>
           </div>
         </div>
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours." class="btn-filled" target="_blank" rel="noopener noreferrer">
@@ -2368,10 +3012,10 @@ footer::after {
 
 
   <!-- REVIEWS -->
-  <section id="reviews" class="reveal section--light" aria-labelledby="reviews-heading">
+  <section id="reviews" class="section--light" aria-labelledby="reviews-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="reviews-kicker">Reviews</span></div>
-      <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">What clients say.</h2>
+      <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">Trusted by travelers.</h2>
     </div>
     <div class="reviews-panel">
       <div class="reviews-header">
@@ -2436,30 +3080,6 @@ footer::after {
           <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
           <div class="rv-author">Amanda T.</div>
         </article>
-        <article class="review-card" role="listitem">
-          <div class="rv-top">
-            <div class="rv-avatar" aria-hidden="true">L</div>
-            <div class="rv-meta">
-              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <span class="rv-verified">✓ TripAdvisor</span>
-            </div>
-          </div>
-          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
-          <blockquote class="rv-text" data-i18n="rv5-text">"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."</blockquote>
-          <div class="rv-author">Laura S.</div>
-        </article>
-        <article class="review-card" role="listitem">
-          <div class="rv-top">
-            <div class="rv-avatar" aria-hidden="true">J</div>
-            <div class="rv-meta">
-              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <span class="rv-verified">✓ TripAdvisor</span>
-            </div>
-          </div>
-          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
-          <blockquote class="rv-text" data-i18n="rv6-text">"Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care."</blockquote>
-          <div class="rv-author">James W.</div>
-        </article>
       </div>
       <div class="reviews-footer">
         <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-more-btn" aria-label="Open TripAdvisor">
@@ -2471,7 +3091,7 @@ footer::after {
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="reveal section--tinted" aria-labelledby="faq-heading">
+  <section id="faq" class="section--tinted" aria-labelledby="faq-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="faq-kicker">FAQ</span></div>
       <h2 id="faq-heading" class="anim-ready" data-i18n="faq-h2">Common questions.</h2>
@@ -2493,14 +3113,6 @@ footer::after {
         <summary><span class="faq-q" data-i18n="faq4-q">Are the tours suitable for children or seniors?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
         <p class="faq-a" data-i18n="faq4-a">Yes. Because every tour is private, Rita can adapt the pace and stops to your group.</p>
       </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq5-q">Is lunch included?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq5-a">Lunch is not included, but Rita can suggest good local places along the route.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq6-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq6-a">Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.</p>
-      </details>
     </div>
     <p class="faq-cta-note">
       <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question." class="faq-contact-link" target="_blank" rel="noopener noreferrer">
@@ -2508,9 +3120,13 @@ footer::after {
         <span data-i18n="faq-cta">Need help? Contact Rita</span>
       </a>
     </p>
-    <div class="faq-cta-panel">
-      <h3 data-i18n="cta-h2">Ready to start?</h3>
-      <p data-i18n="cta-tagline">One message is all it takes.</p>
+  </section>
+
+  <section id="final-cta" class="section--light" aria-labelledby="final-cta-heading">
+    <div class="final-cta-shell">
+      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="final-kicker">Final Step</span></div>
+      <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Reserve your day in Sintra.</h2>
+      <p class="final-cta-copy" data-i18n="cta-tagline">Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.</p>
       <ul class="cta-points" data-i18n-aria="cta-points-aria" aria-label="Response details">
         <li data-i18n="cta-point-1">Reply within 24h</li>
         <li data-i18n="cta-point-2">WhatsApp response usually within 1h</li>
@@ -2520,7 +3136,7 @@ footer::after {
           <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
           <span data-i18n="cta-book">Check Availability</span>
         </a>
-        <p class="cta-note" data-i18n="cta-note">Opens WhatsApp · No booking fee</p>
+        <p class="cta-note" data-i18n="cta-note">Direct with Rita · No booking fee</p>
       </div>
     </div>
   </section>
@@ -2541,6 +3157,7 @@ footer::after {
       <div class="footer-column">
         <span class="footer-column-title" data-i18n="footer-explore">Explore</span>
         <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#why" data-i18n="foot-why">Why Rita</a>
           <a href="#tours" data-i18n="foot-tours">Tours</a>
           <a href="#about" data-i18n="foot-about">About</a>
           <a href="#reviews" data-i18n="foot-reviews">Reviews</a>
@@ -2553,6 +3170,10 @@ footer::after {
           <a class="footer-action" href="https://wa.me/351968510019" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
             <span data-i18n="foot-whatsapp">WhatsApp ↗</span>
+          </a>
+          <a class="footer-action" href="mailto:aboutculturethings@gmail.com">
+            <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#email-icon"/></svg>
+            <span data-i18n="foot-email">Email ↗</span>
           </a>
           <a class="footer-action" href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#ig"/></svg>
@@ -2621,30 +3242,30 @@ const i18n = {
     "badge-popular": "Signature Journey",
     "badge-value": "Best Value",
     "nav-cta": "Check Availability",
-    "hero-trust-1": "Luxury Local Experience",
+    "hero-trust-1": "Private tours only",
     "hero-trust-2": "5.0 ★ TripAdvisor",
-    "hero-trust-3": "Lisbon Pickup Included",
-    "hero-trust-4": "Max 4 people",
-    "hero-kicker": "Private Tours · Local Experiences",
-    "hero-h1": "Discover Portugal<br>with <em>Rita Almeida</em>",
-    "hero-desc": "Exclusive private Sintra journeys, curated just for you. <strong>5.0★</strong> TripAdvisor.",
+    "hero-trust-3": "Lisbon pickup included",
+    "hero-trust-4": "Up to 4 guests",
+    "hero-kicker": "Private Sintra Tours",
+    "hero-h1": "Private Sintra,<br><em>beautifully guided.</em>",
+    "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
     "hero-cta-primary": "Check Availability",
-    "hero-cta-secondary": "View tours",
+    "hero-cta-secondary": "See tours",
     "why-kicker": "Why Rita",
-    "why-h2": "Small group feel.<br><em>Private by design.</em>",
-    "why-desc": "A straightforward reason to book: local knowledge, private pacing, and places most visitors never reach.",
+    "why-h2": "Quiet luxury.<br><em>Local access.</em>",
+    "why-desc": "A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.",
     "why1-kicker": "Sintra native",
-    "why1-h3": "Born & raised in Sintra",
-    "why1-p": "You’re booking a guide who knows the landscape, the rhythm, and the shortcuts that only locals learn.",
+    "why1-h3": "Born and raised in Sintra",
+    "why1-p": "Rita knows the roads, timing, viewpoints, and quieter corners that typical day trips miss.",
     "why2-kicker": "Private only",
-    "why2-h3": "Private tours only",
-    "why2-p": "Every tour is one-to-one, tailored to your pace, interests, and the kind of day you want to have.",
+    "why2-h3": "Only your group, never mixed",
+    "why2-p": "Every route, stop, and tempo is adapted to your interests instead of a rigid group schedule.",
     "why3-kicker": "Hidden spots",
-    "why3-h3": "Hidden places tourists never find",
-    "why3-p": "Expect quieter viewpoints, local stops, and the kind of places that don’t make the standard itinerary.",
+    "why3-h3": "Iconic views, minus the rush",
+    "why3-p": "Expect scenic detours, local perspective, and a calmer experience of Sintra and the coast.",
     "tours-kicker": "Tours",
-    "tours-h2": "Sintra experiences.",
-    "tours-desc": "Private tours for up to 4 people — pickup in Lisbon, palace tickets not included.",
+    "tours-h2": "Choose your day.",
+    "tours-desc": "Two private routes, one standard: elegant pacing, local insight, and direct booking with Rita.",
     "trust-1": "5.0 TripAdvisor",
     "trust-2": "Local guide born in Sintra",
     "trust-3": "Max 4 guests",
@@ -2652,11 +3273,15 @@ const i18n = {
     "tour1-name": "Sintra Complete Experience & Atlantic Coast",
     "tour1-tag": "7 hours · Max 4 people",
     "tour1-summary": "Historic Sintra · Pena area · Cabo da Roca · Cascais",
+    "tour1-highlight-1": "Best for a full first day in Sintra",
+    "tour1-highlight-2": "Combines palaces, coast, and Cascais",
     "tour1-price": "€299",
     "tour1-places": "Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Hidden Beaches Experience",
     "tour2-tag": "5 hours · Max 4 people",
     "tour2-summary": "Sintra hills · Hidden coves · Azenhas do Mar",
+    "tour2-highlight-1": "Best for a shorter coastal escape",
+    "tour2-highlight-2": "Focused on hidden beaches and sea views",
     "tour2-price": "€275",
     "tour2-places": "Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "per group",
@@ -2664,10 +3289,10 @@ const i18n = {
     "tour-cta": "Check Availability",
     "tour-details-open": "Full itinerary",
     "about-kicker": "About Rita",
-    "about-h2": "Your guide to<br><em>Portugal.</em>",
+    "about-h2": "The person behind<br><em>the day.</em>",
     "about-role": "Founder · Private Tour Guide",
-    "about-bio": "Hi, I’m Rita. I was born and raised in Sintra and guide private tours across the region with a local perspective, relaxed pacing, and a focus on the places most visitors miss. I speak Portuguese, English, and Spanish, and I love sharing the history, culture, and quiet details that make this part of Portugal special.",
-    "about-pull": "\"Part historian, part storyteller — 100% passionate about Portugal.\"",
+    "about-bio": "Rita was born and raised in Sintra and hosts private tours with a calm pace, thoughtful storytelling, and an instinct for what makes the region feel personal rather than rushed.",
+    "about-pull": "\"Private guiding with warmth, local instinct, and room to actually enjoy the day.\"",
     "about-creds-aria": "Rita Almeida's skills and credentials",
     "about-cred-1-label": "Local guide",
     "about-cred-1-value": "Born & raised in Sintra",
@@ -2676,10 +3301,10 @@ const i18n = {
     "about-cred-3-label": "Languages",
     "about-cred-3-value": "PT · EN · ES",
     "about-cred-4-label": "Years guiding",
-    "about-cred-4-value": "Experienced local host",
+    "about-cred-4-value": "Private host with local experience",
     "about-cta": "Check Availability",
     "reviews-kicker": "Reviews",
-    "reviews-h2": "What clients say.",
+    "reviews-h2": "Trusted by travelers.",
     "reviews-google-label": "TripAdvisor",
     "reviews-view-btn": "View more on TripAdvisor",
     "rv-tag-tour": "Sintra Tour",
@@ -2699,30 +3324,29 @@ const i18n = {
     "faq3-a": "Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost.",
     "faq4-q": "Are the tours suitable for children or seniors?",
     "faq4-a": "Yes. Because every tour is private, Rita can adapt the pace and stops to your group.",
-    "faq5-q": "Is lunch included?",
-    "faq5-a": "Lunch is not included, but Rita can suggest good local places along the route.",
-    "faq6-q": "Can the tour be customized?",
-    "faq6-a": "Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.",
     "faq-cta": "Need help? Contact Rita",
+    "final-kicker": "Final Step",
     "footer-note": "Private Sintra tours by Rita Almeida. Local knowledge, quiet pacing, and direct booking with one guide.",
     "footer-explore": "Explore",
     "footer-connect": "Connect",
     "reviews-more": "View more",
     "reviews-less": "View less",
-    "cta-h2": "Ready to start?",
-    "cta-tagline": "One message is all it takes.",
+    "cta-h2": "Reserve your day in Sintra.",
+    "cta-tagline": "Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.",
     "cta-points-aria": "Response details",
     "cta-point-1": "Reply within 24h",
     "cta-point-2": "WhatsApp response usually within 1h",
     "cta-email-label": "Or send an email",
     "cta-book": "Check Availability",
-    "cta-note": "Opens WhatsApp · No booking fee",
+    "cta-note": "Direct with Rita · No booking fee",
+    "foot-why": "Why Rita",
     "foot-tours": "Tours",
     "foot-about": "About",
     "foot-reviews": "Reviews",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
+    "foot-email": "Email ↗",
     "foot-instagram": "Instagram ↗",
     "foot-badge-online": "Sintra & Lisbon",
     "foot-remote": "5.0★ TripAdvisor",
@@ -2743,30 +3367,30 @@ const i18n = {
     "badge-popular": "Experiencia Exclusiva",
     "badge-value": "Mejor Valor",
     "nav-cta": "Consultar Disponibilidad",
-    "hero-trust-1": "Experiencia Local de Lujo",
+    "hero-trust-1": "Tours solo privados",
     "hero-trust-2": "5.0 ★ TripAdvisor",
-    "hero-trust-3": "Recogida en Lisboa Incluida",
-    "hero-trust-4": "Máx. 4 personas",
-    "hero-kicker": "Tours Privados · Experiencias Locales",
-    "hero-h1": "Descubre Portugal<br>con <em>Rita Almeida</em>",
-    "hero-desc": "Viajes privados exclusivos en Sintra, diseñados solo para ti. <strong>5.0★</strong> TripAdvisor.",
+    "hero-trust-3": "Recogida en Lisboa incluida",
+    "hero-trust-4": "Hasta 4 personas",
+    "hero-kicker": "Tours Privados en Sintra",
+    "hero-h1": "Sintra en privado,<br><em>bien guiada.</em>",
+    "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
     "hero-cta-primary": "Consultar Disponibilidad",
     "hero-cta-secondary": "Ver tours",
     "why-kicker": "Por qué Rita",
-    "why-h2": "Sensación de grupo pequeño.<br><em>Privado por diseño.</em>",
-    "why-desc": "Una razón clara para reservar: conocimiento local, ritmo privado y lugares que la mayoría de visitantes nunca ve.",
+    "why-h2": "Lujo tranquilo.<br><em>Acceso local.</em>",
+    "why-desc": "Un día privado marcado por tu ritmo, con la seguridad de una guía local de Sintra.",
     "why1-kicker": "Nativa de Sintra",
     "why1-h3": "Nacida y criada en Sintra",
-    "why1-p": "Reservas una guía que conoce el paisaje, el ritmo y los atajos que solo aprenden los locales.",
+    "why1-p": "Rita conoce las carreteras, los horarios, los miradores y los rincones tranquilos que otros tours pasan por alto.",
     "why2-kicker": "Solo privado",
-    "why2-h3": "Tours solo privados",
-    "why2-p": "Cada tour es uno a uno, adaptado a tu ritmo, intereses y al tipo de día que quieres tener.",
+    "why2-h3": "Solo tu grupo, nunca mezclado",
+    "why2-p": "Cada ruta, parada y ritmo se adapta a tus intereses en lugar de seguir un horario rígido de grupo.",
     "why3-kicker": "Lugares ocultos",
-    "why3-h3": "Lugares escondidos que los turistas no encuentran",
-    "why3-p": "Te esperan miradores más tranquilos, paradas locales y lugares que no aparecen en el itinerario estándar.",
+    "why3-h3": "Vistas icónicas, sin prisas",
+    "why3-p": "Espera desvíos escénicos, perspectiva local y una forma más calmada de vivir Sintra y la costa.",
     "tours-kicker": "Tours",
-    "tours-h2": "Experiencias en Sintra.",
-    "tours-desc": "Tours privados para hasta 4 personas — recogida en Lisboa, entradas a palacios no incluidas.",
+    "tours-h2": "Elige tu día.",
+    "tours-desc": "Dos rutas privadas, un mismo estándar: ritmo elegante, mirada local y reserva directa con Rita.",
     "trust-1": "5.0 TripAdvisor",
     "trust-2": "Guía local nacida en Sintra",
     "trust-3": "Máx. 4 personas",
@@ -2774,11 +3398,15 @@ const i18n = {
     "tour1-name": "Sintra Completa & Costa Atlántica",
     "tour1-tag": "7 horas · Máx. 4 personas",
     "tour1-summary": "Sintra histórica · Pena · Cabo da Roca · Cascais",
+    "tour1-highlight-1": "Ideal para un primer día completo en Sintra",
+    "tour1-highlight-2": "Combina palacios, costa y Cascais",
     "tour1-price": "€299",
     "tour1-places": "Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Playas Escondidas",
     "tour2-tag": "5 horas · Máx. 4 personas",
     "tour2-summary": "Colinas de Sintra · Calas ocultas · Azenhas do Mar",
+    "tour2-highlight-1": "Ideal para una escapada costera más corta",
+    "tour2-highlight-2": "Enfocado en playas escondidas y vistas al mar",
     "tour2-price": "€275",
     "tour2-places": "Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "por grupo",
@@ -2786,10 +3414,10 @@ const i18n = {
     "tour-cta": "Consultar Disponibilidad",
     "tour-details-open": "Itinerario completo",
     "about-kicker": "Sobre Rita",
-    "about-h2": "Tu guía en<br><em>Portugal.</em>",
+    "about-h2": "La persona detrás<br><em>del día.</em>",
     "about-role": "Fundadora · Guía privada",
-    "about-bio": "Hola, soy Rita. Nací y crecí en Sintra y hago tours privados por la región con una mirada local, un ritmo relajado y foco en los lugares que la mayoría de visitantes se pierde. Hablo portugués, inglés y español, y me encanta compartir la historia, la cultura y los detalles tranquilos que hacen especial esta zona de Portugal.",
-    "about-pull": "\"Parte historiadora, parte narradora — 100% apasionada por Portugal.\"",
+    "about-bio": "Rita nació y creció en Sintra y guía tours privados con ritmo tranquilo, historias bien contadas y una intuición muy local para que el día se sienta personal, no apresurado.",
+    "about-pull": "\"Guía privada con calidez, intuición local y tiempo real para disfrutar el día.\"",
     "about-creds-aria": "Habilidades y credenciales de Rita Almeida",
     "about-cred-1-label": "Guía local",
     "about-cred-1-value": "Nacida y criada en Sintra",
@@ -2798,10 +3426,10 @@ const i18n = {
     "about-cred-3-label": "Idiomas",
     "about-cred-3-value": "PT · EN · ES",
     "about-cred-4-label": "Años guiando",
-    "about-cred-4-value": "Anfitriona local con experiencia",
+    "about-cred-4-value": "Anfitriona privada con experiencia local",
     "about-cta": "Consultar Disponibilidad",
     "reviews-kicker": "Reseñas",
-    "reviews-h2": "Lo que dicen los clientes.",
+    "reviews-h2": "La confianza de los viajeros.",
     "reviews-google-label": "TripAdvisor",
     "reviews-view-btn": "Ver más en TripAdvisor",
     "rv-tag-tour": "Tour Sintra",
@@ -2821,30 +3449,29 @@ const i18n = {
     "faq3-a": "Sí. Los tours se pueden cancelar o reagendar con 24 horas de antelación sin coste.",
     "faq4-q": "¿Los tours son aptos para niños o personas mayores?",
     "faq4-a": "Sí. Como cada tour es privado, Rita puede adaptar el ritmo y las paradas a tu grupo.",
-    "faq5-q": "¿El almuerzo está incluido?",
-    "faq5-a": "El almuerzo no está incluido, pero Rita puede sugerir buenos lugares locales en la ruta.",
-    "faq6-q": "¿Se puede personalizar el tour?",
-    "faq6-a": "Sí. Como los tours son privados, Rita puede adaptar las paradas y el ritmo a tus intereses, el clima y el horario.",
     "faq-cta": "¿Más preguntas? Contacta a Rita",
+    "final-kicker": "Último Paso",
     "footer-note": "Tours privados por Sintra con Rita Almeida. Conocimiento local, ritmo tranquilo y reserva directa con una sola guía.",
     "footer-explore": "Explorar",
     "footer-connect": "Conectar",
     "reviews-more": "Ver más",
     "reviews-less": "Ver menos",
-    "cta-h2": "¿Listo para empezar?",
-    "cta-tagline": "Un mensaje es todo lo que necesitas.",
+    "cta-h2": "Reserva tu día en Sintra.",
+    "cta-tagline": "Cuéntale a Rita tus fechas, el tamaño de tu grupo y el tipo de día que buscas. Ella responderá con la mejor ruta y disponibilidad.",
     "cta-points-aria": "Detalles de respuesta",
     "cta-point-1": "Respuesta en 24h",
     "cta-point-2": "Respuesta por WhatsApp normalmente en 1h",
     "cta-email-label": "O envíanos un email",
     "cta-book": "Consultar Disponibilidad",
-    "cta-note": "Abre WhatsApp · Sin comisión de reserva",
+    "cta-note": "Directo con Rita · Sin comisión de reserva",
+    "foot-why": "Por qué Rita",
     "foot-tours": "Tours",
     "foot-about": "Sobre",
     "foot-reviews": "Reseñas",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
+    "foot-email": "Email ↗",
     "foot-instagram": "Instagram ↗",
     "foot-badge-online": "Sintra & Lisboa",
     "foot-remote": "5.0★ TripAdvisor",
@@ -2865,30 +3492,30 @@ const i18n = {
     "badge-popular": "Experiência Assinatura",
     "badge-value": "Melhor Valor",
     "nav-cta": "Verificar Disponibilidade",
-    "hero-trust-1": "Experiência Local de Luxo",
+    "hero-trust-1": "Tours apenas privados",
     "hero-trust-2": "5.0 ★ TripAdvisor",
-    "hero-trust-3": "Recolha em Lisboa Incluída",
-    "hero-trust-4": "Máx. 4 pessoas",
-    "hero-kicker": "Tours Privados · Experiências Locais",
-    "hero-h1": "Descobre Portugal<br>com a <em>Rita Almeida</em>",
-    "hero-desc": "Viagens privadas exclusivas em Sintra, pensadas só para ti. <strong>5.0★</strong> TripAdvisor.",
+    "hero-trust-3": "Recolha em Lisboa incluída",
+    "hero-trust-4": "Até 4 pessoas",
+    "hero-kicker": "Tours Privados em Sintra",
+    "hero-h1": "Sintra em privado,<br><em>bem guiada.</em>",
+    "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
     "hero-cta-primary": "Verificar Disponibilidade",
     "hero-cta-secondary": "Ver tours",
     "why-kicker": "Porquê a Rita",
-    "why-h2": "Sensação de grupo pequeno.<br><em>Privado por definição.</em>",
-    "why-desc": "Uma razão clara para reservar: conhecimento local, ritmo privado e lugares que a maioria dos visitantes nunca encontra.",
+    "why-h2": "Luxo tranquilo.<br><em>Acesso local.</em>",
+    "why-desc": "Um dia privado moldado ao teu ritmo, com a confiança de uma guia local de Sintra.",
     "why1-kicker": "Nascida em Sintra",
     "why1-h3": "Nascida e criada em Sintra",
-    "why1-p": "Estás a reservar uma guia que conhece a paisagem, o ritmo e os atalhos que só os locais aprendem.",
+    "why1-p": "A Rita conhece as estradas, os horários, os miradouros e os recantos calmos que muitos tours não alcançam.",
     "why2-kicker": "Só privado",
-    "why2-h3": "Tours apenas privados",
-    "why2-p": "Cada tour é um-a-um, adaptado ao teu ritmo, interesses e ao tipo de dia que queres ter.",
+    "why2-h3": "Só o teu grupo, nunca misturado",
+    "why2-p": "Cada rota, paragem e ritmo é ajustado aos teus interesses, sem o formato rígido de um grupo.",
     "why3-kicker": "Lugares escondidos",
-    "why3-h3": "Lugares escondidos que os turistas nunca encontram",
-    "why3-p": "Espaços mais tranquilos, paragens locais e lugares que não aparecem no itinerário standard.",
+    "why3-h3": "Vistas icónicas, sem pressa",
+    "why3-p": "Conta com desvios cénicos, perspetiva local e uma forma mais calma de viver Sintra e a costa.",
     "tours-kicker": "Tours",
-    "tours-h2": "Experiências em Sintra.",
-    "tours-desc": "Tours privados para até 4 pessoas — recolha em Lisboa, bilhetes para palácios não incluídos.",
+    "tours-h2": "Escolhe o teu dia.",
+    "tours-desc": "Duas rotas privadas, o mesmo padrão: ritmo elegante, olhar local e reserva direta com a Rita.",
     "trust-1": "5.0 TripAdvisor",
     "trust-2": "Guia local nascida em Sintra",
     "trust-3": "Máx. 4 pessoas",
@@ -2896,11 +3523,15 @@ const i18n = {
     "tour1-name": "Sintra Completa & Costa Atlântica",
     "tour1-tag": "7 horas · Máx. 4 pessoas",
     "tour1-summary": "Sintra histórica · Pena · Cabo da Roca · Cascais",
+    "tour1-highlight-1": "Ideal para um primeiro dia completo em Sintra",
+    "tour1-highlight-2": "Junta palácios, costa e Cascais",
     "tour1-price": "€299",
     "tour1-places": "Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Praias Escondidas",
     "tour2-tag": "5 horas · Máx. 4 pessoas",
     "tour2-summary": "Colinas de Sintra · Enseadas escondidas · Azenhas do Mar",
+    "tour2-highlight-1": "Ideal para uma escapadinha costeira mais curta",
+    "tour2-highlight-2": "Focado em praias escondidas e vistas de mar",
     "tour2-price": "€275",
     "tour2-places": "Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "por grupo",
@@ -2908,10 +3539,10 @@ const i18n = {
     "tour-cta": "Verificar Disponibilidade",
     "tour-details-open": "Itinerário completo",
     "about-kicker": "Sobre a Rita",
-    "about-h2": "A tua guia em<br><em>Portugal.</em>",
+    "about-h2": "A pessoa por trás<br><em>do dia.</em>",
     "about-role": "Fundadora · Guia privada",
-    "about-bio": "Olá, sou a Rita. Nasci e cresci em Sintra e faço tours privados pela região com uma perspetiva local, um ritmo relaxado e foco nos lugares que a maioria dos visitantes não vê. Falo português, inglês e espanhol, e adoro partilhar a história, a cultura e os detalhes tranquilos que tornam esta parte de Portugal especial.",
-    "about-pull": "\"Parte historiadora, parte contadora de histórias — 100% apaixonada por Portugal.\"",
+    "about-bio": "A Rita nasceu e cresceu em Sintra e conduz tours privados com ritmo calmo, boa narrativa e uma intuição muito local para tornar o dia pessoal, e não apressado.",
+    "about-pull": "\"Guia privada com calor humano, instinto local e tempo real para aproveitar o dia.\"",
     "about-creds-aria": "Competências e credenciais da Rita Almeida",
     "about-cred-1-label": "Guia local",
     "about-cred-1-value": "Nascida e criada em Sintra",
@@ -2920,10 +3551,10 @@ const i18n = {
     "about-cred-3-label": "Idiomas",
     "about-cred-3-value": "PT · EN · ES",
     "about-cred-4-label": "Anos a guiar",
-    "about-cred-4-value": "Anfitriã local experiente",
+    "about-cred-4-value": "Anfitriã privada com experiência local",
     "about-cta": "Verificar Disponibilidade",
     "reviews-kicker": "Avaliações",
-    "reviews-h2": "O que dizem os clientes.",
+    "reviews-h2": "A confiança dos viajantes.",
     "reviews-google-label": "TripAdvisor",
     "reviews-view-btn": "Ver mais no TripAdvisor",
     "rv-tag-tour": "Tour Sintra",
@@ -2943,30 +3574,29 @@ const i18n = {
     "faq3-a": "Sim. Os tours podem ser cancelados ou reagendados com 24 horas de antecedência sem custo.",
     "faq4-q": "Os tours são adequados para crianças ou idosos?",
     "faq4-a": "Sim. Como cada tour é privado, a Rita pode adaptar o ritmo e as paragens ao teu grupo.",
-    "faq5-q": "O almoço está incluído?",
-    "faq5-a": "O almoço não está incluído, mas a Rita pode sugerir bons locais ao longo do percurso.",
-    "faq6-q": "O tour pode ser personalizado?",
-    "faq6-a": "Sim. Como os tours são privados, a Rita pode adaptar as paragens e o ritmo aos teus interesses, ao tempo e ao horário.",
     "faq-cta": "Mais perguntas? Fala com a Rita",
+    "final-kicker": "Último Passo",
     "footer-note": "Tours privados em Sintra com a Rita Almeida. Conhecimento local, ritmo tranquilo e reserva direta com uma única guia.",
     "footer-explore": "Explorar",
     "footer-connect": "Contactar",
     "reviews-more": "Ver mais",
     "reviews-less": "Ver menos",
-    "cta-h2": "Pronto para começar?",
-    "cta-tagline": "Basta uma mensagem.",
+    "cta-h2": "Reserva o teu dia em Sintra.",
+    "cta-tagline": "Diz à Rita as tuas datas, o tamanho do grupo e o tipo de dia que procuras. Ela responde com a melhor rota e disponibilidade.",
     "cta-points-aria": "Detalhes de resposta",
     "cta-point-1": "Resposta em 24h",
     "cta-point-2": "Resposta por WhatsApp normalmente em 1h",
     "cta-email-label": "Ou envia-nos um email",
     "cta-book": "Verificar Disponibilidade",
-    "cta-note": "Abre o WhatsApp · Sem taxa de reserva",
+    "cta-note": "Direto com a Rita · Sem taxa de reserva",
+    "foot-why": "Porquê a Rita",
     "foot-tours": "Tours",
     "foot-about": "Sobre",
     "foot-reviews": "Avaliações",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
+    "foot-email": "Email ↗",
     "foot-instagram": "Instagram ↗",
     "foot-badge-online": "Sintra & Lisboa",
     "foot-remote": "5.0★ TripAdvisor",
