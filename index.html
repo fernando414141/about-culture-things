@@ -1306,6 +1306,7 @@ h2 {
   transition: gap .2s var(--ease), opacity .2s;
 }
 .reviews-footer a:hover { gap: 0.625rem; opacity: .78; }
+.reviews-tripadvisor-link { margin-left: auto; }
 .reviews-more-btn {
   display: none;
   align-items: center;
@@ -1591,9 +1592,11 @@ footer::before {
   .nav-actions { display: none; }
   .logo-name { font-size: 0.95rem; }
   .hero { padding: var(--sp-xl) var(--content-x) var(--sp-xl); }
+  .hero-inner > div:first-child { max-width: 100%; text-align: center; }
+  .hero-eyebrow { justify-content: center; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.7rem); line-height: 1.12; }
-  .hero-desc { font-size: clamp(0.98rem, 0.85vw + 0.82rem, 1.03rem); line-height: 1.6; }
-  .hero-trust-bar { gap: 0.375rem; }
+  .hero-desc { font-size: clamp(0.98rem, 0.85vw + 0.82rem, 1.03rem); line-height: 1.6; margin-left: auto; margin-right: auto; }
+  .hero-trust-bar { gap: 0.375rem; justify-content: center; }
   .hero-trust-bar span { font-size: 0.6875rem; padding: 0.3125rem 0.625rem; letter-spacing: 0.06em; }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: var(--sp-sm); }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; width: 100%; }
@@ -1608,8 +1611,13 @@ footer::before {
   .pricing-card { padding: var(--sp-md); }
   .pc-img-wrap { margin: calc(-1 * var(--sp-md)) calc(-1 * var(--sp-md)) var(--sp-md); }
   .about-photo { max-width: 15rem; margin: 0 auto; }
+  .reviews-header { align-items: center; text-align: center; }
+  .reviews-header .g-score { justify-content: center; width: 100%; }
+  .reviews-tripadvisor-link { margin-left: 0; }
   .faq-item summary { padding: 0.95rem 0; }
   .faq-q { font-size: 0.98rem; }
+  .faq-cta-panel { text-align: center; }
+  .faq-cta-panel .cta-actions { align-items: center; }
   .reviews-grid .review-card:nth-child(n+4) { display: none; }
   .reviews-grid.show-all .review-card:nth-child(n+4) { display: block; }
   .reviews-more-btn { display: inline-flex; }
@@ -1940,7 +1948,7 @@ footer::before {
             <div class="g-label" data-i18n="reviews-google-label">TripAdvisor</div>
           </div>
         </div>
-        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="btn-text" style="margin-left:auto" aria-label="View About Culture Things on TripAdvisor (opens in new tab)">
+        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="btn-text reviews-tripadvisor-link" aria-label="View About Culture Things on TripAdvisor (opens in new tab)">
           <span data-i18n="reviews-view-btn">View on TripAdvisor</span>
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
         </a>
