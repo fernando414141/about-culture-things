@@ -126,7 +126,8 @@
         {"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept cryptocurrency, Revolut, Wise, MBWay, SEPA bank transfer, and cash. Payment details are sent after you check availability."}},
         {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}},
         {"@type":"Question","name":"Are the tours suitable for children or seniors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because every tour is private, Rita can adapt the pace and stops to your group."}},
-        {"@type":"Question","name":"Is lunch included?","acceptedAnswer":{"@type":"Answer","text":"Lunch is not included, but Rita can suggest good local places along the route."}}
+        {"@type":"Question","name":"Is lunch included?","acceptedAnswer":{"@type":"Answer","text":"Lunch is not included, but Rita can suggest good local places along the route."}},
+        {"@type":"Question","name":"Can the tour be customized?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing."}}
       ]
     }
   ]
@@ -1301,6 +1302,23 @@ h2 {
   transition: gap .2s var(--ease), opacity .2s;
 }
 .reviews-footer a:hover { gap: 0.625rem; opacity: .78; }
+.reviews-more-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0 auto;
+  padding: 0.8rem 1.1rem;
+  min-height: 2.75rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--outline-v);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  box-shadow: var(--elev-1);
+}
+.reviews-more-btn:hover { background: var(--surface-1); box-shadow: var(--elev-2); }
 
 /* ─── FAQ ─── */
 .faq-list { display: flex; flex-direction: column; }
@@ -1339,28 +1357,39 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
   margin-top: 0.25rem; transition: border-color .2s ease;
 }
 
-/* ─── CTA BLOCK ─── */
-.cta-block {
-  background: var(--text-primary);
-  color: var(--surface-1);
-  padding: var(--sp-2xl) var(--content-x);
-  text-align: center;
-  position: relative; overflow: hidden;
+.faq-cta-panel {
+  margin-top: var(--sp-2xl);
+  background: linear-gradient(160deg, var(--coast-blue) 0%, var(--forest) 100%);
+  color: #fff;
+  border-radius: var(--r-xl);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  box-shadow: var(--elev-3);
+  position: relative;
+  overflow: hidden;
 }
-.cta-block h2 {
+.faq-cta-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(194,164,97,.16), transparent 42%);
+  pointer-events: none;
+}
+.faq-cta-panel h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 8vw, 2.75rem);
-  font-weight: 300; letter-spacing: -0.025em;
-  color: var(--surface-1); margin-bottom: var(--sp-sm);
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--sp-sm);
 }
-.cta-tagline { 
-  font-size: var(--t-lg); color: rgba(255,255,255,0.7);
+.faq-cta-panel p {
+  color: rgba(255,255,255,.76);
+  font-size: var(--t-lg);
+  max-width: 38rem;
   margin-bottom: var(--sp-lg);
-  font-family: var(--font-display); font-style: italic; 
 }
-.cta-actions {
-  display: flex; flex-direction: column; align-items: center; gap: var(--sp-sm);
+.faq-cta-panel .cta-note {
+  color: rgba(255,255,255,.52);
 }
 .btn-massive {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
@@ -1374,9 +1403,12 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
 .btn-massive:hover {
   transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.22);
 }
-.cta-note { 
-  font-size: var(--t-sm); color: rgba(255,255,255,0.4); 
-  font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; 
+
+.faq-cta-panel .cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-sm);
 }
 
 /* ─── FOOTER ─── */
@@ -1514,9 +1546,8 @@ footer::before {
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; }
   .reviews-header { padding: var(--sp-lg) var(--content-x) var(--sp-md); flex-direction: column; align-items: flex-start; gap: var(--sp-md); }
   .g-number { font-size: 3.5rem; }
-  .cta-block { padding: var(--sp-2xl) var(--content-x); }
-  .cta-block h2 { font-size: clamp(2rem, 6vw, 3rem); }
   .btn-massive { width: 100%; max-width: 22rem; }
+  .faq-cta-panel .btn-massive { width: 100%; max-width: 22rem; }
   .faq-item summary { padding: var(--sp-md) 0; }
   .pricing-card { padding: var(--sp-lg); }
   .pc-img-wrap { margin: calc(-1 * var(--sp-lg)) calc(-1 * var(--sp-lg)) var(--sp-md); }
@@ -1548,9 +1579,8 @@ footer::before {
   h2 { font-size: clamp(1.625rem, 7vw, 2.25rem); }
   .g-number { font-size: 3rem; }
   .pc-price { font-size: clamp(2.25rem, 8vw, 3rem); }
-  .cta-block { padding: var(--sp-2xl) var(--content-x); }
-  .cta-block h2 { font-size: clamp(1.875rem, 8vw, 2.75rem); }
   .btn-massive { width: 100%; font-size: 0.9375rem; }
+  .faq-cta-panel .btn-massive { width: 100%; font-size: 0.9375rem; }
   .tours-row { grid-template-columns: 1fr; max-width: 22rem; margin: 0 auto; gap: var(--sp-xl); }
   .sec-head { margin-bottom: var(--sp-md); }
   .pricing-card { padding: var(--sp-md); }
@@ -1558,6 +1588,9 @@ footer::before {
   .about-photo { max-width: 12rem; }
   .faq-item summary { padding: 0.875rem 0; }
   .faq-q { font-size: 0.9375rem; }
+  .reviews-grid .review-card:nth-child(n+4) { display: none; }
+  .reviews-grid.show-all .review-card:nth-child(n+4) { display: block; }
+  .reviews-more-btn { display: inline-flex; }
 }
 
 @media (min-width: 48rem) {
@@ -1890,7 +1923,7 @@ footer::before {
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
         </a>
       </div>
-      <div class="reviews-grid" role="list" aria-label="Customer reviews">
+      <div class="reviews-grid" id="reviews-grid" role="list" aria-label="Customer reviews">
         <article class="review-card" role="listitem">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">R</div>
@@ -1964,6 +1997,11 @@ footer::before {
           <div class="rv-author">James W.</div>
         </article>
       </div>
+      <div class="reviews-footer">
+        <button type="button" class="reviews-more-btn" id="reviews-more-btn" aria-expanded="false" aria-controls="reviews-grid">
+          <span class="reviews-more-label" data-i18n="reviews-more">Ver más</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1994,6 +2032,10 @@ footer::before {
         <summary><span class="faq-q" data-i18n="faq5-q">Is lunch included?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
         <p class="faq-a" data-i18n="faq5-a">Lunch is not included, but Rita can suggest good local places along the route.</p>
       </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" data-i18n="faq6-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-a" data-i18n="faq6-a">Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.</p>
+      </details>
     </div>
     <p class="faq-cta-note">
       <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question." class="btn-text" target="_blank" rel="noopener noreferrer">
@@ -2001,22 +2043,20 @@ footer::before {
         <span data-i18n="faq-cta">Need help? Contact Rita</span>
       </a>
     </p>
+    <div class="faq-cta-panel">
+      <h3 data-i18n="cta-h2">Ready to start?</h3>
+      <p data-i18n="cta-tagline">One message is all it takes.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-massive" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
+          <span data-i18n="cta-book">Check Availability</span>
+        </a>
+        <p class="cta-note" data-i18n="cta-note">Reply within 24h</p>
+      </div>
+    </div>
   </section>
 
 </main>
-
-<!-- ── CTA ── -->
-<section class="cta-block reveal" role="complementary" aria-label="Book a tour or session">
-  <h2 data-i18n="cta-h2">Ready to start?</h2>
-  <p class="cta-tagline" data-i18n="cta-tagline">One message is all it takes.</p>
-  <div class="cta-actions">
-    <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-massive" target="_blank" rel="noopener noreferrer">
-      <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-      <span data-i18n="cta-book">Check Availability</span>
-    </a>
-    <p class="cta-note" data-i18n="cta-note">Reply within 24h</p>
-  </div>
-</section>
 
 <!-- ── FOOTER ── -->
 <footer role="contentinfo">
@@ -2149,7 +2189,11 @@ const i18n = {
     "faq4-a": "Yes. Because every tour is private, Rita can adapt the pace and stops to your group.",
     "faq5-q": "Is lunch included?",
     "faq5-a": "Lunch is not included, but Rita can suggest good local places along the route.",
+    "faq6-q": "Can the tour be customized?",
+    "faq6-a": "Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.",
     "faq-cta": "Need help? Contact Rita",
+    "reviews-more": "View more",
+    "reviews-less": "View less",
     "cta-h2": "Ready to start?",
     "cta-tagline": "One message is all it takes.",
     "cta-email-label": "Or send an email",
@@ -2245,7 +2289,11 @@ const i18n = {
     "faq4-a": "Sí. Como cada tour es privado, Rita puede adaptar el ritmo y las paradas a tu grupo.",
     "faq5-q": "¿El almuerzo está incluido?",
     "faq5-a": "El almuerzo no está incluido, pero Rita puede sugerir buenos lugares locales en la ruta.",
+    "faq6-q": "¿Se puede personalizar el tour?",
+    "faq6-a": "Sí. Como los tours son privados, Rita puede adaptar las paradas y el ritmo a tus intereses, el clima y el horario.",
     "faq-cta": "¿Más preguntas? Contacta a Rita",
+    "reviews-more": "Ver más",
+    "reviews-less": "Ver menos",
     "cta-h2": "¿Listo para empezar?",
     "cta-tagline": "Un mensaje es todo lo que necesitas.",
     "cta-email-label": "O envíanos un email",
@@ -2341,7 +2389,11 @@ const i18n = {
     "faq4-a": "Sim. Como cada tour é privado, a Rita pode adaptar o ritmo e as paragens ao teu grupo.",
     "faq5-q": "O almoço está incluído?",
     "faq5-a": "O almoço não está incluído, mas a Rita pode sugerir bons locais ao longo do percurso.",
+    "faq6-q": "O tour pode ser personalizado?",
+    "faq6-a": "Sim. Como os tours são privados, a Rita pode adaptar as paragens e o ritmo aos teus interesses, ao tempo e ao horário.",
     "faq-cta": "Mais perguntas? Fala com a Rita",
+    "reviews-more": "Ver mais",
+    "reviews-less": "Ver menos",
     "cta-h2": "Pronto para começar?",
     "cta-tagline": "Basta uma mensagem.",
     "cta-email-label": "Ou envia-nos um email",
@@ -2657,6 +2709,27 @@ document.querySelectorAll('.faq-item').forEach(item => {
     }
   });
 });
+
+// ─── REVIEWS MORE ────────────────────────────────────
+(function(){
+  const btn = document.getElementById('reviews-more-btn');
+  const grid = document.getElementById('reviews-grid');
+  const label = btn?.querySelector('.reviews-more-label');
+  if (!btn || !grid || !label) return;
+
+  function syncLabel(expanded) {
+    const key = expanded ? 'reviews-less' : 'reviews-more';
+    label.textContent = i18n[currentLang]?.[key] || (expanded ? 'Ver menos' : 'Ver más');
+    label.setAttribute('data-i18n', key);
+  }
+
+  syncLabel(false);
+  btn.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('show-all');
+    btn.setAttribute('aria-expanded', String(expanded));
+    syncLabel(expanded);
+  });
+})();
 
 // ─── CURSOR GLOW ─────────────────────────────────────
 if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
