@@ -1415,8 +1415,6 @@ h2 {
   padding: clamp(1.125rem, 1.6vw, 1.5rem);
   background: var(--surface-1);
 }
-.reviews-grid .review-card:nth-child(n+4) { display: none; }
-
 .review-card {
   background: var(--surface);
   border: 1px solid var(--outline);
@@ -1927,6 +1925,10 @@ footer::after {
 }
 
 @media (min-width: 48rem) {
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 56rem) {
   .nav-tabs { display: flex; }
   .nav-actions { display: flex; }
   .burger { display: none; }
@@ -1948,9 +1950,12 @@ footer::after {
   .faq-cta-panel h3 { font-size: 3.25rem; }
   .faq-cta-panel p { font-size: 1.125rem; margin-bottom: var(--sp-xl); }
   .btn-massive { padding: 1.05rem 2rem; font-size: 1.05rem; }
-  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
   .pricing-trust { justify-content: flex-start; }
   .footer-links { gap: 0.5rem; }
+}
+
+@media (min-width: 64rem) {
+  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (min-width: 48rem) {
