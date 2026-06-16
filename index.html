@@ -510,6 +510,10 @@ body::before {
 body.nav-open .burger span:nth-child(1) { transform: rotate(45deg) translate(0, 6px); }
 body.nav-open .burger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0, -6px); }
+body.nav-open .burger {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Mobile nav */
 .mob-nav {
@@ -810,6 +814,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   letter-spacing: -0.025em;
   color: #fff;
   margin-bottom: var(--sp-md);
+  text-wrap: balance;
 }
 .hero h1 em {
   font-style: italic; font-weight: 300;
@@ -837,6 +842,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   max-width: 34rem;
   font-weight: 300;
   letter-spacing: 0.005em;
+  text-wrap: pretty;
 }
 .hero-desc strong { color: rgba(255,255,255,.95); font-weight: 600; }
 
@@ -960,7 +966,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 .content > section:nth-of-type(even)::before { opacity: .35; }
 
 /* ─── SECTION HEADER ─── */
-.sec-head { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+.sec-head { max-width: 42rem; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .sec-eyebrow {
   display: flex; align-items: center; gap: var(--sp-md);
   margin-bottom: var(--sp-md);
@@ -994,6 +1000,7 @@ h2 {
   line-height: 1.07;
   color: var(--text-primary);
   margin-bottom: var(--sp-md);
+  text-wrap: balance;
 }
 .sec-head h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
 .sec-desc {
@@ -1002,6 +1009,7 @@ h2 {
   line-height: 1.65;
   max-width: 42rem;
   font-weight: 400;
+  text-wrap: pretty;
 }
 
 /* ─── REVEAL ANIMATIONS ─── */
@@ -1115,9 +1123,9 @@ h2 {
   flex-shrink: 0;
 }
 .pricing-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
   max-width: 64rem;
   margin: 0 auto var(--sp-xl);
 }
@@ -1125,14 +1133,15 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.65rem 0.85rem;
-  border-radius: var(--r-pill);
+  min-height: 3rem;
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--r-xl);
   background: var(--surface);
   border: 1px solid var(--outline);
   color: var(--text-secondary);
   font-size: var(--t-sm);
   font-weight: 600;
-  box-shadow: var(--elev-1);
+  box-shadow: none;
 }
 .pricing-trust svg {
   width: 0.85rem;
@@ -1276,7 +1285,7 @@ h2 {
 }
 .about-bio {
   font-size: clamp(0.98rem, 0.7vw + 0.88rem, 1.05rem); color: var(--text-secondary);
-  line-height: 1.7; margin-bottom: var(--sp-lg); max-width: 38rem;
+  line-height: 1.7; margin-bottom: var(--sp-lg); max-width: 38rem; text-wrap: pretty;
 }
 .about-pull {
   font-family: var(--font-display);
@@ -1394,7 +1403,7 @@ h2 {
 .rv-text {
   font-size: clamp(0.95rem, 0.6vw + 0.85rem, 1.05rem); color: var(--text-primary);
   line-height: 1.72; margin-bottom: var(--sp-md);
-  font-style: italic; font-weight: 400;
+  font-style: italic; font-weight: 400; text-wrap: pretty;
 }
 .rv-author { font-size: clamp(0.9rem, 0.5vw + 0.82rem, 1rem); color: var(--text-muted); font-weight: 700; }
 .reviews-footer {
@@ -1461,7 +1470,7 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
 .faq-a {
   font-size: clamp(0.95rem, 0.45vw + 0.85rem, 1.025rem); color: var(--text-secondary);
   line-height: 1.72; padding: 0 0 clamp(0.95rem, 1.2vw, 1.25rem);
-  margin-top: 0.25rem; transition: border-color .2s ease;
+  margin-top: 0.25rem; transition: border-color .2s ease; text-wrap: pretty;
 }
 
 .faq-cta-panel {
@@ -1698,6 +1707,23 @@ footer::before {
   .sec-head { margin-bottom: var(--sp-lg); }
   h2 { font-size: clamp(1.8rem, 4.8vw + 0.4rem, 2.4rem); }
   .pc-price { font-size: clamp(2.3rem, 6vw, 3.2rem); }
+  .back-to-top { display: none; }
+  .fab-wa {
+    width: 3.125rem;
+    height: 3.125rem;
+    right: max(0.875rem, env(safe-area-inset-right));
+    bottom: max(0.875rem, env(safe-area-inset-bottom));
+  }
+  .fab-wa::before { display: none; }
+  .pricing-trust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+  }
+  .pricing-trust span {
+    min-width: 0;
+    justify-content: flex-start;
+    line-height: 1.35;
+  }
 }
 
 /* ── Mobile phones (≤ 480px) ── */
@@ -1760,6 +1786,7 @@ footer::before {
   .faq-cta-panel p { font-size: var(--t-xl); margin-bottom: var(--sp-2xl); }
   .btn-massive { padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1.75rem, 5vw, 2.75rem); font-size: clamp(0.9375rem, 2vw, 1.125rem); }
   .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (min-width: 60.0625rem) {
@@ -2256,8 +2283,13 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
 (function(){
   var btn = document.getElementById('back-to-top');
   if (!btn) return;
-  function toggle() { btn.classList.toggle('visible', window.scrollY > 600); }
+  function toggle() {
+    var desktopLike = window.innerWidth >= 768;
+    btn.hidden = !desktopLike;
+    btn.classList.toggle('visible', desktopLike && window.scrollY > 600);
+  }
   window.addEventListener('scroll', toggle, { passive: true });
+  window.addEventListener('resize', toggle);
   toggle();
   btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
@@ -2689,8 +2721,9 @@ window.addEventListener('scroll', () => {
   ticking = true;
   requestAnimationFrame(() => {
     const sy = window.scrollY;
+    const compactViewport = window.innerWidth < 768;
     nav.classList.toggle('elevated', sy > 10);
-    if (fabWa) fabWa.classList.toggle('visible', sy > 380);
+    if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 640 : 380));
 
     // Active nav link highlighting
     const sections = document.querySelectorAll('section[id]');
@@ -2723,6 +2756,12 @@ function navClose() {
 }
 
 burger.addEventListener('click', navOpen);
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 768 && mobNav.classList.contains('open')) {
+    navClose();
+  }
+});
 
 document.addEventListener('click', e => {
   if (mobNav.classList.contains('open') && !mobNav.contains(e.target) && !burger.contains(e.target)) {
