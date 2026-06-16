@@ -1147,25 +1147,29 @@ h2 {
   flex-shrink: 0;
 }
 .pricing-trust {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.6rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem 1.15rem;
   max-width: 64rem;
-  margin: 0 auto var(--sp-xl);
+  margin: 0 auto clamp(1rem, 2vw, 1.35rem);
+  padding-top: 0.15rem;
 }
 .pricing-trust span {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   min-height: 0;
-  padding: 0.1rem 0;
+  padding: 0;
   border-radius: 0;
   background: transparent;
   border: 0;
   color: var(--text-secondary);
-  font-size: clamp(0.8125rem, 0.5vw + 0.74rem, 0.95rem);
+  font-size: clamp(0.8125rem, 0.45vw + 0.76rem, 0.95rem);
   font-weight: 500;
   box-shadow: none;
+  white-space: nowrap;
 }
 .pricing-trust svg {
   width: 0.825rem;
@@ -1900,7 +1904,7 @@ footer::before {
   .faq-cta-panel p { font-size: var(--t-xl); margin-bottom: var(--sp-2xl); }
   .btn-massive { padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1.75rem, 5vw, 2.75rem); font-size: clamp(0.9375rem, 2vw, 1.125rem); }
   .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pricing-trust { justify-content: flex-start; }
   .footer-links { gap: 0.45rem; }
 }
 
