@@ -158,6 +158,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + clamp(0.75rem, 1.5vw, 1.25r
 
 /* ─── DESIGN TOKENS ─── */
 :root {
+  color-scheme: light dark;
   /* Surfaces */
   --brand-green:  #6A692C;
   --forest:       #3D4F2B;
@@ -172,6 +173,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + clamp(0.75rem, 1.5vw, 1.25r
   --surface:      var(--white);
   --surface-1:    #FAFAFA;
   --surface-2:    var(--stone);
+  --nav-surface:  rgba(248,243,234,.96);
   --outline:      rgba(17,42,70,.08);
   --outline-v:    rgba(17,42,70,.15);
 
@@ -338,7 +340,7 @@ body::before {
   top: 0; left: 0; right: 0;
   z-index: 200;
   height: var(--nav-h);
-  background: rgba(248,243,234,.96);
+  background: var(--nav-surface);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid rgba(61,79,43,.08);
@@ -515,7 +517,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   position: fixed;
   inset: var(--nav-h) 0 0;
   z-index: 190;
-  background: rgba(248,243,234,.99);
+  background: var(--nav-surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   overflow-y: auto;
@@ -595,6 +597,48 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   font-weight: 700;
   border-radius: var(--r-md);
   min-height: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0D1411;
+    --bg-deep: #111B17;
+    --surface: #15211C;
+    --surface-1: #18261F;
+    --surface-2: #1D2B24;
+    --nav-surface: rgba(12,18,16,.92);
+    --outline: rgba(245,242,233,.08);
+    --outline-v: rgba(245,242,233,.16);
+    --text-primary: #F5F2E9;
+    --text-secondary: #D6DDCF;
+    --text-muted: #A7B2A1;
+    --text-faint: #7E8A7A;
+    --brand-green-bg: rgba(106,105,44,.18);
+    --brand-green-bg-v: rgba(106,105,44,.26);
+    --forest-bg: rgba(61,79,43,.18);
+    --gold-bg: rgba(194,164,97,.14);
+    --sapphire-bg: rgba(17,42,70,.26);
+  }
+  body::before { opacity: 0.16; }
+  .nav { box-shadow: 0 1px 0 rgba(255,255,255,.03), 0 12px 28px rgba(0,0,0,.26); }
+  .hero::before {
+    background: linear-gradient(
+      to top,
+      rgba(5,8,7,.92) 0%,
+      rgba(5,8,7,.68) 30%,
+      rgba(5,8,7,.36) 60%,
+      rgba(5,8,7,.08) 100%
+    );
+  }
+  .card,
+  .review-card,
+  .pricing-card,
+  .faq-item,
+  .mob-nav a,
+  .lang-dropdown,
+  .lang-trigger {
+    box-shadow: none;
+  }
 }
 
 /* ─── BUTTONS ─── */
@@ -1474,6 +1518,21 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
   .pricing-card:hover,
   .review-card:hover {
     box-shadow: var(--elev-1);
+  }
+  .btn-filled:active,
+  .btn-outlined:active,
+  .btn-white:active,
+  .btn-white-outlined:active,
+  .btn-text:active,
+  .btn-massive:active,
+  .nav-tabs a:active,
+  .mob-nav a:active,
+  .mob-lang-btn:active,
+  .lang-option:active,
+  .burger:active,
+  .mob-nav-close:active,
+  .reviews-more-btn:active {
+    transform: scale(.98);
   }
 }
 
@@ -2804,9 +2863,16 @@ document.querySelectorAll('.faq-item').forEach(item => {
 
   syncLabel(false);
   btn.addEventListener('click', () => {
-    const expanded = grid.classList.toggle('show-all');
-    btn.setAttribute('aria-expanded', String(expanded));
-    syncLabel(expanded);
+    const toggle = () => {
+      const expanded = grid.classList.toggle('show-all');
+      btn.setAttribute('aria-expanded', String(expanded));
+      syncLabel(expanded);
+    };
+    if (document.startViewTransition) {
+      document.startViewTransition(toggle);
+    } else {
+      toggle();
+    }
   });
 })();
 
