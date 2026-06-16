@@ -124,10 +124,7 @@
       "mainEntity": [
         {"@type":"Question","name":"What do the Sintra tours include?","acceptedAnswer":{"@type":"Answer","text":"All tours include pickup in Lisbon, a private guide (Rita Almeida), and transport. Maximum 4 people per tour. Palace and monument tickets are not included."}},
         {"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept cryptocurrency, Revolut, Wise, MBWay, SEPA bank transfer, and cash. Payment details are sent after you check availability."}},
-        {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}},
-        {"@type":"Question","name":"Are the tours suitable for children or seniors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because every tour is private, Rita can adapt the pace and stops to your group."}},
-        {"@type":"Question","name":"Is lunch included?","acceptedAnswer":{"@type":"Answer","text":"Lunch is not included, but Rita can suggest good local places along the route."}},
-        {"@type":"Question","name":"Can the tour be customized?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing."}}
+        {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}}
       ]
     }
   ]
@@ -1054,10 +1051,10 @@ h2 {
 }
 
 /* ─── REVEAL ANIMATIONS ─── */
-.anim-ready { opacity: 0; transform: translateY(28px); }
+.anim-ready,
 .anim-visible {
-  opacity: 1; transform: translateY(0);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
@@ -2086,6 +2083,7 @@ footer::after {
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { width: 100%; max-width: 100%; overflow-x: clip; margin: 0; }
+html { scroll-padding-top: calc(var(--nav-h) + .75rem); }
 img, video { max-width: 100%; }
 body {
   color-scheme: light;
@@ -2097,9 +2095,11 @@ main, section, footer, .nav, .mob-nav, .hero, .content { overflow-x: clip; }
 body::before { opacity: .14; }
 
 .nav {
-  background: rgba(247,244,235,.88);
+  background: rgba(247,244,235,.84);
   height: var(--nav-h);
   border-bottom: 1px solid rgba(13,34,56,.06);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 .nav-inner { gap: 1rem; }
 .logo { padding-right: 0; margin-right: 0; }
@@ -2108,8 +2108,8 @@ body::before { opacity: .14; }
 .nav-tabs { gap: .15rem; }
 .nav-tabs a {
   color: var(--text-secondary);
-  padding: .6rem .9rem;
-  font-size: .9rem;
+  padding: .55rem .78rem;
+  font-size: .88rem;
 }
 .nav-actions { gap: .5rem; }
 .nav-actions .btn-filled,
@@ -2121,12 +2121,14 @@ body::before { opacity: .14; }
 .btn-filled {
   background: linear-gradient(135deg, #566627 0%, #2f4220 100%);
   box-shadow: 0 10px 24px rgba(46,66,32,.18);
+  border: 1px solid rgba(255,255,255,.06);
 }
 .btn-filled:hover {
   box-shadow: 0 14px 30px rgba(46,66,32,.22);
 }
 .btn-outlined {
   border-color: rgba(13,34,56,.12);
+  background: rgba(255,255,255,.58);
 }
 
 .mob-nav {
@@ -2148,6 +2150,7 @@ section[id] {
   max-width: none;
   margin-left: 0;
   padding: var(--content-y) var(--content-x);
+  scroll-margin-top: calc(var(--nav-h) + .75rem);
 }
 #why {
   padding: calc(var(--content-y) - .2rem) var(--content-x) calc(var(--content-y) - .1rem);
@@ -2172,6 +2175,9 @@ section[id] {
 .sec-head {
   max-width: 38rem;
   margin-bottom: 1.4rem;
+}
+.sec-kicker {
+  letter-spacing: .18em;
 }
 h2 {
   font-size: clamp(2.2rem, 4.1vw, 3.55rem);
@@ -2207,39 +2213,39 @@ h2 {
   justify-content: flex-start;
 }
 .hero-copy {
-  width: min(100%, 33rem);
+  width: min(100%, 31rem);
 }
 .hero h1 {
-  font-size: clamp(2.85rem, 6.1vw, 4.55rem);
-  max-width: 10ch;
+  font-size: clamp(2.8rem, 5.9vw, 4.3rem);
+  max-width: 9ch;
   margin-bottom: .65rem;
 }
 .hero-desc {
-  max-width: 28rem;
+  max-width: 26rem;
   margin-bottom: .85rem;
   font-size: .95rem;
-  line-height: 1.56;
+  line-height: 1.52;
   color: rgba(255,255,255,.82);
 }
 .hero-trust-bar {
   margin-bottom: .75rem;
-  gap: .45rem;
+  gap: .4rem;
 }
 .hero-trust-bar span {
   min-height: 2rem;
-  padding: .38rem .72rem;
-  font-size: .62rem;
-  letter-spacing: .1em;
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.1);
+  padding: .34rem .66rem;
+  font-size: .6rem;
+  letter-spacing: .09em;
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.08);
 }
 .hero-ctas {
   align-items: flex-start;
-  gap: .65rem;
+  gap: .55rem;
 }
 .hero-ctas .btn-filled {
-  min-height: 3.25rem;
-  padding-inline: 1.3rem;
+  min-height: 3.1rem;
+  padding-inline: 1.15rem;
   background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(246,246,241,.95) 100%);
   color: #21301b;
   box-shadow: 0 14px 30px rgba(0,0,0,.24);
@@ -2258,6 +2264,12 @@ h2 {
   color: #fff;
   transform: none;
   box-shadow: none;
+}
+.hero-note {
+  margin: 0;
+  color: rgba(255,255,255,.56);
+  font-size: .78rem;
+  letter-spacing: .02em;
 }
 
 section.section--light {
@@ -2278,6 +2290,14 @@ section[id]::before {
   border-radius: var(--r-card);
   background: rgba(255,255,255,.62);
   backdrop-filter: blur(12px);
+  box-shadow: var(--elev-1);
+  border: 1px solid rgba(13,34,56,.06);
+  transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1), border-color .28s ease;
+}
+.why-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elev-2);
+  border-color: rgba(13,34,56,.1);
 }
 .why-item h3 {
   font-size: 1.22rem;
@@ -2295,6 +2315,36 @@ section[id]::before {
 .pricing-trust span {
   font-size: .86rem;
 }
+.tours-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+  width: min(100%, var(--max));
+  max-width: var(--max);
+  margin: 0 auto 1rem;
+}
+.tours-compare-item {
+  border: 1px solid var(--outline);
+  border-radius: 1rem;
+  padding: .85rem .95rem;
+  background: rgba(255,255,255,.58);
+}
+.tours-compare-label {
+  display: block;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: .3rem;
+  font-weight: 700;
+}
+.tours-compare-value {
+  display: block;
+  font-size: .94rem;
+  color: var(--text-primary);
+  line-height: 1.35;
+  font-weight: 600;
+}
 .tours-row {
   align-items: stretch;
   gap: 1rem;
@@ -2303,6 +2353,7 @@ section[id]::before {
   padding: .9rem .9rem .95rem;
   border-radius: calc(var(--r-card) + .1rem);
   min-height: 100%;
+  box-shadow: var(--elev-2);
 }
 .pricing-card.featured,
 .pricing-card.alt {
@@ -2388,6 +2439,8 @@ section[id]::before {
 .pc-cta .btn-filled,
 .pc-cta .btn-outlined {
   min-height: 2.85rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .about-grid {
@@ -2433,6 +2486,8 @@ section[id]::before {
 .about-cred {
   padding: .8rem .9rem;
   background: rgba(255,255,255,.6);
+  border: 1px solid var(--outline);
+  border-radius: 1rem;
 }
 .about-cred-value {
   font-size: .94rem;
@@ -2454,6 +2509,7 @@ section[id]::before {
 .reviews-header {
   padding: .95rem 1.1rem;
   background: rgba(255,255,255,.58);
+  align-items: flex-end;
 }
 .g-number {
   font-size: clamp(2.8rem, 5vw, 4rem);
@@ -2466,6 +2522,7 @@ section[id]::before {
 .review-card {
   padding: .9rem;
   background: rgba(255,255,255,.9);
+  border: 1px solid rgba(13,34,56,.06);
 }
 .review-card::before {
   font-size: 4.6rem;
@@ -2500,6 +2557,9 @@ section[id]::before {
 }
 .faq-q {
   font-size: .96rem;
+}
+.faq-item[open] summary {
+  padding-bottom: .65rem;
 }
 .faq-a {
   max-width: 44rem;
@@ -2607,6 +2667,9 @@ footer {
 }
 
 @media (max-width: 63.99rem) {
+  .tours-compare {
+    grid-template-columns: 1fr;
+  }
   .tours-row,
   .why-grid,
   .reviews-grid,
@@ -2641,14 +2704,14 @@ footer {
     width: 100%;
   }
   .hero h1 {
-    font-size: clamp(2.3rem, 10.6vw, 3.55rem);
-    max-width: 8.5ch;
+    font-size: clamp(2.22rem, 10vw, 3.2rem);
+    max-width: 8.2ch;
   }
   .hero-desc {
-    max-width: 19rem;
-    margin-bottom: .75rem;
-    font-size: .92rem;
-    line-height: 1.48;
+    max-width: 17.75rem;
+    margin-bottom: .65rem;
+    font-size: .9rem;
+    line-height: 1.44;
   }
   .hero-ctas {
     align-items: stretch;
@@ -2667,8 +2730,11 @@ footer {
   }
   .hero-trust-bar span {
     min-height: 1.85rem;
-    padding: .34rem .62rem;
-    font-size: .58rem;
+    padding: .32rem .56rem;
+    font-size: .55rem;
+  }
+  .hero-note {
+    font-size: .72rem;
   }
   #why {
     padding-top: 2.25rem;
@@ -2688,6 +2754,7 @@ footer {
   .pc-details p { font-size: .82rem; }
   .pc-price { font-size: 2.45rem; }
   .pricing-card { padding-bottom: .85rem; }
+  .tours-compare-item { padding: .75rem .8rem; }
   .reviews-grid { gap: .8rem; }
   .review-card { padding: .8rem; }
   .final-cta-shell { padding: 1.15rem; }
@@ -2730,11 +2797,11 @@ footer {
     font-size: .64rem;
   }
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   .hero-desc {
-    max-width: 18rem;
-    font-size: .92rem;
+    max-width: 16.75rem;
+    font-size: .88rem;
   }
   .about-grid { gap: 1rem; }
   .pricing-trust {
@@ -2905,6 +2972,7 @@ footer {
         </a>
         <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">See tours</a>
       </div>
+      <p class="hero-note" data-i18n="hero-note">Direct booking with Rita · Typical reply within 24h</p>
     </div>
   </div>
   <div class="hero-scroll" aria-hidden="true">
@@ -2953,6 +3021,20 @@ footer {
       <span role="listitem"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="trust-2">Local guide born in Sintra</span></span>
       <span role="listitem"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="trust-3">Max 4 guests</span></span>
       <span role="listitem"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="trust-4">Pickup in Lisbon included</span></span>
+    </div>
+    <div class="tours-compare" aria-label="How tours compare">
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-1-label">Best For</span>
+        <span class="tours-compare-value" data-i18n="compare-1-value">First-time visitors who want the full Sintra day</span>
+      </div>
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-2-label">Format</span>
+        <span class="tours-compare-value" data-i18n="compare-2-value">Private car tour with one guide and one group</span>
+      </div>
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-3-label">Booking</span>
+        <span class="tours-compare-value" data-i18n="compare-3-value">Direct with Rita, with quick availability confirmation</span>
+      </div>
     </div>
     <div class="tours-row">
       <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Signature Journey">
@@ -3123,24 +3205,6 @@ footer {
           <blockquote class="rv-text" data-i18n="rv-fernando-text">"Local knowledge made the difference. We saw places we would never have found on our own."</blockquote>
           <div class="rv-author">Fernando G.</div>
         </article>
-        <article class="review-card" role="listitem">
-          <div class="rv-top">
-            <div class="rv-avatar" aria-hidden="true">A</div>
-            <div class="rv-meta">
-              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <span class="rv-verified">✓ TripAdvisor</span>
-            </div>
-          </div>
-          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
-          <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
-          <div class="rv-author">Amanda T.</div>
-        </article>
-      </div>
-      <div class="reviews-footer">
-        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-more-btn" aria-label="Open TripAdvisor">
-          <span data-i18n="reviews-view-btn">View more on TripAdvisor</span>
-          <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -3163,10 +3227,6 @@ footer {
       <details class="faq-item">
         <summary><span class="faq-q" data-i18n="faq3-q">Can I cancel or reschedule?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
         <p class="faq-a" data-i18n="faq3-a">Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq4-q">Are the tours suitable for children or seniors?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq4-a">Yes. Because every tour is private, Rita can adapt the pace and stops to your group.</p>
       </details>
     </div>
     <p class="faq-cta-note">
@@ -3306,6 +3366,7 @@ const i18n = {
     "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
     "hero-cta-primary": "Check Availability",
     "hero-cta-secondary": "See tours",
+    "hero-note": "Direct booking with Rita · Typical reply within 24h",
     "why-kicker": "Why Rita",
     "why-h2": "Quiet luxury.<br><em>Local access.</em>",
     "why-desc": "A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.",
@@ -3325,6 +3386,12 @@ const i18n = {
     "trust-2": "Local guide born in Sintra",
     "trust-3": "Max 4 guests",
     "trust-4": "Pickup in Lisbon included",
+    "compare-1-label": "Best For",
+    "compare-1-value": "First-time visitors who want the full Sintra day",
+    "compare-2-label": "Format",
+    "compare-2-value": "Private car tour with one guide and one group",
+    "compare-3-label": "Booking",
+    "compare-3-value": "Direct with Rita, with quick availability confirmation",
     "tour1-name": "Sintra Complete Experience & Atlantic Coast",
     "tour1-tag": "7 hours · Max 4 people",
     "tour1-summary": "Historic Sintra · Pena area · Cabo da Roca · Cascais",
@@ -3431,6 +3498,7 @@ const i18n = {
     "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
     "hero-cta-primary": "Consultar Disponibilidad",
     "hero-cta-secondary": "Ver tours",
+    "hero-note": "Reserva directa con Rita · Respuesta habitual en 24h",
     "why-kicker": "Por qué Rita",
     "why-h2": "Lujo tranquilo.<br><em>Acceso local.</em>",
     "why-desc": "Un día privado marcado por tu ritmo, con la seguridad de una guía local de Sintra.",
@@ -3450,6 +3518,12 @@ const i18n = {
     "trust-2": "Guía local nacida en Sintra",
     "trust-3": "Máx. 4 personas",
     "trust-4": "Recogida en Lisboa incluida",
+    "compare-1-label": "Ideal Para",
+    "compare-1-value": "Quienes visitan Sintra por primera vez y quieren el día completo",
+    "compare-2-label": "Formato",
+    "compare-2-value": "Tour privado en coche con una guía y un solo grupo",
+    "compare-3-label": "Reserva",
+    "compare-3-value": "Directo con Rita, con confirmación rápida de disponibilidad",
     "tour1-name": "Sintra Completa & Costa Atlántica",
     "tour1-tag": "7 horas · Máx. 4 personas",
     "tour1-summary": "Sintra histórica · Pena · Cabo da Roca · Cascais",
@@ -3556,6 +3630,7 @@ const i18n = {
     "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
     "hero-cta-primary": "Verificar Disponibilidade",
     "hero-cta-secondary": "Ver tours",
+    "hero-note": "Reserva direta com a Rita · Resposta habitual em 24h",
     "why-kicker": "Porquê a Rita",
     "why-h2": "Luxo tranquilo.<br><em>Acesso local.</em>",
     "why-desc": "Um dia privado moldado ao teu ritmo, com a confiança de uma guia local de Sintra.",
@@ -3575,6 +3650,12 @@ const i18n = {
     "trust-2": "Guia local nascida em Sintra",
     "trust-3": "Máx. 4 pessoas",
     "trust-4": "Recolha em Lisboa incluída",
+    "compare-1-label": "Ideal Para",
+    "compare-1-value": "Quem visita Sintra pela primeira vez e quer o dia completo",
+    "compare-2-label": "Formato",
+    "compare-2-value": "Tour privado de carro com uma guia e um só grupo",
+    "compare-3-label": "Reserva",
+    "compare-3-value": "Direto com a Rita, com confirmação rápida de disponibilidade",
     "tour1-name": "Sintra Completa & Costa Atlântica",
     "tour1-tag": "7 horas · Máx. 4 pessoas",
     "tour1-summary": "Sintra histórica · Pena · Cabo da Roca · Cascais",
@@ -3891,24 +3972,11 @@ if (ratingEl) {
   rObs.observe(ratingEl);
 }
 
-// ─── HERO PARALLAX ───────────────────────────────────
-if (window.matchMedia('(prefers-reduced-motion: no-preference) and (min-width: 48rem)').matches) {
-  const heroInner = document.querySelector('.hero-inner');
-  if (heroInner) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y < window.innerHeight) {
-        heroInner.style.transform = 'translateY(' + (y * 0.16) + 'px)';
-        heroInner.style.opacity = 1 - (y / (window.innerHeight * 0.78));
-      }
-    }, { passive: true });
-  }
-}
-
 // ─── EYEBROW LINE ANIMATION ──────────────────────────
 const eyeObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
+      e.target.querySelectorAll('.anim-ready').forEach(el => el.classList.add('anim-visible'));
       const line = e.target.querySelector('.sec-eyebrow-line');
       if (line) {
         line.style.width = '0';
