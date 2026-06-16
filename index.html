@@ -101,7 +101,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "3",
+      "reviewCount": "6",
         "bestRating": "5"
       },
       "priceRange": "€299",
@@ -935,7 +935,7 @@ h2 {
 /* ─── TOURS GRID ─── */
 .tours-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--sp-2xl);
   max-width: 64rem;
   margin: 0 auto;
@@ -944,7 +944,7 @@ h2 {
 /* ─── WHY RITA ─── */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--sp-md);
   max-width: 64rem;
   margin: 0 auto;
@@ -1034,9 +1034,6 @@ h2 {
   height: 0.85rem;
   color: var(--brand-green);
   flex-shrink: 0;
-}
-@media (max-width: 62rem) {
-  .why-grid { grid-template-columns: 1fr; }
 }
 
 /* ─── PRICING CARD ─── */
@@ -1135,7 +1132,7 @@ h2 {
 /* ─── ABOUT ─── */
 .about-grid {
   display: grid;
-  grid-template-columns: 17rem 1fr;
+  grid-template-columns: 1fr;
   gap: var(--sp-2xl);
   align-items: start;
 }
@@ -1240,31 +1237,42 @@ h2 {
 }
 .g-stars { color: #E8A020; font-size: 1.0625rem; letter-spacing: 0.1rem; display: block; line-height: 1.3; }
 .g-label { font-size: var(--t-base); color: var(--text-muted); margin-top: 0.2rem; }
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-md);
+  padding: var(--sp-lg);
+}
 
 .review-card {
-  padding: var(--sp-lg) var(--sp-xl);
-  border-right: 1px solid var(--outline);
-  border-bottom: 1px solid var(--outline);
-  transition: all .3s var(--ease);
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-xl);
+  padding: var(--sp-lg);
+  transition: box-shadow .3s var(--ease), transform .3s var(--ease), border-color .3s var(--ease);
   position: relative;
+  box-shadow: var(--elev-1);
+  overflow: hidden;
 }
 .review-card::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, var(--brand-green-bg), transparent);
   opacity: 0; transition: opacity .3s ease; pointer-events: none;
 }
-.review-card:hover { background: var(--surface-1); }
+.review-card:hover {
+  background: var(--surface-1);
+  border-color: var(--outline-v);
+  box-shadow: var(--elev-3);
+  transform: translateY(-3px);
+}
 .review-card:hover::before { opacity: 1; }
-.review-card:nth-child(3), .review-card:nth-child(6) { border-right: none; }
-.review-card:nth-child(4), .review-card:nth-child(5), .review-card:nth-child(6) { border-bottom: none; }
 
 .rv-top { display: flex; align-items: center; gap: var(--sp-md); margin-bottom: var(--sp-md); }
 .rv-avatar {
   width: 2.5rem; height: 2.5rem; border-radius: 50%;
   background: linear-gradient(135deg, var(--brand-green-bg), var(--gold-bg));
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; font-weight: 700; color: var(--terracotta);
+  font-size: 1rem; font-weight: 700; color: var(--brand-green);
   flex-shrink: 0; border: 2px solid var(--outline);
 }
 .rv-meta { display: flex; flex-direction: column; gap: 0.15rem; }
@@ -1272,12 +1280,12 @@ h2 {
 .rv-verified { font-size: var(--t-xs); color: var(--forest-l); font-weight: 700; }
 .rv-tag {
   font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--terracotta); display: inline-block;
+  color: var(--brand-green); display: inline-block;
   padding: 0.25rem 0.625rem; border-radius: var(--r-pill);
-  background: var(--terracotta-bg); margin-bottom: var(--sp-sm);
+  background: var(--brand-green-bg); margin-bottom: var(--sp-sm);
   transition: all .25s var(--ease);
 }
-.review-card:hover .rv-tag { background: var(--terracotta-bg-v); }
+.review-card:hover .rv-tag { background: rgba(106,105,44,.12); }
 .rv-text {
   font-size: var(--t-base); color: var(--text-primary);
   line-height: 1.65; margin-bottom: var(--sp-md);
@@ -1509,10 +1517,6 @@ footer::before {
   .about-grid { grid-template-columns: 1fr; gap: var(--sp-xl); justify-items: center; text-align: center; }
   .about-body { text-align: left; }
   .about-photo { max-width: 16rem; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
-  .review-card:nth-child(2n) { border-right: none; }
-  .review-card:nth-child(n+5) { border-bottom: 1px solid var(--outline); }
-  .review-card:last-child { border-bottom: none; }
   .cta-block { padding: var(--sp-3xl) var(--sp-2xl); }
   .cta-block h2 { font-size: clamp(2.5rem, 6vw, 4rem); }
   .sec-head { margin-bottom: var(--sp-xl); }
@@ -1536,9 +1540,6 @@ footer::before {
   .hero-trust-bar span { font-size: 0.625rem; padding: 0.375rem 0.75rem; }
   .hero-ctas { gap: var(--sp-sm); flex-wrap: wrap; }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
-  .review-card { border-right: none !important; border-bottom: 1px solid var(--outline) !important; padding: var(--sp-md) var(--sp-lg); }
-  .review-card:last-child { border-bottom: none !important; }
   .reviews-header { padding: var(--sp-lg) var(--content-x) var(--sp-md); flex-direction: column; align-items: flex-start; gap: var(--sp-md); }
   .g-number { font-size: 3.5rem; }
   .cta-block { padding: var(--sp-2xl) var(--content-x); }
@@ -1551,7 +1552,6 @@ footer::before {
   .footer-top { flex-direction: column; align-items: flex-start; gap: 1rem; padding-bottom: var(--sp-md); }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: var(--sp-lg); }
   .footer-badges { display: none; }
-  .tours-row { grid-template-columns: 1fr 1fr; gap: var(--sp-lg); }
   .sec-head { margin-bottom: var(--sp-lg); }
   h2 { font-size: clamp(1.875rem, 5vw + 0.5rem, 2.5rem); }
   .pc-price { font-size: clamp(2.5rem, 6vw, 3.5rem); }
@@ -1579,7 +1579,6 @@ footer::before {
   .cta-block { padding: var(--sp-2xl) var(--content-x); }
   .cta-block h2 { font-size: clamp(1.875rem, 8vw, 2.75rem); }
   .btn-massive { width: 100%; font-size: 0.9375rem; }
-  .reviews-grid { grid-template-columns: 1fr; }
   .tours-row { grid-template-columns: 1fr; max-width: 22rem; margin: 0 auto; gap: var(--sp-xl); }
   .sec-head { margin-bottom: var(--sp-md); }
   .pricing-card { padding: var(--sp-md); }
@@ -1587,6 +1586,20 @@ footer::before {
   .about-photo { max-width: 12rem; }
   .faq-item summary { padding: 0.875rem 0; }
   .faq-q { font-size: 0.9375rem; }
+}
+
+@media (min-width: 48rem) {
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 60.0625rem) {
+  .tours-row { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .about-grid { grid-template-columns: 17rem 1fr; }
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: var(--sp-xl);
+  }
 }
 
 /* ─── REDUCED MOTION ─── */
@@ -1924,6 +1937,42 @@ footer::before {
           <blockquote class="rv-text" data-i18n="rv-fernando-text">"Her knowledge of history, culture and the secrets of the city is impressive. Rita showed me not only the famous spots but hidden places I would never have found on my own."</blockquote>
           <div class="rv-author">Fernando G.</div>
         </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">A</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv4-text">"Unforgettable private tour in Sintra — Rita's fantastic tour truly exceeded my expectations. Incredibly passionate about the history and culture of this magical city."</blockquote>
+          <div class="rv-author">Amanda T.</div>
+        </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">L</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv5-text">"One of the best experiences in Portugal! Rita was simply exceptional — professional, friendly, with impressive knowledge. I recommend her with my eyes closed!"</blockquote>
+          <div class="rv-author">Laura S.</div>
+        </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">J</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv6-text">"Rita knew exactly how to make the experience unforgettable! Her energy is contagious. She has a true gift for showing the best spots — not just popular sights but hidden gems."</blockquote>
+          <div class="rv-author">James W.</div>
+        </article>
       </div>
     </div>
   </section>
@@ -1992,7 +2041,7 @@ footer::before {
     <div class="footer-bottom">
       <span class="footer-copy">© <span id="footer-year"></span> About Culture Things · Rita Almeida · <a href="https://fscdigital.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Website by FSC Digital</a></span>
       <div class="footer-badges">
-        <span class="footer-badge">5.0★ TripAdvisor (3)</span>
+        <span class="footer-badge">5.0★ TripAdvisor (6)</span>
         <span class="footer-badge" data-i18n="foot-worldwide">Premium Service</span>
       </div>
     </div>
@@ -2087,6 +2136,9 @@ const i18n = {
     "rv2-text": "\"We had the pleasure of visiting Sintra with Rita — it wasn't just a tour, it was an experience. Her energy and passion for Portugal were contagious. Part historian, part stand-up comic, 100% passionate about Portugal. And if you're lucky enough to tour with her, ask for the best pork sandwich in Portugal — life-changing!\"",
     "rv-monica-text": "\"Magnificent experience. Spectacular guide. Very kind and with lots of information about the place. Absolutely recommended.\"",
     "rv-fernando-text": "\"Her knowledge of history, culture and the secrets of the city is impressive. Rita showed me not only the famous spots but hidden places I would never have found on my own.\"",
+    "rv4-text": "\"Unforgettable private tour in Sintra — Rita's fantastic tour truly exceeded my expectations. Incredibly passionate about the history and culture of this magical city.\"",
+    "rv5-text": "\"One of the best experiences in Portugal! Rita was simply exceptional — professional, friendly, with impressive knowledge. I recommend her with my eyes closed!\"",
+    "rv6-text": "\"Rita knew exactly how to make the experience unforgettable! Her energy is contagious. She has a true gift for showing the best spots — not just popular sights but hidden gems.\"",
     "faq-kicker": "FAQ",
     "faq-h2": "Common questions.",
     "faq1-q": "What do the Sintra tours include?",
@@ -2176,6 +2228,9 @@ const i18n = {
     "rv2-text": "\"Tuvimos el placer de visitar Sintra con Rita — no fue solo un tour, fue una experiencia. Su energía y pasión por Portugal eran contagiosas. Parte historiadora, parte cómica, 100% apasionada por Portugal.\"",
     "rv-monica-text": "\"Magnífica experiencia. Guía espectacular. Muy amable y con mucha información sobre el lugar. Absolutamente recomendada.\"",
     "rv-fernando-text": "\"Su conocimiento de la historia, cultura y los secretos de la ciudad es impresionante. Rita me mostró no solo los lugares famosos sino lugares escondidos que nunca habría encontrado solo.\"",
+    "rv4-text": "\"Tour privado inolvidable en Sintra — el fantástico tour de Rita superó mis expectativas. Increíblemente apasionada por la historia y cultura de esta ciudad mágica.\"",
+    "rv5-text": "\"¡Una de las mejores experiencias en Portugal! Rita fue simplemente excepcional — profesional, amable, con un conocimiento impresionante. ¡La recomiendo con los ojos cerrados!\"",
+    "rv6-text": "\"¡Rita sabía exactamente cómo hacer la experiencia inolvidable! Su energía es contagiosa. Tiene un verdadero don para mostrar los mejores lugares.\"",
     "faq-kicker": "FAQ",
     "faq-h2": "Preguntas frecuentes.",
     "faq1-q": "¿Qué incluyen los tours de Sintra?",
@@ -2265,6 +2320,9 @@ const i18n = {
     "rv2-text": "\"Tivemos o prazer de visitar Sintra com a Rita — não foi só um tour, foi uma experiência. A sua energia e paixão por Portugal eram contagiantes. Parte historiadora, parte comediante, 100% apaixonada por Portugal.\"",
     "rv-monica-text": "\"Magnífica experiência. Guia espetacular. Muito simpática e com muita informação sobre o lugar. Absolutamente recomendada.\"",
     "rv-fernando-text": "\"O seu conhecimento da história, da cultura e dos segredos da cidade é impressionante. A Rita mostrou-me não só os locais famosos mas também recantos escondidos que nunca teria encontrado sozinho.\"",
+    "rv4-text": "\"Tour privado inesquecível em Sintra — o fantástico tour da Rita superou as minhas expectativas. Incrivelmente apaixonada pela história e cultura desta cidade mágica.\"",
+    "rv5-text": "\"Uma das melhores experiências em Portugal! A Rita foi simplesmente excecional — profissional, amigável, com um conhecimento impressionante. Recomendo de olhos fechados!\"",
+    "rv6-text": "\"A Rita sabia exatamente como tornar a experiência inesquecível! A sua energia é contagiante. Tem um verdadeiro dom para mostrar os melhores locais — não só os populares mas joias escondidas.\"",
     "faq-kicker": "FAQ",
     "faq-h2": "Perguntas frequentes.",
     "faq1-q": "O que incluem os tours de Sintra?",
