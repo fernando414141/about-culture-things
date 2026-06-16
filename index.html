@@ -251,7 +251,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + clamp(0.75rem, 1.5vw, 1.25r
   --nav-h: 3.75rem;
   --max:   74rem;
   --touch: 2.75rem;
-  --content-x: clamp(1rem, 4vw + 0.5rem, 2.25rem);
+  --content-x: clamp(1.125rem, 3.5vw + 0.4rem, 2.25rem);
   --content-y: clamp(2rem, 5vw, 4.25rem);
 
   /* Easing */
@@ -927,6 +927,21 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   padding: var(--content-y) max(var(--content-x), calc((100vw - min(100vw, var(--max))) / 2 + var(--content-x)));
   position: relative;
   overflow: hidden;
+}
+/* Keep major blocks aligned to the same content width */
+.sec-head,
+.pricing-trust,
+.tours-row,
+.why-grid,
+.about-grid,
+.reviews-header,
+.reviews-grid,
+.faq-list,
+.faq-cta-panel {
+  width: 100%;
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* Alternating backgrounds: odd = body, even = tinted */
 .content > section:nth-of-type(odd) {
@@ -1658,7 +1673,7 @@ footer::before {
 /* ── Tablets (≤ 768px) ── */
 @media (max-width: 48rem) {
   :root {
-    --content-x: max(1.25rem, env(safe-area-inset-left));
+    --content-x: max(1.375rem, env(safe-area-inset-left));
     --content-y: 2.25rem;
   }
   .hero { align-items: flex-end; padding: var(--sp-3xl) var(--content-x) var(--sp-2xl); }
@@ -1688,7 +1703,7 @@ footer::before {
 /* ── Mobile phones (≤ 480px) ── */
 @media (max-width: 30rem) {
   :root {
-    --content-x: max(1rem, env(safe-area-inset-left));
+    --content-x: max(1.125rem, env(safe-area-inset-left));
     --content-y: 1.875rem;
   }
   .nav-actions { display: none; }
@@ -1755,6 +1770,7 @@ footer::before {
     grid-template-columns: repeat(3, 1fr);
     padding: var(--sp-xl);
   }
+  .faq-cta-panel { max-width: 64rem; }
 }
 
 /* ─── REDUCED MOTION ─── */
