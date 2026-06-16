@@ -1516,7 +1516,17 @@ h2 {
   padding: clamp(0.85rem, 1.2vw, 1.1rem) clamp(1rem, 1.5vw, 1.35rem);
   border-top: 1px solid var(--outline);
 }
-.reviews-tripadvisor-link { margin-left: auto; }
+.reviews-tripadvisor-link {
+  margin-left: auto;
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: opacity .2s var(--ease);
+}
+.reviews-tripadvisor-link:hover { opacity: .78; }
 .reviews-more-btn {
   display: inline-flex;
   align-items: center;
@@ -1668,7 +1678,6 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
   .btn-massive:active,
   .nav-tabs a:active,
   .mob-nav a:active,
-  .mob-lang-btn:active,
   .lang-option:active,
   .burger:active,
   .mob-nav-close:active,
@@ -1774,8 +1783,22 @@ footer::before {
 .footer-copy { font-size: 0.84rem; color: rgba(255,255,255,.48); line-height: 1.45; }
 .footer-credit { color: rgba(255,255,255,.6); transition: color .2s; }
 .footer-credit:hover { color: rgba(255,255,255,.88); }
-.faq-cta-note { margin-top: var(--sp-xl); padding-top: var(--sp-lg); border-top: 1px solid var(--outline); text-align: center; }
-.faq-cta-note .btn-text { display: inline-flex; align-items: center; gap: 0.5rem; }
+.faq-cta-note {
+  margin-top: var(--sp-xl);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--outline);
+  text-align: center;
+}
+.faq-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color .15s, opacity .15s;
+}
+.faq-contact-link:hover { color: var(--accent); opacity: .82; }
 
 /* ─── FAB WHATSAPP ─── */
 .back-to-top {
@@ -1884,7 +1907,7 @@ footer::before {
   .faq-item summary { padding: var(--sp-md) 0; }
   .pricing-card { padding: var(--sp-md); }
   .pc-img-wrap { margin: calc(-1 * var(--sp-md)) calc(-1 * var(--sp-md)) var(--sp-md); }
-  footer { padding: var(--sp-xl) var(--content-x) var(--sp-lg); }
+  footer { padding: var(--sp-lg) var(--content-x) var(--sp-md); }
   .footer-shell { grid-template-columns: 1fr; padding-bottom: var(--sp-md); }
   .footer-note { max-width: 100%; }
   .footer-actions { gap: 0.25rem; }
@@ -1947,6 +1970,7 @@ footer::before {
   .reviews-header { align-items: center; text-align: center; }
   .reviews-header .g-score { justify-content: center; width: 100%; }
   .reviews-tripadvisor-link { margin-left: 0; }
+  .about-credentials { grid-template-columns: 1fr; }
   .faq-item summary { padding: 0.95rem 0; }
   .faq-q { font-size: 0.98rem; }
   .faq-cta-panel { text-align: center; }
@@ -2141,7 +2165,7 @@ footer::before {
         <p class="hero-kicker" data-i18n="hero-kicker">Private Tours · Local Experiences</p>
       </div>
       <h1 data-i18n="hero-h1">Discover Portugal<br>with <em>Rita Almeida</em></h1>
-      <p class="hero-desc" data-i18n="hero-desc">Premium private Sintra tours, hidden beaches, and authentic local experiences. <strong>5.0★</strong> TripAdvisor.</p>
+      <p class="hero-desc" data-i18n="hero-desc">Exclusive private journeys through Sintra’s mountains and coastlines, curated just for you. <strong>5.0★</strong> TripAdvisor.</p>
       <div class="hero-trust-bar" role="list" aria-label="Key facts">
         <span role="listitem" data-i18n="hero-trust-2">5.0 ★ TripAdvisor</span>
         <span role="listitem" data-i18n="hero-trust-3">Lisbon Pickup Included</span>
@@ -2322,8 +2346,8 @@ footer::before {
             <div class="g-label" data-i18n="reviews-google-label">TripAdvisor</div>
           </div>
         </div>
-        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="btn-text reviews-tripadvisor-link" aria-label="View About Culture Things on TripAdvisor (opens in new tab)">
-          <span data-i18n="reviews-view-btn">View on TripAdvisor</span>
+        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-tripadvisor-link" aria-label="View About Culture Things on TripAdvisor (opens in new tab)">
+          <span data-i18n="reviews-view-btn">View more on TripAdvisor</span>
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
         </a>
       </div>
@@ -2443,7 +2467,7 @@ footer::before {
       </details>
     </div>
     <p class="faq-cta-note">
-      <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question." class="btn-text" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question." class="faq-contact-link" target="_blank" rel="noopener noreferrer">
         <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
         <span data-i18n="faq-cta">Need help? Contact Rita</span>
       </a>
