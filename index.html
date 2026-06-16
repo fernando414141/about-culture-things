@@ -710,7 +710,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 .hero-kicker {
   font-family: var(--font-body);
-  font-size: 0.625rem; font-weight: 600;
+  font-size: 0.6875rem; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(255,255,255,.58);
 }
@@ -933,7 +933,7 @@ h2 {
   box-shadow: var(--elev-1);
   transition: box-shadow .35s var(--ease), transform .35s var(--ease);
 }
-.card:hover { box-shadow: var(--elev-3); transform: translateY(-4px); }
+.card:hover { box-shadow: var(--elev-3); transform: translateY(-2px); }
 
 /* ─── TOURS GRID ─── */
 .tours-row {
@@ -1054,7 +1054,7 @@ h2 {
 .pricing-card:hover {
   box-shadow: var(--elev-3);
   border-color: var(--outline-v);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 @media (hover: none) { .pricing-card:hover { transform: none; } }
 
@@ -1066,7 +1066,7 @@ h2 {
 }
 .pricing-card.featured:hover {
   box-shadow: 0 24px 72px rgba(17,42,70,.44), 0 8px 24px rgba(17,42,70,.24);
-  transform: translateY(-6px);
+  transform: translateY(-3px);
 }
 .pricing-card.featured .pc-name { color: var(--surface); }
 .pricing-card.featured .pc-tag { color: var(--surface-1); opacity: 0.8; }
@@ -1102,7 +1102,7 @@ h2 {
 .pc-img-wrap picture,
 .about-photo picture { display: block; }
 .pc-img-wrap img {
-  width: 100%; aspect-ratio: 21/9;
+  width: 100%; aspect-ratio: 4/3;
   object-fit: cover; display: block;
   transition: transform .8s var(--ease);
 }
@@ -1542,26 +1542,26 @@ footer::before {
   }
   .hero { align-items: flex-end; padding: var(--sp-3xl) var(--content-x) var(--sp-2xl); }
   .hero-inner > div:first-child { max-width: 100%; text-align: left; }
-  .hero h1 { font-size: clamp(2.25rem, 8vw, 3rem); line-height: 1.12; }
-  .hero-desc { font-size: 1.0625rem; max-width: 100%; }
+  .hero h1 { font-size: clamp(2rem, 6vw + 0.9rem, 2.9rem); line-height: 1.1; }
+  .hero-desc { font-size: clamp(1rem, 0.9vw + 0.85rem, 1.06rem); max-width: 100%; }
   .hero-trust-bar { justify-content: flex-start; }
-  .hero-trust-bar span { font-size: 0.625rem; padding: 0.375rem 0.75rem; }
+  .hero-trust-bar span { font-size: 0.675rem; padding: 0.375rem 0.75rem; }
   .hero-ctas { gap: var(--sp-sm); flex-wrap: wrap; }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; }
   .reviews-header { padding: var(--sp-lg) var(--content-x) var(--sp-md); flex-direction: column; align-items: flex-start; gap: var(--sp-md); }
-  .g-number { font-size: 3.5rem; }
+  .g-number { font-size: clamp(2.5rem, 7vw, 3.4rem); }
   .btn-massive { width: 100%; max-width: 22rem; }
   .faq-cta-panel .btn-massive { width: 100%; max-width: 22rem; }
   .faq-item summary { padding: var(--sp-md) 0; }
-  .pricing-card { padding: var(--sp-lg); }
-  .pc-img-wrap { margin: calc(-1 * var(--sp-lg)) calc(-1 * var(--sp-lg)) var(--sp-md); }
+  .pricing-card { padding: var(--sp-md); }
+  .pc-img-wrap { margin: calc(-1 * var(--sp-md)) calc(-1 * var(--sp-md)) var(--sp-md); }
   footer { padding: var(--sp-2xl) var(--content-x) var(--sp-xl); }
   .footer-top { flex-direction: column; align-items: flex-start; gap: 1rem; padding-bottom: var(--sp-md); }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: var(--sp-lg); }
   .footer-badges { display: none; }
   .sec-head { margin-bottom: var(--sp-lg); }
-  h2 { font-size: clamp(1.875rem, 5vw + 0.5rem, 2.5rem); }
-  .pc-price { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+  h2 { font-size: clamp(1.8rem, 4.8vw + 0.4rem, 2.4rem); }
+  .pc-price { font-size: clamp(2.3rem, 6vw, 3.2rem); }
 }
 
 /* ── Mobile phones (≤ 480px) ── */
@@ -1571,27 +1571,27 @@ footer::before {
     --content-y: 1.875rem;
   }
   .nav-actions { display: none; }
-  .logo-name { font-size: 0.9375rem; }
+  .logo-name { font-size: 0.95rem; }
   .hero { padding: var(--sp-xl) var(--content-x) var(--sp-xl); }
-  .hero h1 { font-size: clamp(2rem, 10vw, 2.625rem); line-height: 1.15; }
-  .hero-desc { font-size: 0.9375rem; line-height: 1.6; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.7rem); line-height: 1.12; }
+  .hero-desc { font-size: clamp(0.98rem, 0.85vw + 0.82rem, 1.03rem); line-height: 1.6; }
   .hero-trust-bar { gap: 0.375rem; }
-  .hero-trust-bar span { font-size: 0.5625rem; padding: 0.3125rem 0.5625rem; letter-spacing: 0.06em; }
+  .hero-trust-bar span { font-size: 0.6875rem; padding: 0.3125rem 0.625rem; letter-spacing: 0.06em; }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: var(--sp-sm); }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; width: 100%; }
   .hero-scroll { display: none; }
-  h2 { font-size: clamp(1.625rem, 7vw, 2.25rem); }
-  .g-number { font-size: 3rem; }
-  .pc-price { font-size: clamp(2.25rem, 8vw, 3rem); }
-  .btn-massive { width: 100%; font-size: 0.9375rem; }
-  .faq-cta-panel .btn-massive { width: 100%; font-size: 0.9375rem; }
-  .tours-row { grid-template-columns: 1fr; max-width: 22rem; margin: 0 auto; gap: var(--sp-xl); }
-  .sec-head { margin-bottom: var(--sp-md); }
+  h2 { font-size: clamp(1.7rem, 7vw, 2.15rem); }
+  .g-number { font-size: clamp(2.3rem, 9vw, 3rem); }
+  .pc-price { font-size: clamp(2.15rem, 9vw, 2.9rem); }
+  .btn-massive { width: 100%; font-size: 0.98rem; }
+  .faq-cta-panel .btn-massive { width: 100%; font-size: 0.98rem; }
+  .tours-row { grid-template-columns: 1fr; max-width: 24rem; margin: 0 auto; gap: var(--sp-lg); }
+  .sec-head { margin-bottom: var(--sp-lg); }
   .pricing-card { padding: var(--sp-md); }
   .pc-img-wrap { margin: calc(-1 * var(--sp-md)) calc(-1 * var(--sp-md)) var(--sp-md); }
-  .about-photo { max-width: 12rem; }
-  .faq-item summary { padding: 0.875rem 0; }
-  .faq-q { font-size: 0.9375rem; }
+  .about-photo { max-width: 15rem; margin: 0 auto; }
+  .faq-item summary { padding: 0.95rem 0; }
+  .faq-q { font-size: 0.98rem; }
   .reviews-grid .review-card:nth-child(n+4) { display: none; }
   .reviews-grid.show-all .review-card:nth-child(n+4) { display: block; }
   .reviews-more-btn { display: inline-flex; }
@@ -1610,7 +1610,7 @@ footer::before {
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { width: auto; }
   .hero-desc { font-size: 1.0625rem; max-width: 36rem; margin-left: auto; margin-right: auto; }
   .hero-trust-bar { justify-content: center; }
-  .hero-trust-bar span { font-size: 0.625rem; }
+  .hero-trust-bar span { font-size: 0.6875rem; }
   .hero-scroll { display: flex; }
   .faq-cta-panel { padding: var(--sp-3xl) var(--sp-2xl); }
   .faq-cta-panel h3 { font-size: clamp(2.5rem, 6vw, 4rem); }
