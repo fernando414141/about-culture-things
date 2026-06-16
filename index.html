@@ -249,7 +249,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
   --max:   74rem;
   --touch: 2.75rem;
   --content-x: clamp(1rem, 4vw + 0.5rem, 2.25rem);
-  --content-y: clamp(3.5rem, 6vw + 1rem, 6rem);
+  --content-y: clamp(2.5rem, 7vw, 5rem);
 
   /* Easing */
   --ease:        cubic-bezier(.22,1,.36,1);
@@ -357,6 +357,7 @@ body::before {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
 }
 
@@ -383,7 +384,7 @@ body::before {
 }
 
 /* Nav tabs */
-.nav-tabs { display: flex; gap: 2px; margin: 0 auto; }
+.nav-tabs { display: none; gap: 2px; margin: 0 auto; }
 .nav-tabs a {
   font-size: var(--t-base);
   color: var(--text-secondary);
@@ -415,7 +416,7 @@ body::before {
 .nav-tabs a.active::after { transform: translateX(-50%) scaleX(1); }
 
 /* Language switcher */
-.nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.nav-actions { display: none; align-items: center; gap: 8px; flex-shrink: 0; }
 .lang-switcher { position: relative; }
 .lang-trigger {
   display: inline-flex; align-items: center; gap: 10px;
@@ -489,7 +490,7 @@ body::before {
 
 /* Burger */
 .burger {
-  display: none;
+  display: flex;
   width: 2.5rem; height: 2.5rem;
   border-radius: 50%;
   align-items: center; justify-content: center;
@@ -647,7 +648,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: var(--sp-4xl) clamp(1.5rem, 6vw, 4.5rem);
+  padding: var(--sp-2xl) var(--content-x) var(--sp-xl);
   position: relative;
   overflow: hidden;
 }
@@ -687,7 +688,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 /* Eyebrow */
 .hero-eyebrow {
   display: flex; align-items: center; gap: var(--sp-md);
-  margin-bottom: var(--sp-lg);
+  margin-bottom: var(--sp-md);
 }
 .hero-eyebrow-line {
   width: 3rem; height: 1px;
@@ -715,12 +716,12 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 7.5vw + 1rem, 6rem);
+  font-size: clamp(2rem, 10vw, 2.75rem);
   font-weight: 300;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: #fff;
-  margin-bottom: var(--sp-lg);
+  margin-bottom: var(--sp-md);
 }
 .hero h1 em {
   font-style: italic; font-weight: 300;
@@ -741,11 +742,11 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 
 .hero-desc {
-  font-size: clamp(1rem, 1.8vw + 0.5rem, 1.3125rem);
+  font-size: 0.9375rem;
   color: rgba(255,255,255,.72);
   line-height: 1.55;
-  margin-bottom: var(--sp-xl);
-  max-width: 36rem;
+  margin-bottom: var(--sp-lg);
+  max-width: 32rem;
   font-weight: 300;
   letter-spacing: 0.005em;
 }
@@ -754,12 +755,12 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 /* Trust badges */
 .hero-trust-bar {
   display: flex; flex-wrap: wrap; gap: var(--sp-sm);
-  margin-bottom: var(--sp-xl);
+  margin-bottom: var(--sp-lg);
 }
 .hero-trust-bar span {
   display: inline-flex; align-items: center; gap: 0.375rem;
-  font-size: 0.6875rem; font-weight: 600;
-  letter-spacing: 0.09em; text-transform: uppercase;
+  font-size: 0.5625rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: rgba(255,255,255,.82);
   background: rgba(255,255,255,.1);
   padding: 0.4375rem 0.9375rem;
@@ -772,7 +773,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 
 /* Hero CTAs */
 .hero-ctas {
-  display: flex; gap: var(--sp-md); flex-wrap: wrap;
+  display: flex; flex-direction: column; align-items: stretch; gap: var(--sp-sm);
 }
 .hero-ctas .btn-filled {
   background: #fff;
@@ -796,10 +797,11 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 
 /* Scroll indicator */
 .hero-scroll {
+  display: none;
   position: absolute; bottom: 2.5rem;
   right: clamp(1.5rem, 5vw, 3.5rem);
   z-index: 3;
-  display: flex; flex-direction: column;
+  flex-direction: column;
   align-items: center; gap: 0.5rem;
 }
 .hero-scroll-line {
@@ -1345,20 +1347,20 @@ details[open] .faq-a { border-left: 3px solid var(--terracotta); padding-left: 0
 .cta-block {
   background: var(--text-primary);
   color: var(--surface-1);
-  padding: clamp(6rem, 12vw, 10rem) var(--content-x);
+  padding: var(--sp-2xl) var(--content-x);
   text-align: center;
   position: relative; overflow: hidden;
 }
 .cta-block h2 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(1.875rem, 8vw, 2.75rem);
   font-weight: 300; letter-spacing: -0.025em;
   color: var(--surface-1); margin-bottom: var(--sp-sm);
   line-height: 1.1;
 }
 .cta-tagline { 
-  font-size: var(--t-xl); color: rgba(255,255,255,0.7); 
-  margin-bottom: var(--sp-2xl); 
+  font-size: var(--t-lg); color: rgba(255,255,255,0.7);
+  margin-bottom: var(--sp-lg);
   font-family: var(--font-display); font-style: italic; 
 }
 .cta-actions {
@@ -1367,8 +1369,8 @@ details[open] .faq-a { border-left: 3px solid var(--terracotta); padding-left: 0
 .btn-massive {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
   background: var(--surface-1); color: var(--text-primary);
-  padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1.75rem, 5vw, 2.75rem); border-radius: var(--r-pill);
-  font-weight: 600; font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  padding: 0.875rem 1.25rem; border-radius: var(--r-pill);
+  font-weight: 600; font-size: 0.9375rem;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
   min-height: 3rem; white-space: nowrap;
   box-shadow: 0 4px 24px rgba(0,0,0,.14);
@@ -1500,38 +1502,12 @@ footer::before {
 
 /* ─── RESPONSIVE ─── */
 
-/* ── Large tablets / small laptops (≤ 960px) ── */
-@media (max-width: 60rem) {
-  :root {
-    --content-x: max(1.5rem, env(safe-area-inset-left));
-    --content-y: var(--sp-3xl);
-  }
-  .hero {
-    padding: var(--sp-3xl) var(--content-x) var(--sp-2xl);
-    align-items: center;
-  }
-  .hero-inner > div:first-child { max-width: 32rem; margin: 0 auto; text-align: center; }
-  .hero-ctas { justify-content: center; }
-  .hero h1 { font-size: clamp(2.5rem, 6vw + 1rem, 3.5rem); line-height: 1.1; }
-  .hero-trust-bar { justify-content: center; }
-  .about-grid { grid-template-columns: 1fr; gap: var(--sp-xl); justify-items: center; text-align: center; }
-  .about-body { text-align: left; }
-  .about-photo { max-width: 16rem; }
-  .cta-block { padding: var(--sp-3xl) var(--sp-2xl); }
-  .cta-block h2 { font-size: clamp(2.5rem, 6vw, 4rem); }
-  .sec-head { margin-bottom: var(--sp-xl); }
-  h2 { font-size: clamp(2rem, 4vw + 0.75rem, 3rem); }
-  .tours-row { grid-template-columns: 1fr 1fr; gap: var(--sp-xl); }
-}
-
 /* ── Tablets (≤ 768px) ── */
 @media (max-width: 48rem) {
   :root {
     --content-x: max(1.25rem, env(safe-area-inset-left));
     --content-y: var(--sp-2xl);
   }
-  .nav-tabs { display: none; }
-  .burger { display: flex; }
   .hero { align-items: flex-end; padding: var(--sp-3xl) var(--content-x) var(--sp-2xl); }
   .hero-inner > div:first-child { max-width: 100%; text-align: left; }
   .hero h1 { font-size: clamp(2.25rem, 8vw, 3rem); line-height: 1.12; }
@@ -1589,6 +1565,24 @@ footer::before {
 }
 
 @media (min-width: 48rem) {
+  .nav-tabs { display: flex; }
+  .nav-actions { display: flex; }
+  .burger { display: none; }
+  .hero {
+    align-items: center;
+    padding: var(--sp-3xl) var(--content-x) var(--sp-2xl);
+  }
+  .hero-inner > div:first-child { max-width: 32rem; margin: 0 auto; text-align: center; }
+  .hero-ctas { flex-direction: row; align-items: center; justify-content: center; }
+  .hero-ctas .btn-filled, .hero-ctas .btn-outlined { width: auto; }
+  .hero-desc { font-size: 1.0625rem; max-width: 36rem; margin-left: auto; margin-right: auto; }
+  .hero-trust-bar { justify-content: center; }
+  .hero-trust-bar span { font-size: 0.625rem; }
+  .hero-scroll { display: flex; }
+  .cta-block { padding: var(--sp-3xl) var(--sp-2xl); }
+  .cta-block h2 { font-size: clamp(2.5rem, 6vw, 4rem); }
+  .cta-tagline { font-size: var(--t-xl); margin-bottom: var(--sp-2xl); }
+  .btn-massive { padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1.75rem, 5vw, 2.75rem); font-size: clamp(0.9375rem, 2vw, 1.125rem); }
   .reviews-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
