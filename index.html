@@ -519,13 +519,44 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   overflow-y: auto;
-  padding: 0.5rem var(--content-x) max(3rem, env(safe-area-inset-bottom));
+  padding: 0.75rem var(--content-x) max(3rem, env(safe-area-inset-bottom));
+  display: none;
+  flex-direction: column;
 }
-.mob-nav.open { display: block; }
+.mob-nav.open { display: flex; }
+.mob-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  padding: 0.25rem var(--sp-md) 0.75rem;
+}
+.mob-nav-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+}
+.mob-nav-close {
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--outline-v);
+  background: var(--surface);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  box-shadow: var(--elev-1);
+}
+.mob-nav-close:hover { background: var(--surface-1); box-shadow: var(--elev-2); }
 .mob-nav a {
   display: flex; align-items: center; gap: var(--sp-md);
-  padding: 0.875rem var(--sp-md);
-  min-height: var(--touch); border-radius: var(--r-md);
+  padding: 1rem var(--sp-md);
+  min-height: 3rem; border-radius: var(--r-md);
   font-size: var(--t-md); font-weight: 500; color: var(--text-secondary);
   transition: background .15s, color .15s;
 }
@@ -539,6 +570,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 .mob-lang-btn {
   flex: 1; padding: 0.625rem 1rem;
   border-radius: var(--r-pill);
+  min-height: 3rem;
   font-size: var(--t-base); font-weight: 600;
   color: var(--text-secondary);
   border: 1px solid var(--outline-v);
@@ -551,8 +583,19 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   color: var(--accent);
   border-color: rgba(106,105,44,.25);
 }
-.mob-cta { margin-top: 0.75rem; border-top: 1px solid var(--outline); padding-top: 0.75rem; }
-.mob-cta a { color: var(--accent); background: var(--accent-bg); justify-content: center; font-weight: 700; border-radius: var(--r-md); }
+.mob-cta {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--outline);
+  padding-top: 0.75rem;
+}
+.mob-cta a {
+  color: var(--accent);
+  background: var(--accent-bg);
+  justify-content: center;
+  font-weight: 700;
+  border-radius: var(--r-md);
+  min-height: 3rem;
+}
 
 /* ─── BUTTONS ─── */
 .btn-filled {
@@ -1756,21 +1799,27 @@ footer::before {
 
 <!-- ── MOBILE NAV ── -->
 <nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
+  <div class="mob-nav-top">
+    <span class="mob-nav-title">Menu</span>
+    <button class="mob-nav-close" type="button" aria-label="Close menu" onclick="navClose()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
   <a href="#why"         onclick="navClose()" data-i18n="nav-why">Why Rita</a>
   <a href="#tours"       onclick="navClose()" data-i18n="nav-tours">Tours</a>
   <a href="#reviews"     onclick="navClose()" data-i18n="nav-reviews">Reviews</a>
   <a href="#about"       onclick="navClose()" data-i18n="nav-about">About Rita</a>
   <a href="#faq"         onclick="navClose()" data-i18n="nav-faq">FAQ</a>
-  <div class="mob-lang-switcher" role="group" aria-label="Language selector">
-    <button class="mob-lang-btn active" data-lang="en" type="button" onclick="applyLang('en');navClose()">English</button>
-    <button class="mob-lang-btn" data-lang="es" type="button" onclick="applyLang('es');navClose()">Español</button>
-    <button class="mob-lang-btn" data-lang="pt" type="button" onclick="applyLang('pt');navClose()">Português</button>
-  </div>
   <div class="mob-cta">
     <a href="https://wa.me/351968510019" onclick="navClose()" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
       <span data-i18n="mob-whatsapp">Check Availability</span>
     </a>
+  </div>
+  <div class="mob-lang-switcher" role="group" aria-label="Language selector">
+    <button class="mob-lang-btn active" data-lang="en" type="button" onclick="applyLang('en');navClose()">English</button>
+    <button class="mob-lang-btn" data-lang="es" type="button" onclick="applyLang('es');navClose()">Español</button>
+    <button class="mob-lang-btn" data-lang="pt" type="button" onclick="applyLang('pt');navClose()">Português</button>
   </div>
 </nav>
 
