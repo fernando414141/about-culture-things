@@ -963,6 +963,10 @@ section.section--tinted {
   --section-mesh-opacity: .35;
   background: var(--section-bg);
 }
+#why {
+  padding-block: clamp(3.5rem, 5.5vw, 4.75rem);
+  padding-inline: max(clamp(1.5rem, 2.75vw, 2.5rem), calc((100vw - min(100vw, var(--max))) / 2 + var(--content-x)));
+}
 /* Keep major blocks aligned to the same content width */
 .sec-head,
 .pricing-trust,
@@ -1078,7 +1082,7 @@ h2 {
 .why-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(0.9rem, 1.5vw, 1.25rem);
+  gap: clamp(1rem, 1.8vw, 1.5rem);
   max-width: 64rem;
   margin: 0 auto;
 }
@@ -1117,7 +1121,7 @@ h2 {
 }
 .why-item p {
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 .why-trust {
   display: flex;
@@ -1766,6 +1770,10 @@ footer::before {
   .hero-trust-bar span { font-size: 0.675rem; padding: 0.375rem 0.75rem; }
   .hero-ctas { gap: var(--sp-sm); flex-wrap: wrap; }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; }
+  #why {
+    padding-block: clamp(3rem, 5vw, 4rem);
+    padding-inline: max(1.375rem, env(safe-area-inset-left));
+  }
   .mob-nav {
     padding-top: 0.5rem;
     padding-bottom: max(2.25rem, env(safe-area-inset-bottom));
@@ -1845,6 +1853,10 @@ footer::before {
   h2 { font-size: clamp(1.7rem, 7vw, 2.15rem); }
   .g-number { font-size: clamp(2.3rem, 9vw, 3rem); }
   .pc-price { font-size: clamp(2.15rem, 9vw, 2.9rem); }
+  #why {
+    padding-block: clamp(2.75rem, 6vw, 3.5rem);
+    padding-inline: max(1.25rem, env(safe-area-inset-left));
+  }
   .btn-massive { width: 100%; font-size: 0.98rem; }
   .faq-cta-panel .btn-massive { width: 100%; font-size: 0.98rem; }
   .tours-row { grid-template-columns: 1fr; max-width: 24rem; margin: 0 auto; gap: var(--sp-lg); }
