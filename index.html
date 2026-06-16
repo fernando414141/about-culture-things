@@ -2150,7 +2150,7 @@ section[id] {
   padding: var(--content-y) var(--content-x);
 }
 #why {
-  padding: var(--content-y) var(--content-x);
+  padding: calc(var(--content-y) - .35rem) var(--content-x) var(--content-y);
 }
 .sec-head,
 .pricing-trust,
@@ -2186,9 +2186,9 @@ h2 {
 }
 
 .hero {
-  min-height: min(calc(100svh - var(--nav-h)), 48rem);
-  min-height: min(calc(100dvh - var(--nav-h)), 48rem);
-  padding: clamp(3rem, 8vw, 5.75rem) var(--content-x) clamp(2.25rem, 6vw, 4rem);
+  min-height: min(calc(100svh - var(--nav-h)), 42rem);
+  min-height: min(calc(100dvh - var(--nav-h)), 42rem);
+  padding: clamp(2rem, 5vw, 3.6rem) var(--content-x) clamp(1.3rem, 3vw, 2rem);
   align-items: flex-end;
 }
 .hero::before {
@@ -2207,29 +2207,29 @@ h2 {
   justify-content: flex-start;
 }
 .hero-copy {
-  width: min(100%, 36rem);
+  width: min(100%, 33rem);
 }
 .hero h1 {
-  font-size: clamp(3.2rem, 7.8vw, 5.6rem);
-  max-width: 11ch;
-  margin-bottom: 1rem;
+  font-size: clamp(2.85rem, 6.1vw, 4.55rem);
+  max-width: 10ch;
+  margin-bottom: .65rem;
 }
 .hero-desc {
-  max-width: 31rem;
-  margin-bottom: 1.4rem;
-  font-size: 1.02rem;
-  line-height: 1.7;
+  max-width: 28rem;
+  margin-bottom: .85rem;
+  font-size: .95rem;
+  line-height: 1.56;
   color: rgba(255,255,255,.82);
 }
 .hero-trust-bar {
-  margin-bottom: 1.15rem;
-  gap: .5rem;
+  margin-bottom: .75rem;
+  gap: .45rem;
 }
 .hero-trust-bar span {
-  min-height: 2.15rem;
-  padding: .45rem .8rem;
-  font-size: .68rem;
-  letter-spacing: .12em;
+  min-height: 2rem;
+  padding: .38rem .72rem;
+  font-size: .62rem;
+  letter-spacing: .1em;
   background: rgba(255,255,255,.08);
   border-color: rgba(255,255,255,.1);
 }
@@ -2289,7 +2289,7 @@ section[id]::before {
 }
 
 .pricing-trust {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   gap: .5rem 1.1rem;
 }
 .pricing-trust span {
@@ -2325,7 +2325,7 @@ section[id]::before {
   margin: -1rem -1rem 1rem;
 }
 .pc-img-wrap img {
-  aspect-ratio: 1.45 / 1;
+  aspect-ratio: 1.58 / 1;
 }
 .pricing-card:nth-child(1) .pc-img-wrap img {
   object-position: center 62%;
@@ -2394,14 +2394,19 @@ section[id]::before {
   align-items: center;
 }
 .about-photo {
-  max-width: 18rem;
+  max-width: 16.5rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   margin: 0 auto;
   border-radius: calc(var(--r-card) + .1rem);
   box-shadow: var(--elev-3);
 }
 .about-photo img {
-  aspect-ratio: .88 / 1;
-  object-position: center 25%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  object-position: center 18%;
 }
 .about-name {
   font-size: clamp(2.2rem, 4vw, 3.25rem);
@@ -2615,20 +2620,25 @@ footer {
 
 @media (max-width: 47.99rem) {
   :root {
-    --content-y: 3.75rem;
+    --content-y: 2.7rem;
   }
   .hero {
-    min-height: min(calc(100dvh - var(--nav-h)), 42rem);
-    padding-top: 2.4rem;
+    min-height: min(calc(100dvh - var(--nav-h)), 35.5rem);
+    padding-top: 1.55rem;
+    padding-bottom: 1.15rem;
   }
   .hero-copy {
     width: 100%;
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 12vw, 4rem);
+    font-size: clamp(2.3rem, 10.6vw, 3.55rem);
+    max-width: 8.5ch;
   }
   .hero-desc {
-    max-width: 22rem;
+    max-width: 19rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+    line-height: 1.48;
   }
   .hero-ctas {
     align-items: stretch;
@@ -2636,14 +2646,39 @@ footer {
   .hero-ctas .btn-filled {
     width: 100%;
     justify-content: center;
+    min-height: 3rem;
   }
   .hero-ctas .btn-outlined {
     width: fit-content;
   }
+  .hero-trust-bar {
+    gap: .4rem;
+    margin-bottom: .72rem;
+  }
+  .hero-trust-bar span {
+    min-height: 1.85rem;
+    padding: .34rem .62rem;
+    font-size: .58rem;
+  }
+  #why {
+    padding-top: 2.25rem;
+  }
   .pricing-trust {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: .95rem;
   }
+  .why-grid { gap: .8rem; }
+  .why-item { padding: 1rem; }
+  .pc-name { font-size: 1.28rem; }
+  .pc-places,
+  .pc-highlights li,
+  .pc-details p { font-size: .84rem; }
+  .pc-price { font-size: 2.65rem; }
+  .pricing-card { padding-bottom: .95rem; }
+  .reviews-grid { gap: .8rem; }
+  .review-card { padding: .9rem; }
+  .final-cta-shell { padding: 1.35rem; }
   .reviews-grid {
     grid-template-columns: 1fr;
     padding: 1rem;
@@ -2682,6 +2717,13 @@ footer {
   .hero-trust-bar span {
     font-size: .64rem;
   }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero-desc {
+    max-width: 18rem;
+    font-size: .92rem;
+  }
   .pricing-trust {
     grid-template-columns: 1fr;
   }
@@ -2692,7 +2734,7 @@ footer {
     margin: -.9rem -.9rem .9rem;
   }
   .about-photo {
-    max-width: 15rem;
+    max-width: 13.5rem;
   }
   .fab-wa {
     width: 3rem;
