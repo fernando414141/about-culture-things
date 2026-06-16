@@ -124,7 +124,8 @@
       "mainEntity": [
         {"@type":"Question","name":"What do the Sintra tours include?","acceptedAnswer":{"@type":"Answer","text":"All tours include pickup in Lisbon, a private guide (Rita Almeida), and transport. Maximum 4 people per tour. Palace and monument tickets are not included."}},
         {"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept cryptocurrency, Revolut, Wise, MBWay, SEPA bank transfer, and cash. Payment details are sent after you check availability."}},
-        {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}}
+        {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}},
+        {"@type":"Question","name":"Are the tours suitable for children or seniors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because every tour is private, Rita can adapt the pace and stops to your group."}}
       ]
     }
   ]
@@ -2823,11 +2824,285 @@ footer {
     bottom: max(.9rem, env(safe-area-inset-bottom));
   }
 }
+
+/* ─── 2026 REFINEMENT PASS ─── */
+body { padding-top: 0; }
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 300;
+  pointer-events: none;
+  background: rgba(13,34,56,.06);
+}
+.scroll-progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--brand-green) 0%, var(--gold) 100%);
+  transition: width .08s linear;
+  transform-origin: left center;
+}
+
+.nav.nav-overlay {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.nav.nav-overlay .logo-name,
+.nav.nav-overlay .nav-tabs a {
+  color: rgba(255,255,255,.88);
+}
+.nav.nav-overlay .nav-tabs a:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+.nav.nav-overlay .nav-tabs a.active {
+  color: #fff;
+}
+.nav.nav-overlay .nav-tabs a.active::after {
+  background: var(--gold-l);
+}
+.nav.nav-overlay .lang-trigger {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.18);
+  color: rgba(255,255,255,.92);
+}
+.nav.nav-overlay .lang-trigger-kicker {
+  color: rgba(255,255,255,.58);
+}
+.nav.nav-overlay .lang-trigger-icon {
+  color: var(--gold-l);
+}
+.nav.nav-overlay .nav-actions .btn-filled {
+  background: rgba(255,255,255,.96);
+  color: #21301b;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+}
+.nav.nav-overlay .burger span {
+  background: rgba(255,255,255,.92);
+}
+.nav.nav-overlay .logo-img {
+  filter: brightness(1.15);
+}
+
+@media (min-width: 56rem) {
+  .hero-scroll { display: flex; }
+}
+
+.hero {
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding-top: calc(var(--nav-h) + clamp(1.5rem, 4vw, 2.75rem));
+  margin-top: calc(-1 * var(--nav-h));
+}
+.hero-brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,.92);
+  margin: 0 0 .55rem;
+  text-wrap: balance;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: hero-rise .85s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .hero-brand { animation-delay: .08s; }
+  .hero-eyebrow { animation-delay: .18s; }
+  .hero-copy h1 { animation-delay: .28s; }
+  .hero-desc { animation-delay: .38s; }
+  .hero-trust-bar { animation-delay: .48s; }
+  .hero-ctas { animation-delay: .58s; }
+  .hero-note { animation-delay: .68s; }
+  @keyframes hero-rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > * { opacity: 1; transform: none; animation: none; }
+}
+
+.why-grid {
+  gap: 0;
+  border-top: 1px solid var(--outline);
+}
+.why-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: clamp(.85rem, 2vw, 1.35rem);
+  align-items: start;
+  padding: clamp(1.1rem, 2.2vw, 1.45rem) 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--outline);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.why-item::before { display: none; }
+.why-item:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--outline);
+  background: rgba(255,255,255,.24);
+}
+.why-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--accent);
+  opacity: .55;
+  padding-top: .15rem;
+}
+.why-content { min-width: 0; }
+.why-item h3 {
+  font-size: clamp(1.15rem, 2.2vw, 1.38rem);
+  margin-bottom: .35rem;
+}
+.why-item p {
+  max-width: 34rem;
+}
+
+.about-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: none;
+  border-top: 1px solid var(--outline);
+  border-bottom: 1px solid var(--outline);
+  margin-bottom: 1.15rem;
+}
+.about-cred {
+  flex: 1 1 9rem;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--outline);
+  border-radius: 0;
+  padding: .85rem .95rem;
+  box-shadow: none;
+}
+.about-cred:last-child { border-right: none; }
+.about-cred:hover {
+  box-shadow: none;
+  background: rgba(255,255,255,.34);
+}
+.about-cred-label {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  margin-bottom: .28rem;
+}
+.about-cred-value {
+  font-size: .88rem;
+  line-height: 1.3;
+}
+
+.about-photo {
+  max-width: none;
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--r-card) + .25rem);
+}
+.about-photo img {
+  aspect-ratio: 4 / 5;
+  object-position: center 12%;
+}
+
+.reviews-grid .review-card:first-child {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(244,241,232,.88) 100%);
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+.reviews-grid .review-card:first-child .rv-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.42;
+  -webkit-line-clamp: unset;
+  display: block;
+}
+.reviews-grid .review-card:first-child::before {
+  font-size: 7rem;
+  opacity: .08;
+}
+
+.mob-nav {
+  inset: 0;
+  z-index: 250;
+  padding-top: calc(var(--nav-h) + .5rem);
+  background: rgba(247,244,235,.97);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+}
+body.nav-open .nav {
+  background: rgba(247,244,235,.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+body.nav-open .nav .logo-name,
+body.nav-open .nav .nav-tabs a,
+body.nav-open .nav .lang-trigger {
+  color: var(--text-primary);
+}
+body.nav-open .nav .burger span {
+  background: var(--text-secondary);
+}
+
+@media (min-width: 60rem) {
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr);
+    border-top: none;
+    gap: clamp(.75rem, 1.5vw, 1rem);
+  }
+  .why-item {
+    grid-template-columns: 1fr;
+    border: 1px solid var(--outline);
+    border-radius: var(--r-card);
+    padding: clamp(1rem, 1.6vw, 1.25rem);
+    background: rgba(255,255,255,.42);
+  }
+  .why-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--elev-2);
+    background: rgba(255,255,255,.62);
+  }
+  .why-num {
+    font-size: 1.35rem;
+    margin-bottom: .35rem;
+    padding-top: 0;
+  }
+  .about-grid {
+    grid-template-columns: minmax(16rem, 22rem) 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .about-credentials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 1px solid var(--outline);
+  }
+  .about-cred {
+    border-right: 1px solid var(--outline);
+    border-bottom: 1px solid var(--outline);
+  }
+  .about-cred:nth-child(2n) { border-right: none; }
+  .about-cred:nth-last-child(-n+2) { border-bottom: none; }
+}
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip-link">Skip to main content</a>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
 
 <!-- SVG sprite -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2953,6 +3228,7 @@ footer {
   </video>
   <div class="hero-inner">
     <div class="hero-copy">
+      <p class="hero-brand" data-i18n="hero-brand">About Culture Things</p>
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-line" aria-hidden="true"></span>
         <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
@@ -2989,19 +3265,28 @@ footer {
   </div>
   <div class="why-grid" role="list" aria-label="Why book with Rita">
     <article class="why-item reveal d1" role="listitem">
-      <div class="why-kicker" data-i18n="why1-kicker">Sintra native</div>
-      <h3 data-i18n="why1-h3">Born and raised in Sintra</h3>
-      <p data-i18n="why1-p">Rita knows the roads, timing, viewpoints, and quieter corners that typical day trips miss.</p>
+      <span class="why-num" aria-hidden="true">01</span>
+      <div class="why-content">
+        <div class="why-kicker" data-i18n="why1-kicker">Sintra native</div>
+        <h3 data-i18n="why1-h3">Born and raised in Sintra</h3>
+        <p data-i18n="why1-p">Rita knows the roads, timing, viewpoints, and quieter corners that typical day trips miss.</p>
+      </div>
     </article>
     <article class="why-item reveal d2" role="listitem">
-      <div class="why-kicker" data-i18n="why2-kicker">Private only</div>
-      <h3 data-i18n="why2-h3">Only your group, never mixed</h3>
-      <p data-i18n="why2-p">Every route, stop, and tempo is adapted to your interests instead of a rigid group schedule.</p>
+      <span class="why-num" aria-hidden="true">02</span>
+      <div class="why-content">
+        <div class="why-kicker" data-i18n="why2-kicker">Private only</div>
+        <h3 data-i18n="why2-h3">Only your group, never mixed</h3>
+        <p data-i18n="why2-p">Every route, stop, and tempo is adapted to your interests instead of a rigid group schedule.</p>
+      </div>
     </article>
     <article class="why-item reveal d3" role="listitem">
-      <div class="why-kicker" data-i18n="why3-kicker">Hidden spots</div>
-      <h3 data-i18n="why3-h3">Iconic views, minus the rush</h3>
-      <p data-i18n="why3-p">Expect scenic detours, local perspective, and a calmer experience of Sintra and the coast.</p>
+      <span class="why-num" aria-hidden="true">03</span>
+      <div class="why-content">
+        <div class="why-kicker" data-i18n="why3-kicker">Hidden spots</div>
+        <h3 data-i18n="why3-h3">Iconic views, minus the rush</h3>
+        <p data-i18n="why3-p">Expect scenic detours, local perspective, and a calmer experience of Sintra and the coast.</p>
+      </div>
     </article>
   </div>
 </section>
@@ -3228,6 +3513,10 @@ footer {
         <summary><span class="faq-q" data-i18n="faq3-q">Can I cancel or reschedule?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
         <p class="faq-a" data-i18n="faq3-a">Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost.</p>
       </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" data-i18n="faq4-q">Are the tours suitable for children or seniors?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-a" data-i18n="faq4-a">Yes. Because every tour is private, Rita can adapt the pace and stops to your group.</p>
+      </details>
     </div>
     <p class="faq-cta-note">
       <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question." class="faq-contact-link" target="_blank" rel="noopener noreferrer">
@@ -3316,6 +3605,39 @@ footer {
 // ─── COPYRIGHT YEAR ──────────────────────────────────
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+// ─── SCROLL PROGRESS ─────────────────────────────────
+(function(){
+  var bar = document.getElementById('scroll-progress-bar');
+  if (!bar) return;
+  function updateProgress() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = docHeight > 0 ? ((scrollTop / docHeight) * 100).toFixed(2) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+})();
+
+// ─── HERO PARALLAX ───────────────────────────────────
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var hero = document.querySelector('.hero');
+  var bg = document.querySelector('.hero-bg');
+  if (!hero || !bg) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY;
+      if (y < hero.offsetHeight) {
+        bg.style.transform = 'scale(1.06) translateY(' + (y * 0.18).toFixed(1) + 'px)';
+      }
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+
 // ─── HERO VIDEO (skip when data saver is on) ────────
 (function(){
   var video = document.querySelector('.hero-bg');
@@ -3362,6 +3684,7 @@ const i18n = {
     "hero-trust-3": "Lisbon pickup included",
     "hero-trust-4": "Up to 4 guests",
     "hero-kicker": "Private Sintra Tours",
+    "hero-brand": "About Culture Things",
     "hero-h1": "Private Sintra,<br><em>beautifully guided.</em>",
     "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
     "hero-cta-primary": "Check Availability",
@@ -3494,6 +3817,7 @@ const i18n = {
     "hero-trust-3": "Recogida en Lisboa incluida",
     "hero-trust-4": "Hasta 4 personas",
     "hero-kicker": "Tours Privados en Sintra",
+    "hero-brand": "About Culture Things",
     "hero-h1": "Sintra en privado,<br><em>bien guiada.</em>",
     "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
     "hero-cta-primary": "Consultar Disponibilidad",
@@ -3626,6 +3950,7 @@ const i18n = {
     "hero-trust-3": "Recolha em Lisboa incluída",
     "hero-trust-4": "Até 4 pessoas",
     "hero-kicker": "Tours Privados em Sintra",
+    "hero-brand": "About Culture Things",
     "hero-h1": "Sintra em privado,<br><em>bem guiada.</em>",
     "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
     "hero-cta-primary": "Verificar Disponibilidade",
@@ -3871,7 +4196,9 @@ window.addEventListener('scroll', () => {
   requestAnimationFrame(() => {
     const sy = window.scrollY;
     const compactViewport = window.innerWidth < 768;
+    const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
     nav.classList.toggle('elevated', sy > 10);
+    nav.classList.toggle('nav-overlay', sy < heroHeight * 0.72 && !document.body.classList.contains('nav-open'));
     if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 640 : 380));
 
     // Active nav link highlighting
@@ -3892,6 +4219,7 @@ function navOpen() {
   const open = mobNav.classList.toggle('open');
   document.body.classList.toggle('nav-open', open);
   document.body.style.overflow = open ? 'hidden' : '';
+  nav.classList.toggle('nav-overlay', !open && window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 }
@@ -3900,11 +4228,15 @@ function navClose() {
   mobNav.classList.remove('open');
   document.body.classList.remove('nav-open');
   document.body.style.overflow = '';
+  nav.classList.toggle('nav-overlay', window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
   burger.setAttribute('aria-expanded', 'false');
   burger.setAttribute('aria-label', 'Open menu');
 }
 
 burger.addEventListener('click', navOpen);
+
+// Initial nav overlay state
+nav.classList.add('nav-overlay');
 
 window.addEventListener('resize', () => {
   if (window.innerWidth >= 768 && mobNav.classList.contains('open')) {
