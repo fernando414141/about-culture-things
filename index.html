@@ -1949,12 +1949,12 @@ footer::after {
 @media (max-width: 48rem) {
   :root {
     --content-x: max(1.375rem, env(safe-area-inset-left));
-    --content-y: 2.75rem;
+    --content-y: 2.4rem;
   }
   .hero { align-items: flex-end; padding: var(--sp-3xl) var(--content-x) var(--sp-2xl); }
   .hero-inner > div:first-child { max-width: 100%; text-align: left; }
-  .hero h1 { font-size: clamp(2.5rem, 7vw + 0.8rem, 3.5rem); line-height: 1.06; }
-  .hero-desc { font-size: clamp(1rem, 0.9vw + 0.88rem, 1.1rem); max-width: 100%; }
+  .hero h1 { font-size: clamp(2.35rem, 6.3vw + 0.8rem, 3.15rem); line-height: 1.07; }
+  .hero-desc { font-size: clamp(0.98rem, 0.65vw + 0.88rem, 1.05rem); max-width: 100%; }
   .hero-trust-bar { justify-content: flex-start; }
   .hero-trust-bar span { font-size: 0.6875rem; padding: 0.4rem 0.8rem; }
   .hero-ctas { gap: var(--sp-sm); flex-wrap: wrap; }
@@ -1983,10 +1983,10 @@ footer::after {
     width: min(100%, 20.5rem);
   }
   .reviews-header { padding: var(--sp-lg) var(--content-x) var(--sp-md); flex-direction: column; align-items: flex-start; gap: var(--sp-md); }
-  .g-number { font-size: clamp(2.75rem, 8vw, 3.75rem); }
+  .g-number { font-size: clamp(2.5rem, 7vw, 3.3rem); }
   .btn-massive { width: 100%; max-width: 22rem; }
   .faq-cta-panel .btn-massive { width: 100%; max-width: 22rem; }
-  .faq-item summary { padding: var(--sp-md) 0; }
+  .faq-item summary { padding: 0.9rem 0; }
   .pricing-card { padding: var(--sp-md); }
   .pc-img-wrap { margin: calc(-1 * var(--sp-md)) calc(-1 * var(--sp-md)) var(--sp-md); }
   footer { padding: clamp(2rem, 5vw, 3rem) var(--content-x) clamp(1.25rem, 3vw, 2rem); }
@@ -1996,8 +1996,8 @@ footer::after {
   .footer-action { width: fit-content; padding: 0.15rem 0; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding-top: var(--sp-md); }
   .sec-head { margin-bottom: var(--sp-lg); }
-  h2 { font-size: clamp(2.1rem, 5.5vw + 0.3rem, 3rem); }
-  .pc-price { font-size: clamp(2.75rem, 7vw, 3.75rem); }
+  h2 { font-size: clamp(1.95rem, 5vw + 0.35rem, 2.6rem); }
+  .pc-price { font-size: clamp(2.4rem, 6vw, 3rem); }
   .back-to-top { display: none; }
   .fab-wa {
     width: 3.25rem;
@@ -2021,29 +2021,29 @@ footer::after {
 @media (max-width: 30rem) {
   :root {
     --content-x: max(1.125rem, env(safe-area-inset-left));
-    --content-y: 2.25rem;
+    --content-y: 1.75rem;
   }
   .nav-actions { display: none; }
   .logo-name { font-size: 0.95rem; }
-  .hero { padding: var(--sp-2xl) var(--content-x) var(--sp-2xl); }
+  .hero { padding: var(--sp-xl) var(--content-x) var(--sp-xl); }
   .hero-inner > div:first-child { max-width: 100%; text-align: center; }
   .hero-eyebrow { justify-content: center; }
-  .hero h1 { font-size: clamp(2.5rem, 10vw, 3.25rem); line-height: 1.08; }
-  .hero-desc { font-size: clamp(0.975rem, 0.85vw + 0.85rem, 1.05rem); line-height: 1.62; margin-left: auto; margin-right: auto; }
+  .hero h1 { font-size: clamp(2.05rem, 7.2vw, 2.55rem); line-height: 1.1; }
+  .hero-desc { font-size: 0.98rem; line-height: 1.56; margin-left: auto; margin-right: auto; max-width: 19rem; }
   .hero-trust-bar { gap: 0.375rem; justify-content: center; }
-  .hero-trust-bar span { font-size: 0.6875rem; padding: 0.375rem 0.7rem; letter-spacing: 0.08em; }
+  .hero-trust-bar span { font-size: 0.6875rem; padding: 0.34rem 0.65rem; letter-spacing: 0.08em; }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: var(--sp-sm); }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; width: 100%; }
   .hero-scroll { display: none; }
-  h2 { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .g-number { font-size: clamp(2.75rem, 10vw, 3.5rem); }
-  .pc-price { font-size: clamp(2.5rem, 10vw, 3.25rem); }
+  h2 { font-size: clamp(1.85rem, 6.5vw, 2.2rem); }
+  .g-number { font-size: clamp(2.25rem, 8.5vw, 2.8rem); }
+  .pc-price { font-size: clamp(2.2rem, 8.5vw, 2.75rem); }
   #why {
     padding-block: clamp(2.75rem, 6vw, 3.75rem);
     padding-inline: max(1.25rem, env(safe-area-inset-left));
   }
-  .btn-massive { width: 100%; font-size: 0.98rem; }
-  .faq-cta-panel .btn-massive { width: 100%; font-size: 0.98rem; }
+  .btn-massive { width: 100%; font-size: 0.98rem; min-height: 3.1rem; }
+  .faq-cta-panel .btn-massive { width: 100%; font-size: 0.98rem; min-height: 3.1rem; }
   .tours-row { grid-template-columns: 1fr; max-width: 26rem; margin: 0 auto; gap: var(--sp-xl); }
   .sec-head { margin-bottom: var(--sp-lg); }
   .pricing-card { padding: var(--sp-md); }
@@ -2053,7 +2053,7 @@ footer::after {
   .reviews-header .g-score { justify-content: center; width: 100%; }
   .reviews-tripadvisor-link { margin-left: 0; }
   .about-credentials { grid-template-columns: 1fr; }
-  .faq-item summary { padding: 0.95rem 0; }
+  .faq-item summary { padding: 0.88rem 0; }
   .faq-q { font-size: 1rem; }
   .faq-cta-panel { text-align: center; }
   .faq-cta-panel { align-items: center; }
@@ -2068,23 +2068,23 @@ footer::after {
   .burger { display: none; }
   .hero {
     align-items: flex-start;
-    min-height: min(calc(100svh - var(--nav-h)), 52rem);
-    min-height: min(calc(100dvh - var(--nav-h)), 52rem);
-    padding: clamp(3.5rem, 7vw, 6rem) var(--content-x) clamp(3rem, 5vw, 4.5rem);
+    min-height: min(calc(100svh - var(--nav-h)), 46rem);
+    min-height: min(calc(100dvh - var(--nav-h)), 46rem);
+    padding: clamp(2.5rem, 4.5vw, 3.75rem) var(--content-x) clamp(2.25rem, 3.5vw, 2.85rem);
   }
-  .hero-inner > div:first-child { max-width: 40rem; margin: 0; text-align: left; }
+  .hero-inner > div:first-child { max-width: 35rem; margin: 0; text-align: left; }
   .hero-eyebrow { justify-content: flex-start; }
   .hero-ctas { flex-direction: row; align-items: center; justify-content: flex-start; }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { width: auto; }
-  .hero-desc { font-size: clamp(1.0625rem, 1.2vw + 0.9rem, 1.25rem); max-width: 34rem; }
+  .hero-desc { font-size: 1.0625rem; max-width: 31rem; }
   .hero-trust-bar { justify-content: flex-start; }
   .hero-trust-bar span { font-size: 0.6875rem; }
   .hero-scroll { display: flex; }
   .hero-stats { display: block; }
-  .faq-cta-panel { padding: clamp(2.25rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem); }
-  .faq-cta-panel h3 { font-size: clamp(3rem, 7vw, 5rem); }
-  .faq-cta-panel p { font-size: var(--t-xl); margin-bottom: var(--sp-2xl); }
-  .btn-massive { padding: clamp(1rem, 3vw, 1.375rem) clamp(2rem, 5vw, 3rem); font-size: clamp(1rem, 2vw, 1.1875rem); }
+  .faq-cta-panel { padding: clamp(2rem, 4vw, 3rem) clamp(1.8rem, 4vw, 2.6rem); }
+  .faq-cta-panel h3 { font-size: clamp(2.35rem, 5vw, 3.6rem); }
+  .faq-cta-panel p { font-size: 1.125rem; margin-bottom: var(--sp-xl); }
+  .btn-massive { padding: clamp(0.95rem, 2.4vw, 1.15rem) clamp(1.6rem, 4vw, 2.2rem); font-size: clamp(0.95rem, 1.2vw, 1.05rem); }
   .reviews-grid { grid-template-columns: repeat(3, 1fr); }
   .pricing-trust { justify-content: flex-start; }
   .footer-links { gap: 0.5rem; }
