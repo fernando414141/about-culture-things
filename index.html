@@ -125,7 +125,9 @@
         {"@type":"Question","name":"What do the Sintra tours include?","acceptedAnswer":{"@type":"Answer","text":"All tours include pickup in Lisbon, a private guide (Rita Almeida), and transport. Maximum 4 people per tour. Palace and monument tickets are not included."}},
         {"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept cryptocurrency, Revolut, Wise, MBWay, SEPA bank transfer, and cash. Payment details are sent after you check availability."}},
         {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost."}},
-        {"@type":"Question","name":"Are the tours suitable for children or seniors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because every tour is private, Rita can adapt the pace and stops to your group."}}
+        {"@type":"Question","name":"Are the tours suitable for children or seniors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because every tour is private, Rita can adapt the pace and stops to your group."}},
+        {"@type":"Question","name":"Is lunch included?","acceptedAnswer":{"@type":"Answer","text":"Lunch is not included, but Rita can suggest good local places along the route."}},
+        {"@type":"Question","name":"Can the tour be customized?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing."}}
       ]
     }
   ]
@@ -2067,13 +2069,13 @@ footer::after {
 
 /* ─── 2026 PREMIUM PASS ─── */
 :root {
-  --nav-h: 3rem;
-  --max: 72rem;
-  --content-x: clamp(1.125rem, 2.5vw, 2rem);
-  --content-y: clamp(3.4rem, 5vw, 5rem);
-  --r-card: 1.25rem;
-  --r-xl: 1.25rem;
-  --r-lg: 1rem;
+  --nav-h: 3.25rem;
+  --max: 76rem;
+  --content-x: clamp(1.125rem, 3.4vw + 0.35rem, 2.25rem);
+  --content-y: clamp(2.75rem, 5vw, 5rem);
+  --r-card: 1.5rem;
+  --r-xl: 1.5rem;
+  --r-lg: 1.25rem;
   --outline: rgba(13,34,56,.08);
   --outline-v: rgba(13,34,56,.14);
   --elev-1: 0 1px 2px rgba(13,34,56,.04), 0 10px 24px rgba(13,34,56,.03);
@@ -2233,27 +2235,27 @@ h2 {
   gap: .4rem;
 }
 .hero-trust-bar span {
-  min-height: 2rem;
-  padding: .34rem .66rem;
-  font-size: .6rem;
-  letter-spacing: .09em;
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.08);
+  min-height: var(--btn-h-sm);
+  padding: var(--sp-compact) var(--btn-px-sm);
+  font-size: var(--t-xs);
+  letter-spacing: 0.1em;
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.14);
 }
 .hero-ctas {
   align-items: flex-start;
-  gap: .55rem;
+  gap: var(--stack-xs);
 }
 .hero-ctas .btn-filled {
-  min-height: 3.1rem;
-  padding-inline: 1.15rem;
+  min-height: var(--btn-h-lg);
+  padding-inline: var(--btn-px-lg);
   background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(246,246,241,.95) 100%);
   color: #21301b;
   box-shadow: 0 14px 30px rgba(0,0,0,.24);
 }
 .hero-ctas .btn-outlined {
-  min-height: auto;
-  padding: .15rem 0;
+  min-height: var(--btn-h-sm);
+  padding: var(--btn-py-sm) 0;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -2626,9 +2628,9 @@ section[id]::before {
   gap: .85rem 1rem;
 }
 .btn-massive {
-  min-height: 3.1rem;
-  padding: .85rem 1.3rem;
-  font-size: .98rem;
+  min-height: var(--btn-h-xl);
+  padding: var(--btn-py-xl) var(--btn-px-xl);
+  font-size: var(--btn-fs-lg);
   color: #1b2817;
 }
 .cta-note {
@@ -2694,25 +2696,25 @@ footer {
 
 @media (max-width: 47.99rem) {
   :root {
-    --content-y: 2.45rem;
+    --content-y: clamp(2.4rem, 5vw, 2.75rem);
   }
   .hero {
-    min-height: min(calc(100dvh - var(--nav-h)), 35.5rem);
-    padding-top: 1.55rem;
-    padding-bottom: 1.15rem;
+    min-height: min(calc(100dvh - var(--nav-h)), 38rem);
+    padding-top: calc(var(--nav-h) + 1rem);
+    padding-bottom: var(--stack-lg);
   }
   .hero-copy {
     width: 100%;
   }
   .hero h1 {
-    font-size: clamp(2.22rem, 10vw, 3.2rem);
-    max-width: 8.2ch;
+    font-size: clamp(2.35rem, 10vw, 3rem);
+    max-width: 9ch;
   }
   .hero-desc {
-    max-width: 17.75rem;
-    margin-bottom: .65rem;
-    font-size: .9rem;
-    line-height: 1.44;
+    max-width: 20rem;
+    margin-bottom: var(--stack-sm);
+    font-size: var(--t-base);
+    line-height: 1.56;
   }
   .hero-ctas {
     align-items: stretch;
@@ -2720,22 +2722,23 @@ footer {
   .hero-ctas .btn-filled {
     width: 100%;
     justify-content: center;
-    min-height: 3rem;
+    min-height: var(--btn-h-lg);
   }
   .hero-ctas .btn-outlined {
     width: fit-content;
+    min-height: var(--btn-h-sm);
   }
   .hero-trust-bar {
-    gap: .4rem;
-    margin-bottom: .72rem;
+    gap: var(--stack-xs);
+    margin-bottom: var(--stack-sm);
   }
   .hero-trust-bar span {
-    min-height: 1.85rem;
-    padding: .32rem .56rem;
-    font-size: .55rem;
+    min-height: var(--btn-h-sm);
+    padding: var(--sp-compact) var(--stack-sm);
+    font-size: var(--t-xs);
   }
   .hero-note {
-    font-size: .72rem;
+    font-size: var(--t-sm);
   }
   #why {
     padding-top: 2.25rem;
@@ -2788,21 +2791,21 @@ footer {
 
 @media (max-width: 29.99rem) {
   :root {
-    --content-x: 1rem;
-    --nav-h: 2.9rem;
+    --content-x: max(1.125rem, env(safe-area-inset-left));
+    --nav-h: 3.25rem;
   }
   .nav {
     padding-inline: .95rem;
   }
   .hero-trust-bar span {
-    font-size: .64rem;
+    font-size: var(--t-xs);
   }
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: clamp(2rem, 9vw, 2.35rem);
   }
   .hero-desc {
-    max-width: 16.75rem;
-    font-size: .88rem;
+    max-width: 18rem;
+    font-size: var(--t-base);
   }
   .about-grid { gap: 1rem; }
   .pricing-trust {
@@ -3015,23 +3018,24 @@ body { padding-top: 0; }
   object-position: center 12%;
 }
 
-.reviews-grid .review-card:first-child {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(244,241,232,.88) 100%);
-  padding: clamp(1rem, 2.5vw, 1.35rem);
+.reviews-footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--stack-sm) var(--inset-panel) var(--inset-panel);
+  border-top: 1px solid var(--outline);
+  background: rgba(255,255,255,.48);
 }
-.reviews-grid .review-card:first-child .rv-text {
-  font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-  font-style: italic;
-  line-height: 1.42;
-  -webkit-line-clamp: unset;
-  display: block;
+.reviews-more-btn {
+  display: none;
+  align-items: center;
+  gap: var(--stack-xs);
+  min-height: var(--btn-h-sm);
+  font-size: var(--btn-fs-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: opacity .15s;
 }
-.reviews-grid .review-card:first-child::before {
-  font-size: 7rem;
-  opacity: .08;
-}
+.reviews-more-btn:hover { opacity: .75; }
 
 .mob-nav {
   inset: 0;
@@ -3096,6 +3100,12 @@ body.nav-open .nav .burger span {
   }
   .about-cred:nth-child(2n) { border-right: none; }
   .about-cred:nth-last-child(-n+2) { border-bottom: none; }
+  .reviews-grid .review-card:nth-child(n+4) { display: none; }
+  .reviews-more-btn { display: inline-flex; }
+  .hero-trust-bar span {
+    font-size: var(--t-xs);
+    min-height: var(--btn-h-sm);
+  }
 }
 </style>
 </head>
@@ -3490,6 +3500,48 @@ body.nav-open .nav .burger span {
           <blockquote class="rv-text" data-i18n="rv-fernando-text">"Local knowledge made the difference. We saw places we would never have found on our own."</blockquote>
           <div class="rv-author">Fernando G.</div>
         </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">A</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
+          <div class="rv-author">Amanda T.</div>
+        </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">L</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv5-text">"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."</blockquote>
+          <div class="rv-author">Laura S.</div>
+        </article>
+        <article class="review-card" role="listitem">
+          <div class="rv-top">
+            <div class="rv-avatar" aria-hidden="true">J</div>
+            <div class="rv-meta">
+              <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="rv-verified">✓ TripAdvisor</span>
+            </div>
+          </div>
+          <div class="rv-tag" data-i18n="rv-tag-tour">Sintra Tour</div>
+          <blockquote class="rv-text" data-i18n="rv6-text">"Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care."</blockquote>
+          <div class="rv-author">James W.</div>
+        </article>
+      </div>
+      <div class="reviews-footer">
+        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-more-btn" aria-label="View more reviews on TripAdvisor (opens in new tab)">
+          <span data-i18n="reviews-view-btn">View more on TripAdvisor</span>
+          <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -3516,6 +3568,14 @@ body.nav-open .nav .burger span {
       <details class="faq-item">
         <summary><span class="faq-q" data-i18n="faq4-q">Are the tours suitable for children or seniors?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
         <p class="faq-a" data-i18n="faq4-a">Yes. Because every tour is private, Rita can adapt the pace and stops to your group.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" data-i18n="faq5-q">Is lunch included?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-a" data-i18n="faq5-a">Lunch is not included, but Rita can suggest good local places along the route.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" data-i18n="faq6-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-a" data-i18n="faq6-a">Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.</p>
       </details>
     </div>
     <p class="faq-cta-note">
@@ -3769,6 +3829,10 @@ const i18n = {
     "faq3-a": "Yes. Tours can be cancelled or rescheduled with 24 hours' notice at no cost.",
     "faq4-q": "Are the tours suitable for children or seniors?",
     "faq4-a": "Yes. Because every tour is private, Rita can adapt the pace and stops to your group.",
+    "faq5-q": "Is lunch included?",
+    "faq5-a": "Lunch is not included, but Rita can suggest good local places along the route.",
+    "faq6-q": "Can the tour be customized?",
+    "faq6-a": "Yes. Because the tours are private, Rita can tailor the stops and pace to your interests, weather, and timing.",
     "faq-cta": "Need help? Contact Rita",
     "final-kicker": "Final Step",
     "footer-note": "Private Sintra tours by Rita Almeida. Local knowledge, quiet pacing, and direct booking with one guide.",
@@ -3902,6 +3966,10 @@ const i18n = {
     "faq3-a": "Sí. Los tours se pueden cancelar o reagendar con 24 horas de antelación sin coste.",
     "faq4-q": "¿Los tours son aptos para niños o personas mayores?",
     "faq4-a": "Sí. Como cada tour es privado, Rita puede adaptar el ritmo y las paradas a tu grupo.",
+    "faq5-q": "¿El almuerzo está incluido?",
+    "faq5-a": "El almuerzo no está incluido, pero Rita puede sugerir buenos lugares locales en la ruta.",
+    "faq6-q": "¿Se puede personalizar el tour?",
+    "faq6-a": "Sí. Como los tours son privados, Rita puede adaptar las paradas y el ritmo a tus intereses, el clima y el horario.",
     "faq-cta": "¿Más preguntas? Contacta a Rita",
     "final-kicker": "Último Paso",
     "footer-note": "Tours privados por Sintra con Rita Almeida. Conocimiento local, ritmo tranquilo y reserva directa con una sola guía.",
@@ -4035,6 +4103,10 @@ const i18n = {
     "faq3-a": "Sim. Os tours podem ser cancelados ou reagendados com 24 horas de antecedência sem custo.",
     "faq4-q": "Os tours são adequados para crianças ou idosos?",
     "faq4-a": "Sim. Como cada tour é privado, a Rita pode adaptar o ritmo e as paragens ao teu grupo.",
+    "faq5-q": "O almoço está incluído?",
+    "faq5-a": "O almoço não está incluído, mas a Rita pode sugerir bons locais ao longo do percurso.",
+    "faq6-q": "O tour pode ser personalizado?",
+    "faq6-a": "Sim. Como os tours são privados, a Rita pode adaptar as paragens e o ritmo aos teus interesses, ao tempo e ao horário.",
     "faq-cta": "Mais perguntas? Fala com a Rita",
     "final-kicker": "Último Passo",
     "footer-note": "Tours privados em Sintra com a Rita Almeida. Conhecimento local, ritmo tranquilo e reserva direta com uma única guia.",
