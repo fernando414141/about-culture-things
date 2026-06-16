@@ -2072,7 +2072,7 @@ footer::after {
   --nav-h: 3rem;
   --max: 72rem;
   --content-x: clamp(1.125rem, 2.5vw, 2rem);
-  --content-y: clamp(4.5rem, 7vw, 7rem);
+  --content-y: clamp(3.4rem, 5vw, 5rem);
   --r-card: 1.25rem;
   --r-xl: 1.25rem;
   --r-lg: 1rem;
@@ -2150,7 +2150,7 @@ section[id] {
   padding: var(--content-y) var(--content-x);
 }
 #why {
-  padding: calc(var(--content-y) - .35rem) var(--content-x) var(--content-y);
+  padding: calc(var(--content-y) - .2rem) var(--content-x) calc(var(--content-y) - .1rem);
 }
 .sec-head,
 .pricing-trust,
@@ -2171,17 +2171,17 @@ section[id] {
 }
 .sec-head {
   max-width: 38rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 h2 {
-  font-size: clamp(2.35rem, 4.8vw, 4rem);
-  line-height: .98;
-  margin-bottom: .75rem;
+  font-size: clamp(2.2rem, 4.1vw, 3.55rem);
+  line-height: 1.0;
+  margin-bottom: .55rem;
 }
 .sec-desc {
   max-width: 34rem;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: .98rem;
+  line-height: 1.6;
   color: var(--text-muted);
 }
 
@@ -2271,36 +2271,36 @@ section[id]::before {
 }
 
 .why-grid {
-  gap: 1rem;
+  gap: .9rem;
 }
 .why-item {
-  padding: 1.25rem;
+  padding: 1rem;
   border-radius: var(--r-card);
   background: rgba(255,255,255,.62);
   backdrop-filter: blur(12px);
 }
 .why-item h3 {
-  font-size: 1.35rem;
-  margin-bottom: .55rem;
+  font-size: 1.22rem;
+  margin-bottom: .45rem;
 }
 .why-item p {
-  font-size: .94rem;
-  line-height: 1.62;
+  font-size: .9rem;
+  line-height: 1.55;
 }
 
 .pricing-trust {
-  margin-bottom: 1.2rem;
-  gap: .5rem 1.1rem;
+  margin-bottom: .9rem;
+  gap: .45rem .9rem;
 }
 .pricing-trust span {
-  font-size: .9rem;
+  font-size: .86rem;
 }
 .tours-row {
   align-items: stretch;
-  gap: 1.15rem;
+  gap: 1rem;
 }
 .pricing-card {
-  padding: 1rem 1rem 1.05rem;
+  padding: .9rem .9rem .95rem;
   border-radius: calc(var(--r-card) + .1rem);
   min-height: 100%;
 }
@@ -2312,7 +2312,8 @@ section[id]::before {
   background: linear-gradient(160deg, #182516 0%, #24331e 45%, #0d2238 100%);
 }
 .pricing-card.alt {
-  background: linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(244,241,232,.92) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(244,241,232,.96) 100%);
+  border-color: rgba(13,34,56,.1);
 }
 .pricing-card.featured::before,
 .pricing-card.alt::before {
@@ -2322,10 +2323,10 @@ section[id]::before {
   padding: .42rem .7rem;
 }
 .pc-img-wrap {
-  margin: -1rem -1rem 1rem;
+  margin: -.9rem -.9rem .9rem;
 }
 .pc-img-wrap img {
-  aspect-ratio: 1.58 / 1;
+  aspect-ratio: 1.7 / 1;
 }
 .pricing-card:nth-child(1) .pc-img-wrap img {
   object-position: center 62%;
@@ -2334,20 +2335,20 @@ section[id]::before {
   object-position: center 55%;
 }
 .pc-name {
-  font-size: 1.5rem;
+  font-size: 1.38rem;
   line-height: 1.04;
 }
 .pc-tag {
-  margin-bottom: .6rem;
+  margin-bottom: .5rem;
 }
 .pc-places {
-  margin-bottom: .75rem;
-  line-height: 1.55;
+  margin-bottom: .6rem;
+  line-height: 1.48;
 }
 .pc-highlights {
   display: grid;
-  gap: .45rem;
-  margin: 0 0 .8rem;
+  gap: .35rem;
+  margin: 0 0 .65rem;
   padding: 0;
   list-style: none;
 }
@@ -2373,28 +2374,28 @@ section[id]::before {
   color: rgba(255,255,255,.82);
 }
 .pc-details {
-  margin-bottom: .8rem;
+  margin-bottom: .65rem;
 }
 .pc-divider {
-  margin: .8rem 0 .65rem;
+  margin: .65rem 0 .55rem;
 }
 .pc-price {
-  font-size: clamp(3rem, 6vw, 4rem);
+  font-size: clamp(2.7rem, 5vw, 3.6rem);
 }
 .pc-note {
-  margin-bottom: .9rem;
+  margin-bottom: .75rem;
 }
 .pc-cta .btn-filled,
 .pc-cta .btn-outlined {
-  min-height: 3rem;
+  min-height: 2.85rem;
 }
 
 .about-grid {
-  gap: 1.4rem 2rem;
+  gap: 1.15rem 1.8rem;
   align-items: center;
 }
 .about-photo {
-  max-width: 16.5rem;
+  max-width: 18rem;
   width: 100%;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
@@ -2409,27 +2410,28 @@ section[id]::before {
   object-position: center 18%;
 }
 .about-name {
-  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
 }
 .about-role {
-  margin-bottom: 1rem;
+  margin-bottom: .7rem;
 }
 .about-bio {
   max-width: 33rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: .85rem;
+  font-size: .96rem;
+  line-height: 1.58;
 }
 .about-pull {
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  line-height: 1.42;
+  margin-bottom: .9rem;
+  font-size: 1.16rem;
+  line-height: 1.45;
 }
 .about-credentials {
-  gap: .75rem;
-  margin-bottom: 1.15rem;
+  gap: .65rem;
+  margin-bottom: 1rem;
 }
 .about-cred {
-  padding: .95rem 1rem;
+  padding: .8rem .9rem;
   background: rgba(255,255,255,.6);
 }
 .about-cred-value {
@@ -2450,33 +2452,33 @@ section[id]::before {
   max-width: none;
 }
 .reviews-header {
-  padding: 1.1rem 1.2rem;
+  padding: .95rem 1.1rem;
   background: rgba(255,255,255,.58);
 }
 .g-number {
   font-size: clamp(2.8rem, 5vw, 4rem);
 }
 .reviews-grid {
-  gap: .9rem;
-  padding: 1.2rem;
+  gap: .75rem;
+  padding: 1rem 1.1rem;
   background: transparent;
 }
 .review-card {
-  padding: 1rem;
-  background: rgba(255,255,255,.84);
+  padding: .9rem;
+  background: rgba(255,255,255,.9);
 }
 .review-card::before {
   font-size: 4.6rem;
   top: -.6rem;
 }
 .rv-text {
-  margin-bottom: .7rem;
-  font-size: 1rem;
+  margin-bottom: .6rem;
+  font-size: .95rem;
   -webkit-line-clamp: 4;
 }
 .reviews-footer {
   justify-content: flex-start;
-  padding: .95rem 1.2rem 1.1rem;
+  padding: .8rem 1.1rem .95rem;
   background: rgba(255,255,255,.48);
 }
 .reviews-tripadvisor-link,
@@ -2494,18 +2496,20 @@ section[id]::before {
   background: rgba(255,255,255,.36);
 }
 .faq-item summary {
-  padding: 1.15rem 0;
+  padding: .95rem 0;
 }
 .faq-q {
-  font-size: 1rem;
+  font-size: .96rem;
 }
 .faq-a {
   max-width: 44rem;
-  padding-bottom: 1rem;
+  padding-bottom: .85rem;
+  font-size: .92rem;
+  line-height: 1.58;
 }
 .faq-cta-note {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: .8rem;
+  padding-top: .8rem;
 }
 
 #final-cta {
@@ -2516,8 +2520,8 @@ section[id]::before {
   background:
     linear-gradient(160deg, rgba(10,18,8,.98) 0%, rgba(24,37,22,.96) 42%, rgba(13,34,56,.94) 100%);
   color: #fff;
-  border-radius: 1.5rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 1.35rem;
+  padding: clamp(1.25rem, 3.2vw, 2.35rem);
   box-shadow: 0 28px 60px rgba(10,18,8,.24);
   position: relative;
   overflow: hidden;
@@ -2541,18 +2545,18 @@ section[id]::before {
 }
 .final-cta-shell h2 {
   max-width: 11ch;
-  margin-bottom: .9rem;
+  margin-bottom: .65rem;
   color: #fff;
 }
 .final-cta-copy {
   max-width: 36rem;
   color: rgba(255,255,255,.78);
-  font-size: 1rem;
-  line-height: 1.72;
+  font-size: .96rem;
+  line-height: 1.6;
 }
 .cta-points {
-  margin-top: 1rem;
-  margin-bottom: 1.25rem;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
 }
 .cta-actions {
   flex-direction: row;
@@ -2561,9 +2565,9 @@ section[id]::before {
   gap: .85rem 1rem;
 }
 .btn-massive {
-  min-height: 3.35rem;
-  padding: .95rem 1.45rem;
-  font-size: 1rem;
+  min-height: 3.1rem;
+  padding: .85rem 1.3rem;
+  font-size: .98rem;
   color: #1b2817;
 }
 .cta-note {
@@ -2618,9 +2622,15 @@ footer {
   }
 }
 
+@media (min-width: 60rem) {
+  .about-grid {
+    grid-template-columns: minmax(17rem, 18rem) 1fr;
+  }
+}
+
 @media (max-width: 47.99rem) {
   :root {
-    --content-y: 2.7rem;
+    --content-y: 2.45rem;
   }
   .hero {
     min-height: min(calc(100dvh - var(--nav-h)), 35.5rem);
@@ -2668,17 +2678,19 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-bottom: .95rem;
   }
-  .why-grid { gap: .8rem; }
-  .why-item { padding: 1rem; }
-  .pc-name { font-size: 1.28rem; }
+  .sec-head { margin-bottom: 1rem; }
+  h2 { font-size: 2rem; }
+  .why-grid { gap: .7rem; }
+  .why-item { padding: .9rem; }
+  .pc-name { font-size: 1.18rem; }
   .pc-places,
   .pc-highlights li,
-  .pc-details p { font-size: .84rem; }
-  .pc-price { font-size: 2.65rem; }
-  .pricing-card { padding-bottom: .95rem; }
+  .pc-details p { font-size: .82rem; }
+  .pc-price { font-size: 2.45rem; }
+  .pricing-card { padding-bottom: .85rem; }
   .reviews-grid { gap: .8rem; }
-  .review-card { padding: .9rem; }
-  .final-cta-shell { padding: 1.35rem; }
+  .review-card { padding: .8rem; }
+  .final-cta-shell { padding: 1.15rem; }
   .reviews-grid {
     grid-template-columns: 1fr;
     padding: 1rem;
@@ -2724,6 +2736,7 @@ footer {
     max-width: 18rem;
     font-size: .92rem;
   }
+  .about-grid { gap: 1rem; }
   .pricing-trust {
     grid-template-columns: 1fr;
   }
