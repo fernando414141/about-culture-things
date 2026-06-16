@@ -1524,6 +1524,9 @@ h2 {
   gap: 0.4rem;
   margin-left: auto;
   color: var(--accent);
+  font-size: var(--t-base);
+  font-weight: 700;
+  padding: 0;
 }
 .reviews-more-btn:hover { opacity: .78; }
 
@@ -1676,8 +1679,8 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
 
 /* ─── FOOTER ─── */
 footer {
-  background: linear-gradient(180deg, var(--coast-blue) 0%, var(--forest) 100%);
-  padding: var(--sp-xl) var(--content-x) var(--sp-lg);
+  background: linear-gradient(180deg, rgba(17,42,70,.98) 0%, rgba(61,79,43,.96) 100%);
+  padding: var(--sp-lg) var(--content-x) var(--sp-md);
   position: relative; overflow: hidden;
 }
 footer::before {
@@ -1689,8 +1692,8 @@ footer::before {
 .footer-shell {
   display: grid;
   grid-template-columns: 1.25fr 0.95fr 0.95fr;
-  gap: clamp(1rem, 2vw, 1.75rem);
-  padding-bottom: var(--sp-md);
+  gap: clamp(0.85rem, 1.5vw, 1.35rem);
+  padding-bottom: 0.85rem;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .footer-brand {
@@ -1711,9 +1714,9 @@ footer::before {
 }
 .footer-note {
   max-width: 24rem;
-  color: rgba(255,255,255,.62);
+  color: rgba(255,255,255,.68);
   font-size: clamp(0.92rem, 0.45vw + 0.84rem, 1rem);
-  line-height: 1.58;
+  line-height: 1.5;
 }
 .footer-column {
   display: flex;
@@ -1734,7 +1737,7 @@ footer::before {
 }
 .footer-links a {
   font-size: var(--t-sm);
-  color: rgba(255,255,255,.62);
+  color: rgba(255,255,255,.72);
   font-weight: 500;
   padding: 0.3rem 0;
   letter-spacing: 0.01em;
@@ -1743,19 +1746,19 @@ footer::before {
 .footer-links a:hover { color: rgba(255,255,255,.92); }
 .footer-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.8rem;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 .footer-action {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.2rem 0;
+  padding: 0.15rem 0;
   border-radius: 0;
   background: transparent;
-  color: rgba(255,255,255,.82);
-  font-size: var(--t-sm);
-  font-weight: 600;
+  color: rgba(255,255,255,.9);
+  font-size: var(--t-base);
+  font-weight: 700;
   transition: color .15s, transform .15s;
 }
 .footer-action:hover { color: rgba(255,255,255,.98); transform: translateY(-1px); }
@@ -1763,12 +1766,12 @@ footer::before {
 .footer-bottom {
   display: flex;
   justify-content: space-between;
-  padding-top: var(--sp-md);
+  padding-top: 0.85rem;
   flex-wrap: wrap;
   gap: 0.55rem;
   align-items: center;
 }
-.footer-copy { font-size: 0.84rem; color: rgba(255,255,255,.4); line-height: 1.45; }
+.footer-copy { font-size: 0.84rem; color: rgba(255,255,255,.48); line-height: 1.45; }
 .footer-credit { color: rgba(255,255,255,.6); transition: color .2s; }
 .footer-credit:hover { color: rgba(255,255,255,.88); }
 .faq-cta-note { margin-top: var(--sp-xl); padding-top: var(--sp-lg); border-top: 1px solid var(--outline); text-align: center; }
@@ -1871,12 +1874,8 @@ footer::before {
     font-size: 1.05rem;
   }
   .mob-cta,
-  .mob-lang-switcher {
+  .mob-lang-select-wrap {
     width: min(100%, 20.5rem);
-  }
-  .mob-lang-btn {
-    min-height: 2.9rem;
-    font-size: 0.95rem;
   }
   .reviews-header { padding: var(--sp-lg) var(--content-x) var(--sp-md); flex-direction: column; align-items: flex-start; gap: var(--sp-md); }
   .g-number { font-size: clamp(2.5rem, 7vw, 3.4rem); }
@@ -1888,7 +1887,7 @@ footer::before {
   footer { padding: var(--sp-xl) var(--content-x) var(--sp-lg); }
   .footer-shell { grid-template-columns: 1fr; padding-bottom: var(--sp-md); }
   .footer-note { max-width: 100%; }
-  .footer-actions { flex-direction: column; gap: 0.28rem; }
+  .footer-actions { gap: 0.25rem; }
   .footer-action { width: fit-content; padding: 0.15rem 0; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding-top: var(--sp-md); }
   .sec-head { margin-bottom: var(--sp-lg); }
@@ -1954,7 +1953,6 @@ footer::before {
   .faq-cta-panel { align-items: center; }
   .faq-cta-panel .cta-actions { align-items: center; }
   .reviews-grid .review-card:nth-child(n+4) { display: none; }
-  .reviews-grid.show-all .review-card:nth-child(n+4) { display: block; }
   .reviews-more-btn { display: inline-flex; }
 }
 
@@ -1980,7 +1978,7 @@ footer::before {
   .faq-cta-panel h3 { font-size: clamp(2.5rem, 6vw, 4rem); }
   .faq-cta-panel p { font-size: var(--t-xl); margin-bottom: var(--sp-2xl); }
   .btn-massive { padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1.75rem, 5vw, 2.75rem); font-size: clamp(0.9375rem, 2vw, 1.125rem); }
-  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
   .pricing-trust { justify-content: flex-start; }
   .footer-links { gap: 0.45rem; }
 }
@@ -1995,10 +1993,7 @@ footer::before {
   .tours-row { grid-template-columns: repeat(2, 1fr); }
   .why-grid { grid-template-columns: repeat(3, 1fr); }
   .about-grid { grid-template-columns: 17rem 1fr; }
-  .reviews-grid {
-    grid-template-columns: repeat(3, 1fr);
-    padding: var(--sp-xl);
-  }
+  .reviews-grid { padding: var(--sp-xl); }
   .faq-cta-panel { max-width: 64rem; }
 }
 
@@ -2407,7 +2402,7 @@ footer::before {
         </article>
       </div>
       <div class="reviews-footer">
-        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="btn-text reviews-more-btn" aria-label="Open TripAdvisor">
+        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-more-btn" aria-label="Open TripAdvisor">
           <span data-i18n="reviews-view-btn">View more on TripAdvisor</span>
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
         </a>
