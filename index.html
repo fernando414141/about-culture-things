@@ -927,12 +927,27 @@ body.nav-open .burger {
 }
 /* Full viewport width sections with centered content */
 .content > section {
+  --section-bg: var(--bg);
+  --section-mesh-opacity: 0;
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   padding: var(--content-y) max(var(--content-x), calc((100vw - min(100vw, var(--max))) / 2 + var(--content-x)));
   position: relative;
   overflow: hidden;
+  background: var(--section-bg);
+}
+section.section--light,
+.content > section.section--light {
+  --section-bg: var(--bg);
+  --section-mesh-opacity: 0;
+  background: var(--section-bg);
+}
+section.section--tinted,
+.content > section.section--tinted {
+  --section-bg: var(--bg-deep);
+  --section-mesh-opacity: .35;
+  background: var(--section-bg);
 }
 /* Keep major blocks aligned to the same content width */
 .sec-head,
@@ -949,21 +964,13 @@ body.nav-open .burger {
   margin-left: auto;
   margin-right: auto;
 }
-/* Alternating backgrounds: odd = body, even = tinted */
-.content > section:nth-of-type(odd) {
-  background: var(--bg);
-}
-.content > section:nth-of-type(even) {
-  background: var(--bg-deep);
-}
+section.section--tinted::before,
 .content > section::before {
   content: '';
   position: absolute; inset: 0;
   background: var(--grad-mesh);
-  opacity: 0; pointer-events: none;
+  opacity: var(--section-mesh-opacity); pointer-events: none;
 }
-.content > section:nth-of-type(4n+1):not(:first-of-type)::before { opacity: 1; }
-.content > section:nth-of-type(even)::before { opacity: .35; }
 
 /* ─── SECTION HEADER ─── */
 .sec-head { max-width: 42rem; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
@@ -1988,7 +1995,7 @@ footer::before {
 <main id="main" class="content">
 
   <!-- TOURS -->
-  <section id="tours" class="reveal" aria-labelledby="tours-heading">
+  <section id="tours" class="reveal section--light" aria-labelledby="tours-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="tours-kicker">Tours</span></div>
       <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Sintra experiences.</h2>
@@ -2085,7 +2092,7 @@ footer::before {
 
 
   <!-- REVIEWS -->
-  <section id="reviews" class="reveal section--tinted" aria-labelledby="reviews-heading">
+  <section id="reviews" class="reveal section--light" aria-labelledby="reviews-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="reviews-kicker">Reviews</span></div>
       <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">What clients say.</h2>
