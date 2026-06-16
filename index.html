@@ -858,7 +858,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 .content > section:nth-of-type(even)::before { opacity: .35; }
 
 /* ─── SECTION HEADER ─── */
-.sec-head { margin-bottom: var(--sp-2xl); }
+.sec-head { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .sec-eyebrow {
   display: flex; align-items: center; gap: var(--sp-md);
   margin-bottom: var(--sp-md);
@@ -939,7 +939,7 @@ h2 {
 .tours-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--sp-2xl);
+  gap: clamp(1.25rem, 2vw, 2rem);
   max-width: 64rem;
   margin: 0 auto;
 }
@@ -948,7 +948,7 @@ h2 {
 .why-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--sp-md);
+  gap: clamp(0.9rem, 1.5vw, 1.25rem);
   max-width: 64rem;
   margin: 0 auto;
 }
@@ -956,7 +956,7 @@ h2 {
   background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: var(--r-xl);
-  padding: var(--sp-lg);
+  padding: clamp(1.05rem, 1.5vw, 1.45rem);
   box-shadow: var(--elev-1);
 }
 .why-kicker {
@@ -1015,7 +1015,7 @@ h2 {
 .pricing-trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.55rem;
   max-width: 64rem;
   margin: 0 auto var(--sp-xl);
 }
@@ -1044,7 +1044,7 @@ h2 {
   background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: var(--r-card);
-  padding: var(--sp-lg) var(--sp-lg) var(--sp-md);
+  padding: clamp(1rem, 1.6vw, 1.45rem) clamp(1rem, 1.6vw, 1.45rem) clamp(0.85rem, 1.2vw, 1.1rem);
   display: flex; flex-direction: column;
   transition: all .4s var(--ease);
   position: relative; overflow: hidden;
@@ -1136,7 +1136,7 @@ h2 {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--sp-2xl);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
   align-items: start;
 }
 .about-photo {
@@ -1225,8 +1225,8 @@ h2 {
 
 /* ─── REVIEWS ─── */
 .reviews-header {
-  display: flex; align-items: center; gap: var(--sp-lg);
-  padding: var(--sp-xl) var(--sp-lg) var(--sp-lg);
+  display: flex; align-items: center; gap: clamp(0.9rem, 1.5vw, 1.25rem);
+  padding: clamp(1rem, 1.8vw, 1.5rem) clamp(1rem, 1.8vw, 1.5rem) clamp(0.85rem, 1.3vw, 1.2rem);
   border-bottom: 1px solid var(--outline);
   flex-wrap: wrap;
 }
@@ -1243,15 +1243,15 @@ h2 {
 .reviews-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--sp-md);
-  padding: var(--sp-lg);
+  gap: clamp(0.9rem, 1.2vw, 1.1rem);
+  padding: clamp(1rem, 1.4vw, 1.35rem);
 }
 
 .review-card {
   background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: var(--r-xl);
-  padding: clamp(1rem, 1.25vw + 0.6rem, 1.35rem);
+  padding: clamp(0.95rem, 1.15vw + 0.55rem, 1.25rem);
   transition: box-shadow .3s var(--ease), transform .3s var(--ease), border-color .3s var(--ease);
   position: relative;
   box-shadow: var(--elev-1);
@@ -1297,7 +1297,7 @@ h2 {
 .rv-author { font-size: clamp(0.9rem, 0.5vw + 0.82rem, 1rem); color: var(--text-muted); font-weight: 700; }
 .reviews-footer {
   display: flex; align-items: center; justify-content: flex-end;
-  padding: var(--sp-md) var(--sp-lg);
+  padding: clamp(0.85rem, 1.2vw, 1.1rem) clamp(1rem, 1.5vw, 1.35rem);
   border-top: 1px solid var(--outline);
 }
 .reviews-footer a {
@@ -1333,7 +1333,7 @@ h2 {
 .faq-item summary {
   display: flex; align-items: center; justify-content: space-between;
   cursor: pointer; transition: color .2s ease;
-  padding: var(--sp-lg) 0; min-height: var(--touch);
+  padding: clamp(0.95rem, 1.2vw, 1.25rem) 0; min-height: var(--touch);
   list-style: none; gap: var(--sp-md);
 }
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -1357,12 +1357,12 @@ details[open] .faq-icon {
 details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875rem; }
 .faq-a {
   font-size: clamp(0.95rem, 0.45vw + 0.85rem, 1.025rem); color: var(--text-secondary);
-  line-height: 1.72; padding: 0 0 var(--sp-lg);
+  line-height: 1.72; padding: 0 0 clamp(0.95rem, 1.2vw, 1.25rem);
   margin-top: 0.25rem; transition: border-color .2s ease;
 }
 
 .faq-cta-panel {
-  margin-top: var(--sp-2xl);
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
   background: linear-gradient(160deg, var(--coast-blue) 0%, var(--forest) 100%);
   color: #fff;
   border-radius: var(--r-xl);
@@ -1390,7 +1390,7 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
   color: rgba(255,255,255,.76);
   font-size: clamp(1rem, 0.8vw + 0.9rem, 1.125rem);
   max-width: 38rem;
-  margin-bottom: var(--sp-lg);
+  margin-bottom: clamp(1rem, 1.6vw, 1.5rem);
 }
 .faq-cta-panel .cta-note {
   color: rgba(255,255,255,.52);
@@ -1412,7 +1412,25 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 0.875
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--sp-sm);
+  gap: 0.7rem;
+}
+
+@media (hover: none) {
+  .card:hover,
+  .pricing-card:hover,
+  .review-card:hover,
+  .hero-ctas .btn-filled:hover,
+  .hero-ctas .btn-outlined:hover,
+  .btn-white:hover,
+  .btn-white-outlined:hover,
+  .fab-wa:hover,
+  .back-to-top:hover {
+    transform: none;
+  }
+  .pricing-card:hover,
+  .review-card:hover {
+    box-shadow: var(--elev-1);
+  }
 }
 
 /* ─── FOOTER ─── */
