@@ -1,0 +1,262 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "About Culture Things — home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: About Culture Things
+      - button "Open menu" [ref=e7]
+  - region "Discover Portugal with Rita Almeida" [ref=e11]:
+    - generic [ref=e13]:
+      - paragraph [ref=e16]: Private Tours · Local Experiences
+      - heading "Experience the True Sintra" [level=1] [ref=e17]:
+        - text: Experience the
+        - emphasis [ref=e18]: True Sintra
+      - paragraph [ref=e19]:
+        - text: Exclusive private Sintra journeys, curated just for you.
+        - strong [ref=e20]: 5.0★
+        - text: TripAdvisor.
+      - list "Key facts" [ref=e21]:
+        - listitem [ref=e22]: 5.0 ★ TripAdvisor
+        - listitem [ref=e23]: Lisbon Pickup Included
+        - listitem [ref=e24]: Max 4 people
+      - generic [ref=e25]:
+        - link "Check Availability" [ref=e26] [cursor=pointer]:
+          - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour.
+          - img [ref=e27]
+          - generic [ref=e29]: Check Availability
+        - link "View tours" [ref=e30] [cursor=pointer]:
+          - /url: "#tours"
+  - region "Small group feel. Private by design." [ref=e31]:
+    - generic [ref=e32]:
+      - generic [ref=e35]: Why Rita
+      - heading "Small group feel. Private by design." [level=2] [ref=e36]
+      - paragraph [ref=e37]: "A straightforward reason to book: local knowledge, private pacing, and places most visitors never reach."
+    - list "Why book with Rita" [ref=e38]:
+      - listitem [ref=e39]:
+        - generic [ref=e40]: Sintra native
+        - heading "Born & raised in Sintra" [level=3] [ref=e41]
+        - paragraph [ref=e42]: You’re booking a guide who knows the landscape, the rhythm, and the shortcuts that only locals learn.
+      - listitem [ref=e43]:
+        - generic [ref=e44]: Private only
+        - heading "Private tours only" [level=3] [ref=e45]
+        - paragraph [ref=e46]: Every tour is one-to-one, tailored to your pace, interests, and the kind of day you want to have.
+      - listitem [ref=e47]:
+        - generic [ref=e48]: Hidden spots
+        - heading "Hidden places tourists never find" [level=3] [ref=e49]
+        - paragraph [ref=e50]: Expect quieter viewpoints, local stops, and the kind of places that don’t make the standard itinerary.
+  - main [ref=e51]:
+    - region "Sintra experiences." [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e56]: Tours
+        - heading "Sintra experiences." [level=2] [ref=e57]
+        - paragraph [ref=e58]: Private tours for up to 4 people — pickup in Lisbon, palace tickets not included.
+      - list "Tour trust points" [ref=e59]:
+        - listitem [ref=e60]:
+          - img [ref=e61]
+          - generic [ref=e63]: 5.0 TripAdvisor
+        - listitem [ref=e64]:
+          - img [ref=e65]
+          - generic [ref=e67]: Local guide born in Sintra
+        - listitem [ref=e68]:
+          - img [ref=e69]
+          - generic [ref=e71]: Max 4 guests
+        - listitem [ref=e72]:
+          - img [ref=e73]
+          - generic [ref=e75]: Pickup in Lisbon included
+      - generic [ref=e76]:
+        - article [ref=e77]:
+          - text: Signature Journey
+          - img "Sintra Complete Experience & Atlantic Coast" [ref=e80]
+          - generic [ref=e81]: Sintra Complete Experience & Atlantic Coast
+          - generic [ref=e82]: 7 hours · Max 4 people
+          - paragraph [ref=e83]: Historic Sintra · Pena area · Cabo da Roca · Cascais
+          - group [ref=e84]:
+            - generic "Full itinerary +" [ref=e85] [cursor=pointer]
+          - generic [ref=e87]:
+            - generic [ref=e88]: €299
+            - generic [ref=e89]: per group
+          - paragraph [ref=e90]: Tickets not included · Lisbon pickup
+          - link "Check Availability" [ref=e92] [cursor=pointer]:
+            - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20Complete%20Experience.
+            - img [ref=e93]
+            - generic [ref=e95]: Check Availability
+        - article [ref=e96]:
+          - text: Best Value
+          - img "Sintra & Hidden Beaches Experience" [ref=e99]
+          - generic [ref=e100]: Sintra & Hidden Beaches Experience
+          - generic [ref=e101]: 5 hours · Max 4 people
+          - paragraph [ref=e102]: Sintra hills · Hidden coves · Azenhas do Mar
+          - group [ref=e103]:
+            - generic "Full itinerary +" [ref=e104] [cursor=pointer]
+          - generic [ref=e106]:
+            - generic [ref=e107]: €275
+            - generic [ref=e108]: per group
+          - paragraph [ref=e109]: Tickets not included · Lisbon pickup
+          - link "Check Availability" [ref=e111] [cursor=pointer]:
+            - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20%26%20Hidden%20Beaches%20Experience.
+            - img [ref=e112]
+            - generic [ref=e114]: Check Availability
+    - region "Your guide to Portugal." [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e119]: About Rita
+        - heading "Your guide to Portugal." [level=2] [ref=e120]:
+          - text: Your guide to
+          - emphasis [ref=e121]: Portugal.
+      - generic [ref=e122]:
+        - img "Rita Almeida, Sintra tour guide based in Portugal" [ref=e125]
+        - generic [ref=e126]:
+          - generic [ref=e127]: Rita Almeida
+          - generic [ref=e128]: Founder · Private Tour Guide
+          - paragraph [ref=e129]: Hi, I’m Rita. I was born and raised in Sintra and guide private tours across the region with a local perspective, relaxed pacing, and a focus on the places most visitors miss. I speak Portuguese, English, and Spanish, and I love sharing the history, culture, and quiet details that make this part of Portugal special.
+          - blockquote [ref=e130]: "\"Part historian, part storyteller — 100% passionate about Portugal.\""
+          - generic "Rita Almeida's skills and credentials" [ref=e131]:
+            - generic [ref=e132]:
+              - generic [ref=e133]: Local guide
+              - generic [ref=e134]: Born & raised in Sintra
+            - generic [ref=e135]:
+              - generic [ref=e136]: Rating
+              - generic [ref=e137]: 5.0 TripAdvisor
+            - generic [ref=e138]:
+              - generic [ref=e139]: Languages
+              - generic [ref=e140]: PT · EN · ES
+            - generic [ref=e141]:
+              - generic [ref=e142]: Years guiding
+              - generic [ref=e143]: Experienced local host
+          - link "Check Availability" [ref=e144] [cursor=pointer]:
+            - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours.
+            - img [ref=e145]
+            - generic [ref=e147]: Check Availability
+    - region "What clients say." [ref=e148]:
+      - generic [ref=e149]:
+        - generic [ref=e152]: Reviews
+        - heading "What clients say." [level=2] [ref=e153]
+      - generic [ref=e154]:
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - generic "5.0 out of 5 stars" [ref=e157]: "5.0"
+            - generic [ref=e158]:
+              - generic "5 stars" [ref=e159]: ★★★★★
+              - generic [ref=e160]: TripAdvisor
+          - link "View About Culture Things on TripAdvisor (opens in new tab)" [ref=e161] [cursor=pointer]:
+            - /url: https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+            - generic [ref=e162]: View more on TripAdvisor
+            - img [ref=e163]
+        - list "Customer reviews" [ref=e165]:
+          - listitem [ref=e166]:
+            - text: “
+            - generic [ref=e167]:
+              - generic [ref=e168]: R
+              - generic [ref=e169]:
+                - generic "5 out of 5 stars" [ref=e170]: ★★★★★
+                - generic [ref=e171]: ✓ TripAdvisor
+            - generic [ref=e172]: Sintra Tour
+            - blockquote [ref=e173]: "\"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish.\""
+            - generic [ref=e174]: Roman B. · North Carolina
+          - listitem [ref=e175]:
+            - text: “
+            - generic [ref=e176]:
+              - generic [ref=e177]: M
+              - generic [ref=e178]:
+                - generic "5 out of 5 stars" [ref=e179]: ★★★★★
+                - generic [ref=e180]: ✓ TripAdvisor
+            - generic [ref=e181]: Sintra Tour
+            - blockquote [ref=e182]: "\"Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy.\""
+            - generic [ref=e183]: Monica M.
+          - listitem [ref=e184]:
+            - text: “
+            - generic [ref=e185]:
+              - generic [ref=e186]: F
+              - generic [ref=e187]:
+                - generic "5 out of 5 stars" [ref=e188]: ★★★★★
+                - generic [ref=e189]: ✓ TripAdvisor
+            - generic [ref=e190]: Sintra Tour
+            - blockquote [ref=e191]: "\"Local knowledge made the difference. We saw places we would never have found on our own.\""
+            - generic [ref=e192]: Fernando G.
+          - text: “ “ “
+        - link "Open TripAdvisor" [ref=e194] [cursor=pointer]:
+          - /url: https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+          - generic [ref=e195]: View more on TripAdvisor
+          - img [ref=e196]
+    - region "Common questions." [ref=e198]:
+      - generic [ref=e199]:
+        - generic [ref=e202]: FAQ
+        - heading "Common questions." [level=2] [ref=e203]
+      - generic [ref=e204]:
+        - group [ref=e205]:
+          - generic "What do the Sintra tours include?" [ref=e206] [cursor=pointer]:
+            - generic [ref=e207]: What do the Sintra tours include?
+            - generic [ref=e208]: +
+        - group [ref=e209]:
+          - generic "What payment methods do you accept?" [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]: What payment methods do you accept?
+            - generic [ref=e212]: +
+        - group [ref=e213]:
+          - generic "Can I cancel or reschedule?" [ref=e214] [cursor=pointer]:
+            - generic [ref=e215]: Can I cancel or reschedule?
+            - generic [ref=e216]: +
+        - group [ref=e217]:
+          - generic "Are the tours suitable for children or seniors?" [ref=e218] [cursor=pointer]:
+            - generic [ref=e219]: Are the tours suitable for children or seniors?
+            - generic [ref=e220]: +
+        - group [ref=e221]:
+          - generic "Is lunch included?" [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]: Is lunch included?
+            - generic [ref=e224]: +
+        - group [ref=e225]:
+          - generic "Can the tour be customized?" [ref=e226] [cursor=pointer]:
+            - generic [ref=e227]: Can the tour be customized?
+            - generic [ref=e228]: +
+      - paragraph [ref=e229]:
+        - link "Need help? Contact Rita" [ref=e230] [cursor=pointer]:
+          - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%20have%20a%20question.
+          - img [ref=e231]
+          - generic [ref=e233]: Need help? Contact Rita
+      - generic [ref=e234]:
+        - heading "Ready to start?" [level=3] [ref=e235]
+        - paragraph [ref=e236]: One message is all it takes.
+        - list "Response details" [ref=e237]:
+          - listitem [ref=e238]: • Reply within 24h
+          - listitem [ref=e239]: • WhatsApp response usually within 1h
+        - generic [ref=e240]:
+          - link "Check Availability" [ref=e241] [cursor=pointer]:
+            - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour.
+            - img [ref=e242]
+            - generic [ref=e244]: Check Availability
+          - paragraph [ref=e245]: Reply within 24h
+  - contentinfo [ref=e246]:
+    - generic [ref=e247]:
+      - generic [ref=e248]:
+        - generic [ref=e249]:
+          - generic [ref=e250]: About Culture Things
+          - paragraph [ref=e252]: Private Sintra tours by Rita Almeida. Local knowledge, quiet pacing, and direct booking with one guide.
+        - generic [ref=e253]:
+          - generic [ref=e254]: Explore
+          - navigation "Footer navigation" [ref=e255]:
+            - link "Tours" [ref=e256] [cursor=pointer]:
+              - /url: "#tours"
+            - link "About" [ref=e257] [cursor=pointer]:
+              - /url: "#about"
+            - link "Reviews" [ref=e258] [cursor=pointer]:
+              - /url: "#reviews"
+            - link "FAQ" [ref=e259] [cursor=pointer]:
+              - /url: "#faq"
+        - generic [ref=e260]:
+          - generic [ref=e261]: Connect
+          - generic [ref=e262]:
+            - link "WhatsApp ↗" [ref=e263] [cursor=pointer]:
+              - /url: https://wa.me/351968510019
+              - img [ref=e264]
+              - generic [ref=e266]: WhatsApp ↗
+            - link "Instagram ↗" [ref=e267] [cursor=pointer]:
+              - /url: https://www.instagram.com/aboutculturethings/
+              - img [ref=e268]
+              - generic [ref=e270]: Instagram ↗
+      - generic [ref=e271]:
+        - generic [ref=e272]: © 2026 About Culture Things · Rita Almeida
+        - link "Website by FSC Digital" [ref=e273] [cursor=pointer]:
+          - /url: https://fscdigital.com/
+  - link "Check availability":
+    - /url: https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour.
+    - img
