@@ -220,7 +220,7 @@ window.addEventListener('scroll', () => {
     const compactViewport = !mqDesktop.matches;
     const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
     nav.classList.toggle('elevated', sy > 10);
-    nav.classList.toggle('nav-overlay', sy < heroHeight * 0.72 && !document.body.classList.contains('nav-open'));
+    nav.classList.toggle('nav-overlay', sy < heroHeight * 0.55 && !document.body.classList.contains('nav-open'));
     if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
     ticking = false;
   });
@@ -252,7 +252,7 @@ function navOpen() {
   document.body.classList.toggle('nav-open', open);
   document.body.style.overflow = open ? 'hidden' : '';
   mobNav.setAttribute('aria-hidden', String(!open));
-  nav.classList.toggle('nav-overlay', !open && window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
+  nav.classList.toggle('nav-overlay', !open && window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.55);
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   if (open) {
@@ -270,7 +270,7 @@ function navClose() {
   document.body.classList.remove('nav-open');
   document.body.style.overflow = '';
   mobNav.setAttribute('aria-hidden', 'true');
-  nav.classList.toggle('nav-overlay', window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
+  nav.classList.toggle('nav-overlay', window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.55);
   burger.setAttribute('aria-expanded', 'false');
   burger.setAttribute('aria-label', 'Open menu');
   if (menuFocusReturn) {

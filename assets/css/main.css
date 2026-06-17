@@ -226,6 +226,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
               border-color 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
 }
 
+.nav.elevated:not(.nav-overlay) {
+  background: rgba(247, 244, 235, 0.97);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-bottom-color: rgba(13, 34, 56, 0.08);
+}
+
 .nav.elevated {
   box-shadow: 0 1px 0 rgba(92, 107, 42, 0.06), 0 8px 40px rgba(10, 8, 4, 0.1);
   border-bottom-color: transparent;
@@ -327,6 +334,28 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .nav.nav-overlay .burger:focus-visible { outline-color: #fff; }
 .nav.nav-overlay .logo-img { filter: brightness(1.15); }
 
+/* Mobile header utility — book + menu */
+.nav-utility {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-book-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--btn-h-md);
+  min-height: var(--btn-h-md);
+  width: var(--btn-h-md);
+  height: var(--btn-h-md);
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: var(--elev-accent);
+}
+
 body.nav-open .nav {
   background: rgba(247, 244, 235, 0.97);
   backdrop-filter: blur(16px);
@@ -353,7 +382,6 @@ body.nav-open .burger { z-index: 260; }
   flex-direction: column;
   gap: var(--sp-xs);
   transition: background 0.15s;
-  margin-left: auto;
   flex-shrink: 0;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -425,28 +453,30 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--sp-compact);
+  align-items: stretch;
+  gap: 0;
   width: 100%;
-  text-align: center;
+  text-align: left;
   padding: var(--sp-xs) 0 0;
 }
 .mob-nav a {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: min(100%, 22rem);
-  padding: var(--btn-py-md) var(--btn-px-md);
-  min-height: var(--btn-h-md);
-  border-radius: var(--r-pill);
-  font-size: var(--btn-fs-md);
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.66);
-  border: 1px solid rgba(13, 34, 56, 0.06);
-  transition: background 0.15s, color 0.15s;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: none;
+  padding: 0.85rem 0;
+  min-height: auto;
+  border-radius: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--outline);
+  transition: color 0.15s;
 }
-.mob-nav a:hover { background: var(--accent-bg); color: var(--accent); }
+.mob-nav a:hover { background: transparent; color: var(--accent); }
 
 .mob-nav-footer {
   position: sticky;
@@ -693,8 +723,8 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   width: 100%;
   max-width: none;
   /* Hero fills viewport; next section begins naturally below */
-  min-height: calc(100svh - var(--nav-h));
-  min-height: calc(100dvh - var(--nav-h));
+  min-height: calc(88svh - var(--nav-h));
+  min-height: calc(88dvh - var(--nav-h));
   margin-top: calc(-1 * var(--nav-h));
   padding: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px)))
     max(var(--content-x), env(safe-area-inset-right, 0px))
@@ -789,6 +819,10 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
   margin: 0;
+}
+
+@media (max-width: 47.99rem) {
+  .hero-kicker { display: none; }
 }
 
 .hero h1 {
@@ -979,6 +1013,7 @@ section.section--light {
 section.section--tinted {
   --section-bg: var(--bg-deep);
   background: var(--section-bg);
+  border-top: 1px solid rgba(13, 34, 56, 0.06);
 }
 
 section[id]::before {
@@ -1031,9 +1066,13 @@ main section[id] > .sec-head,
 }
 
 .sec-kicker {
+  display: inline-block;
+  padding: 0.28rem 0.65rem;
+  background: var(--accent-bg);
+  border-radius: var(--r-pill);
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -1137,23 +1176,16 @@ h2 {
 .why-content { min-width: 0; }
 
 .why-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-compact);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: var(--accent-bg);
+  border-radius: var(--r-pill);
   color: var(--brand-green);
   font-size: var(--t-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 800;
   margin-bottom: var(--stack-sm);
-}
-.why-kicker::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  flex-shrink: 0;
 }
 
 .why-item h3 {
@@ -1548,12 +1580,9 @@ h2 {
 
 .about-credentials {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 0.5rem;
   margin-bottom: var(--stack-md);
-}
-  max-width: none;
-  border: none;
 }
 
 .about-cred {
@@ -1856,13 +1885,22 @@ h2 {
 .reviews-external-link:hover { opacity: 0.75; }
 
 /* ─── FAQ ─── */
-.faq-list { display: flex; flex-direction: column; }
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-card);
+  padding: 0 clamp(var(--stack-sm), 2vw, var(--stack-md));
+  box-shadow: var(--elev-1);
+}
 
 .faq-item {
   border-bottom: 1px solid var(--outline);
   transition: background 0.2s ease;
 }
-.faq-item:first-child { border-top: 1px solid var(--outline); }
+.faq-item:first-child { border-top: none; }
+.faq-item:last-child { border-bottom: none; }
 .faq-item:hover { background: rgba(92, 107, 42, 0.025); }
 
 .faq-item summary {
@@ -1986,7 +2024,10 @@ details[open] .faq-a {
   margin: 0;
 }
 
-.final-cta-shell .sec-kicker { color: rgba(255, 255, 255, 0.72); }
+.final-cta-shell .sec-kicker {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.12);
+}
 
 .cta-points {
   display: flex;
@@ -2111,7 +2152,7 @@ footer {
   margin-top: 0;
   padding: clamp(var(--stack-xl), 4vw, var(--sp-3xl))
     max(var(--content-x), env(safe-area-inset-right, 0px))
-    clamp(var(--stack-md), 2.4vw, var(--stack-lg))
+    max(5.5rem, calc(clamp(var(--stack-md), 2.4vw, var(--stack-lg)) + env(safe-area-inset-bottom, 0px)))
     max(var(--content-x), env(safe-area-inset-left, 0px));
   position: relative;
   overflow: hidden;
@@ -2367,11 +2408,40 @@ footer::before {
 /* ≥ 30rem — large phones */
 @media (min-width: 30rem) {
   .logo-name { font-size: 0.875rem; max-width: none; }
-  .about-credentials { grid-template-columns: repeat(3, 1fr); }
+
+  .reviews-trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem 1.25rem;
+    text-align: left;
+  }
+
+  .reviews-trust-score {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .reviews-trust-note {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .reviews-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .reviews-expand-btn { width: auto; max-width: none; }
 }
 
-/* ≥ 40rem — hero CTAs row */
+/* ≥ 40rem — hero CTAs row, about credentials */
 @media (min-width: 40rem) {
+  .about-credentials { grid-template-columns: repeat(3, 1fr); }
+
   .hero-ctas {
     flex-direction: row;
     align-items: center;
@@ -2392,11 +2462,14 @@ footer::before {
 
   .nav-tabs { display: flex; }
   .nav-actions { display: flex; }
+  .nav-utility { display: none; }
   .burger { display: none; }
 
   .hero {
     --hero-pad-bottom: clamp(var(--stack-xl), 3.5vw, 2.85rem);
     justify-content: flex-start;
+    min-height: calc(100svh - var(--nav-h));
+    min-height: calc(100dvh - var(--nav-h));
   }
 
   .hero-inner {
@@ -2469,6 +2542,10 @@ footer::before {
     align-items: center;
     justify-content: space-between;
     padding-right: max(4.75rem, calc(var(--stack-lg) + env(safe-area-inset-right, 0px)));
+  }
+
+  footer {
+    padding-bottom: clamp(var(--stack-md), 2.4vw, var(--stack-lg));
   }
 
   .footer-shell { grid-template-columns: 1.4fr 1fr; }
