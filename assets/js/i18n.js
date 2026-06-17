@@ -119,6 +119,8 @@ const i18n = {
     "cta-tagline": "Check your date and plan a private route with Rita.",
     "cta-trust": "✓ Private tours • Free reschedule with 24h notice",
     "foot-instagram": "Instagram",
+    "foot-whatsapp": "WhatsApp",
+    "foot-email": "Email",
     "foot-linkedin": "LinkedIn",
     "foot-facebook": "Facebook",
     "foot-tiktok": "TikTok"
@@ -239,6 +241,8 @@ const i18n = {
     "cta-tagline": "Consulta tu fecha y planifica una ruta privada con Rita.",
     "cta-trust": "✓ Tours privados • Reagenda gratis con 24 h de antelación",
     "foot-instagram": "Instagram",
+    "foot-whatsapp": "WhatsApp",
+    "foot-email": "Email",
     "foot-linkedin": "LinkedIn",
     "foot-facebook": "Facebook",
     "foot-tiktok": "TikTok"
@@ -359,6 +363,8 @@ const i18n = {
     "cta-tagline": "Confirma a tua data e planeia uma rota privada com a Rita.",
     "cta-trust": "✓ Tours privados • Reagenda grátis com 24 h de antecedência",
     "foot-instagram": "Instagram",
+    "foot-whatsapp": "WhatsApp",
+    "foot-email": "Email",
     "foot-linkedin": "LinkedIn",
     "foot-facebook": "Facebook",
     "foot-tiktok": "TikTok"

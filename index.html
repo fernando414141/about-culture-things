@@ -298,9 +298,8 @@
       <span class="logo-name">About Culture Things</span>
     </a>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="#top" class="nav-tab-wide" data-i18n="nav-home">Home</a>
       <a href="#tours" data-i18n="nav-tours">Tours</a>
-      <a href="#differentiators" class="nav-tab-wide" data-i18n="nav-why">Why Rita</a>
+      <a href="#differentiators" data-i18n="nav-why">About Rita</a>
       <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
       <a href="#faq" data-i18n="nav-faq">FAQ</a>
     </nav>
@@ -344,16 +343,21 @@
 </header>
 
 <!-- ── MOBILE NAV ── -->
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 <nav class="mob-nav" id="mob-nav" role="dialog" aria-modal="false" aria-label="Mobile navigation" aria-hidden="true" inert>
-  <button class="mob-nav-close" type="button" data-i18n-aria="nav-close-aria" aria-label="Close menu">
-    <span aria-hidden="true">×</span>
-  </button>
+  <div class="mob-nav-head">
+    <span class="mob-nav-logo">About Culture Things</span>
+    <button class="mob-nav-close" type="button" data-i18n-aria="nav-close-aria" aria-label="Close menu">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
   <div class="mob-nav-body">
-    <a href="#top" data-i18n="nav-home">Home</a>
     <a href="#tours" data-i18n="nav-tours">Tours</a>
-    <a href="#differentiators" data-i18n="nav-why">Why Rita</a>
+    <a href="#differentiators" data-i18n="nav-why">About Rita</a>
     <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
     <a href="#faq" data-i18n="nav-faq">FAQ</a>
+  </div>
+  <div class="mob-nav-footer">
     <div class="mob-lang-options" role="group" aria-label="Language selector">
       <button type="button" class="mob-lang-btn active" data-lang="en" aria-pressed="true">EN</button>
       <button type="button" class="mob-lang-btn" data-lang="es" aria-pressed="false">ES</button>
@@ -363,6 +367,11 @@
       <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
       <span data-i18n="nav-book">Book</span>
     </a>
+    <div class="mob-contact-links" aria-label="Contact links">
+      <a href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer" data-site-instagram data-i18n="foot-instagram">Instagram</a>
+      <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." target="_blank" rel="noopener noreferrer" data-site-wa="book" data-i18n="foot-whatsapp">WhatsApp</a>
+      <a href="mailto:aboutculturethings@gmail.com?subject=Tour%20enquiry" data-site-email data-site-email-subject="Tour enquiry" data-i18n="foot-email">Email</a>
+    </div>
   </div>
 </nav>
 

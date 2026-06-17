@@ -1,5 +1,5 @@
 // ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
-const mqDesktop = window.matchMedia('(min-width: 48rem)');
+const mqDesktop = window.matchMedia('(min-width: 64rem)');
 
 // ─── BACK TO TOP ─────────────────────────────────────
 (function(){
@@ -187,6 +187,7 @@ document.addEventListener('keydown', e => {
 const nav    = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
+const navOverlay = document.getElementById('nav-overlay');
 const fabWa  = document.getElementById('fab-wa');
 let menuFocusReturn = null;
 
@@ -236,7 +237,7 @@ function navOpen() {
   burger.setAttribute('aria-label', t[open ? 'nav-close-aria' : 'nav-open-aria'] || (open ? 'Close menu' : 'Open menu'));
   if (open) {
     menuFocusReturn = document.activeElement;
-    var first = mobNav.querySelector('.mob-nav-body a, .mob-nav-close, .mob-lang-btn');
+    var first = mobNav.querySelector('.mob-nav-close, .mob-nav-body a, .mob-lang-btn');
     if (first) first.focus();
   } else if (menuFocusReturn) {
     menuFocusReturn.focus();
@@ -283,7 +284,8 @@ burger.addEventListener('click', navOpen);
 
 var mobNavClose = mobNav.querySelector('.mob-nav-close');
 if (mobNavClose) mobNavClose.addEventListener('click', navClose);
-mobNav.querySelectorAll('a[href^="#"], [data-site-wa]').forEach(function (a) {
+if (navOverlay) navOverlay.addEventListener('click', navClose);
+mobNav.querySelectorAll('a').forEach(function (a) {
   a.addEventListener('click', navClose);
 });
 document.querySelectorAll('.mob-lang-btn').forEach(function (btn) {
@@ -298,6 +300,12 @@ mqDesktop.addEventListener('change', () => {
 
 document.addEventListener('click', e => {
   if (mobNav.classList.contains('open') && !mobNav.contains(e.target) && !burger.contains(e.target)) {
+    navClose();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobNav.classList.contains('open')) {
     navClose();
   }
 });
