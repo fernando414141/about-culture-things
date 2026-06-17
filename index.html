@@ -72,8 +72,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap"></noscript>
-<link rel="preload" as="image" href="hero-mobile.webp" fetchpriority="high" media="(max-width: 47.99rem)">
-<link rel="preload" as="image" href="hero-960.webp" fetchpriority="high" media="(min-width: 48rem)">
+<link rel="preload" as="image" href="hero-960.webp" fetchpriority="high">
 
 <!-- Structured Data -->
 <script type="application/ld+json" id="structured-data">
@@ -279,45 +278,33 @@
       <a href="#about"       data-i18n="nav-about">About</a>
       <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
       <a href="#faq"         data-i18n="nav-faq">FAQ</a>
-      <a href="#final-cta"   class="nav-book" data-i18n="nav-book">Book</a>
     </nav>
     <div class="nav-actions">
       <div class="lang-switcher" id="lang-switcher">
-        <button class="lang-trigger" id="lang-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Select language. Current language: English.">
-          <svg class="lang-trigger-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 21a9 9 0 1 0-9-9c0 4.97 4.03 9 9 9Z" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M12 3c2.4 2.3 3.9 5.1 3.9 9S14.4 18.7 12 21c-2.4-2.3-3.9-5.1-3.9-9S9.6 5.3 12 3Z" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-          <span class="lang-trigger-copy">
-            <span class="lang-trigger-kicker" data-i18n="lang-kicker">Language</span>
-            <span class="lang-trigger-label" id="lang-trigger-label">English</span>
-          </span>
+        <button class="lang-trigger" id="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Select language. Current language: English.">
+          <span class="lang-trigger-code" id="lang-trigger-label">EN</span>
           <svg class="lang-trigger-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="lang-dropdown" id="lang-dropdown" hidden>
-          <button class="lang-option active" data-lang="en" type="button" aria-pressed="true">
-            <span class="lang-option-copy">
+        <ul class="lang-dropdown" id="lang-dropdown" role="listbox" aria-label="Languages" hidden>
+          <li role="presentation">
+            <button class="lang-option active" role="option" data-lang="en" type="button" aria-selected="true">
               <span class="lang-option-name">English</span>
-              <span class="lang-option-desc">Site language</span>
-            </span>
-            <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="lang-option" data-lang="es" type="button" aria-pressed="false">
-            <span class="lang-option-copy">
+              <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </li>
+          <li role="presentation">
+            <button class="lang-option" role="option" data-lang="es" type="button" aria-selected="false">
               <span class="lang-option-name">Español</span>
-              <span class="lang-option-desc">Idioma del sitio</span>
-            </span>
-            <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="lang-option" data-lang="pt" type="button" aria-pressed="false">
-            <span class="lang-option-copy">
+              <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </li>
+          <li role="presentation">
+            <button class="lang-option" role="option" data-lang="pt" type="button" aria-selected="false">
               <span class="lang-option-name">Português</span>
-              <span class="lang-option-desc">Idioma do site</span>
-            </span>
-            <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+              <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </li>
+        </ul>
       </div>
       <a href="#" class="btn-filled" target="_blank" data-site-wa="book" data-analytics-label="nav-book">
         <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -344,16 +331,15 @@
     <a href="#about"       data-i18n="nav-about">About</a>
     <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
     <a href="#faq"         data-i18n="nav-faq">FAQ</a>
-    <a href="#final-cta"   class="nav-book" data-i18n="nav-book">Book</a>
     <div class="mob-nav-footer">
-      <label class="mob-lang-select-wrap" aria-label="Language selector">
+      <div class="mob-lang" role="group" aria-label="Language selector">
         <span class="mob-lang-label" data-i18n="lang-kicker">Language</span>
-        <select class="mob-lang-select" id="mob-lang-select">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="pt">Português</option>
-        </select>
-      </label>
+        <div class="mob-lang-options">
+          <button type="button" class="mob-lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="mob-lang-btn" data-lang="es" aria-pressed="false">ES</button>
+          <button type="button" class="mob-lang-btn" data-lang="pt" aria-pressed="false">PT</button>
+        </div>
+      </div>
       <div class="mob-cta">
         <a href="#" target="_blank" data-site-wa="book" data-analytics-label="mob-book">
           <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -366,13 +352,9 @@
 
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Discover Portugal with Rita Almeida">
-  <picture class="hero-bg" aria-hidden="true">
-    <source media="(max-width: 47.99rem)" srcset="hero-mobile.webp" type="image/webp">
-    <source media="(min-width: 48rem)" srcset="hero-960.webp" type="image/webp">
-    <img class="hero-lcp-img" src="hero-mobile.webp" alt="" width="768" height="511" fetchpriority="high" decoding="sync">
-  </picture>
-  <video class="hero-bg-video" muted playsinline preload="none" aria-hidden="true" poster="hero-960.webp" disablepictureinpicture hidden>
-    <source data-src="hero.mp4" type="video/mp4" media="(min-width: 48rem) and (prefers-reduced-motion: no-preference)">
+  <img class="hero-poster" src="hero-960.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="sync" aria-hidden="true">
+  <video class="hero-bg-video" muted playsinline autoplay loop preload="metadata" poster="hero-960.webp" disablepictureinpicture aria-hidden="true">
+    <source src="hero.mp4" type="video/mp4">
   </video>
   <div class="hero-inner">
     <div class="hero-copy">
@@ -381,12 +363,10 @@
         <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
       </div>
       <h1 data-i18n="hero-h1">Private Sintra, <em>beautifully guided.</em></h1>
-      <p class="hero-desc" data-i18n="hero-desc">Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.</p>
+      <p class="hero-desc" data-i18n="hero-desc">Sintra and the Atlantic coast, privately guided by Rita Almeida — a Sintra local.</p>
       <ul class="hero-trust-bar" aria-label="Key facts">
         <li data-i18n="hero-trust-1">Private tours only</li>
         <li data-i18n="hero-trust-2">5.0 ★ TripAdvisor</li>
-        <li data-i18n="hero-trust-3" class="hero-trust-extra">Lisbon pickup included</li>
-        <li data-i18n="hero-trust-4" class="hero-trust-extra">Up to 4 guests</li>
       </ul>
       <div class="hero-ctas">
         <a href="#" class="btn-filled" target="_blank" data-site-wa="book" data-analytics-label="hero-primary">
@@ -395,7 +375,6 @@
         </a>
         <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">See tours</a>
       </div>
-      <p class="hero-note" data-i18n="hero-note">Direct booking with Rita · Typical reply within 24h</p>
     </div>
   </div>
   <a href="#why" class="hero-scroll hero-scroll-link" data-i18n-aria="hero-scroll-aria" aria-label="Scroll to Why Rita section">
@@ -453,20 +432,6 @@
       <span data-i18n="trust-2">Local guide born in Sintra</span>
       <span data-i18n="trust-3">Max 4 guests</span>
       <span data-i18n="trust-4">Pickup in Lisbon included</span>
-    </div>
-    <div class="tours-compare" data-i18n-aria="tours-compare-aria" aria-label="How booking works">
-      <div class="tours-compare-item">
-        <span class="tours-compare-label" data-i18n="compare-1-label">Best For</span>
-        <span class="tours-compare-value" data-i18n="compare-1-value">First-time visitors who want the full Sintra day</span>
-      </div>
-      <div class="tours-compare-item">
-        <span class="tours-compare-label" data-i18n="compare-2-label">Format</span>
-        <span class="tours-compare-value" data-i18n="compare-2-value">Private car tour with one guide and one group</span>
-      </div>
-      <div class="tours-compare-item">
-        <span class="tours-compare-label" data-i18n="compare-3-label">Booking</span>
-        <span class="tours-compare-value" data-i18n="compare-3-value">Direct with Rita, with quick availability confirmation</span>
-      </div>
     </div>
     <div class="tours-row">
       <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Signature Journey">
@@ -552,8 +517,7 @@
       <div class="about-body reveal d1">
         <div class="about-name" data-i18n="about-name">Rita Almeida</div>
         <div class="about-role" data-i18n="about-role">Founder · Private Tour Guide</div>
-        <p class="about-bio" data-i18n="about-bio">Rita was born and raised in Sintra and hosts private tours with a calm pace, thoughtful storytelling, and an instinct for what makes the region feel personal rather than rushed.</p>
-        <blockquote class="about-pull" data-i18n="about-pull">"Private guiding with warmth, local instinct, and room to actually enjoy the day."</blockquote>
+        <p class="about-bio" data-i18n="about-bio">Born and raised in Sintra, Rita hosts private tours with calm pacing, local insight, and room to enjoy the day.</p>
         <div class="about-credentials" data-i18n-aria="about-creds-aria" aria-label="Rita Almeida's skills and credentials">
           <div class="about-cred">
             <span class="about-cred-label" data-i18n="about-cred-1-label">Local guide</span>
@@ -566,10 +530,6 @@
           <div class="about-cred">
             <span class="about-cred-label" data-i18n="about-cred-3-label">Languages</span>
             <span class="about-cred-value" data-i18n="about-cred-3-value">PT · EN · ES</span>
-          </div>
-          <div class="about-cred">
-            <span class="about-cred-label" data-i18n="about-cred-4-label">Reviews</span>
-            <span class="about-cred-value" data-i18n="about-cred-4-value">6 verified TripAdvisor reviews</span>
           </div>
         </div>
         <a href="#" class="btn-filled" target="_blank" data-site-wa="about" data-analytics-label="about-message">
