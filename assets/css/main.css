@@ -96,6 +96,7 @@
   --touch:       3rem;
   --content-x:   clamp(1.125rem, 3.4vw + 0.35rem, 2.25rem);
   --content-y:   clamp(2.75rem, 5vw, 5rem);
+  --scroll-cue:  clamp(2rem, 6vh, 4rem);
 
   /* Buttons */
   --btn-h-sm: 2.75rem;
@@ -698,14 +699,15 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 .hero {
   --hero-pad-bottom: clamp(1.5rem, 4vw, 2.5rem);
   position: relative;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   max-width: none;
-  /* +nav-h compensates for margin-top pull under fixed nav */
-  min-height: calc(100svh + var(--nav-h));
-  min-height: calc(100dvh + var(--nav-h));
+  /* Slightly shorter than viewport so #why peeks at the bottom */
+  min-height: calc(100svh - var(--scroll-cue));
+  min-height: calc(100dvh - var(--scroll-cue));
   margin-top: calc(-1 * var(--nav-h));
   padding: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px))) var(--content-x) var(--hero-pad-bottom);
   background: var(--coast-blue);
@@ -769,8 +771,8 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   margin: 0 auto;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
-  min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+  min-height: calc(100svh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+  min-height: calc(100dvh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
 }
 
 .hero-copy {
@@ -961,7 +963,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 .hero-scroll-link {
   display: none;
   position: absolute;
-  bottom: 2.75rem;
+  bottom: calc(var(--scroll-cue) + 1rem);
   right: clamp(1.5rem, 5vw, 3.5rem);
   z-index: 3;
   flex-direction: column;
@@ -1031,7 +1033,19 @@ main section[id] {
   scroll-margin-top: calc(var(--nav-h) + 0.75rem);
   padding: var(--content-y) var(--content-x);
   position: relative;
+  z-index: 1;
   overflow: hidden;
+}
+
+/* Progressive scroll cue — each section peeks into the next */
+#why {
+  margin-top: calc(-1 * var(--scroll-cue));
+  padding-top: calc(var(--content-y) + var(--scroll-cue));
+}
+
+main section[id] + section[id] {
+  margin-top: calc(-1 * var(--scroll-cue));
+  padding-top: calc(var(--content-y) + var(--scroll-cue));
 }
 
 section.section--light {
@@ -1055,12 +1069,23 @@ section[id]::before {
   pointer-events: none;
 }
 
-#why {
-  padding-top: calc(var(--content-y) + 0.25rem);
+#final-cta {
+  padding-bottom: calc(var(--content-y) + var(--scroll-cue));
 }
 
-#final-cta {
-  padding-top: 1rem;
+/* Short viewport-fit sections — peek footer after final CTA */
+@media (min-width: 48rem) {
+  #final-cta {
+    min-height: calc(100svh - var(--scroll-cue));
+    min-height: calc(100dvh - var(--scroll-cue));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #final-cta .final-cta-shell {
+    width: 100%;
+  }
 }
 
 /* Shared content rail */
@@ -2244,8 +2269,10 @@ details[open] .faq-a {
 /* ─── FOOTER ─── */
 footer {
   background: linear-gradient(175deg, #0A1208 0%, #0D1A0A 40%, #101E0E 100%);
-  padding: clamp(var(--stack-xl), 4vw, var(--sp-3xl)) var(--content-x) clamp(var(--stack-md), 2.4vw, var(--stack-lg));
+  margin-top: calc(-1 * var(--scroll-cue));
+  padding: calc(var(--scroll-cue) + clamp(var(--stack-xl), 4vw, var(--sp-3xl))) var(--content-x) clamp(var(--stack-md), 2.4vw, var(--stack-lg));
   position: relative;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -2484,6 +2511,7 @@ footer::before {
   :root {
     --content-x: max(1.125rem, env(safe-area-inset-left));
     --content-y: 1.75rem;
+    --scroll-cue: clamp(1.5rem, 5vh, 2.75rem);
   }
 
   .nav-actions { display: none; }
@@ -2502,19 +2530,20 @@ footer::before {
 @media (max-width: 47.99rem) {
   :root {
     --content-y: clamp(2.25rem, 5vw, 2.75rem);
+    --scroll-cue: clamp(1.75rem, 5.5vh, 3.25rem);
   }
 
   .hero {
     align-items: center;
     --hero-pad-bottom: clamp(1.75rem, 5vw, 2.5rem);
-    min-height: calc(100svh + var(--nav-h));
-    min-height: calc(100dvh + var(--nav-h));
+    min-height: calc(100svh - var(--scroll-cue));
+    min-height: calc(100dvh - var(--scroll-cue));
     padding-bottom: var(--hero-pad-bottom);
   }
 
   .hero-inner {
-    min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
-    min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100svh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100dvh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
   }
 
   .hero-copy { width: min(100%, 22rem); }
@@ -2572,15 +2601,15 @@ footer::before {
   .hero {
     align-items: center;
     --hero-pad-bottom: clamp(var(--stack-xl), 3.5vw, 2.85rem);
-    min-height: calc(100svh + var(--nav-h));
-    min-height: calc(100dvh + var(--nav-h));
+    min-height: calc(100svh - var(--scroll-cue));
+    min-height: calc(100dvh - var(--scroll-cue));
     padding-top: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px)));
     padding-bottom: var(--hero-pad-bottom);
   }
 
   .hero-inner {
-    min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
-    min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100svh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100dvh - var(--nav-h) - var(--scroll-cue) - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
   }
 
   .hero-copy {
@@ -2753,6 +2782,13 @@ footer::before {
   .mob-nav-close:active,
   .reviews-external-link:active {
     transform: scale(0.98);
+  }
+}
+
+/* ≥ 120rem (4K) — slightly larger scroll cue for ultra-wide viewports */
+@media (min-width: 120rem) {
+  :root {
+    --scroll-cue: clamp(3rem, 7vh, 5rem);
   }
 }
 
