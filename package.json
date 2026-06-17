@@ -1,0 +1,11 @@
+{
+  "name": "about-culture-things",
+  "private": true,
+  "description": "About Culture Things — private Sintra tours landing page",
+  "scripts": {
+    "serve": "npx --yes serve . -p 3000"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

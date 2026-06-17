@@ -13,7 +13,7 @@ const SITE = {
   tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
   twitter: '@aboutculturethings',
   themeColor: '#5C6B2A',
-  ogImage: 'hero.webp',
+  ogImage: 'assets/images/hero.webp',
   locale: { en: 'en-GB', es: 'es-ES', pt: 'pt-PT' },
   geo: {
     region: 'PT-11',
