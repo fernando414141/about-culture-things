@@ -1,29 +1,3 @@
-// ─── HERO VIDEO ──────────────────────────────────────
-(function(){
-  var video = document.querySelector('.hero-bg-video');
-  var hero = document.querySelector('.hero');
-  if (!video || !hero) return;
-  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  video.muted = true;
-  video.defaultMuted = true;
-  video.setAttribute('muted', '');
-
-  function markPlaying() { hero.classList.add('has-video-playing'); }
-
-  function tryPlay() {
-    var playAttempt = video.play();
-    if (playAttempt && typeof playAttempt.then === 'function') {
-      playAttempt.then(markPlaying).catch(function(){});
-    } else if (!video.paused) markPlaying();
-  }
-
-  if (video.readyState >= 2) tryPlay();
-  else video.addEventListener('loadeddata', tryPlay, { once: true });
-})();
-
 // ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
 const mqDesktop = window.matchMedia('(min-width: 48rem)');
 

@@ -683,31 +683,16 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   overflow: hidden;
 }
 
-.hero-poster {
+.hero-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   max-width: 100%;
   object-fit: cover;
+  object-position: center 42%;
   z-index: 0;
   pointer-events: none;
-  transform-origin: center;
-  will-change: transform;
-  transition: opacity 0.5s var(--ease);
-}
-
-.hero.has-video-playing .hero-poster { opacity: 0; }
-
-.hero-bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-  transform-origin: center;
 }
 
 .hero::before {
