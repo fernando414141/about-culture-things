@@ -71,7 +71,7 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + var(--s1));
+  scroll-padding-top: calc(var(--nav-h) + 1.75rem);
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
 }
@@ -96,7 +96,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .anchor-target {
   display: block;
   position: relative;
-  top: calc(-1 * var(--nav-h) - var(--s1));
+  top: calc(-1 * var(--nav-h) - 1.75rem);
   height: 0;
   overflow: hidden;
   pointer-events: none;
@@ -329,18 +329,50 @@ h3 {
 .nav-tabs a.active { color: var(--brand-dark); font-weight: 600; background: var(--brand-subtle); }
 
 .nav-actions { display: none; align-items: center; gap: 0.5rem; }
-.nav-actions .btn-filled {
+.nav-actions .btn-filled,
+.nav-actions .nav-book-btn {
   min-height: 2.5rem;
-  padding: 0 1rem;
+  padding: 0 0.875rem;
   font-size: var(--text-sm);
   font-weight: 600;
   box-shadow: none;
 }
-.nav-actions .btn-filled:hover {
-  box-shadow: 0 2px 8px rgba(92, 107, 42, 0.2);
+.nav-actions .nav-book-btn {
+  color: var(--text-2);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+}
+.nav-actions .nav-book-btn:hover {
+  background: var(--bg);
+  border-color: rgba(17, 24, 16, 0.2);
+  box-shadow: none;
+  transform: none;
 }
 
-.nav-utility { display: flex; margin-left: auto; }
+.nav-utility {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.nav-mobile-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-btn);
+  background: var(--brand);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-mobile-book span { display: none; }
 
 .burger {
   display: flex;
@@ -518,8 +550,8 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 14, 8, 0.15) 0%, transparent 35%),
-    linear-gradient(0deg, rgba(10, 14, 8, 0.88) 0%, rgba(10, 14, 8, 0.45) 42%, rgba(10, 14, 8, 0.12) 100%);
+    linear-gradient(180deg, rgba(8, 12, 6, 0.35) 0%, rgba(8, 12, 6, 0.08) 28%, transparent 45%),
+    linear-gradient(0deg, rgba(8, 12, 6, 0.94) 0%, rgba(8, 12, 6, 0.62) 38%, rgba(8, 12, 6, 0.28) 72%, rgba(8, 12, 6, 0.12) 100%);
 }
 
 .hero-inner {
@@ -535,8 +567,28 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.375rem;
+  gap: 1rem;
   max-width: 38rem;
+}
+
+.hero-guide {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.hero-guide-photo {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+.hero-guide-text {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.35;
 }
 
 .hero h1 {
@@ -546,16 +598,38 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   letter-spacing: -0.035em;
   max-width: 13ch;
   margin: 0;
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-desc {
   font-size: clamp(1rem, 1.5vw + 0.5rem, 1.125rem);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin: 0;
   max-width: 30rem;
   text-wrap: pretty;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.3);
 }
+
+.hero-price-line {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.3);
+}
+
+.hero-price-link {
+  margin: -0.25rem 0 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s var(--ease);
+}
+.hero-price-link:hover { color: #fff; }
 
 .hero-trust,
 .hero-review-trust {
@@ -631,10 +705,6 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 
 /* ─── PROBLEM ─── */
-#problem {
-  padding-block: calc(var(--section-py) * 0.85);
-}
-
 .problem-grid {
   display: grid;
   gap: 0;
@@ -719,7 +789,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 /* ─── SERVICES / PRICING (primary conversion section) ─── */
 #tours {
   background: var(--surface);
-  padding-block: var(--section-py);
+  padding-block: calc(var(--section-py) * 0.85);
   border-block: 1px solid var(--border);
 }
 
@@ -776,15 +846,6 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   border-color: rgba(92, 107, 42, 0.22);
   box-shadow: var(--shadow-2);
 }
-@media (min-width: 48rem) {
-  .pricing-card.featured {
-    transform: scale(1.015);
-    z-index: 1;
-  }
-  .pricing-card.featured:hover {
-    transform: scale(1.015) translateY(-2px);
-  }
-}
 
 .pricing-card::before {
   content: attr(data-badge);
@@ -802,11 +863,9 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   color: #fff;
 }
 .pricing-card.alt::before {
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--text-2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--brand);
+  color: #fff;
+  border: none;
 }
 
 .pc-img-wrap {
@@ -817,7 +876,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 .pc-img-wrap img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center 40%;
   border-radius: 0;
@@ -844,11 +903,11 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   margin-bottom: 0.75rem;
 }
 
-.pc-places {
+.pc-stops {
   font-size: var(--text-base);
   color: var(--text-2);
   line-height: 1.5;
-  margin: 0 0 0.625rem;
+  margin: 0 0 1rem;
   font-weight: 500;
 }
 
@@ -857,14 +916,22 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   color: var(--text-3);
   font-style: normal;
   line-height: 1.5;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.875rem;
+}
+
+.pc-tickets-note {
+  margin: 0 0 1rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-2);
+  line-height: 1.45;
 }
 
 .pc-includes {
   display: flex;
   flex-wrap: wrap;
   gap: 0.375rem 1rem;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.875rem;
 }
 .pc-include, .pc-exclude {
   font-size: var(--text-sm);
@@ -881,7 +948,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  margin-bottom: 0.125rem;
+  margin-bottom: 0.375rem;
 }
 .pc-price {
   font-size: clamp(2rem, 3.5vw, 2.375rem);
@@ -931,6 +998,12 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   color: var(--text-3);
   line-height: 1.55;
 }
+.pc-details .pc-places {
+  margin-top: 0.75rem;
+  font-size: var(--text-sm);
+  color: var(--text-3);
+  line-height: 1.55;
+}
 
 @media (min-width: 48rem) {
   .tours-row, .services-grid {
@@ -938,7 +1011,12 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
     gap: 1.25rem;
     align-items: stretch;
   }
-  .pricing-card { padding: 1.5rem; }
+  .pricing-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
   .pc-img-wrap {
     margin: calc(-1 * 1.5rem) calc(-1 * 1.5rem) 1.25rem;
   }
@@ -1110,6 +1188,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   display: grid;
   gap: 0.75rem;
   padding: 1.25rem;
+  align-items: stretch;
 }
 
 .review-card {
@@ -1120,6 +1199,7 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   border: 1px solid var(--border);
   border-radius: var(--radius-input);
   transition: border-color 0.2s var(--ease);
+  min-height: 100%;
 }
 .review-card:hover { border-color: var(--border-strong); }
 
@@ -1404,7 +1484,7 @@ details[open] .faq-icon {
 /* ─── FOOTER ─── */
 footer {
   background: #101610;
-  padding: var(--s3) var(--pad-x) max(4rem, calc(var(--s2) + env(safe-area-inset-bottom)));
+  padding: var(--s2) var(--pad-x) max(4.5rem, calc(var(--s1) + env(safe-area-inset-bottom)));
   color: rgba(255, 255, 255, 0.75);
 }
 
@@ -1492,6 +1572,19 @@ footer {
   footer { padding-bottom: var(--s2); }
 }
 
+@media (max-width: 47.99rem) {
+  .back-to-top { display: none !important; }
+  .nav-mobile-book span { display: inline; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .hero-ctas .btn-filled,
+  .pc-cta .btn,
+  .final-cta-shell .btn-massive {
+    font-size: var(--text-base);
+    padding-inline: 1rem;
+  }
+  .mob-nav a:not(.mob-cta) { padding: 0.875rem 0; }
+}
+
 /* ─── FAB & BACK TO TOP ─── */
 .back-to-top {
   position: fixed;
@@ -1553,18 +1646,23 @@ footer {
 /* ─── LEGACY ALIASES (template compat) ─── */
 .content { display: flex; flex-direction: column; }
 main section[id] {
-  scroll-margin-top: calc(var(--nav-h) + var(--s1));
+  scroll-margin-top: calc(var(--nav-h) + 1.75rem);
   padding-block: var(--section-py);
   padding-inline: max(var(--pad-x), env(safe-area-inset-left, 0px))
                   max(var(--pad-x), env(safe-area-inset-right, 0px));
 }
+
+#problem {
+  padding-block: calc(var(--section-py) * 0.65);
+}
+
 section.section--light { background: var(--bg); }
 section.section--tinted { background: var(--bg-alt); }
 
 .sec-head {
   text-align: center;
   max-width: 36rem;
-  margin: 0 auto var(--s3);
+  margin: 0 auto calc(var(--s3) * 0.75);
   width: 100%;
 }
 .sec-head h2 em { font-style: normal; font-weight: 700; color: var(--brand); }
@@ -1631,9 +1729,9 @@ section.section--tinted { background: var(--bg-alt); }
 
 @media (hover: none) {
   .btn-filled:hover, .btn-outlined:hover,
-  .pricing-card:hover, .pricing-card.featured:hover,
+  .pricing-card:hover,
   .review-card:hover,
-  .fab-wa:hover, .back-to-top:hover { transform: none; }
+  .fab-wa:hover { transform: none; }
   .pricing-card:hover .pc-img-wrap img { transform: none; }
 }
 
