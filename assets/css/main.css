@@ -159,6 +159,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .section--alt { background: var(--bg-alt); }
 .section--surface { background: var(--surface); }
 
+.section-shell {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
 /* ─── TYPOGRAPHY ─── */
 .kicker {
   display: inline-block;
@@ -718,7 +724,7 @@ body.nav-open .nav-overlay {
 .hero-poster {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: center 35%;
 }
@@ -784,12 +790,121 @@ body.nav-open .nav-overlay {
 @media (max-width: 63.99rem) {
   .hero-cta-secondary { display: none; }
   .hero-scroll { display: none; }
+  .back-to-top { display: none !important; }
+}
+
+/* ─── BENEFITS / WHY CHOOSE US ─── */
+#benefits {
+  padding: 72px 20px;
+  background: var(--bg-alt);
+}
+
+.benefits-shell {
+  display: grid;
+  gap: 2rem;
+}
+
+.benefits-head {
+  margin-bottom: 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.benefit-card {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding: 1.5rem;
+  min-height: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow-1);
+  transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s var(--ease);
+}
+
+.benefit-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-2);
+}
+
+.benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--brand-subtle);
+  color: var(--brand-dark);
+}
+
+.benefit-card h3 {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.benefit-card p {
+  margin: 0;
+  color: var(--text-3);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media (min-width: 48rem) {
+  #benefits {
+    padding: 96px 24px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .benefit-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .benefit-card {
+    padding: 1.6rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  #benefits {
+    padding: 120px 24px;
+  }
+
+  .benefits-shell {
+    gap: 3rem;
+  }
+
+  .benefit-card {
+    padding: 1.75rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .benefit-card:last-child {
+    grid-column: auto;
+  }
 }
 
 /* ─── SERVICES / PRICING (primary conversion section) ─── */
 #tours {
   background: var(--surface);
-  padding-block: calc(var(--section-py) * 0.85);
+  padding: 72px 20px;
   border-block: 1px solid var(--border);
 }
 
@@ -831,7 +946,7 @@ body.nav-open .nav-overlay {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-1);
-  padding: 1.125rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -869,7 +984,7 @@ body.nav-open .nav-overlay {
 }
 
 .pc-img-wrap {
-  margin: calc(-1 * 1.125rem) calc(-1 * 1.125rem) 0.875rem;
+  margin: calc(-1 * 1.25rem) calc(-1 * 1.25rem) 0.875rem;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
   overflow: hidden;
   background: var(--bg-alt);
@@ -1006,22 +1121,37 @@ body.nav-open .nav-overlay {
 }
 
 @media (min-width: 48rem) {
+  #tours {
+    padding: 96px 24px;
+  }
+
   .tours-row, .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     align-items: start;
   }
   .pricing-card {
-    padding: 1.25rem;
+    padding: 1.5rem;
   }
   .pc-img-wrap {
-    margin: calc(-1 * 1.25rem) calc(-1 * 1.25rem) 0.875rem;
+    margin: calc(-1 * 1.5rem) calc(-1 * 1.5rem) 1rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  #tours {
+    padding: 120px 24px;
+  }
+
+  .tours-row {
+    max-width: 1200px;
+    gap: 1.5rem;
   }
 }
 
 /* ─── ABOUT RITA ─── */
 #differentiators {
-  padding: 56px 20px;
+  padding: 72px 20px;
 }
 
 .founder-layout {
@@ -1046,10 +1176,10 @@ body.nav-open .nav-overlay {
 }
 
 .founder-intro h2 {
-  font-size: clamp(1.875rem, 9vw, 2.25rem);
-  line-height: 1.06;
+  font-size: var(--text-xl);
+  line-height: 1.1;
   letter-spacing: -0.03em;
-  max-width: 12ch;
+  max-width: 14ch;
   margin: 0;
 }
 
@@ -1058,7 +1188,7 @@ body.nav-open .nav-overlay {
   grid-area: photo;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 22px;
+  border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--bg-alt);
 }
@@ -1137,7 +1267,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 48rem) {
   #differentiators {
-    padding: 72px 24px;
+    padding: 96px 24px;
   }
 
   .founder-layout {
@@ -1156,7 +1286,6 @@ body.nav-open .nav-overlay {
   }
 
   .founder-intro h2 {
-    font-size: clamp(2.125rem, 5vw, 2.625rem);
     max-width: 14ch;
   }
 
@@ -1177,16 +1306,12 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 64rem) {
   #differentiators {
-    padding: 96px 24px;
+    padding: 120px 24px;
   }
 
   .founder-layout {
     grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
     gap: 0 64px;
-  }
-
-  .founder-intro h2 {
-    font-size: clamp(2.5rem, 4vw, 3.25rem);
   }
 
   .founder-bio,
@@ -1227,8 +1352,8 @@ body.nav-open .nav-overlay {
 
 .reviews-head h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  line-height: 1.08;
+  font-size: var(--text-xl);
+  line-height: 1.1;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -1327,10 +1452,10 @@ body.nav-open .nav-overlay {
   flex: 0 0 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  padding: 1.25rem;
+  padding: 1.5rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   box-shadow: 0 12px 30px rgba(18, 24, 16, 0.04);
   transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
 }
@@ -1482,24 +1607,35 @@ body.nav-open .nav-overlay {
 
 /* ─── FAQ ─── */
 #faq {
-  padding-block: calc(var(--section-py) * 1);
+  padding: 72px 20px;
   background:
     radial-gradient(circle at top, rgba(92, 107, 42, 0.05), transparent 36%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
     var(--bg-alt);
 }
 
-#faq .sec-head {
+.faq-cta-shell {
+  display: grid;
+  gap: 2rem;
+}
+
+#faq .sec-head,
+.faq-head {
   max-width: 44rem;
-  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  margin-bottom: 0;
+}
+
+.faq-cta-layout {
+  display: grid;
+  gap: 1.75rem;
 }
 
 .faq-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0.875rem;
-  max-width: 46rem;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   background: transparent;
   border: none;
   border-radius: 0;
@@ -1513,7 +1649,7 @@ body.nav-open .nav-overlay {
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(14px) saturate(1.15);
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
-  border-radius: 1.125rem;
+  border-radius: var(--radius-card);
   box-shadow: 0 10px 28px rgba(17, 24, 16, 0.04);
   transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease), background 0.25s var(--ease);
 }
@@ -1597,7 +1733,7 @@ details[open] .faq-a {
 
 @media (min-width: 48rem) {
   #faq {
-    padding-block: calc(var(--section-py) * 1.05);
+    padding: 96px 24px;
   }
 
   .faq-list {
@@ -1616,15 +1752,25 @@ details[open] .faq-a {
 }
 
 @media (min-width: 64rem) {
-  .faq-list {
-    max-width: var(--max-w);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.1rem 1.35rem;
+  #faq {
+    padding: 120px 24px;
+  }
+
+  .faq-cta-shell {
+    gap: 3rem;
+  }
+
+  .faq-cta-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.42fr);
+    gap: 3rem;
     align-items: start;
   }
 
-  .faq-item {
-    border-radius: 1.25rem;
+  .faq-list {
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
   }
 
   .faq-item summary {
@@ -1644,79 +1790,43 @@ details[open] .faq-a {
 
 /* ─── FINAL CTA ─── */
 #final-cta {
-  background:
-    linear-gradient(180deg, rgba(92, 107, 42, 0.045) 0%, rgba(92, 107, 42, 0.015) 100%),
-    var(--bg);
-  padding: 72px 20px 80px;
+  align-self: start;
 }
 
 .final-cta-shell {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
+  max-width: none;
+  margin: 0;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-2);
   color: var(--text);
-  text-align: center;
+  text-align: left;
 }
 
 .final-cta-shell h2 {
-  color: var(--text);
-  margin: 0 auto 1rem;
+  margin: 0 0 0.75rem;
   max-width: 12em;
-  font-size: clamp(2rem, 8vw, 2.5rem);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.625rem, 4vw, 2.125rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .final-cta-copy {
-  margin: 0 auto 1.75rem;
-  max-width: 46rem;
+  margin: 0 0 1.5rem;
+  max-width: 32rem;
   color: var(--text-2);
   font-size: 1rem;
   line-height: 1.55;
   text-wrap: pretty;
 }
 
-.booking-steps {
-  display: grid;
-  gap: 0.625rem;
-  margin: 0 auto 1.75rem;
-  max-width: 20rem;
-  text-align: left;
-}
-.booking-steps li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.5;
-}
-.booking-steps li::before {
-  counter-increment: step;
-  content: counter(step);
-  flex-shrink: 0;
-  width: 1.375rem;
-  height: 1.375rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.booking-steps { counter-reset: step; }
-
 .cta-actions {
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
+  justify-content: flex-start;
+  margin: 0;
 }
 
 .final-cta-shell .btn-filled {
@@ -1737,7 +1847,7 @@ details[open] .faq-a {
 }
 
 .final-cta-trust {
-  margin: 1rem auto 0;
+  margin: 1rem 0 0;
   color: var(--text-3);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -1749,34 +1859,23 @@ details[open] .faq-a {
 }
 
 @media (min-width: 40rem) {
-  #final-cta {
-    padding: 88px 24px 96px;
-  }
-
-  .final-cta-shell h2 {
-    font-size: clamp(2.5rem, 6vw, 3rem);
-  }
-
   .final-cta-copy {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
 
   .final-cta-shell .btn-filled {
-    width: min(60%, 22rem);
+    width: min(22rem, 100%);
   }
 }
 
 @media (min-width: 64rem) {
   #final-cta {
-    padding: 104px 24px 120px;
-  }
-
-  .final-cta-shell h2 {
-    font-size: clamp(3rem, 5vw, 4rem);
+    position: sticky;
+    top: calc(var(--nav-h) + 1.5rem);
   }
 
   .final-cta-copy {
-    font-size: 1.1875rem;
+    font-size: 1.125rem;
   }
 
   .final-cta-shell .btn-filled {
@@ -1792,7 +1891,7 @@ details[open] .faq-a {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.74);
   font-size: 0.875rem;
-  padding: 3.25rem var(--pad-x) max(4.25rem, calc(1.5rem + env(safe-area-inset-bottom)));
+  padding: 2.75rem var(--pad-x) max(3.5rem, calc(1.5rem + env(safe-area-inset-bottom)));
 }
 
 .footer-inner {
@@ -1800,7 +1899,7 @@ details[open] .faq-a {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .footer-main {
@@ -1808,7 +1907,7 @@ details[open] .faq-a {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .footer-brand { max-width: 22rem; }
@@ -1838,12 +1937,20 @@ details[open] .faq-a {
   max-width: 16rem;
 }
 
+.footer-nav {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
+  max-width: 22rem;
+}
+
 .footer-nav a {
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
-  min-height: 2.75rem;
-  padding: 0.375rem 0;
+  min-height: 2.5rem;
+  padding: 0.375rem 0.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1888,8 +1995,8 @@ details[open] .faq-a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-top: 2rem;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8125rem;
   text-align: center;
@@ -1909,7 +2016,8 @@ details[open] .faq-a {
 }
 
 .footer-legal-link {
-  min-height: 2.75rem;
+  min-height: 2.5rem;
+  padding-inline: 0.25rem;
   display: inline-flex;
   align-items: center;
   transition: color 0.2s var(--ease);
@@ -2107,7 +2215,6 @@ details[open] .faq-a {
 }
 
 @media (max-width: 47.99rem) {
-  .back-to-top { display: none !important; }
   .reviews-carousel {
     gap: 0.75rem;
   }
@@ -2224,9 +2331,6 @@ section.section--tinted { background: var(--bg-alt); }
 
 .sec-head,
 .tours-row,
-.problem-wrap,
-.problem-grid,
-.booking-shell,
 .reviews-panel,
 .faq-list,
 .final-cta-shell {
@@ -2261,6 +2365,7 @@ section.section--tinted { background: var(--bg-alt); }
 
 @media (hover: none) {
   .btn-filled:hover, .btn-outlined:hover,
+  .benefit-card:hover,
   .pricing-card:hover,
   .review-card:hover,
   .fab-wa:hover { transform: none; }

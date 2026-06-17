@@ -1,125 +1,112 @@
-/** Site configuration for About Culture Things. */
-const SITE = {
-  url: 'https://aboutculturethings.com',
-  name: 'About Culture Things',
-  shortName: 'Culture Things',
-  email: 'aboutculturethings@gmail.com',
-  phone: '+351968510019',
-  whatsapp: '351968510019',
-  instagram: 'https://www.instagram.com/aboutculturethings/',
-  social: {
-    instagram: 'https://www.instagram.com/aboutculturethings/',
-    linkedin: '',
-    facebook: '',
-    tiktok: ''
-  },
-  legal: {
-    privacy: 'https://aboutculturethings.com/privacy',
-    terms: 'https://aboutculturethings.com/terms',
-    cookies: 'https://aboutculturethings.com/cookies'
-  },
-  tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
-  twitter: '@aboutculturethings',
-  themeColor: '#5C6B2A',
-  heroPoster: 'assets/images/hero.webp',
-  ogImage: 'assets/images/hero.webp',
-  locale: { en: 'en-GB', es: 'es-ES', pt: 'pt-PT' },
-  geo: {
-    region: 'PT-11',
-    placename: 'Sintra, Lisbon, Portugal',
-    position: '38.7977;-9.3900'
-  },
-  credit: { url: 'https://fscdigital.com/', label: 'Website by FSC Digital' },
-  analytics: {
-    gtmId: '',       // e.g. 'GTM-XXXXXXX'
-    ga4Id: '',       // e.g. 'G-XXXXXXXXXX'
-    enabled: true
-  },
-  waMessages: {
-    default: 'Hi Rita, I\'d like to book a tour.',
-    tour1: 'Hi Rita, I\'d like to book the Sintra Complete Experience.',
-    tour2: 'Hi Rita, I\'d like to book the Sintra & Hidden Beaches Experience.',
-    about: 'Hi Rita, I\'d like to learn more about your tours.',
-    faq: 'Hi Rita, I have a question.',
-    book: 'Hi Rita, I\'d like to book a tour.'
+/** Link/contact adapter derived from content/site.js. */
+(function () {
+  const cfg = window.SITE_CONTENT || SITE_CONTENT;
+  const business = cfg.business || {};
+  const links = cfg.links || {};
+
+  window.SITE = {
+    url: business.url,
+    name: business.name,
+    shortName: business.shortName,
+    email: business.email,
+    phone: business.phone,
+    whatsapp: business.whatsapp,
+    instagram: links.instagram,
+    social: links.social || {},
+    legal: links.legal || {},
+    tripadvisor: links.tripadvisor,
+    twitter: cfg.schema && cfg.schema.twitter,
+    themeColor: business.themeColor,
+    heroPoster: cfg.assets && cfg.assets.hero && cfg.assets.hero.full,
+    ogImage: cfg.assets && cfg.assets.ogImage,
+    locale: (cfg.languages || []).reduce(function (acc, lang) {
+      acc[lang.code] = lang.htmlLang;
+      return acc;
+    }, {}),
+    geo: {
+      region: business.location && business.location.geoRegion,
+      placename: business.location && business.location.geoPlacename,
+      position: business.location && business.location.geoPosition
+    },
+    credit: { url: 'https://fscdigital.com/', label: 'Website by FSC Digital' },
+    analytics: {
+      gtmId: '',
+      ga4Id: '',
+      enabled: true
+    },
+    waMessages: cfg.whatsappMessages || {}
+  };
+
+  function siteWhatsAppUrl(message) {
+    const text = message || SITE.waMessages.default;
+    return 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(text);
   }
-};
 
-function siteWhatsAppUrl(message) {
-  const text = message || SITE.waMessages.default;
-  return 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(text);
-}
+  function siteEmailUrl(subject) {
+    return 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject || 'Tour enquiry');
+  }
 
-function siteEmailUrl(subject) {
-  return 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject || 'Tour enquiry');
-}
+  function applySiteConfig() {
+    document.querySelectorAll('[data-site-wa]').forEach(function (el) {
+      var key = el.getAttribute('data-site-wa');
+      var msg = SITE.waMessages[key] || SITE.waMessages.default;
+      el.href = siteWhatsAppUrl(msg);
+      if (el.getAttribute('target') === '_blank') {
+        el.rel = 'noopener noreferrer';
+      }
+    });
 
-/** Wire data-site-* attributes and centralise outbound links from SITE config. */
-function applySiteConfig() {
-  document.querySelectorAll('[data-site-wa]').forEach(function (el) {
-    var key = el.getAttribute('data-site-wa');
-    var msg = SITE.waMessages[key] || SITE.waMessages.default;
-    el.href = siteWhatsAppUrl(msg);
-    if (el.getAttribute('target') === '_blank') {
+    document.querySelectorAll('[data-site-email]').forEach(function (el) {
+      var subject = el.getAttribute('data-site-email-subject') || 'Tour enquiry';
+      el.href = siteEmailUrl(subject);
+    });
+
+    document.querySelectorAll('[data-site-instagram]').forEach(function (el) {
+      el.href = SITE.instagram;
       el.rel = 'noopener noreferrer';
-    }
-  });
-
-  document.querySelectorAll('[data-site-email]').forEach(function (el) {
-    var subject = el.getAttribute('data-site-email-subject') || 'Tour enquiry';
-    el.href = siteEmailUrl(subject);
-  });
-
-  document.querySelectorAll('[data-site-instagram]').forEach(function (el) {
-    el.href = SITE.instagram;
-    el.rel = 'noopener noreferrer';
-    el.target = '_blank';
-  });
-
-  document.querySelectorAll('[data-site-social]').forEach(function (el) {
-    var network = el.getAttribute('data-site-social');
-    var url = SITE.social && SITE.social[network];
-    if (!url) {
-      el.remove();
-      return;
-    }
-    el.href = url;
-    el.rel = 'noopener noreferrer';
-    el.target = '_blank';
-  });
-
-  if (SITE.legal) {
-    document.querySelectorAll('[data-site-privacy]').forEach(function (el) {
-      if (SITE.legal.privacy) el.href = SITE.legal.privacy;
+      el.target = '_blank';
     });
-    document.querySelectorAll('[data-site-terms]').forEach(function (el) {
-      if (SITE.legal.terms) el.href = SITE.legal.terms;
+
+    document.querySelectorAll('[data-site-social]').forEach(function (el) {
+      var network = el.getAttribute('data-site-social');
+      var url = SITE.social && SITE.social[network];
+      if (!url) {
+        el.remove();
+        return;
+      }
+      el.href = url;
+      el.rel = 'noopener noreferrer';
+      el.target = '_blank';
     });
+
+    var privacyLink = document.querySelector('.footer-legal-link[data-i18n="footer-privacy"]');
+    if (privacyLink && SITE.legal && SITE.legal.privacy) privacyLink.href = SITE.legal.privacy;
+    var termsLink = document.querySelector('.footer-legal-link[data-i18n="footer-terms"]');
+    if (termsLink && SITE.legal && SITE.legal.terms) termsLink.href = SITE.legal.terms;
+    var cookiesLink = document.querySelector('.footer-legal-link[data-i18n="footer-cookies"]');
+    if (cookiesLink && SITE.legal && SITE.legal.cookies) cookiesLink.href = SITE.legal.cookies;
+
+    document.querySelectorAll('[data-site-tripadvisor]').forEach(function (el) {
+      el.href = SITE.tripadvisor;
+      el.rel = 'noopener noreferrer';
+      el.target = '_blank';
+    });
+
+    var credit = document.querySelector('[data-site-credit]');
+    if (credit && SITE.credit) {
+      credit.href = SITE.credit.url;
+      credit.textContent = SITE.credit.label;
+      credit.target = '_blank';
+      credit.rel = 'noopener noreferrer';
+    }
+
+    var yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
-  var privacyLink = document.querySelector('.footer-legal-link[data-i18n="footer-privacy"]');
-  if (privacyLink && SITE.legal && SITE.legal.privacy) privacyLink.href = SITE.legal.privacy;
-  var termsLink = document.querySelector('.footer-legal-link[data-i18n="footer-terms"]');
-  if (termsLink && SITE.legal && SITE.legal.terms) termsLink.href = SITE.legal.terms;
-  var cookiesLink = document.querySelector('.footer-legal-link[data-i18n="footer-cookies"]');
-  if (cookiesLink && SITE.legal && SITE.legal.cookies) cookiesLink.href = SITE.legal.cookies;
+  window.applySiteConfig = applySiteConfig;
+  window.siteWhatsAppUrl = siteWhatsAppUrl;
+  window.siteEmailUrl = siteEmailUrl;
 
-  document.querySelectorAll('[data-site-tripadvisor]').forEach(function (el) {
-    el.href = SITE.tripadvisor;
-    el.rel = 'noopener noreferrer';
-    el.target = '_blank';
-  });
-
-  var credit = document.querySelector('[data-site-credit]');
-  if (credit && SITE.credit) {
-    credit.href = SITE.credit.url;
-    credit.textContent = SITE.credit.label;
-    credit.target = '_blank';
-    credit.rel = 'noopener noreferrer';
-  }
-
-  var yearEl = document.getElementById('footer-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-}
-
-document.addEventListener('DOMContentLoaded', applySiteConfig);
+  document.addEventListener('DOMContentLoaded', applySiteConfig);
+})();

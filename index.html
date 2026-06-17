@@ -29,9 +29,10 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="alternate" type="text/plain" href="https://aboutculturethings.com/llms.txt" title="LLM site summary">
 
+<script src="content/site.js"></script>
 <script>
 (function(){
-  var s=['en','es','pt'], p=new URLSearchParams(location.search), u=p.get('lang');
+  var s=(window.SITE_CONTENT&&window.SITE_CONTENT.languages?window.SITE_CONTENT.languages.map(function(l){return l.code;}):['en','es','pt']), p=new URLSearchParams(location.search), u=p.get('lang');
   if(u&&s.indexOf(u)!==-1) return;
   var b=navigator.languages||[navigator.language], i, c;
   for(i=0;i<b.length;i++){ c=(b[i]||'').split('-')[0].toLowerCase(); if(s.indexOf(c)!==-1){ if(c!=='en') location.replace(location.pathname+'?lang='+c+location.hash); return; }}
@@ -99,7 +100,7 @@
       "dateModified": "2026-06-17",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": [".hero h1", ".hero-desc", "#tours-heading", "#reviews-heading", "#faq-heading"]
+        "cssSelector": [".hero h1", ".hero-desc", "#benefits-heading", "#tours-heading", "#reviews-heading", "#faq-heading"]
       }
     },
     {
@@ -263,7 +264,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260617-3">
+<link rel="stylesheet" href="assets/css/main.css?v=20260617-7">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -298,15 +299,14 @@
       <span class="logo-name">About Culture Things</span>
     </a>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="#top" class="nav-tab-wide" data-i18n="nav-home">Home</a>
       <a href="#tours" data-i18n="nav-tours">Tours</a>
-      <a href="#differentiators" class="nav-tab-wide" data-i18n="nav-why">About Rita</a>
       <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+      <a href="#differentiators" class="nav-tab-wide" data-i18n="nav-why">About Rita</a>
       <a href="#faq" data-i18n="nav-faq">FAQ</a>
     </nav>
     <div class="nav-actions">
       <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled nav-book-btn" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="nav-book" data-i18n-aria="nav-book-aria" aria-label="Book on WhatsApp">
-        <span data-i18n="nav-book">Book</span>
+        <span data-i18n="nav-book">Check dates</span>
       </a>
     </div>
     <div class="nav-utility">
@@ -353,10 +353,9 @@
     </button>
   </div>
   <div class="mob-nav-body">
-    <a href="#top" data-i18n="nav-home">Home</a>
     <a href="#tours" data-i18n="nav-tours">Tours</a>
-    <a href="#differentiators" data-i18n="nav-why">About Rita</a>
     <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+    <a href="#differentiators" data-i18n="nav-why">About Rita</a>
     <a href="#faq" data-i18n="nav-faq">FAQ</a>
   </div>
   <div class="mob-nav-footer">
@@ -367,7 +366,7 @@
     </div>
     <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="mob-cta btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="mob-book">
       <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-      <span data-i18n="nav-book">Book</span>
+      <span data-i18n="nav-book">Check dates</span>
     </a>
     <div class="mob-contact-links" aria-label="Contact links">
       <a href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer" data-site-instagram data-i18n="foot-instagram">Instagram</a>
@@ -382,7 +381,7 @@
     <div class="hero-copy">
       <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
       <h1 data-i18n="hero-h1">Private Sintra tours with a local guide</h1>
-      <p class="hero-desc" data-i18n="hero-desc">Your own group, your pace. Pena Palace, hidden beaches, and the Atlantic coast with Rita Almeida — from €275 per private group (up to 4).</p>
+      <p class="hero-desc" data-i18n="hero-desc">Private tours from €275 per group, with Lisbon pickup, flexible pacing, and Rita Almeida as your local guide.</p>
       <div class="hero-ctas">
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="hero-primary">
           <svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -417,12 +416,46 @@
 <!-- ── MAIN ── -->
 <main id="main" class="content">
 
-  <!-- 2. TOURS / SOLUTION -->
+  <!-- 2. BENEFITS / WHY CHOOSE US -->
+  <section id="benefits" class="section--tinted benefits-section" aria-labelledby="benefits-heading">
+    <div class="section-shell benefits-shell">
+      <div class="sec-head benefits-head">
+        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="benefits-kicker">Why choose us</span></div>
+        <h2 id="benefits-heading" class="anim-ready" data-i18n="benefits-h2">A private tour designed around your pace</h2>
+        <p class="sec-desc" data-i18n="benefits-desc">Skip the shared bus routine and discover Sintra with a local guide, simple planning, and room to enjoy the day.</p>
+      </div>
+      <div class="benefits-grid" data-i18n-aria="benefits-aria" aria-label="Why choose About Culture Things">
+        <article class="benefit-card reveal d1">
+          <span class="benefit-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <h3 data-i18n="benefit1-title">Your pace, not a group schedule</h3>
+          <p data-i18n="benefit1-text">Private routes for up to 4 guests, with time for viewpoints, photos, and quiet stops.</p>
+        </article>
+        <article class="benefit-card reveal d2">
+          <span class="benefit-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 17s5-4.7 5-9A5 5 0 005 8c0 4.3 5 9 5 9z" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="8" r="1.6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <h3 data-i18n="benefit2-title">Local insight beyond the checklist</h3>
+          <p data-i18n="benefit2-text">Rita blends famous sights with stories, coastal views, and places many visitors miss.</p>
+        </article>
+        <article class="benefit-card reveal d3">
+          <span class="benefit-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 7h12l-1.2 6.5a2 2 0 01-2 1.5H7.2a2 2 0 01-2-1.5L4 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 7V5.8A3 3 0 0110 3a3 3 0 013 2.8V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <h3 data-i18n="benefit3-title">Easy from first message to pickup</h3>
+          <p data-i18n="benefit3-text">Check dates on WhatsApp, confirm your route, and start with Lisbon pickup included.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. OFFER / SERVICES / PRICING -->
   <section id="tours" class="section--light" aria-labelledby="tours-heading">
     <div class="sec-head">
-      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="tours-kicker">Tours</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
-      <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Choose your route</h2>
-      <p class="sec-desc" data-i18n="tours-desc">Two private routes. Lisbon pickup included.</p>
+      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="tours-kicker">Offer</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
+      <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Choose your private Sintra experience</h2>
+      <p class="sec-desc" data-i18n="tours-desc">Two ready-to-book routes with clear pricing, private transport, and flexible pacing.</p>
     </div>
     <ul class="pricing-trust" data-i18n-aria="tours-trust-aria" aria-label="Tour guarantees">
       <li data-i18n="trust-private">Private-only tours</li>
@@ -430,7 +463,7 @@
       <li data-i18n="trust-cancel">Free reschedule with 24h notice</li>
     </ul>
     <div class="tours-row">
-      <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Full day · First visit">
+      <article class="pricing-card offer-card featured reveal d1" data-badge-key="badge-popular" data-badge="Full day · First visit">
         <div class="pc-img-wrap">
           <picture>
             <source srcset="assets/images/tour-full-sintra-coast-640.webp" type="image/webp">
@@ -448,7 +481,7 @@
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20Complete%20Experience." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="tour1" data-analytics-label="tour1-book">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-            <span data-i18n="cta-tour1">Book Complete Experience</span>
+            <span data-i18n="cta-tour1">Check dates for this tour</span>
           </a>
         </div>
         <details class="pc-details">
@@ -463,7 +496,7 @@
           <p class="pc-places" data-i18n="tour1-places">Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais</p>
         </details>
       </article>
-      <article class="pricing-card alt reveal d2" data-badge-key="badge-value" data-badge="Half day · Coast &amp; beaches">
+      <article class="pricing-card offer-card alt reveal d2" data-badge-key="badge-value" data-badge="Half day · Coast &amp; beaches">
         <div class="pc-img-wrap">
           <picture>
             <source srcset="assets/images/tour-hidden-beaches-640.webp" type="image/webp">
@@ -481,7 +514,7 @@
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20%26%20Hidden%20Beaches%20Experience." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="tour2" data-analytics-label="tour2-book">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-            <span data-i18n="cta-tour2">Book Hidden Beaches</span>
+            <span data-i18n="cta-tour2">Check dates for this tour</span>
           </a>
         </div>
         <details class="pc-details">
@@ -499,40 +532,12 @@
     </div>
   </section>
 
-  <!-- 4. ABOUT RITA -->
-  <section id="differentiators" class="section--tinted founder-section" aria-labelledby="diff-heading">
-    <span id="why" class="anchor-target" aria-hidden="true"></span>
-    <div class="founder-layout" id="about">
-      <div class="founder-intro">
-        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="diff-kicker">About Rita</span></div>
-        <h2 id="diff-heading" class="anim-ready" data-i18n="diff-h2">Meet Rita, your local Sintra guide</h2>
-      </div>
-      <div class="founder-photo about-photo reveal">
-        <picture>
-          <source srcset="assets/images/rita.webp" type="image/webp">
-          <img src="assets/images/rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="640" height="800">
-        </picture>
-      </div>
-      <div class="founder-copy">
-        <p class="founder-bio about-bio" data-i18n="about-bio">Rita is a Sintra-born private guide who creates relaxed, personal tours for travelers who want more than a standard sightseeing route. She combines local stories, beautiful viewpoints, and hidden places to make each experience feel natural, warm, and easy to enjoy. Her tours are small, flexible, and shaped around people who want to discover Sintra with someone who truly knows the area.</p>
-        <ul class="founder-trust diff-points" data-i18n-aria="about-trust-aria" aria-label="Rita trust points">
-          <li class="reveal d1" data-i18n="diff1-h3">Sintra-born local guide</li>
-          <li class="reveal d2" data-i18n="diff2-h3">Small private tours</li>
-          <li class="reveal d3" data-i18n="diff3-h3">English / Portuguese / Spanish</li>
-        </ul>
-        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours." class="founder-cta btn-outlined" target="_blank" rel="noopener noreferrer" data-site-wa="about" data-analytics-label="about-rita-whatsapp">
-          <span data-i18n="about-cta">Message Rita on WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. REVIEWS -->
+  <!-- 4. SOCIAL PROOF / REVIEWS -->
   <section id="reviews" class="section--light" aria-labelledby="reviews-heading">
     <div class="reviews-panel">
       <div class="reviews-head">
-        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="reviews-kicker">Reviews</span></div>
-        <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">What guests say</h2>
+        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="reviews-kicker">Social proof</span></div>
+        <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">What guests say after touring with Rita</h2>
       </div>
       <div class="reviews-trust" data-i18n-aria="reviews-trust-aria" aria-label="TripAdvisor rating summary">
         <p class="reviews-trust-line"><span class="reviews-trust-stars" aria-hidden="true">★★★★★</span> <span class="reviews-trust-value" aria-label="5.0 out of 5 average rating">5.0/5</span> <span data-i18n="reviews-average">average rating</span></p>
@@ -626,52 +631,80 @@
     </div>
   </section>
 
-  <!-- 6. FAQ -->
-  <section id="faq" class="section--tinted" aria-labelledby="faq-heading">
-    <div class="sec-head">
-      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="faq-kicker">FAQ</span></div>
-      <h2 id="faq-heading" class="anim-ready" data-i18n="faq-h2">Common questions</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq1-q">What do the Sintra tours include?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq1-a">Pickup in Lisbon, private guide (Rita Almeida), and transport. Max 4 guests. Palace tickets are not included.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq2-q">How do I book?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq2-a">Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq3-q">Can I cancel or reschedule?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq3-a">Yes — with 24 hours' notice at no cost.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq4-q">Where does pickup happen?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq4-a">From your hotel or accommodation in Lisbon. Rita confirms details when you book.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq5-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq5-a">Yes. Rita adapts stops, pace, and route for your group, weather, and interests.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq6-q">What languages can the tour be done in?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq6-a">Rita offers tours in English, Portuguese, and Spanish, so guests can relax and follow along easily.</p>
-      </details>
+  <!-- 5. FOUNDER / ABOUT / TRUST -->
+  <section id="differentiators" class="section--tinted founder-section" aria-labelledby="diff-heading">
+    <span id="why" class="anchor-target" aria-hidden="true"></span>
+    <div class="founder-layout" id="about">
+      <div class="founder-intro">
+        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="diff-kicker">About Rita</span></div>
+        <h2 id="diff-heading" class="anim-ready" data-i18n="diff-h2">Meet the local guide behind your tour</h2>
+      </div>
+      <div class="founder-photo about-photo reveal">
+        <picture>
+          <source srcset="assets/images/rita.webp" type="image/webp">
+          <img src="assets/images/rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="640" height="800">
+        </picture>
+      </div>
+      <div class="founder-copy">
+        <p class="founder-bio about-bio" data-i18n="about-bio">Rita is a Sintra-born private guide who designs calm, personal tours for travelers who want more than a standard sightseeing route. She brings local context, flexible pacing, and carefully chosen stops so your day feels easy, personal, and well looked after.</p>
+        <ul class="founder-trust diff-points" data-i18n-aria="about-trust-aria" aria-label="Rita trust points">
+          <li class="reveal d1" data-i18n="diff1-h3">Sintra-born local guide</li>
+          <li class="reveal d2" data-i18n="diff2-h3">Small private tours</li>
+          <li class="reveal d3" data-i18n="diff3-h3">English / Portuguese / Spanish</li>
+        </ul>
+        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours." class="founder-cta btn-outlined" target="_blank" rel="noopener noreferrer" data-site-wa="about" data-analytics-label="about-rita-whatsapp">
+          <span data-i18n="about-cta">Message Rita on WhatsApp</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- 7. FINAL CTA -->
-  <section id="final-cta" class="section--light" aria-labelledby="final-cta-heading">
-    <div class="final-cta-shell">
-      <div class="final-cta-main">
-        <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Ready to explore Sintra?</h2>
-        <p class="final-cta-copy" data-i18n="cta-tagline">Check your date and plan a private route with Rita.</p>
-        <div class="cta-actions">
-          <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled btn-massive" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="final-cta">
-            <span data-i18n="cta-final">Message Rita now</span>
-          </a>
+  <!-- 6. FAQ + FINAL CTA -->
+  <section id="faq" class="section--tinted" aria-labelledby="faq-heading">
+    <div class="section-shell faq-cta-shell">
+      <div class="sec-head faq-head">
+        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="faq-kicker">FAQ</span></div>
+        <h2 id="faq-heading" class="anim-ready" data-i18n="faq-h2">Common questions before you book</h2>
+      </div>
+      <div class="faq-cta-layout">
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq1-q">What do the Sintra tours include?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq1-a">Pickup in Lisbon, private guide (Rita Almeida), and transport. Max 4 guests. Palace tickets are not included.</p>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq2-q">How do I book?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq2-a">Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.</p>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq3-q">Can I cancel or reschedule?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq3-a">Yes — with 24 hours' notice at no cost.</p>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq4-q">Where does pickup happen?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq4-a">From your hotel or accommodation in Lisbon. Rita confirms details when you book.</p>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq5-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq5-a">Yes. Rita adapts stops, pace, and route for your group, weather, and interests.</p>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq6-q">What languages can the tour be done in?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p class="faq-a" data-i18n="faq6-a">Rita offers tours in English, Portuguese, and Spanish, so guests can relax and follow along easily.</p>
+          </details>
         </div>
-        <p class="final-cta-trust" data-i18n="cta-trust">✓ Private tours • Free reschedule with 24h notice</p>
+        <aside id="final-cta" class="final-cta-shell" aria-labelledby="final-cta-heading">
+          <div class="final-cta-main">
+            <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Ready to plan your private Sintra tour?</h2>
+            <p class="final-cta-copy" data-i18n="cta-tagline">Send your preferred date and Rita will help you choose the best route.</p>
+            <div class="cta-actions">
+              <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20check%20dates%20for%20a%20private%20Sintra%20tour." class="btn-filled btn-massive" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="final-cta">
+                <span data-i18n="cta-final">Check dates on WhatsApp</span>
+              </a>
+            </div>
+            <p class="final-cta-trust" data-i18n="cta-trust">✓&nbsp;Private tours • Lisbon pickup • Free reschedule with 24h notice</p>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -687,9 +720,9 @@
         <p class="footer-tagline" data-i18n="footer-note">Private Sintra tours — local guide, your pace.</p>
       </div>
       <nav class="footer-nav footer-cell" data-i18n-aria="footer-nav-aria" aria-label="Site sections">
-        <a href="#top" data-i18n="nav-home">Home</a>
         <a href="#tours" data-i18n="nav-tours">Tours</a>
         <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+        <a href="#differentiators" data-i18n="nav-why">About Rita</a>
         <a href="#faq" data-i18n="nav-faq">FAQ</a>
       </nav>
       <nav class="footer-social footer-cell" data-i18n-aria="footer-social-aria" aria-label="Social media">
@@ -734,6 +767,7 @@
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/analytics.js" defer></script>
 <script src="assets/js/i18n.js" defer></script>
-<script src="assets/js/site.js?v=20260617-4" defer></script>
+<script src="assets/js/template-renderer.js" defer></script>
+<script src="assets/js/site.js?v=20260617-7" defer></script>
 </body>
 </html>

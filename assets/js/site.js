@@ -37,16 +37,21 @@ function updateDocumentMeta(lang) {
 
 function updateStructuredData(lang) {
   const t = i18n[lang];
+  const c = window.SITE_CONTENT && window.SITE_CONTENT.content && window.SITE_CONTENT.content[lang];
   const node = document.getElementById('structured-data');
   if (!t || !node) return;
   let data;
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  faq.mainEntity = [1, 2, 3, 4, 5, 6].map(n => ({
+  const faqItems = c && c.faq && c.faq.items ? c.faq.items : [1, 2, 3, 4, 5, 6].map(n => ({
+    question: t['faq' + n + '-q'],
+    answer: t['faq' + n + '-a']
+  }));
+  faq.mainEntity = faqItems.map(item => ({
     '@type': 'Question',
-    name: t['faq' + n + '-q'],
-    acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
   }));
   node.textContent = JSON.stringify(data);
 }
@@ -59,6 +64,8 @@ function applyLang(lang) {
   var url = new URL(location.href);
   if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
   history.replaceState({}, '', url);
+
+  if (typeof window.renderSiteContent === 'function') window.renderSiteContent(lang);
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -102,8 +109,7 @@ function applyLang(lang) {
     langTrigger.setAttribute('aria-label', `Select language. Current language: ${langNames[lang] || lang}.`);
   }
 
-  const htmlLang = { en: 'en-GB', es: 'es-ES', pt: 'pt-PT' };
-  document.documentElement.lang = htmlLang[lang] || lang;
+  document.documentElement.lang = (window.htmlLocales && window.htmlLocales[lang]) || lang;
   updateDocumentMeta(lang);
   updateStructuredData(lang);
   closeLangDropdown();
@@ -174,6 +180,30 @@ document.querySelectorAll('.lang-option').forEach(btn => {
   });
 });
 
+if (langDropdown) {
+  langDropdown.addEventListener('click', e => {
+    const btn = e.target.closest('.lang-option');
+    if (btn) applyLang(btn.dataset.lang);
+  });
+  langDropdown.addEventListener('keydown', e => {
+    const btn = e.target.closest('.lang-option');
+    if (!btn) return;
+    const options = Array.from(document.querySelectorAll('.lang-option'));
+    const index = options.indexOf(btn);
+    if (index === -1) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      options[(index + 1) % options.length].focus();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      options[(index - 1 + options.length) % options.length].focus();
+    } else if (e.key === 'Escape') {
+      closeLangDropdown();
+      langTrigger?.focus();
+    }
+  });
+}
+
 document.addEventListener('click', e => {
   if (langSwitcher && !langSwitcher.contains(e.target)) closeLangDropdown();
 });
@@ -185,7 +215,7 @@ document.addEventListener('keydown', e => {
 (function(){
   const params = new URLSearchParams(location.search);
   const urlLang = params.get('lang');
-  const supported = ['en','es','pt'];
+  const supported = Object.keys(i18n);
   const lang = (urlLang && supported.includes(urlLang)) ? urlLang : 'en';
   applyLang(lang);
 })();
@@ -213,9 +243,8 @@ window.addEventListener('scroll', () => {
 
 // Active nav link — Intersection Observer (more reliable than offsetTop)
 (function(){
-  const navLinks = document.querySelectorAll('.nav-tabs a[href^="#"]');
   const sections = document.querySelectorAll('#top, main section[id]');
-  if (!navLinks.length || !sections.length) return;
+  if (!sections.length) return;
   const visible = new Map();
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -227,7 +256,7 @@ window.addEventListener('scroll', () => {
     visible.forEach((ratio, id) => {
       if (ratio >= best) { best = ratio; current = id; }
     });
-    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    document.querySelectorAll('.nav-tabs a[href^="#"]').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
   }, { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
   sections.forEach(sec => obs.observe(sec));
 })();
@@ -292,11 +321,12 @@ burger.addEventListener('click', navOpen);
 var mobNavClose = mobNav.querySelector('.mob-nav-close');
 if (mobNavClose) mobNavClose.addEventListener('click', navClose);
 if (navOverlay) navOverlay.addEventListener('click', navClose);
-mobNav.querySelectorAll('a').forEach(function (a) {
-  a.addEventListener('click', navClose);
+mobNav.addEventListener('click', function (e) {
+  if (e.target.closest('a')) navClose();
 });
-document.querySelectorAll('.mob-lang-btn, .footer-lang-btn').forEach(function (btn) {
-  btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.mob-lang-btn, .footer-lang-btn');
+  if (btn) applyLang(btn.dataset.lang);
 });
 
 mqDesktop.addEventListener('change', () => {
@@ -326,7 +356,7 @@ document.addEventListener('keydown', e => {
   const dotsWrap = document.getElementById('reviews-dots');
   if (!viewport || !track || !prevBtn || !nextBtn || !dotsWrap) return;
 
-  const cards = Array.from(track.querySelectorAll('.review-card'));
+  let cards = Array.from(track.querySelectorAll('.review-card'));
   if (!cards.length) return;
 
   let visibleCount = 0;
@@ -452,7 +482,12 @@ document.addEventListener('keydown', e => {
   mqTablet.addEventListener('change', handleResize);
 
   window.refreshReviewsCarousel = function () {
+    cards = Array.from(track.querySelectorAll('.review-card'));
+    if (!cards.length) return;
+    visibleCount = getVisibleCount();
+    activeIndex = clampIndex(activeIndex);
     buildDots();
+    viewport.scrollTo({ left: cards[activeIndex].offsetLeft, behavior: 'auto' });
     updateState();
   };
 
@@ -490,3 +525,11 @@ document.querySelectorAll('.faq-item').forEach(item => {
     });
   });
 });
+
+document.addEventListener('toggle', e => {
+  const item = e.target;
+  if (!item.classList || !item.classList.contains('faq-item') || !item.open) return;
+  document.querySelectorAll('.faq-item[open]').forEach(other => {
+    if (other !== item) other.open = false;
+  });
+}, true);
