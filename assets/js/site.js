@@ -1,36 +1,3 @@
-// ─── SCROLL PROGRESS ─────────────────────────────────
-(function(){
-  var bar = document.getElementById('scroll-progress-bar');
-  if (!bar) return;
-  function updateProgress() {
-    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = docHeight > 0 ? ((scrollTop / docHeight) * 100).toFixed(2) + '%' : '0%';
-  }
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
-})();
-
-// ─── HERO PARALLAX ───────────────────────────────────
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var hero = document.querySelector('.hero');
-  var bg = document.querySelector('.hero-poster');
-  if (!hero || !bg) return;
-  var ticking = false;
-  window.addEventListener('scroll', function(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var y = window.scrollY;
-      if (y < hero.offsetHeight) {
-        bg.style.transform = 'scale(1.02) translateY(' + (y * 0.12).toFixed(1) + 'px)';
-      }
-      ticking = false;
-    });
-  }, { passive: true });
-})();
-
 // ─── HERO VIDEO ──────────────────────────────────────
 (function(){
   var video = document.querySelector('.hero-bg-video');
@@ -103,7 +70,7 @@ function updateStructuredData(lang) {
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  faq.mainEntity = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => ({
+  faq.mainEntity = [1, 2, 3, 4, 5].map(n => ({
     '@type': 'Question',
     name: t['faq' + n + '-q'],
     acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
@@ -370,42 +337,14 @@ const revealObs = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// ─── STAGGERED CARD REVEAL ───────────────────────────
-const staggerObs = new IntersectionObserver(entries => {
+const headObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    const cards = entry.target.querySelectorAll('.pricing-card, .review-card');
-    cards.forEach((card, i) => {
-      card.style.transitionDelay = (i * 0.08) + 's';
-      card.classList.add('in');
-    });
-    staggerObs.unobserve(entry.target);
+    entry.target.querySelectorAll('.anim-ready').forEach(el => el.classList.add('anim-visible'));
+    headObs.unobserve(entry.target);
   });
-}, { threshold: 0.05 });
-
-document.querySelectorAll('.tours-row, .reviews-grid').forEach(el => {
-  el.querySelectorAll('.pricing-card, .review-card').forEach(card => {
-    card.classList.add('reveal');
-  });
-  staggerObs.observe(el);
-});
-
-// ─── EYEBROW LINE ANIMATION ──────────────────────────
-const eyeObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.anim-ready').forEach(el => el.classList.add('anim-visible'));
-      const line = e.target.querySelector('.sec-eyebrow-line');
-      if (line) {
-        line.style.width = '0';
-        line.style.transition = 'width 0.8s cubic-bezier(.22,1,.36,1) 0.1s';
-        requestAnimationFrame(() => { line.style.width = '2rem'; });
-      }
-      eyeObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.2 });
-document.querySelectorAll('.sec-head').forEach(el => eyeObs.observe(el));
+}, { threshold: 0.15 });
+document.querySelectorAll('.sec-head, #final-cta').forEach(el => headObs.observe(el));
 
 // ─── FAQ ACCORDION (one open at a time) ──────────────
 document.querySelectorAll('.faq-item').forEach(item => {
