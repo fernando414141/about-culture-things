@@ -10,7 +10,7 @@ const SITE_CONTENT = {
     shortName: 'Culture Things',
     industry: 'Private tours',
     url: 'https://aboutculturethings.com',
-    themeColor: '#5C6B2A',
+    themeColor: '#4F6B52',
     email: 'aboutculturethings@gmail.com',
     phone: '+351968510019',
     whatsapp: '351968510019',

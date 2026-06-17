@@ -6,22 +6,26 @@
 :root {
   color-scheme: light;
 
-  /* Brand — override per client in :root or site-config */
-  --brand:        #5C6B2A;
-  --brand-dark:   #3D4A1C;
-  --brand-light:  #7A8A3A;
-  --brand-subtle: rgba(92, 107, 42, 0.07);
+  /* About Culture Things — Sintra / Atlantic / forest (from logo) */
+  --brand:        #4F6B52; /* forest sage — emblem */
+  --brand-dark:   #3A5240;
+  --brand-light:  #6B8570;
+  --brand-subtle: rgba(79, 107, 82, 0.09);
 
-  /* Neutrals */
-  --bg:           #F8F6F0;
-  --bg-alt:       #F0EDE4;
-  --surface:      #FFFFFF;
-  --text:         #111810;
-  --text-2:       #2A3426;
-  --text-3:       #5A6454;
-  --border:       rgba(17, 24, 16, 0.07);
-  --border-strong:rgba(17, 24, 16, 0.12);
-  --rating:       #8B6914;
+  --accent:       #2A3D52; /* Atlantic navy — wordmark */
+  --accent-muted: #3D5166;
+  --sea-subtle:   rgba(42, 61, 82, 0.06);
+
+  /* Warm parchment / stone */
+  --bg:           #F7F4EB;
+  --bg-alt:       #EDE8DC;
+  --surface:      #FFFCF7;
+  --text:         #1C2834;
+  --text-2:       #2E3D4A;
+  --text-3:       #5C6B78;
+  --border:       rgba(28, 40, 52, 0.08);
+  --border-strong:rgba(28, 40, 52, 0.14);
+  --rating:       #9A7B3A; /* warm sand / golden hour */
 
   /* ── Spacing scale ── */
   --s1: 1rem;
@@ -43,9 +47,9 @@
   --radius-input: 0.75rem;
 
   /* ── Shadow system ── */
-  --shadow-1: 0 1px 2px rgba(17, 24, 16, 0.03);
-  --shadow-2: 0 4px 16px rgba(17, 24, 16, 0.05);
-  --shadow-3: 0 12px 40px rgba(17, 24, 16, 0.08);
+  --shadow-1: 0 1px 2px rgba(28, 40, 52, 0.04);
+  --shadow-2: 0 4px 16px rgba(28, 40, 52, 0.06);
+  --shadow-3: 0 12px 40px rgba(28, 40, 52, 0.09);
 
   /* Layout */
   --nav-h:      4rem;
@@ -54,7 +58,8 @@
   --pad-x:      1.25rem;
   --section-py: var(--s4);
   --ease:       cubic-bezier(0.22, 1, 0.36, 1);
-  --font:       'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font:         'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   --touch:      2.75rem; /* 44px — WCAG 2.2 minimum target size */
   --touch-lg:   3rem;
 }
@@ -187,12 +192,14 @@ summary:focus-visible,
 }
 
 h1, h2 {
+  font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   text-wrap: balance;
   margin: 0 0 0.875rem;
+  color: var(--accent);
 }
 
 h3 {
@@ -260,12 +267,12 @@ h3 {
   color: #fff;
   background: var(--brand);
   border: 1px solid transparent;
-  box-shadow: 0 1px 2px rgba(17, 24, 16, 0.08), 0 4px 12px rgba(92, 107, 42, 0.18);
+  box-shadow: 0 1px 2px rgba(28, 40, 52, 0.08), 0 4px 12px rgba(79, 107, 82, 0.2);
 }
 .btn-filled:hover {
   background: var(--brand-dark);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(17, 24, 16, 0.08), 0 8px 20px rgba(92, 107, 42, 0.22);
+  box-shadow: 0 2px 4px rgba(28, 40, 52, 0.08), 0 8px 20px rgba(79, 107, 82, 0.24);
 }
 .btn-filled:active {
   transform: translateY(0);
@@ -347,10 +354,11 @@ h3 {
 }
 .logo-name {
   display: block;
+  font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text);
+  letter-spacing: -0.02em;
+  color: var(--accent);
 }
 
 .nav-tabs { display: none; gap: 0.125rem; }
@@ -459,10 +467,11 @@ body.nav-open .nav-overlay {
 }
 
 .mob-nav-logo {
+  font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text);
+  letter-spacing: -0.02em;
+  color: var(--accent);
 }
 
 .mob-nav-close {
@@ -524,7 +533,7 @@ body.nav-open .nav-overlay {
   font-weight: 700;
   letter-spacing: 0.06em;
 }
-.mob-lang-btn.active { background: var(--brand-subtle); color: var(--brand); border-color: rgba(92,107,42,0.25); }
+.mob-lang-btn.active { background: var(--brand-subtle); color: var(--brand-dark); border-color: rgba(79, 107, 82, 0.28); }
 .mob-cta {
   width: 100%;
   max-width: 20rem;
@@ -649,10 +658,11 @@ body.nav-open .nav-overlay {
 
 .hero h1 {
   margin: 0;
-  color: var(--text);
+  color: var(--accent);
+  font-family: var(--font-display);
   font-size: var(--text-display);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   max-width: 14em;
   text-wrap: balance;
 }
@@ -986,7 +996,7 @@ body.nav-open .nav-overlay {
 }
 
 .pricing-card.featured {
-  border-color: rgba(92, 107, 42, 0.22);
+  border-color: rgba(79, 107, 82, 0.24);
   box-shadow: var(--shadow-2);
 }
 
@@ -1207,9 +1217,11 @@ body.nav-open .nav-overlay {
 }
 
 .founder-intro h2 {
+  font-family: var(--font-display);
   font-size: var(--text-xl);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--accent);
   max-width: 14ch;
   margin: 0;
 }
@@ -1358,7 +1370,7 @@ body.nav-open .nav-overlay {
 
 /* ─── REVIEWS ─── */
 #reviews {
-  background: #FAFAFA;
+  background: var(--bg);
   padding: 64px 20px;
 }
 
@@ -1383,9 +1395,11 @@ body.nav-open .nav-overlay {
 
 .reviews-head h2 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: var(--text-xl);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--accent);
   text-wrap: balance;
 }
 
@@ -1507,8 +1521,8 @@ body.nav-open .nav-overlay {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #F1F1EE;
-  color: var(--text);
+  background: var(--bg-alt);
+  color: var(--accent);
   font-weight: 700;
   font-size: var(--text-sm);
   display: flex;
@@ -1658,8 +1672,9 @@ body.nav-open .nav-overlay {
 #faq {
   padding: 64px 20px;
   background:
-    radial-gradient(circle at top, rgba(92, 107, 42, 0.05), transparent 36%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at top, rgba(79, 107, 82, 0.06), transparent 38%),
+    radial-gradient(circle at 85% 12%, var(--sea-subtle), transparent 32%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.5), rgba(255, 252, 247, 0)),
     var(--bg-alt);
 }
 
@@ -1708,8 +1723,8 @@ body.nav-open .nav-overlay {
   transform: translateY(-1px);
 }
 .faq-item[open] {
-  border-color: rgba(92, 107, 42, 0.18);
-  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(79, 107, 82, 0.2);
+  background: rgba(255, 252, 247, 0.72);
   box-shadow: 0 18px 38px rgba(17, 24, 16, 0.08);
 }
 
@@ -1743,7 +1758,7 @@ details[open] .faq-q { color: var(--text); }
   height: 1.75rem;
   border-radius: 50%;
   border: none;
-  background: rgba(92, 107, 42, 0.08);
+  background: rgba(79, 107, 82, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1755,7 +1770,7 @@ details[open] .faq-q { color: var(--text); }
 }
 details[open] .faq-icon {
   transform: rotate(45deg);
-  background: rgba(92, 107, 42, 0.14);
+  background: rgba(79, 107, 82, 0.16);
   color: var(--brand-dark);
 }
 
@@ -1857,9 +1872,11 @@ details[open] .faq-a {
 .final-cta-shell h2 {
   margin: 0 0 0.75rem;
   max-width: 12em;
+  font-family: var(--font-display);
   font-size: clamp(1.625rem, 4vw, 2.125rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--accent);
   text-wrap: balance;
 }
 
@@ -1885,14 +1902,14 @@ details[open] .faq-a {
   border-radius: 999px;
   background: var(--brand);
   color: #fff;
-  box-shadow: 0 14px 28px rgba(92, 107, 42, 0.22);
+  box-shadow: 0 14px 28px rgba(79, 107, 82, 0.22);
   font-size: var(--text-base);
   font-weight: 700;
 }
 .final-cta-shell .btn-filled:hover {
   background: var(--brand-dark);
   transform: translateY(-1px);
-  box-shadow: 0 18px 34px rgba(92, 107, 42, 0.27);
+  box-shadow: 0 18px 34px rgba(79, 107, 82, 0.27);
 }
 
 .final-cta-trust {
@@ -1935,8 +1952,8 @@ details[open] .faq-a {
 /* ─── FOOTER ─── */
 .site-footer {
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 42%),
-    linear-gradient(180deg, #0C120D 0%, #101710 100%);
+    radial-gradient(circle at top, rgba(107, 133, 112, 0.14), transparent 42%),
+    linear-gradient(180deg, #1C2A38 0%, #243444 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.74);
   font-size: 0.875rem;
@@ -1963,6 +1980,7 @@ details[open] .faq-a {
 
 .footer-logo {
   display: block;
+  font-family: var(--font-display);
   font-size: 0.975rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -2095,7 +2113,7 @@ details[open] .faq-a {
 }
 .footer-lang-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
 .footer-lang-btn.active {
-  color: #0D130E;
+  color: var(--accent);
   background: #fff;
 }
 
