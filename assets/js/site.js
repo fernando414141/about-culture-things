@@ -1,5 +1,6 @@
 // ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
 const mqDesktop = window.matchMedia('(min-width: 64rem)');
+const mqTablet = window.matchMedia('(min-width: 48rem)');
 
 // ─── BACK TO TOP ─────────────────────────────────────
 (function(){
@@ -114,6 +115,7 @@ function applyLang(lang) {
   }
   var mobClose = document.querySelector('.mob-nav-close');
   if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
+  if (typeof window.refreshReviewsCarousel === 'function') window.refreshReviewsCarousel();
 }
 
 // ─── LANGUAGE SWITCHER ────────────────────────────────
@@ -314,6 +316,148 @@ document.addEventListener('keydown', e => {
     navClose();
   }
 });
+
+// ─── REVIEWS CAROUSEL ────────────────────────────────
+(function(){
+  const viewport = document.getElementById('reviews-viewport');
+  const track = document.getElementById('reviews-grid');
+  const prevBtn = document.querySelector('[data-reviews-prev]');
+  const nextBtn = document.querySelector('[data-reviews-next]');
+  const dotsWrap = document.getElementById('reviews-dots');
+  if (!viewport || !track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+  const cards = Array.from(track.querySelectorAll('.review-card'));
+  if (!cards.length) return;
+
+  let visibleCount = 0;
+  let activeIndex = 0;
+  let dots = [];
+  let resizeFrame = 0;
+
+  function getVisibleCount() {
+    if (mqDesktop.matches) return 3;
+    if (mqTablet.matches) return 2;
+    return 1;
+  }
+
+  function getMaxStart() {
+    return Math.max(0, cards.length - visibleCount);
+  }
+
+  function clampIndex(index) {
+    return Math.max(0, Math.min(index, getMaxStart()));
+  }
+
+  function findClosestIndex() {
+    const scrollLeft = viewport.scrollLeft;
+    let bestIndex = 0;
+    let bestDistance = Infinity;
+    const maxStart = getMaxStart();
+    for (let i = 0; i <= maxStart; i += 1) {
+      const distance = Math.abs(scrollLeft - cards[i].offsetLeft);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = i;
+      }
+    }
+    return bestIndex;
+  }
+
+  function scrollToIndex(index, behavior) {
+    const targetIndex = clampIndex(index);
+    activeIndex = targetIndex;
+    viewport.scrollTo({ left: cards[targetIndex].offsetLeft, behavior: behavior || 'smooth' });
+    renderState(targetIndex);
+  }
+
+  function getDotLabel(startIndex) {
+    const labels = {
+      en: 'Show reviews',
+      es: 'Ver reseñas',
+      pt: 'Ver avaliações'
+    };
+    const prefix = labels[currentLang] || labels.en;
+    return `${prefix} ${startIndex + 1} to ${Math.min(startIndex + visibleCount, cards.length)} of ${cards.length}`;
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    dots = [];
+    const maxStart = getMaxStart();
+    for (let i = 0; i <= maxStart; i += 1) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'reviews-dot';
+      btn.setAttribute('aria-label', getDotLabel(i));
+      btn.addEventListener('click', () => scrollToIndex(i));
+      dotsWrap.appendChild(btn);
+      dots.push(btn);
+    }
+  }
+
+  function renderState(index) {
+    const maxStart = getMaxStart();
+    const currentIndex = clampIndex(typeof index === 'number' ? index : activeIndex);
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= maxStart;
+    dots.forEach((dot, dotIndex) => {
+      dot.setAttribute('aria-current', String(dotIndex === currentIndex));
+      dot.setAttribute('aria-label', getDotLabel(dotIndex));
+    });
+  }
+
+  function updateState() {
+    const maxStart = getMaxStart();
+    activeIndex = clampIndex(findClosestIndex());
+    renderState(activeIndex);
+  }
+
+  function syncLayout(force) {
+    const nextVisible = getVisibleCount();
+    const countChanged = nextVisible !== visibleCount;
+    visibleCount = nextVisible;
+    if (force || countChanged) {
+      buildDots();
+      activeIndex = clampIndex(activeIndex);
+      viewport.scrollTo({ left: cards[activeIndex].offsetLeft, behavior: 'auto' });
+    }
+    updateState();
+  }
+
+  prevBtn.addEventListener('click', () => scrollToIndex(activeIndex - 1));
+  nextBtn.addEventListener('click', () => scrollToIndex(activeIndex + 1));
+
+  viewport.addEventListener('scroll', () => {
+    window.clearTimeout(viewport._reviewScrollTimer);
+    viewport._reviewScrollTimer = window.setTimeout(updateState, 80);
+  }, { passive: true });
+
+  viewport.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollToIndex(activeIndex + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollToIndex(activeIndex - 1);
+    }
+  });
+
+  const handleResize = () => {
+    window.cancelAnimationFrame(resizeFrame);
+    resizeFrame = window.requestAnimationFrame(() => syncLayout(false));
+  };
+
+  window.addEventListener('resize', handleResize, { passive: true });
+  mqDesktop.addEventListener('change', handleResize);
+  mqTablet.addEventListener('change', handleResize);
+
+  window.refreshReviewsCarousel = function () {
+    buildDots();
+    updateState();
+  };
+
+  syncLayout(true);
+})();
 
 // ─── INTERSECTION OBSERVER — REVEAL ──────────────────
 const revealObs = new IntersectionObserver(entries => {

@@ -1370,11 +1370,56 @@ body.nav-open .nav-overlay {
   font-weight: 500;
 }
 
-.reviews-grid {
+.reviews-carousel {
   display: grid;
   grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.reviews-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  box-shadow: 0 8px 20px rgba(18, 24, 16, 0.05);
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), color 0.2s var(--ease);
+}
+.reviews-nav:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 24px rgba(18, 24, 16, 0.08);
+}
+.reviews-nav:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.reviews-viewport {
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x;
+  outline: none;
+}
+.reviews-viewport::-webkit-scrollbar { display: none; }
+
+.reviews-grid {
+  display: flex;
   gap: 16px;
   align-items: stretch;
+  padding: 2px;
 }
 
 .review-card {
@@ -1382,6 +1427,9 @@ body.nav-open .nav-overlay {
   flex-direction: column;
   gap: 0.875rem;
   min-height: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   padding: 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1447,6 +1495,28 @@ body.nav-open .nav-overlay {
   font-weight: 600;
 }
 
+.reviews-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.reviews-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(17, 24, 16, 0.18);
+  transition: width 0.2s var(--ease), background 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+.reviews-dot[aria-current="true"] {
+  width: 1.4rem;
+  background: var(--brand);
+}
+
 .reviews-actions {
   margin-top: 2rem;
   text-align: center;
@@ -1480,12 +1550,21 @@ body.nav-open .nav-overlay {
     padding: 96px 24px;
   }
 
+  .reviews-carousel {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+  }
+
+  .reviews-nav {
+    display: inline-flex;
+  }
+
   .reviews-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
 
   .review-card {
+    flex-basis: calc((100% - 24px) / 2);
     padding: 1.5rem;
   }
 }
@@ -1496,7 +1575,11 @@ body.nav-open .nav-overlay {
   }
 
   .reviews-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .review-card {
+    flex-basis: calc((100% - 48px) / 3);
   }
 }
 
@@ -2048,7 +2131,12 @@ details[open] .faq-icon {
 
 @media (max-width: 47.99rem) {
   .back-to-top { display: none !important; }
-  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-carousel {
+    gap: 0.75rem;
+  }
+  .reviews-actions {
+    margin-top: 1.5rem;
+  }
   .hero-ctas .btn-filled,
   .pc-cta .btn,
   .final-cta-shell .btn-massive {
