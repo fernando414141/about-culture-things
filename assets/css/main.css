@@ -1072,7 +1072,6 @@ section[id]::before {
 .about-grid,
 .reviews-panel,
 .faq-list,
-.faq-cta-note,
 .final-cta-shell {
   width: 100%;
   max-width: var(--content-max);
@@ -1292,7 +1291,7 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   gap: 0.45rem 0.9rem;
-  margin-bottom: clamp(var(--stack-md), 2.5vw, var(--stack-lg));
+  margin-bottom: clamp(var(--stack-sm), 2vw, var(--stack-md));
   padding-top: var(--sp-xs);
 }
 
@@ -1309,9 +1308,9 @@ h2 {
 .pricing-booking-note {
   width: 100%;
   max-width: var(--content-max);
-  margin: 0 auto clamp(var(--stack-md), 2.5vw, var(--stack-lg));
-  padding: 0.65rem 1rem;
-  font-size: 0.9rem;
+  margin: 0 auto clamp(var(--stack-sm), 2vw, var(--stack-md));
+  padding: 0.55rem 0.9rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--accent);
   text-align: center;
@@ -1320,24 +1319,11 @@ h2 {
   border-radius: var(--r-pill);
 }
 
-.pc-booking-note {
-  margin: 0 0 var(--stack-sm);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-align: center;
-  letter-spacing: 0.01em;
-}
-
-.pricing-card.featured .pc-booking-note {
-  color: rgba(255, 255, 255, 0.88);
-}
-
 .tours-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(var(--stack-md), 2.5vw, var(--stack-xl));
-  align-items: stretch;
+  gap: clamp(var(--stack-md), 2vw, var(--stack-lg));
+  align-items: start;
 }
 
 /* ─── PRICING CARDS ─── */
@@ -1345,15 +1331,15 @@ h2 {
   background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: calc(var(--r-card) + 0.1rem);
-  padding: var(--inset-card) var(--inset-card) var(--stack-sm);
+  padding: var(--inset-card) var(--inset-card) var(--sp-md);
   display: flex;
   flex-direction: column;
+  gap: 0;
   position: relative;
   overflow: hidden;
   box-shadow: var(--elev-2);
   transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease), border-color 0.3s;
   container-type: inline-size;
-  min-height: 100%;
 }
 .pricing-card > * { position: relative; z-index: 1; }
 .pricing-card:hover {
@@ -1383,13 +1369,13 @@ h2 {
   content: attr(data-badge);
   position: absolute;
   z-index: 3;
-  top: calc(100cqw / 1.7 - 2.65rem);
+  top: calc(100cqw / 2.15 - 2.35rem);
   left: max(0.75rem, var(--inset-card));
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  padding: 0.42rem 0.7rem;
+  padding: 0.38rem 0.65rem;
   border-radius: var(--r-pill);
   max-width: calc(100% - 1.5rem);
   line-height: 1.2;
@@ -1408,7 +1394,7 @@ h2 {
 }
 
 .pc-img-wrap {
-  margin: calc(-1 * var(--inset-card)) calc(-1 * var(--inset-card)) var(--stack-sm);
+  margin: calc(-1 * var(--inset-card)) calc(-1 * var(--inset-card)) 0.65rem;
   border-radius: var(--r-card) var(--r-card) 0 0;
   overflow: hidden;
   position: relative;
@@ -1416,7 +1402,7 @@ h2 {
 .pc-img-wrap picture { display: block; }
 .pc-img-wrap img {
   width: 100%;
-  aspect-ratio: 1.7 / 1;
+  aspect-ratio: 2.15 / 1;
   object-fit: cover;
   display: block;
   transition: transform 0.9s var(--ease);
@@ -1435,77 +1421,59 @@ h2 {
 
 .pc-name {
   font-family: var(--font-display);
-  font-size: 1.38rem;
+  font-size: clamp(1.15rem, 2.2vw, 1.3rem);
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.04;
-  margin-bottom: 0.25rem;
+  line-height: 1.12;
+  margin-bottom: 0.2rem;
 }
 
 .pc-tag {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: var(--sp-sm);
+  margin-bottom: 0.35rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
 
 .pc-places {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: var(--sp-md);
-}
-
-.pc-highlights {
-  list-style: none;
-  margin: 0 0 var(--sp-md);
-  padding: 0;
-  display: grid;
-  gap: 0.4rem;
-}
-
-.pc-highlights li {
-  position: relative;
-  padding-left: 1.1rem;
-  font-size: 0.88rem;
   line-height: 1.45;
-  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
 }
 
-.pc-highlights li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 50%;
-  background: var(--accent);
+.pc-fit {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0 0 0.65rem;
 }
 
 .pricing-card.featured .pc-name { color: #fff; }
 .pricing-card.featured .pc-tag { color: var(--gold-l); }
 .pricing-card.featured .pc-places { color: rgba(255, 255, 255, 0.76); }
-.pricing-card.featured .pc-highlights li { color: rgba(255, 255, 255, 0.78); }
-.pricing-card.featured .pc-highlights li::before { background: var(--gold-l); }
-.pricing-card.alt .pc-highlights li { color: var(--text-secondary); }
+.pricing-card.featured .pc-fit { color: rgba(255, 255, 255, 0.68); }
 
-.pc-details { margin: -0.15rem 0 var(--sp-md); }
+.pc-details {
+  margin: 0.65rem 0 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--outline);
+}
 
 .pc-details summary {
   list-style: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  width: 100%;
-  min-height: var(--btn-h-sm);
-  padding: 0.5rem 0;
-  font-size: 0.78rem;
+  gap: 0.4rem;
+  min-height: auto;
+  padding: 0;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
   cursor: pointer;
   user-select: none;
@@ -1518,18 +1486,18 @@ h2 {
   content: '';
   flex-shrink: 0;
   box-sizing: border-box;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem;
+  height: 1rem;
   border: 1.5px solid currentColor;
   border-radius: 50%;
   color: var(--accent);
   background:
-    linear-gradient(currentColor, currentColor) center / 0.45rem 1.5px no-repeat,
-    linear-gradient(currentColor, currentColor) center / 1.5px 0.45rem no-repeat;
+    linear-gradient(currentColor, currentColor) center / 0.35rem 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1.5px 0.35rem no-repeat;
 }
 
 .pc-details[open] summary::before {
-  background: linear-gradient(currentColor, currentColor) center / 0.45rem 1.5px no-repeat;
+  background: linear-gradient(currentColor, currentColor) center / 0.35rem 1.5px no-repeat;
 }
 
 .pc-details summary:focus-visible {
@@ -1539,25 +1507,26 @@ h2 {
 }
 
 .pc-details p {
-  margin: 0.55rem 0 0;
+  margin: 0.45rem 0 0;
   color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.84rem;
+  line-height: 1.5;
 }
 
-.pricing-card.featured .pc-details summary { color: rgba(255, 255, 255, 0.88); }
+.pricing-card.featured .pc-details { border-top-color: rgba(255, 255, 255, 0.12); }
+.pricing-card.featured .pc-details summary { color: rgba(255, 255, 255, 0.72); }
 .pricing-card.featured .pc-details summary::before { color: var(--gold-l); border-color: rgba(255, 255, 255, 0.42); }
 .pricing-card.featured .pc-details summary:focus-visible { outline-color: var(--gold-l); }
-.pricing-card.featured .pc-details p { color: rgba(255, 255, 255, 0.78); }
+.pricing-card.featured .pc-details p { color: rgba(255, 255, 255, 0.72); }
 
-.pricing-card.alt .pc-details summary { color: #4A5D42; }
-.pricing-card.alt .pc-details summary::before { color: var(--accent); border-color: rgba(92, 107, 42, 0.5); }
+.pricing-card.alt .pc-details summary { color: #5A6B52; }
+.pricing-card.alt .pc-details summary::before { color: var(--accent); border-color: rgba(92, 107, 42, 0.45); }
 .pricing-card.alt .pc-details p { color: var(--text-secondary); }
 
 .pc-divider {
   height: 1px;
   background: var(--outline);
-  margin: var(--stack-sm) 0;
+  margin: 0 0 0.55rem;
 }
 .pricing-card.featured .pc-divider { background: rgba(255, 255, 255, 0.1); }
 
@@ -1570,7 +1539,7 @@ h2 {
 
 .pc-price {
   font-family: var(--font-display);
-  font-size: clamp(2.55rem, 6vw, 3.6rem);
+  font-size: clamp(2rem, 4.5vw, 2.65rem);
   font-weight: 500;
   color: var(--text-primary);
   line-height: 1;
@@ -1579,39 +1548,29 @@ h2 {
 }
 
 .pc-per {
-  font-size: var(--t-sm);
+  font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 .pc-price-sub {
   display: block;
-  font-size: var(--t-sm);
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
-  margin-top: 0.15rem;
+  margin: 0.2rem 0 0.65rem;
   line-height: 1.35;
-}
-
-.pc-note {
-  font-size: 0.6875rem;
-  color: var(--text-faint);
-  margin: 0.2rem 0 var(--sp-md);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
 }
 
 .pricing-card.featured .pc-price,
 .pricing-card.featured .pc-per { color: #fff; }
 .pricing-card.featured .pc-per { color: rgba(255, 255, 255, 0.72); }
-.pricing-card.featured .pc-price-sub { color: rgba(255, 255, 255, 0.72); }
-.pricing-card.featured .pc-note { color: rgba(255, 255, 255, 0.62); }
+.pricing-card.featured .pc-price-sub { color: rgba(255, 255, 255, 0.68); }
 
 .pricing-card.alt .pc-per,
-.pricing-card.alt .pc-price-sub { color: #4A5D42; }
-.pricing-card.alt .pc-note { color: #5E6E56; }
+.pricing-card.alt .pc-price-sub { color: #5A6B52; }
 
-.pc-cta { margin-top: auto; }
+.pc-cta { margin-top: 0; }
 
 .pc-cta .btn-filled,
 .pc-cta .btn-outlined {
@@ -2050,26 +2009,6 @@ details[open] .faq-a {
   border-left: 3px solid var(--accent);
   padding-left: 1rem;
 }
-
-.faq-cta-note {
-  margin-top: var(--sp-xl);
-  padding-top: var(--sp-lg);
-  border-top: 1px solid var(--outline);
-  text-align: left;
-}
-
-.faq-contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--stack-xs);
-  min-height: var(--btn-h-md);
-  padding: var(--sp-compact) 0;
-  font-size: var(--btn-fs-md);
-  font-weight: 700;
-  color: var(--text-primary);
-  transition: color 0.15s, opacity 0.15s;
-}
-.faq-contact-link:hover { color: var(--accent); opacity: 0.82; }
 
 /* ─── FINAL CTA ─── */
 .final-cta-shell {
