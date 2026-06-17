@@ -211,9 +211,9 @@
       "@id": "https://aboutculturethings.com/#faq",
       "mainEntity": [
         {"@type":"Question","name":"What do the Sintra tours include?","acceptedAnswer":{"@type":"Answer","text":"Pickup in Lisbon, private guide (Rita Almeida), and transport. Max 4 guests. Palace tickets are not included."}},
-        {"@type":"Question","name":"When do I pay?","acceptedAnswer":{"@type":"Answer","text":"Reserve for free. You pay after your tour by Revolut, Wise, MBWay, bank transfer, cash, or crypto."}},
+        {"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available."}},
         {"@type":"Question","name":"Can I cancel or reschedule?","acceptedAnswer":{"@type":"Answer","text":"Yes — with 24 hours' notice at no cost."}},
-        {"@type":"Question","name":"Where does pickup happen?","acceptedAnswer":{"@type":"Answer","text":"From your hotel or accommodation in Lisbon. Details are confirmed when you reserve."}},
+        {"@type":"Question","name":"Where does pickup happen?","acceptedAnswer":{"@type":"Answer","text":"From your hotel or accommodation in Lisbon. Rita confirms details when you book."}},
         {"@type":"Question","name":"Can the tour be customized?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rita adapts stops, pace, and route for your group, weather, and interests."}}
       ]
     },
@@ -235,7 +235,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260623">
+<link rel="stylesheet" href="assets/css/main.css?v=20260624">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -318,34 +318,24 @@
 
 <!-- ── MOBILE NAV ── -->
 <nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation" aria-hidden="true">
-  <div class="mob-nav-top">
-    <span class="mob-nav-title" data-i18n="mob-nav-title">Menu</span>
-    <button class="mob-nav-close" type="button" aria-label="Close menu">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
+  <button class="mob-nav-close" type="button" aria-label="Close menu">
+    <span aria-hidden="true">×</span>
+  </button>
   <div class="mob-nav-body">
     <a href="#why"         data-i18n="nav-why">Why Rita</a>
     <a href="#tours"       data-i18n="nav-tours">Tours</a>
     <a href="#about"       data-i18n="nav-about">About</a>
     <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
     <a href="#faq"         data-i18n="nav-faq">FAQ</a>
-    <div class="mob-nav-footer">
-      <div class="mob-lang" role="group" aria-label="Language selector">
-        <span class="mob-lang-label" data-i18n="lang-kicker">Language</span>
-        <div class="mob-lang-options">
-          <button type="button" class="mob-lang-btn active" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" class="mob-lang-btn" data-lang="es" aria-pressed="false">ES</button>
-          <button type="button" class="mob-lang-btn" data-lang="pt" aria-pressed="false">PT</button>
-        </div>
-      </div>
-      <div class="mob-cta">
-        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="mob-book">
-          <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="cta-whatsapp">Check availability on WhatsApp</span>
-        </a>
-      </div>
+    <div class="mob-lang-options" role="group" aria-label="Language selector">
+      <button type="button" class="mob-lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="mob-lang-btn" data-lang="es" aria-pressed="false">ES</button>
+      <button type="button" class="mob-lang-btn" data-lang="pt" aria-pressed="false">PT</button>
     </div>
+    <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="mob-cta btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="mob-book">
+      <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
+      <span data-i18n="cta-whatsapp">Check availability on WhatsApp</span>
+    </a>
   </div>
 </nav>
 
@@ -435,12 +425,10 @@
       <span data-i18n="trust-3">Max 4 guests</span>
       <span data-i18n="trust-4">Pickup in Lisbon included</span>
     </div>
-    <p class="pricing-booking-note" data-i18n="pricing-booking-note">Reserve for free · Pay after your tour · Cancel with 24h notice</p>
-    <ol class="tours-booking-steps" data-i18n-aria="tours-booking-steps-aria" aria-label="How booking works">
-      <li data-i18n="tours-booking-step-1">Message dates</li>
-      <li data-i18n="tours-booking-step-2">Confirm route</li>
-      <li data-i18n="tours-booking-step-3">Pay after tour</li>
-    </ol>
+    <div class="pricing-booking-note">
+      <p data-i18n="booking-copy-line-1">Message Rita on WhatsApp to check dates, payment options, and booking details.</p>
+      <p data-i18n="booking-copy-line-2">You can also book through Viator when available.</p>
+    </div>
     <div class="tours-row">
       <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Signature Journey">
         <div class="pc-img-wrap">
@@ -452,19 +440,11 @@
         <div class="pc-name" data-i18n="tour1-name">Sintra Complete Experience &amp; Atlantic Coast</div>
         <div class="pc-tag" data-i18n="tour1-tag">7 hours · Max 4 people</div>
         <p class="pc-places" data-i18n="tour1-summary">Historic Sintra · Pena area · Cabo da Roca · Cascais</p>
-        <p class="pc-fit" data-i18n="tour1-highlight-1">Best for a full first day in Sintra</p>
-        <ul class="pc-includes" data-i18n-aria="pc-includes-aria" aria-label="What's included and excluded">
-          <li class="pc-include" data-i18n="tour-included-pickup">Lisbon pickup included</li>
-          <li class="pc-include" data-i18n="tour-included-guide">Private guide &amp; transport</li>
-          <li class="pc-include" data-i18n="tour-included-group">Max 4 guests per tour</li>
-          <li class="pc-exclude" data-i18n="tour-excluded-tickets">Palace tickets not included</li>
-        </ul>
         <div class="pc-divider" aria-hidden="true"></div>
         <div class="pc-price-row">
           <span class="pc-price" data-i18n="tour1-price">€299</span>
           <span class="pc-per" data-i18n="tour-per">per group</span>
         </div>
-        <span class="pc-price-sub" data-i18n="tour1-price-sub">From €75/person · group of 4 · tickets not included</span>
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20Complete%20Experience." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="tour1" data-analytics-label="tour1-book">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -472,7 +452,13 @@
           </a>
         </div>
         <details class="pc-details">
-          <summary data-i18n="tour-details-open">Full itinerary</summary>
+          <summary data-i18n="tour-details-open">Itinerary &amp; includes</summary>
+          <ul class="pc-includes" data-i18n-aria="pc-includes-aria" aria-label="What's included and excluded">
+            <li class="pc-include" data-i18n="tour-included-pickup">Lisbon pickup included</li>
+            <li class="pc-include" data-i18n="tour-included-guide">Private guide &amp; transport</li>
+            <li class="pc-include" data-i18n="tour-included-group">Max 4 guests per tour</li>
+            <li class="pc-exclude" data-i18n="tour-excluded-tickets">Palace tickets not included</li>
+          </ul>
           <p data-i18n="tour1-places">Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais</p>
         </details>
       </article>
@@ -486,19 +472,11 @@
         <div class="pc-name" data-i18n="tour2-name">Sintra &amp; Hidden Beaches Experience</div>
         <div class="pc-tag" data-i18n="tour2-tag">5 hours · Max 4 people</div>
         <p class="pc-places" data-i18n="tour2-summary">Sintra hills · Hidden coves · Azenhas do Mar</p>
-        <p class="pc-fit" data-i18n="tour2-highlight-1">Best for a shorter coastal escape</p>
-        <ul class="pc-includes" data-i18n-aria="pc-includes-aria" aria-label="What's included and excluded">
-          <li class="pc-include" data-i18n="tour-included-pickup">Lisbon pickup included</li>
-          <li class="pc-include" data-i18n="tour-included-guide">Private guide &amp; transport</li>
-          <li class="pc-include" data-i18n="tour-included-group">Max 4 guests per tour</li>
-          <li class="pc-exclude" data-i18n="tour-excluded-tickets">Palace tickets not included</li>
-        </ul>
         <div class="pc-divider" aria-hidden="true"></div>
         <div class="pc-price-row">
           <span class="pc-price" data-i18n="tour2-price">€275</span>
           <span class="pc-per" data-i18n="tour-per">per group</span>
         </div>
-        <span class="pc-price-sub" data-i18n="tour2-price-sub">From €69/person · group of 4 · tickets not included</span>
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20%26%20Hidden%20Beaches%20Experience." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="tour2" data-analytics-label="tour2-book">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -506,7 +484,13 @@
           </a>
         </div>
         <details class="pc-details">
-          <summary data-i18n="tour-details-open">Full itinerary</summary>
+          <summary data-i18n="tour-details-open">Itinerary &amp; includes</summary>
+          <ul class="pc-includes" data-i18n-aria="pc-includes-aria" aria-label="What's included and excluded">
+            <li class="pc-include" data-i18n="tour-included-pickup">Lisbon pickup included</li>
+            <li class="pc-include" data-i18n="tour-included-guide">Private guide &amp; transport</li>
+            <li class="pc-include" data-i18n="tour-included-group">Max 4 guests per tour</li>
+            <li class="pc-exclude" data-i18n="tour-excluded-tickets">Palace tickets not included</li>
+          </ul>
           <p data-i18n="tour2-places">Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda</p>
         </details>
       </article>
@@ -642,13 +626,15 @@
       </div>
       <div class="reviews-actions">
         <button type="button" class="reviews-expand-btn" id="reviews-expand" aria-expanded="false" aria-controls="reviews-grid">
-          <span class="reviews-expand-label" data-i18n="reviews-more">View More Reviews</span>
-          <span class="reviews-expand-count" id="reviews-expand-count" aria-hidden="true">(+3)</span>
+          <span class="reviews-expand-label" data-i18n="reviews-more">View more reviews</span>
+          <span class="reviews-expand-count" id="reviews-expand-count" aria-hidden="true">(+4)</span>
         </button>
-        <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" data-site-tripadvisor class="reviews-external-link" data-analytics-label="reviews-tripadvisor" aria-label="View all reviews on TripAdvisor (opens in new tab)">
-          <span data-i18n="reviews-view-all">View all reviews on TripAdvisor</span>
-          <svg width="14" height="14" aria-hidden="true"><use href="#arrow-ext"/></svg>
-        </a>
+        <div class="reviews-actions-external">
+          <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" data-site-tripadvisor class="reviews-external-link" data-analytics-label="reviews-tripadvisor" aria-label="View all reviews on TripAdvisor (opens in new tab)">
+            <span data-i18n="reviews-view-all">View all on TripAdvisor</span>
+            <svg width="14" height="14" aria-hidden="true"><use href="#arrow-ext"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -665,8 +651,8 @@
         <p class="faq-a" data-i18n="faq1-a">Pickup in Lisbon, private guide (Rita Almeida), and transport. Max 4 guests. Palace tickets are not included.</p>
       </details>
       <details class="faq-item">
-        <summary><span class="faq-q" data-i18n="faq2-q">When do I pay?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq2-a">Reserve for free. You pay after your tour by Revolut, Wise, MBWay, bank transfer, cash, or crypto.</p>
+        <summary><span class="faq-q" data-i18n="faq2-q">How do I book?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-a" data-i18n="faq2-a">Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.</p>
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" data-i18n="faq3-q">Can I cancel or reschedule?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
@@ -674,7 +660,7 @@
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" data-i18n="faq4-q">Where does pickup happen?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-a" data-i18n="faq4-a">From your hotel or accommodation in Lisbon. Details are confirmed when you reserve.</p>
+        <p class="faq-a" data-i18n="faq4-a">From your hotel or accommodation in Lisbon. Rita confirms details when you book.</p>
       </details>
       <details class="faq-item">
         <summary><span class="faq-q" data-i18n="faq5-q">Can the tour be customized?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
@@ -688,7 +674,7 @@
       <div class="final-cta-grid">
         <div class="final-cta-main">
           <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="final-kicker">Final Step</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
-          <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Reserve your day in Sintra</h2>
+          <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Plan your day in Sintra</h2>
           <p class="final-cta-copy" data-i18n="cta-tagline">Share your dates and group size. Rita replies with availability and the best route.</p>
           <ul class="cta-points" data-i18n-aria="cta-points-aria" aria-label="Response details">
             <li data-i18n="cta-point-1">Reply within 24h</li>
@@ -698,8 +684,8 @@
         <div class="final-cta-side">
           <ol class="booking-steps" data-i18n-aria="booking-steps-aria" aria-label="How booking works">
             <li data-i18n="booking-step-1">Message Rita on WhatsApp with your dates and group size</li>
-            <li data-i18n="booking-step-2">Confirm your route, timing, and availability together</li>
-            <li data-i18n="booking-step-3">Pay after your tour — once you've enjoyed the day</li>
+            <li data-i18n="booking-step-2">Confirm route, timing, and availability together</li>
+            <li data-i18n="booking-step-3">Confirm payment and booking details with Rita</li>
           </ol>
           <div class="cta-actions">
             <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled btn-massive" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="final-cta">
@@ -710,7 +696,10 @@
               <svg width="18" height="18" fill="currentColor" aria-hidden="true"><use href="#email-icon"/></svg>
               <span data-i18n="cta-email-label">Or send an email</span>
             </a>
-            <p class="cta-note" data-i18n="cta-note">Free to reserve · Pay after the tour · No booking fee</p>
+            <div class="cta-note">
+              <p data-i18n="booking-copy-line-1">Message Rita on WhatsApp to check dates, payment options, and booking details.</p>
+              <p data-i18n="booking-copy-line-2">You can also book through Viator when available.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -768,6 +757,6 @@
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/analytics.js" defer></script>
 <script src="assets/js/i18n.js" defer></script>
-<script src="assets/js/site.js?v=20260623" defer></script>
+<script src="assets/js/site.js?v=20260624" defer></script>
 </body>
 </html>

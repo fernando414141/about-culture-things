@@ -376,8 +376,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
     if (breakpoints[0].matches) return TOTAL_REVIEWS;
     if (breakpoints[1].matches) return 4;
     if (breakpoints[2].matches) return 3;
-    if (breakpoints[3].matches) return 2;
-    return 1;
+    return 2;
   }
 
   function getHiddenCount() {
