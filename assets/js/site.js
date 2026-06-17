@@ -44,7 +44,7 @@ function updateStructuredData(lang) {
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  faq.mainEntity = [1, 2, 3, 4, 5].map(n => ({
+  faq.mainEntity = [1, 2, 3, 4, 5, 6].map(n => ({
     '@type': 'Question',
     name: t['faq' + n + '-q'],
     acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
@@ -388,4 +388,3 @@ document.querySelectorAll('.faq-item').forEach(item => {
   updateExpandControl();
   window.updateReviewsExpand = updateExpandControl;
 })();
-
