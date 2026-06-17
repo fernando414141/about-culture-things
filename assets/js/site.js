@@ -42,7 +42,7 @@ function updateStructuredData(lang) {
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  faq.mainEntity = [1, 2, 3, 4, 5, 6].map(n => ({
+  faq.mainEntity = [1, 2, 3, 4, 5].map(n => ({
     '@type': 'Question',
     name: t['faq' + n + '-q'],
     acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
@@ -100,7 +100,6 @@ function applyLang(lang) {
   document.documentElement.lang = htmlLang[lang] || lang;
   updateDocumentMeta(lang);
   updateStructuredData(lang);
-  if (typeof window.updateReviewsExpand === 'function') window.updateReviewsExpand();
   closeLangDropdown();
 
   var burger = document.getElementById('burger');
@@ -335,68 +334,12 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// ─── REVIEWS EXPAND ──────────────────────────────────
+// ─── HERO VIDEO (respect reduced motion) ─────────────
 (function(){
-  const TOTAL_REVIEWS = 6;
-  const btn = document.getElementById('reviews-expand');
-  const grid = document.getElementById('reviews-grid');
-  const countEl = document.getElementById('reviews-expand-count');
-  const labelEl = btn && btn.querySelector('.reviews-expand-label');
-  if (!btn || !grid) return;
-
-  const breakpoints = [
-    window.matchMedia('(min-width: 48rem)')
-  ];
-
-  function getVisibleCount() {
-    if (breakpoints[0].matches) return 3;
-    return 2;
+  var video = document.querySelector('.hero-video');
+  if (!video) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+    video.removeAttribute('autoplay');
   }
-
-  function getHiddenCount() {
-    return Math.max(0, TOTAL_REVIEWS - getVisibleCount());
-  }
-
-  function updateExpandControl() {
-    const hidden = getHiddenCount();
-    const expanded = grid.classList.contains('is-expanded');
-
-    if (hidden === 0) {
-      btn.hidden = true;
-      grid.classList.remove('is-expanded');
-      btn.setAttribute('aria-expanded', 'false');
-      return;
-    }
-
-    btn.hidden = false;
-    btn.setAttribute('aria-expanded', String(expanded));
-
-    if (countEl) {
-      countEl.textContent = expanded ? '' : '(+' + hidden + ')';
-      countEl.hidden = expanded;
-    }
-
-    if (labelEl && typeof i18n !== 'undefined' && i18n[currentLang]) {
-      const key = expanded ? 'reviews-less' : 'reviews-more';
-      labelEl.setAttribute('data-i18n', key);
-      labelEl.textContent = i18n[currentLang][key];
-    }
-  }
-
-  btn.addEventListener('click', function() {
-    const willExpand = !grid.classList.contains('is-expanded');
-    grid.classList.toggle('is-expanded', willExpand);
-    updateExpandControl();
-  });
-
-  breakpoints.forEach(function(mq) {
-    mq.addEventListener('change', function() {
-      grid.classList.remove('is-expanded');
-      updateExpandControl();
-    });
-  });
-
-  window.addEventListener('resize', updateExpandControl, { passive: true });
-  updateExpandControl();
-  window.updateReviewsExpand = updateExpandControl;
 })();
