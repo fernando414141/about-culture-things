@@ -357,6 +357,7 @@ h3 {
 .nav-utility {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   margin-left: auto;
 }
 
@@ -536,6 +537,7 @@ body.nav-open .nav-overlay {
 
 /* Language switcher */
 .lang-switcher { position: relative; }
+.nav-lang-switcher { display: block; }
 .lang-trigger {
   display: inline-flex;
   align-items: center;
@@ -1890,6 +1892,18 @@ details[open] .faq-icon {
 }
 
 @media (min-width: 48rem) and (max-width: 63.99rem) {
+  .nav-inner {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .nav-lang-switcher {
+    display: block;
+  }
+
   .mob-nav {
     inset: 0 0 0 auto;
     width: min(420px, calc(100vw - 48px));
@@ -1919,7 +1933,7 @@ details[open] .faq-icon {
 @media (min-width: 64rem) {
   .nav-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
     align-items: center;
     gap: 1rem;
   }
@@ -1931,10 +1945,15 @@ details[open] .faq-icon {
   }
   .nav-actions {
     display: flex;
+    grid-column: 4;
+    justify-self: end;
+  }
+  .nav-utility {
+    display: flex;
     grid-column: 3;
     justify-self: end;
   }
-  .nav-utility { display: none; }
+  .nav-lang-switcher { display: block; }
   .burger { display: none; }
   .logo-name { max-width: 11rem; }
 }
