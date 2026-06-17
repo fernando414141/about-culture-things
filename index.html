@@ -10,6 +10,9 @@
 <meta name="author" content="Rita Almeida — About Culture Things">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <meta name="theme-color" content="#5C6B2A">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Culture Things">
 <meta name="geo.region" content="PT-11">
 <meta name="geo.placename" content="Sintra, Lisbon, Portugal">
 <meta name="geo.position" content="38.7977;-9.3900">
@@ -19,13 +22,14 @@
 <link rel="alternate" hreflang="es" href="https://aboutculturethings.com/?lang=es">
 <link rel="alternate" hreflang="pt-PT" href="https://aboutculturethings.com/?lang=pt">
 <link rel="alternate" hreflang="x-default" href="https://aboutculturethings.com/">
+<link rel="manifest" href="site.webmanifest">
 
 <script>
 (function(){
   var s=['en','es','pt'], p=new URLSearchParams(location.search), u=p.get('lang');
   if(u&&s.indexOf(u)!==-1) return;
   var b=navigator.languages||[navigator.language], i, c;
-  for(i=0;i<b.length;i++){ c=(b[i]||'').split('-')[0].toLowerCase(); if(s.indexOf(c)!==-1){ if(c!=='en') location.replace(location.pathname+'?lang='+c); return; }}
+  for(i=0;i<b.length;i++){ c=(b[i]||'').split('-')[0].toLowerCase(); if(s.indexOf(c)!==-1){ if(c!=='en') location.replace(location.pathname+'?lang='+c+location.hash); return; }}
 })();
 </script>
 
@@ -38,7 +42,8 @@
 <meta property="og:title" content="About Culture Things — Private Sintra Tours | Rita Almeida">
 <meta property="og:description" content="Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Max 4 people, Lisbon pickup.">
 <meta property="og:url" content="https://aboutculturethings.com/">
-<meta property="og:image" content="/hero.webp">
+<meta property="og:image" content="https://aboutculturethings.com/hero.webp">
+<meta property="og:image:secure_url" content="https://aboutculturethings.com/hero.webp">
 <meta property="og:image:alt" content="Pena Palace rising above the forests of Sintra, Portugal — About Culture Things tours with Rita Almeida">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
@@ -49,7 +54,7 @@
 <meta name="twitter:creator" content="@aboutculturethings">
 <meta name="twitter:title" content="About Culture Things — Sintra Tours">
 <meta name="twitter:description" content="Private Sintra tours with Rita Almeida. 5.0★ TripAdvisor. Pena Palace, hidden beaches, Cascais. Max 4 people, Lisbon pickup.">
-<meta name="twitter:image" content="/hero.webp">
+<meta name="twitter:image" content="https://aboutculturethings.com/hero.webp">
 <meta name="twitter:image:alt" content="Pena Palace above the forests of Sintra, Portugal">
 
 <!-- Favicon -->
@@ -64,7 +69,7 @@
 <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
 
 <!-- Structured Data -->
-<script type="application/ld+json">
+<script type="application/ld+json" id="structured-data">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -74,8 +79,8 @@
       "name": "About Culture Things",
       "description": "Premium private Sintra tours and local experiences in Portugal. Discover hidden beaches and the Atlantic Coast with Rita Almeida.",
       "url": "https://aboutculturethings.com/",
-      "logo": "/logo.png",
-      "image": "/hero.webp",
+      "logo": "https://aboutculturethings.com/logo.png",
+      "image": "https://aboutculturethings.com/hero.webp",
       "sameAs": [
         "https://www.instagram.com/aboutculturethings/",
         "https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html"
@@ -301,6 +306,8 @@
 /* ─── BASE ─── */
 html {
   font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-h) + 0.75rem);
 }
@@ -3307,6 +3314,28 @@ body.nav-open .burger span { background: var(--text-secondary); }
   .lang-trigger-copy { flex-direction: row; align-items: center; gap: .35rem; }
   .lang-trigger { gap: .45rem; padding-inline: .75rem; }
 }
+.reviews-expand-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-compact);
+  color: var(--text-secondary);
+  font-size: var(--btn-fs-md);
+  font-weight: 700;
+  min-height: var(--btn-h-sm);
+  padding: var(--sp-xs) var(--btn-px-sm);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+.reviews-expand-btn:hover { color: var(--accent); border-color: var(--outline-v); }
+@media (max-width: 47.99rem) {
+  .reviews-expand-btn { display: inline-flex; }
+  .reviews-grid.is-expanded .review-card:nth-child(n+4) { display: block !important; }
+  .reviews-footer { justify-content: center; gap: var(--stack-sm); flex-wrap: wrap; }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero h1 em {
     -webkit-text-fill-color: var(--gold-l);
@@ -3318,7 +3347,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
 </head>
 <body>
 
-<a href="#main" class="skip-link">Skip to main content</a>
+<a href="#main" class="skip-link" data-i18n="skip-link">Skip to main content</a>
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
 
 <!-- SVG sprite -->
@@ -3346,7 +3375,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
 <header class="nav" id="nav" role="banner">
   <div class="nav-inner">
     <a href="./" class="logo" aria-label="About Culture Things — home">
-      <img src="favicon.png" class="logo-img" alt="" width="32" height="32">
+      <img src="logo.png" class="logo-img" alt="" width="32" height="32" decoding="async">
       <span class="logo-name">About Culture Things</span>
     </a>
     <nav class="nav-tabs" aria-label="Primary navigation">
@@ -3469,7 +3498,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
       <p class="hero-note" data-i18n="hero-note">Direct booking with Rita · Typical reply within 24h</p>
     </div>
   </div>
-  <a href="#why" class="hero-scroll hero-scroll-link" aria-label="Scroll to Why Rita section">
+  <a href="#why" class="hero-scroll hero-scroll-link" data-i18n-aria="hero-scroll-aria" aria-label="Scroll to Why Rita section">
     <div class="hero-scroll-line"></div>
   </a>
 </section>
@@ -3518,6 +3547,26 @@ body.nav-open .burger span { background: var(--text-secondary); }
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="tours-kicker">Tours</span></div>
       <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Choose your day.</h2>
       <p class="sec-desc" data-i18n="tours-desc">Two private routes, one standard: elegant pacing, local insight, and direct booking with Rita.</p>
+    </div>
+    <div class="pricing-trust" data-i18n-aria="tours-trust-aria" aria-label="Tour guarantees">
+      <span data-i18n="trust-1">5.0 TripAdvisor</span>
+      <span data-i18n="trust-2">Local guide born in Sintra</span>
+      <span data-i18n="trust-3">Max 4 guests</span>
+      <span data-i18n="trust-4">Pickup in Lisbon included</span>
+    </div>
+    <div class="tours-compare" data-i18n-aria="tours-compare-aria" aria-label="How booking works">
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-1-label">Best For</span>
+        <span class="tours-compare-value" data-i18n="compare-1-value">First-time visitors who want the full Sintra day</span>
+      </div>
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-2-label">Format</span>
+        <span class="tours-compare-value" data-i18n="compare-2-value">Private car tour with one guide and one group</span>
+      </div>
+      <div class="tours-compare-item">
+        <span class="tours-compare-label" data-i18n="compare-3-label">Booking</span>
+        <span class="tours-compare-value" data-i18n="compare-3-value">Direct with Rita, with quick availability confirmation</span>
+      </div>
     </div>
     <div class="tours-row">
       <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Signature Journey">
@@ -3729,6 +3778,9 @@ body.nav-open .burger span { background: var(--text-secondary); }
         </article>
       </div>
       <div class="reviews-footer">
+        <button type="button" class="reviews-expand-btn" id="reviews-expand" hidden aria-expanded="false" aria-controls="reviews-grid">
+          <span data-i18n="reviews-more">View more</span>
+        </button>
         <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-more-btn" aria-label="View more reviews on TripAdvisor (opens in new tab)">
           <span data-i18n="reviews-view-btn">View more on TripAdvisor</span>
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
@@ -3832,7 +3884,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
             <span data-i18n="foot-whatsapp">WhatsApp ↗</span>
           </a>
-          <a class="footer-action" href="mailto:aboutculturethings@gmail.com">
+          <a class="footer-action" href="mailto:aboutculturethings@gmail.com?subject=Tour%20enquiry">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#email-icon"/></svg>
             <span data-i18n="foot-email">Email ↗</span>
           </a>
@@ -3851,7 +3903,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
 </footer>
 
 <!-- ── BACK TO TOP ── -->
-<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+<button type="button" class="back-to-top" id="back-to-top" hidden data-i18n-aria="back-to-top-aria" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- ── WHATSAPP FAB ── -->
 <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="fab-wa" id="fab-wa" data-i18n-aria="fab-aria" aria-label="Check availability" data-i18n-tooltip="fab-tooltip" data-tooltip="Check availability" target="_blank" rel="noopener noreferrer">
@@ -3859,6 +3911,22 @@ body.nav-open .burger span { background: var(--text-secondary); }
 </a>
 
 <script>
+// ═══ SITE CONFIG — edit this block when cloning the template ═══
+const SITE = {
+  url: 'https://aboutculturethings.com',
+  name: 'About Culture Things',
+  shortName: 'Culture Things',
+  email: 'aboutculturethings@gmail.com',
+  phone: '+351968510019',
+  whatsapp: '351968510019',
+  instagram: 'https://www.instagram.com/aboutculturethings/',
+  tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
+  twitter: '@aboutculturethings',
+  themeColor: '#5C6B2A',
+  ogImage: 'hero.webp',
+  credit: { url: 'https://fscdigital.com/', label: 'Website by FSC Digital' }
+};
+
 // ─── COPYRIGHT YEAR ──────────────────────────────────
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
@@ -3943,6 +4011,13 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
 // ─── i18n DATA ───────────────────────────────────────
 const i18n = {
   en: {
+    "skip-link": "Skip to main content",
+    "hero-scroll-aria": "Scroll to Why Rita section",
+    "back-to-top-aria": "Back to top",
+    "meta-title": "About Culture Things — Private Sintra Tours | Rita Almeida",
+    "meta-description": "Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Lisbon pickup, max 4 people.",
+    "tours-trust-aria": "Tour guarantees",
+    "tours-compare-aria": "How booking works",
     "nav-tours": "Tours",
     "nav-why": "Why Rita",
     "nav-about": "About",
@@ -4090,6 +4165,13 @@ const i18n = {
     "foot-worldwide": "Premium Service"
   },
   es: {
+    "skip-link": "Saltar al contenido principal",
+    "hero-scroll-aria": "Ir a la sección Por qué Rita",
+    "back-to-top-aria": "Volver arriba",
+    "meta-title": "About Culture Things — Tours Privados en Sintra | Rita Almeida",
+    "meta-description": "Tours privados en Sintra con Rita Almeida — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.",
+    "tours-trust-aria": "Garantías del tour",
+    "tours-compare-aria": "Cómo funciona la reserva",
     "nav-tours": "Tours",
     "nav-why": "Por qué Rita",
     "nav-about": "Sobre",
@@ -4237,6 +4319,13 @@ const i18n = {
     "foot-worldwide": "Servicio Premium"
   },
   pt: {
+    "skip-link": "Saltar para o conteúdo principal",
+    "hero-scroll-aria": "Ir para a secção Porquê a Rita",
+    "back-to-top-aria": "Voltar ao topo",
+    "meta-title": "About Culture Things — Tours Privados em Sintra | Rita Almeida",
+    "meta-description": "Tours privados em Sintra com a Rita Almeida — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.",
+    "tours-trust-aria": "Garantias do tour",
+    "tours-compare-aria": "Como funciona a reserva",
     "nav-tours": "Tours",
     "nav-why": "Porquê a Rita",
     "nav-about": "Sobre",
@@ -4386,7 +4475,42 @@ const i18n = {
 };
 
 const langNames = { en: 'English', es: 'Español', pt: 'Português' };
+const ogLocales = { en: 'en_GB', es: 'es_ES', pt: 'pt_PT' };
 let currentLang  = 'en';
+
+function updateDocumentMeta(lang) {
+  const t = i18n[lang];
+  if (!t) return;
+  if (t['meta-title']) document.title = t['meta-title'];
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc && t['meta-description']) desc.setAttribute('content', t['meta-description']);
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle && t['meta-title']) ogTitle.setAttribute('content', t['meta-title']);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc && t['meta-description']) ogDesc.setAttribute('content', t['meta-description']);
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) ogLocale.setAttribute('content', ogLocales[lang] || 'en_GB');
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle && t['meta-title']) twTitle.setAttribute('content', t['meta-title']);
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc && t['meta-description']) twDesc.setAttribute('content', t['meta-description']);
+}
+
+function updateStructuredData(lang) {
+  const t = i18n[lang];
+  const node = document.getElementById('structured-data');
+  if (!t || !node) return;
+  let data;
+  try { data = JSON.parse(node.textContent); } catch (e) { return; }
+  const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage');
+  if (!faq) return;
+  faq.mainEntity = [1, 2, 3, 4, 5, 6].map(n => ({
+    '@type': 'Question',
+    name: t['faq' + n + '-q'],
+    acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
+  }));
+  node.textContent = JSON.stringify(data);
+}
 
 function applyLang(lang) {
   const t = i18n[lang];
@@ -4433,6 +4557,8 @@ function applyLang(lang) {
 
   const htmlLang = { en: 'en-GB', es: 'es-ES', pt: 'pt-PT' };
   document.documentElement.lang = htmlLang[lang] || lang;
+  updateDocumentMeta(lang);
+  updateStructuredData(lang);
   closeLangDropdown();
 }
 
@@ -4527,20 +4653,30 @@ window.addEventListener('scroll', () => {
     nav.classList.toggle('elevated', sy > 10);
     nav.classList.toggle('nav-overlay', sy < heroHeight * 0.72 && !document.body.classList.contains('nav-open'));
     if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
-
-    // Active nav link highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-tabs a');
-    let current = '';
-    sections.forEach(sec => {
-      if (sy >= sec.offsetTop - 130) current = sec.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
     ticking = false;
   });
 }, { passive: true });
+
+// Active nav link — Intersection Observer (more reliable than offsetTop)
+(function(){
+  const navLinks = document.querySelectorAll('.nav-tabs a[href^="#"]');
+  const sections = document.querySelectorAll('main section[id]');
+  if (!navLinks.length || !sections.length) return;
+  const visible = new Map();
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+      else visible.delete(entry.target.id);
+    });
+    let current = '';
+    let best = 0;
+    visible.forEach((ratio, id) => {
+      if (ratio >= best) { best = ratio; current = id; }
+    });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+  sections.forEach(sec => obs.observe(sec));
+})();
 
 function navOpen() {
   const open = mobNav.classList.toggle('open');
@@ -4678,6 +4814,48 @@ const eyeObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 document.querySelectorAll('.sec-head').forEach(el => eyeObs.observe(el));
+
+// ─── FAQ ACCORDION (one open at a time) ──────────────
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    document.querySelectorAll('.faq-item[open]').forEach(other => {
+      if (other !== item) other.open = false;
+    });
+  });
+});
+
+// ─── REVIEWS EXPAND (mobile) ─────────────────────────
+(function(){
+  const btn = document.getElementById('reviews-expand');
+  const grid = document.getElementById('reviews-grid');
+  if (!btn || !grid) return;
+  const label = btn.querySelector('[data-i18n]');
+  const mq = window.matchMedia('(max-width: 47.99rem)');
+  function syncExpandControl() {
+    const mobile = mq.matches;
+    btn.hidden = !mobile;
+    if (!mobile) {
+      grid.classList.remove('is-expanded');
+      btn.setAttribute('aria-expanded', 'false');
+      if (label) {
+        label.setAttribute('data-i18n', 'reviews-more');
+        label.textContent = i18n[currentLang]['reviews-more'];
+      }
+    }
+  }
+  btn.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('is-expanded');
+    btn.setAttribute('aria-expanded', String(expanded));
+    if (label) {
+      const key = expanded ? 'reviews-less' : 'reviews-more';
+      label.setAttribute('data-i18n', key);
+      label.textContent = i18n[currentLang][key];
+    }
+  });
+  mq.addEventListener('change', syncExpandControl);
+  syncExpandControl();
+})();
 
 </script>
 </body>

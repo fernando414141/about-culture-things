@@ -1,0 +1,26 @@
+{
+  "name": "About Culture Things",
+  "short_name": "Culture Things",
+  "description": "Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F7F4EB",
+  "theme_color": "#5C6B2A",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
