@@ -6,12 +6,10 @@ const mqDesktop = window.matchMedia('(min-width: 48rem)');
   var btn = document.getElementById('back-to-top');
   if (!btn) return;
   function toggle() {
-    var desktopLike = mqDesktop.matches;
-    btn.hidden = !desktopLike;
-    btn.classList.toggle('visible', desktopLike && window.scrollY > 600);
+    var show = window.scrollY > 600;
+    btn.classList.toggle('visible', show);
   }
   window.addEventListener('scroll', toggle, { passive: true });
-  mqDesktop.addEventListener('change', toggle);
   toggle();
   btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
@@ -104,6 +102,14 @@ function applyLang(lang) {
   updateStructuredData(lang);
   if (typeof window.updateReviewsExpand === 'function') window.updateReviewsExpand();
   closeLangDropdown();
+
+  var burger = document.getElementById('burger');
+  if (burger) {
+    var open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-label', t[open ? 'nav-close-aria' : 'nav-open-aria'] || burger.getAttribute('aria-label'));
+  }
+  var mobClose = document.querySelector('.mob-nav-close');
+  if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
 }
 
 // ─── LANGUAGE SWITCHER ────────────────────────────────
@@ -224,8 +230,11 @@ function navOpen() {
   document.body.classList.toggle('nav-open', open);
   document.body.style.overflow = open ? 'hidden' : '';
   mobNav.setAttribute('aria-hidden', String(!open));
+  mobNav.setAttribute('aria-modal', String(open));
+  if (open) mobNav.removeAttribute('inert'); else mobNav.setAttribute('inert', '');
   burger.setAttribute('aria-expanded', String(open));
-  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  var t = i18n[currentLang] || i18n.en;
+  burger.setAttribute('aria-label', t[open ? 'nav-close-aria' : 'nav-open-aria'] || (open ? 'Close menu' : 'Open menu'));
   if (open) {
     menuFocusReturn = document.activeElement;
     var first = mobNav.querySelector('.mob-nav-body a, .mob-nav-close, .mob-lang-btn');
@@ -241,8 +250,11 @@ function navClose() {
   document.body.classList.remove('nav-open');
   document.body.style.overflow = '';
   mobNav.setAttribute('aria-hidden', 'true');
+  mobNav.setAttribute('aria-modal', 'false');
+  mobNav.setAttribute('inert', '');
   burger.setAttribute('aria-expanded', 'false');
-  burger.setAttribute('aria-label', 'Open menu');
+  var t = i18n[currentLang] || i18n.en;
+  burger.setAttribute('aria-label', t['nav-open-aria'] || 'Open menu');
   if (menuFocusReturn) {
     menuFocusReturn.focus();
     menuFocusReturn = null;

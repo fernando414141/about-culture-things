@@ -6,7 +6,6 @@
 <meta name="format-detection" content="telephone=no">
 <title>About Culture Things — Private Sintra Tours | Rita Almeida</title>
 <meta name="description" content="Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Lisbon pickup, max 4 people.">
-<meta name="keywords" content="Sintra tours, Sintra day trip, Portugal private tours, Pena Palace, Quinta da Regaleira, Cascais tour, Cabo da Roca, Azenhas do Mar, hidden beaches Portugal, private tours Lisbon, Rita Almeida guide, local experiences">
 <meta name="author" content="Rita Almeida — About Culture Things">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <meta name="theme-color" content="#5C6B2A">
@@ -72,7 +71,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"></noscript>
-<link rel="preload" as="image" href="assets/images/hero.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/hero-640.webp" type="image/webp" imagesrcset="assets/images/hero-640.webp 640w, assets/images/hero-960.webp 960w, assets/images/hero.webp 1537w" imagesizes="(min-width: 64rem) 50vw, 100vw" fetchpriority="high">
 
 <!-- Structured Data -->
 <script type="application/ld+json" id="structured-data">
@@ -97,9 +96,10 @@
       "isPartOf": { "@id": "https://aboutculturethings.com/#website" },
       "about": { "@id": "https://aboutculturethings.com/#business" },
       "primaryImageOfPage": "https://aboutculturethings.com/assets/images/hero.webp",
+      "dateModified": "2026-06-17",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": [".hero h1", ".hero-desc", "#problem-heading", "#tours-heading", "#booking-heading"]
+        "cssSelector": [".hero h1", ".hero-desc", "#problem-heading", "#tours-heading", "#reviews-heading", "#booking-heading"]
       }
     },
     {
@@ -231,12 +231,40 @@
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "reviewBody": "Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy.",
       "itemReviewed": { "@id": "https://aboutculturethings.com/#business" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Fernando G." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Local knowledge made the difference. We saw places we would never have found on our own.",
+      "itemReviewed": { "@id": "https://aboutculturethings.com/#business" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Amanda T." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations.",
+      "itemReviewed": { "@id": "https://aboutculturethings.com/#business" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Laura S." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after.",
+      "itemReviewed": { "@id": "https://aboutculturethings.com/#business" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "James W." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care.",
+      "itemReviewed": { "@id": "https://aboutculturethings.com/#business" }
     }
   ]
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260627">
+<link rel="stylesheet" href="assets/css/main.css?v=20260628">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -309,7 +337,7 @@
       </a>
     </div>
     <div class="nav-utility">
-      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
+      <button type="button" class="burger" id="burger" data-i18n-aria="nav-open-aria" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
     </div>
@@ -317,8 +345,8 @@
 </header>
 
 <!-- ── MOBILE NAV ── -->
-<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation" aria-hidden="true">
-  <button class="mob-nav-close" type="button" aria-label="Close menu">
+<nav class="mob-nav" id="mob-nav" role="dialog" aria-modal="false" aria-label="Mobile navigation" aria-hidden="true" inert>
+  <button class="mob-nav-close" type="button" data-i18n-aria="nav-close-aria" aria-label="Close menu">
     <span aria-hidden="true">×</span>
   </button>
   <div class="mob-nav-body">
@@ -348,7 +376,7 @@
       </div>
       <h1 data-i18n="hero-h1">Private Sintra tours with a local guide</h1>
       <p class="hero-desc" data-i18n="hero-desc">Your own group, your pace — Sintra and the coast with Rita Almeida, a Sintra-born private guide.</p>
-      <a href="#reviews" class="hero-review-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View TripAdvisor reviews">
+      <a href="#reviews" class="hero-review-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View customer reviews">
         <span class="hero-review-stars" aria-hidden="true">★★★★★</span>
         <span class="hero-review-text" data-i18n="hero-review-trust">Every TripAdvisor review is 5-star</span>
       </a>
@@ -361,16 +389,20 @@
       </div>
     </div>
     <div class="hero-media">
-      <img
-        class="hero-img"
-        src="assets/images/hero.webp"
-        alt=""
-        width="1537"
-        height="1023"
-        fetchpriority="high"
-        decoding="async"
-        alt="Rita Almeida with private tour guests by the Atlantic coast near Sintra, Portugal"
-      >
+      <picture>
+        <source
+          srcset="assets/images/hero-640.webp 640w, assets/images/hero-960.webp 960w, assets/images/hero.webp 1537w"
+          sizes="(min-width: 64rem) 50vw, 100vw"
+          type="image/webp">
+        <img
+          class="hero-img"
+          src="assets/images/hero.webp"
+          alt="Rita Almeida with private tour guests by the Atlantic coast near Sintra, Portugal"
+          width="1537"
+          height="1023"
+          fetchpriority="high"
+          decoding="async">
+      </picture>
     </div>
   </div>
 </section>
@@ -425,7 +457,7 @@
             <img src="assets/images/tour-full-sintra-coast-640.webp" alt="Sintra Complete Experience &amp; Atlantic Coast" loading="lazy" decoding="async" width="480" height="360">
           </picture>
         </div>
-        <div class="pc-name" data-i18n="tour1-name">Sintra Complete Experience &amp; Atlantic Coast</div>
+        <h3 class="pc-name" data-i18n="tour1-name">Sintra Complete Experience &amp; Atlantic Coast</h3>
         <div class="pc-tag" data-i18n="tour1-tag">7 hours · Max 4 guests</div>
         <p class="pc-places" data-i18n="tour1-summary">Historic Sintra · Pena area · Cabo da Roca · Cascais</p>
         <p class="pc-fit" data-i18n="tour1-fit">Best for first-time visitors who want Sintra, the western edge of Europe, and Cascais in one private day.</p>
@@ -460,7 +492,7 @@
             <img src="assets/images/tour-hidden-beaches-640.webp" alt="Sintra &amp; Hidden Beaches Experience" loading="lazy" decoding="async" width="480" height="421">
           </picture>
         </div>
-        <div class="pc-name" data-i18n="tour2-name">Sintra &amp; Hidden Beaches Experience</div>
+        <h3 class="pc-name" data-i18n="tour2-name">Sintra &amp; Hidden Beaches Experience</h3>
         <div class="pc-tag" data-i18n="tour2-tag">5 hours · Max 4 guests</div>
         <p class="pc-places" data-i18n="tour2-summary">Sintra hills · Hidden coves · Azenhas do Mar</p>
         <p class="pc-fit" data-i18n="tour2-fit">Best for a slower coastal route, quiet viewpoints, and families who prefer a shorter private tour.</p>
@@ -544,6 +576,7 @@
           </p>
         </div>
         <p class="reviews-trust-note" data-i18n="reviews-trust-note">Every TripAdvisor review is 5-star</p>
+        <p class="reviews-trust-count" data-i18n="reviews-trust-count">6 reviews on TripAdvisor</p>
       </div>
       <div class="reviews-grid" id="reviews-grid" aria-label="Customer reviews">
         <article class="review-card review-card--lead">
@@ -711,6 +744,15 @@
         <p class="footer-note" data-i18n="footer-note">Private Sintra tours with Rita Almeida. 5.0★ TripAdvisor · Sintra & Lisbon.</p>
       </div>
       <div class="footer-column">
+        <span class="footer-column-title" data-i18n="footer-explore">Explore</span>
+        <nav class="footer-links" data-i18n-aria="footer-explore-aria" aria-label="Site sections">
+          <a href="#tours" data-i18n="nav-tours">Tours</a>
+          <a href="#differentiators" data-i18n="nav-why">Why Rita</a>
+          <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+          <a href="#booking" data-i18n="nav-booking">FAQ / Booking</a>
+        </nav>
+      </div>
+      <div class="footer-column">
         <span class="footer-column-title" data-i18n="footer-connect">Connect</span>
         <nav class="footer-actions" data-i18n-aria="footer-connect-aria" aria-label="Connect">
           <a class="footer-action" href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="footer-whatsapp" data-i18n-aria="foot-whatsapp-aria" aria-label="WhatsApp (opens in new tab)">
@@ -738,7 +780,7 @@
 </footer>
 
 <!-- ── BACK TO TOP ── -->
-<button type="button" class="back-to-top" id="back-to-top" hidden data-i18n-aria="back-to-top-aria" aria-label="Back to top" title="Back to top">↑</button>
+<button type="button" class="back-to-top" id="back-to-top" data-i18n-aria="back-to-top-aria" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- ── WHATSAPP FAB ── -->
 <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="fab-wa" id="fab-wa" data-site-wa="book" data-analytics-label="fab-whatsapp" data-i18n-aria="fab-aria" aria-label="Check availability on WhatsApp" data-i18n-tooltip="fab-tooltip" data-tooltip="Check availability on WhatsApp" target="_blank" rel="noopener noreferrer">
@@ -748,6 +790,6 @@
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/analytics.js" defer></script>
 <script src="assets/js/i18n.js" defer></script>
-<script src="assets/js/site.js?v=20260627" defer></script>
+<script src="assets/js/site.js?v=20260628" defer></script>
 </body>
 </html>
