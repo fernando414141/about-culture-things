@@ -1996,10 +1996,10 @@ footer::after {
   .sec-head { margin-bottom: var(--stack-md); }
   .pricing-card { padding: var(--inset-card); }
   .pc-img-wrap { margin: calc(-1 * var(--inset-card)) calc(-1 * var(--inset-card)) var(--stack-md); }
-  .about-photo { max-width: 15rem; margin: 0 auto; }
-  .reviews-header { align-items: center; text-align: center; }
-  .reviews-header .g-score { justify-content: center; width: 100%; }
-  .reviews-tripadvisor-link { margin-left: 0; }
+  .about-photo { max-width: 15rem; margin: 0 auto; justify-self: center; }
+  .reviews-header { align-items: flex-start; text-align: left; }
+  .reviews-header .g-score { justify-content: flex-start; width: auto; }
+  .reviews-tripadvisor-link { margin-left: auto; }
   .about-credentials { grid-template-columns: 1fr; }
   .faq-item summary { padding: var(--btn-py-lg) 0; }
   .faq-q { font-size: var(--t-md); }
@@ -2160,6 +2160,7 @@ section[id] {
 }
 .sec-head,
 .pricing-trust,
+.tours-compare,
 .tours-row,
 .why-grid,
 .about-grid,
@@ -2543,7 +2544,7 @@ section[id]::before {
 }
 .reviews-tripadvisor-link,
 .reviews-more-btn {
-  margin-left: 0;
+  margin-left: auto;
 }
 
 .faq-list {
@@ -3336,6 +3337,131 @@ body.nav-open .burger span { background: var(--text-secondary); }
   .reviews-grid.is-expanded .review-card:nth-child(n+4) { display: block !important; }
   .reviews-footer { justify-content: center; gap: var(--stack-sm); flex-wrap: wrap; }
 }
+
+/* ─── LAYOUT ALIGNMENT (2026) ───
+   Editorial one-pager rhythm: shared left rail on desktop,
+   centered cards only where conversion patterns call for it on small screens. */
+.sec-head,
+.pricing-trust,
+.tours-compare,
+.tours-row,
+.why-grid,
+.about-grid,
+.reviews-panel,
+.faq-list,
+.faq-cta-note,
+.final-cta-shell {
+  margin-left: 0;
+  margin-right: auto;
+}
+.sec-head {
+  text-align: left;
+  align-self: flex-start;
+}
+.sec-eyebrow {
+  justify-content: flex-start;
+}
+.tours-compare {
+  width: min(100%, var(--max));
+  max-width: var(--max);
+}
+.pricing-trust {
+  justify-content: flex-start;
+}
+.reviews-header {
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+.reviews-header .g-score {
+  justify-content: flex-start;
+}
+.reviews-tripadvisor-link,
+.reviews-more-btn {
+  margin-left: auto;
+}
+.reviews-footer {
+  justify-content: flex-end;
+  align-items: center;
+}
+.reviews-expand-btn {
+  margin-right: auto;
+}
+.faq-cta-note {
+  text-align: left;
+}
+.final-cta-shell .sec-eyebrow,
+.final-cta-shell h2,
+.final-cta-shell .final-cta-copy,
+.final-cta-shell .booking-steps,
+.final-cta-shell .cta-points,
+.final-cta-shell .cta-actions {
+  text-align: left;
+  align-items: flex-start;
+}
+.cta-actions {
+  justify-content: flex-start;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--stack-sm);
+}
+.back-to-top {
+  left: auto;
+  right: max(var(--sp-md), env(safe-area-inset-right));
+  bottom: max(5.25rem, calc(4.25rem + env(safe-area-inset-bottom)));
+}
+@media (max-width: 47.99rem) {
+  .tours-compare {
+    grid-template-columns: 1fr;
+  }
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--stack-sm);
+  }
+  .reviews-tripadvisor-link,
+  .reviews-more-btn {
+    margin-left: 0;
+  }
+  .reviews-footer {
+    justify-content: center;
+    align-items: stretch;
+  }
+  .reviews-expand-btn {
+    margin-right: 0;
+    align-self: center;
+  }
+  .about-photo {
+    justify-self: center;
+  }
+  .about-body {
+    text-align: left;
+  }
+  .about-body .btn-filled {
+    align-self: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 48rem) {
+  .about-grid {
+    align-items: center;
+  }
+  .about-body .btn-filled {
+    align-self: flex-start;
+  }
+}
+@media (min-width: 60.0625rem) {
+  .tours-compare {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero h1 em {
     -webkit-text-fill-color: var(--gold-l);
