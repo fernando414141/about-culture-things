@@ -1064,6 +1064,7 @@ section[id]::before {
 /* Shared content rail */
 .sec-head,
 .pricing-trust,
+.pricing-booking-note,
 .tours-row,
 .why-grid,
 .about-grid,
@@ -1301,6 +1302,33 @@ h2 {
   font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
+}
+
+.pricing-booking-note {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto clamp(var(--stack-md), 2.5vw, var(--stack-lg));
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  background: rgba(92, 107, 42, 0.06);
+  border: 1px solid rgba(92, 107, 42, 0.14);
+  border-radius: var(--r-pill);
+}
+
+.pc-booking-note {
+  margin: 0 0 var(--stack-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.pricing-card.featured .pc-booking-note {
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .tours-row {
