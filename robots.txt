@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://aboutculturethings.com/sitemap.xml
+
+# GEO — AI crawler guidance
+# See https://aboutculturethings.com/llms.txt
