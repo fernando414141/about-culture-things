@@ -206,7 +206,7 @@ window.addEventListener('scroll', () => {
 // Active nav link — Intersection Observer (more reliable than offsetTop)
 (function(){
   const navLinks = document.querySelectorAll('.nav-tabs a[href^="#"]');
-  const sections = document.querySelectorAll('main section[id]');
+  const sections = document.querySelectorAll('#top, main section[id]');
   if (!navLinks.length || !sections.length) return;
   const visible = new Map();
   const obs = new IntersectionObserver(entries => {

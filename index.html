@@ -263,7 +263,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260708">
+<link rel="stylesheet" href="assets/css/main.css?v=20260709">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -294,14 +294,15 @@
 <!-- ── NAV ── -->
 <header class="nav" id="nav" role="banner">
   <div class="nav-inner">
-    <a href="./" class="logo" aria-label="About Culture Things — home">
+    <a href="#top" class="logo" aria-label="About Culture Things — home">
       <span class="logo-name">About Culture Things</span>
     </a>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="#tours"       data-i18n="nav-tours">Tours</a>
-      <a href="#differentiators" data-i18n="nav-why">Why Rita</a>
-      <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
-      <a href="#faq"          data-i18n="nav-faq">FAQ</a>
+      <a href="#top" class="nav-tab-wide" data-i18n="nav-home">Home</a>
+      <a href="#tours" data-i18n="nav-tours">Tours</a>
+      <a href="#differentiators" class="nav-tab-wide" data-i18n="nav-why">Why Rita</a>
+      <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+      <a href="#faq" data-i18n="nav-faq">FAQ</a>
     </nav>
     <div class="nav-actions">
       <div class="lang-switcher" id="lang-switcher">
@@ -330,8 +331,7 @@
           </li>
         </ul>
       </div>
-      <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-outlined nav-book-btn" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="nav-book" data-i18n-aria="nav-book-aria" aria-label="Book on WhatsApp">
-        <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
+      <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled nav-book-btn" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="nav-book" data-i18n-aria="nav-book-aria" aria-label="Book on WhatsApp">
         <span data-i18n="nav-book">Book</span>
       </a>
     </div>
@@ -349,20 +349,25 @@
     <span aria-hidden="true">×</span>
   </button>
   <div class="mob-nav-body">
-    <a href="#tours"       data-i18n="nav-tours">Tours</a>
+    <a href="#top" data-i18n="nav-home">Home</a>
+    <a href="#tours" data-i18n="nav-tours">Tours</a>
     <a href="#differentiators" data-i18n="nav-why">Why Rita</a>
-    <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
-    <a href="#faq"          data-i18n="nav-faq">FAQ</a>
+    <a href="#reviews" data-i18n="nav-reviews">Reviews</a>
+    <a href="#faq" data-i18n="nav-faq">FAQ</a>
     <div class="mob-lang-options" role="group" aria-label="Language selector">
       <button type="button" class="mob-lang-btn active" data-lang="en" aria-pressed="true">EN</button>
       <button type="button" class="mob-lang-btn" data-lang="es" aria-pressed="false">ES</button>
       <button type="button" class="mob-lang-btn" data-lang="pt" aria-pressed="false">PT</button>
     </div>
+    <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="mob-cta btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="mob-book">
+      <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
+      <span data-i18n="nav-book">Book</span>
+    </a>
   </div>
 </nav>
 
 <!-- ── HERO ── -->
-<section class="hero" aria-label="Discover Portugal with Rita Almeida">
+<section class="hero" id="top" aria-label="Discover Portugal with Rita Almeida">
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
