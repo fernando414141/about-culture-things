@@ -122,6 +122,13 @@ function applyLang(lang) {
   var mobClose = document.querySelector('.mob-nav-close');
   if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
   if (typeof window.refreshReviewsCarousel === 'function') window.refreshReviewsCarousel();
+  if (typeof window.refreshTemplateInteractions === 'function') window.refreshTemplateInteractions();
+  if (location.hash) {
+    requestAnimationFrame(() => {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView({ block: 'start', behavior: 'auto' });
+    });
+  }
 }
 
 // ─── LANGUAGE SWITCHER ────────────────────────────────
@@ -515,6 +522,11 @@ const headObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.sec-head, #final-cta').forEach(el => headObs.observe(el));
+
+window.refreshTemplateInteractions = function () {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.sec-head, #final-cta').forEach(el => headObs.observe(el));
+};
 
 // ─── FAQ ACCORDION (one open at a time) ──────────────
 document.querySelectorAll('.faq-item').forEach(item => {

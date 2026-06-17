@@ -78,7 +78,7 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 1.75rem);
+  scroll-padding-top: calc(var(--nav-h) + 0.5rem);
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
 }
@@ -795,7 +795,7 @@ body.nav-open .nav-overlay {
 
 /* ─── BENEFITS / WHY CHOOSE US ─── */
 #benefits {
-  padding: 72px 20px;
+  padding: 64px 20px;
   background: var(--bg-alt);
 }
 
@@ -862,7 +862,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 48rem) {
   #benefits {
-    padding: 96px 24px;
+    padding: 88px 24px;
   }
 
   .benefits-grid {
@@ -881,7 +881,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 64rem) {
   #benefits {
-    padding: 120px 24px;
+    padding: 104px 24px;
   }
 
   .benefits-shell {
@@ -904,7 +904,7 @@ body.nav-open .nav-overlay {
 /* ─── SERVICES / PRICING (primary conversion section) ─── */
 #tours {
   background: var(--surface);
-  padding: 72px 20px;
+  padding: 64px 20px;
   border-block: 1px solid var(--border);
 }
 
@@ -927,10 +927,7 @@ body.nav-open .nav-overlay {
   padding: 0;
 }
 .pricing-trust li + li::before {
-  content: '·';
-  margin-right: 0.75rem;
-  color: rgba(17, 24, 16, 0.2);
-  font-weight: 400;
+  content: none;
 }
 
 .tours-row,
@@ -985,13 +982,15 @@ body.nav-open .nav-overlay {
 
 .pc-img-wrap {
   margin: calc(-1 * 1.25rem) calc(-1 * 1.25rem) 0.875rem;
+  aspect-ratio: 2 / 1;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
   overflow: hidden;
   background: var(--bg-alt);
 }
 .pc-img-wrap img {
+  display: block;
   width: 100%;
-  aspect-ratio: 2 / 1;
+  height: 100%;
   object-fit: cover;
   object-position: center 40%;
   border-radius: 0;
@@ -1080,7 +1079,8 @@ body.nav-open .nav-overlay {
 }
 
 .pc-cta { margin-top: 0; }
-.pc-cta .btn {
+.pc-cta .btn,
+.pc-cta .btn-filled {
   width: 100%;
   justify-content: center;
   min-height: 2.75rem;
@@ -1122,7 +1122,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 48rem) {
   #tours {
-    padding: 96px 24px;
+    padding: 88px 24px;
   }
 
   .tours-row, .services-grid {
@@ -1140,7 +1140,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 64rem) {
   #tours {
-    padding: 120px 24px;
+    padding: 104px 24px;
   }
 
   .tours-row {
@@ -1151,7 +1151,7 @@ body.nav-open .nav-overlay {
 
 /* ─── ABOUT RITA ─── */
 #differentiators {
-  padding: 72px 20px;
+  padding: 64px 20px;
 }
 
 .founder-layout {
@@ -1267,7 +1267,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 48rem) {
   #differentiators {
-    padding: 96px 24px;
+    padding: 88px 24px;
   }
 
   .founder-layout {
@@ -1306,7 +1306,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 64rem) {
   #differentiators {
-    padding: 120px 24px;
+    padding: 104px 24px;
   }
 
   .founder-layout {
@@ -1328,7 +1328,7 @@ body.nav-open .nav-overlay {
 /* ─── REVIEWS ─── */
 #reviews {
   background: #FAFAFA;
-  padding: 72px 20px;
+  padding: 64px 20px;
 }
 
 .reviews-panel {
@@ -1569,7 +1569,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 48rem) {
   #reviews {
-    padding: 96px 24px;
+    padding: 88px 24px;
   }
 
   .reviews-carousel {
@@ -1593,7 +1593,7 @@ body.nav-open .nav-overlay {
 
 @media (min-width: 64rem) {
   #reviews {
-    padding: 120px 24px;
+    padding: 104px 24px;
   }
 
   .reviews-grid {
@@ -1607,7 +1607,7 @@ body.nav-open .nav-overlay {
 
 /* ─── FAQ ─── */
 #faq {
-  padding: 72px 20px;
+  padding: 64px 20px;
   background:
     radial-gradient(circle at top, rgba(92, 107, 42, 0.05), transparent 36%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
@@ -1733,7 +1733,7 @@ details[open] .faq-a {
 
 @media (min-width: 48rem) {
   #faq {
-    padding: 96px 24px;
+    padding: 88px 24px;
   }
 
   .faq-list {
@@ -1753,7 +1753,7 @@ details[open] .faq-a {
 
 @media (min-width: 64rem) {
   #faq {
-    padding: 120px 24px;
+    padding: 104px 24px;
   }
 
   .faq-cta-shell {
@@ -2290,7 +2290,7 @@ details[open] .faq-a {
 /* ─── LEGACY ALIASES (template compat) ─── */
 .content { display: flex; flex-direction: column; }
 main section[id] {
-  scroll-margin-top: calc(var(--nav-h) + 1.75rem);
+  scroll-margin-top: 0;
   padding-block: var(--section-py);
   padding-inline: max(var(--pad-x), env(safe-area-inset-left, 0px))
                   max(var(--pad-x), env(safe-area-inset-right, 0px));
