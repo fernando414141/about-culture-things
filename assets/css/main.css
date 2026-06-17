@@ -30,8 +30,8 @@
   /* Typography */
   --text-primary:   #0D1A0A;
   --text-secondary: #2E3D28;
-  --text-muted:     #5A6B52;
-  --text-faint:     #8FA082;
+  --text-muted:     #4A5A42;
+  --text-faint:     #6B7D62;
 
   /* Brand derivatives */
   --brand-green-d:  #3D4A1C;
@@ -75,8 +75,8 @@
   --sp-md:  1rem;
   --sp-lg:  1.25rem;
   --sp-xl:  1.75rem;
-  --sp-2xl: 2.75rem;
-  --sp-3xl: 4rem;
+  --sp-2xl: 2.1rem;
+  --sp-3xl: 3rem;
 
   --stack-xs: var(--sp-sm);
   --stack-sm: var(--sp-md);
@@ -95,7 +95,7 @@
   --measure:     38rem;
   --touch:       3rem;
   --content-x:   max(1.125rem, env(safe-area-inset-left, 0px));
-  --content-y:   clamp(2.25rem, 5vw, 4rem);
+  --content-y:   clamp(1.75rem, 4vw, 3rem);
   --scroll-cue:  3rem;
   --bp-sm:  30rem;  /* 480px */
   --bp-md:  48rem;  /* 768px */
@@ -135,10 +135,19 @@
   /* Fonts — single family */
   --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-display: var(--font-body);
-  --rating:       #9A7B2F;
+  --rating:       #8A6B22;
 }
 
-/* ─── RESET & BASE ─── */
+.anchor-target {
+  display: block;
+  position: relative;
+  top: calc(-1 * (var(--nav-h) + 0.75rem));
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -670,8 +679,8 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   margin-top: calc(-1 * var(--nav-h));
   background: var(--bg);
   overflow: hidden;
-  min-height: calc(88svh - var(--nav-h));
-  min-height: calc(88dvh - var(--nav-h));
+  max-height: calc(100svh - var(--nav-h));
+  max-height: calc(100dvh - var(--nav-h));
 }
 
 .hero-inner {
@@ -952,11 +961,10 @@ section[id]::before {
 
 /* Shared content rail */
 .sec-head,
-.pricing-trust,
-.pricing-booking-note,
 .tours-row,
-.why-grid,
-.about-grid,
+.problem-grid,
+.diff-grid,
+.booking-shell,
 .reviews-panel,
 .faq-list,
 .final-cta-shell {
@@ -1069,66 +1077,112 @@ h2 {
   .hero h1 em { -webkit-text-fill-color: var(--gold-l); background: none; animation: none; }
 }
 
-/* ─── WHY SECTION ─── */
-.why-grid {
+/* ─── PROBLEM SECTION ─── */
+.problem-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(0.75rem, 2vw, 1rem);
-  border-top: none;
+  gap: clamp(0.6rem, 1.5vw, 0.85rem);
 }
 
-.why-item {
+.problem-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 0.75rem;
+  align-items: start;
+  padding: clamp(0.9rem, 2vw, 1.1rem);
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--elev-1);
+}
+
+.problem-icon {
+  grid-row: span 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.problem-card h3 {
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.problem-card p {
+  grid-column: 2;
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+/* ─── DIFFERENTIATORS ─── */
+.diff-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.5rem;
+  gap: clamp(0.85rem, 2vw, 1.25rem);
   align-items: start;
-  padding: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+.diff-guide {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem 1rem;
+  align-items: center;
+  padding: clamp(0.9rem, 2vw, 1.15rem);
   background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: var(--r-card);
   box-shadow: var(--elev-1);
-  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 }
-.why-item:hover {
+
+.diff-guide .about-photo {
+  width: 5.5rem;
+  max-width: 5.5rem;
+  margin: 0;
+  border-radius: var(--r-md);
+  aspect-ratio: 1 / 1;
+}
+
+.diff-guide-copy { min-width: 0; }
+
+.diff-points {
+  display: grid;
+  gap: clamp(0.55rem, 1.5vw, 0.75rem);
+}
+
+.diff-point {
+  padding: clamp(0.8rem, 1.8vw, 1rem);
   background: var(--surface);
-  border-color: var(--outline-v);
-  box-shadow: var(--elev-2);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-md);
 }
 
-.why-num {
-  display: none;
-}
-
-.why-content { min-width: 0; }
-
-.why-kicker {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  background: var(--accent-bg);
-  border-radius: var(--r-pill);
-  color: var(--brand-green);
-  font-size: var(--t-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 800;
-  margin-bottom: var(--stack-sm);
-}
-
-.why-item h3 {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2vw, 1.15rem);
+.diff-point h3 {
+  font-size: clamp(0.95rem, 2vw, 1.02rem);
   font-weight: 700;
-  line-height: 1.08;
-  margin: 0 0 0.35rem;
+  line-height: 1.2;
+  margin: 0 0 0.25rem;
   color: var(--text-primary);
 }
 
-.why-item p {
-  color: var(--text-secondary);
-  line-height: 1.58;
-  font-size: 0.92rem;
-  max-width: 34rem;
+.diff-point p {
   margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
 }
 
 
@@ -1318,10 +1372,22 @@ h2 {
 
 .pc-includes {
   list-style: none;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   padding: 0;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.2rem;
+}
+
+.pc-includes--visible {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.pc-includes--visible .pc-include,
+.pc-includes--visible .pc-exclude {
+  font-size: 0.75rem;
+  line-height: 1.35;
 }
 
 .pc-include,
@@ -1502,11 +1568,22 @@ h2 {
 
 .about-name {
   font-family: var(--font-body);
-  font-size: clamp(1.65rem, 4vw, 2.15rem);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.375rem;
-  line-height: 1;
+  margin-bottom: 0.2rem;
+  line-height: 1.15;
+}
+
+.diff-guide .about-role {
+  font-size: var(--t-xs);
+  margin-bottom: 0.45rem;
+}
+
+.diff-guide .about-bio {
+  font-size: 0.84rem;
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 .about-role {
@@ -1683,13 +1760,8 @@ h2 {
 }
 
 @media (min-width: 75rem) {
-  .reviews-grid .review-card:nth-child(n+4) { display: flex; }
-  .reviews-grid .review-card:nth-child(n+5) { display: none; }
+  .reviews-grid .review-card:nth-child(n+4) { display: none; }
   .reviews-grid.is-expanded .review-card { display: flex !important; }
-}
-
-@media (min-width: 120rem) {
-  .reviews-grid .review-card { display: flex !important; }
 }
 
 .review-card {
@@ -1770,7 +1842,7 @@ h2 {
 .rv-verified {
   margin: 0 0 0.625rem;
   font-size: var(--t-xs);
-  color: var(--forest-l);
+  color: var(--accent-d);
   font-weight: 700;
 }
 
@@ -1857,7 +1929,63 @@ h2 {
 
 .reviews-external-link:hover { opacity: 0.75; }
 
-/* ─── FAQ ─── */
+/* ─── BOOKING SECTION ─── */
+.booking-shell {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.booking-steps--light {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: clamp(0.9rem, 2vw, 1.15rem);
+  list-style: none;
+  counter-reset: step;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: var(--r-card);
+  box-shadow: var(--elev-1);
+}
+
+.booking-steps--light li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.booking-steps--light li::before {
+  counter-increment: step;
+  content: counter(step);
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent-d);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.05rem;
+}
+
+.booking-viator-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.45;
+}
+
+#booking .faq-list {
+  margin-top: 0.15rem;
+}
+
 .faq-list {
   display: flex;
   flex-direction: column;
@@ -1959,18 +2087,19 @@ details[open] .faq-a {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.1rem, 2.4vw, 2rem);
+  gap: clamp(0.85rem, 2vw, 1.25rem);
   align-items: start;
 }
 
-.final-cta-main,
-.final-cta-side { min-width: 0; position: relative; z-index: 1; }
+.final-cta-main {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
 
 .final-cta-shell .sec-eyebrow,
 .final-cta-shell h2,
 .final-cta-shell .final-cta-copy,
-.final-cta-shell .cta-points,
-.final-cta-shell .booking-steps,
 .final-cta-shell .cta-actions {
   text-align: left;
 }
@@ -2381,8 +2510,8 @@ footer::before {
 /* Mobile compact — premium density */
 @media (max-width: 47.99rem) {
   main section[id] {
-    padding-top: clamp(2rem, 5vw, 2.5rem);
-    padding-bottom: clamp(2rem, 5vw, 2.5rem);
+    padding-top: clamp(1.5rem, 4vw, 2rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2rem);
   }
 
   .sec-desc { font-size: 0.9rem; margin-bottom: 0; }
@@ -2477,6 +2606,21 @@ footer::before {
     padding: 0.75rem;
   }
 
+  .hero {
+    min-height: auto;
+    max-height: calc(100svh - var(--nav-h));
+    max-height: calc(100dvh - var(--nav-h));
+  }
+
+  .hero-inner {
+    min-height: auto;
+  }
+
+  .hero-media {
+    min-height: clamp(10rem, 32vw, 14rem);
+    max-height: 38vh;
+  }
+
   .reviews-expand-btn {
     max-width: none;
     width: 100%;
@@ -2549,7 +2693,7 @@ footer::before {
 @media (min-width: 48rem) {
   :root {
     --content-x: clamp(1.25rem, 3vw + 0.5rem, 2.25rem);
-    --content-y: clamp(2.75rem, 5vw, 4rem);
+    --content-y: clamp(2.1rem, 4vw, 3rem);
   }
 
   .nav-tabs { display: flex; }
@@ -2562,6 +2706,7 @@ footer::before {
   .hero {
     min-height: calc(100svh - var(--nav-h));
     min-height: calc(100dvh - var(--nav-h));
+    max-height: none;
   }
 
   .hero-inner {
@@ -2621,30 +2766,14 @@ footer::before {
   }
 
   .pricing-trust {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  .pricing-trust span {
-    font-size: 0.8125rem;
-    white-space: nowrap;
-    text-align: left;
-  }
-
-  .pricing-booking-note {
-    text-align: left;
-    margin-inline: 0;
+    display: none;
   }
 
   .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .tours-row { grid-template-columns: repeat(2, 1fr); }
 
-  .final-cta-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
-  }
-
-  .cta-email-link { width: auto; }
+  .final-cta-shell .cta-email-link { width: auto; }
 
   .footer-bottom {
     flex-direction: row;
@@ -2671,16 +2800,36 @@ footer::before {
   .fab-wa::before { display: block; }
 }
 
-/* ≥ 60rem — three-column why */
+/* ≥ 60rem — three-column layouts */
 @media (min-width: 60rem) {
-  .why-grid {
+  .problem-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: clamp(0.65rem, 1.2vw, 0.85rem);
   }
 
-  .why-item:hover {
-    box-shadow: var(--elev-2);
-    transform: none;
+  .problem-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: clamp(0.85rem, 1.5vw, 1rem);
+  }
+
+  .problem-icon {
+    grid-row: auto;
+    margin: 0 auto 0.35rem;
+  }
+
+  .problem-card p {
+    grid-column: auto;
+  }
+
+  .diff-grid {
+    grid-template-columns: minmax(16rem, 0.9fr) 1fr;
+    gap: clamp(0.85rem, 2vw, 1.25rem);
+    align-items: stretch;
+  }
+
+  .diff-points {
+    align-content: start;
   }
 }
 
@@ -2689,18 +2838,11 @@ footer::before {
   :root {
     --content-max: 68rem;
     --max: 80rem;
-    --content-y: clamp(3rem, 4.5vw, 4.5rem);
+    --content-y: clamp(2.25rem, 3.5vw, 3.25rem);
   }
 
   .nav-tabs { gap: 0.25rem; }
   .nav-tabs a { padding: 0.5rem 0.8rem; }
-
-  .about-grid {
-    grid-template-columns: minmax(16rem, 18rem) 1fr;
-    align-items: center;
-    gap: clamp(var(--stack-lg), 3vw, var(--stack-xl));
-    max-width: none;
-  }
 
   .reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -2709,17 +2851,6 @@ footer::before {
 @media (min-width: 48rem) and (max-width: 72rem) {
   .nav-tabs a { font-size: 0.8125rem; padding: 0.48rem 0.62rem; }
   .nav-actions .btn-filled span { font-size: 0.8125rem; }
-}
-
-/* 48rem–64rem — centered about on tablet portrait */
-@media (min-width: 48rem) and (max-width: 63.99rem) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    max-width: 32rem;
-    margin-inline: auto;
-  }
-
-  .about-photo { margin-inline: auto; }
 }
 
 /* ≥ 90rem — large desktop */
@@ -2748,7 +2879,8 @@ footer::before {
 @media (hover: none) {
   .pricing-card:hover,
   .review-card:hover,
-  .why-item:hover,
+  .problem-card:hover,
+  .diff-point:hover,
   .about-photo:hover img,
   .hero-ctas .btn-filled:hover,
   .hero-ctas .btn-outlined:hover,

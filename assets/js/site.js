@@ -333,16 +333,11 @@ document.querySelectorAll('.faq-item').forEach(item => {
   if (!btn || !grid) return;
 
   const breakpoints = [
-    window.matchMedia('(min-width: 120rem)'),
-    window.matchMedia('(min-width: 75rem)'),
-    window.matchMedia('(min-width: 48rem)'),
-    window.matchMedia('(min-width: 30rem)')
+    window.matchMedia('(min-width: 48rem)')
   ];
 
   function getVisibleCount() {
-    if (breakpoints[0].matches) return TOTAL_REVIEWS;
-    if (breakpoints[1].matches) return 4;
-    if (breakpoints[2].matches) return 3;
+    if (breakpoints[0].matches) return 3;
     return 2;
   }
 
