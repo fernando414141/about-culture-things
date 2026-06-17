@@ -263,7 +263,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260704">
+<link rel="stylesheet" href="assets/css/main.css?v=20260706">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -371,34 +371,38 @@
 
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Discover Portugal with Rita Almeida">
-  <div class="hero-media" aria-hidden="true">
-    <img class="hero-poster" src="assets/images/hero-960.webp" alt="" width="960" height="638" decoding="async">
-    <div class="hero-overlay"></div>
-  </div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
-      </div>
-      <div class="hero-guide">
-        <img class="hero-guide-photo" src="assets/images/rita.webp" alt="" width="80" height="80" decoding="async" aria-hidden="true">
-        <span class="hero-guide-text" data-i18n="hero-guide">With Rita Almeida, Sintra-born guide</span>
-      </div>
+      <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
       <h1 data-i18n="hero-h1">Private Sintra tours with a local guide</h1>
-      <p class="hero-desc" data-i18n="hero-desc">Your own group, your pace — Sintra and the Atlantic coast.</p>
-      <p class="hero-price-line" data-i18n="hero-price">From €275 per private group (up to 4)</p>
-      <a href="#tours" class="hero-price-link" data-i18n="hero-price-link">See both tours ↓</a>
-      <a href="#reviews" class="hero-review-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View customer reviews">
-        <span class="hero-review-stars" aria-hidden="true">★★★★★</span>
-        <span class="hero-review-text" data-i18n="hero-review-trust">5.0 ★ TripAdvisor</span>
-      </a>
+      <p class="hero-desc" data-i18n="hero-desc">Your own group, your pace. Pena Palace, hidden beaches, and the Atlantic coast with Rita Almeida — from €275 per private group (up to 4).</p>
       <div class="hero-ctas">
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="book" data-analytics-label="hero-primary">
           <svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
           <span data-i18n="cta-hero">Check dates on WhatsApp</span>
         </a>
-        <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">See tours</a>
+        <a href="#tours" class="btn-outlined hero-cta-secondary" data-i18n="hero-cta-secondary">See tours</a>
       </div>
+      <a href="#reviews" class="hero-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View customer reviews">
+        <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
+        <span data-i18n="hero-review-trust">5.0 ★ TripAdvisor</span>
+      </a>
+      <a href="#problem" class="hero-scroll" data-i18n-aria="hero-scroll-aria" aria-label="Scroll to explore">
+        <span data-i18n="hero-scroll">Scroll to explore</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="hero-media">
+      <img
+        class="hero-poster"
+        src="assets/images/hero-960.webp"
+        srcset="assets/images/hero-960.webp 960w, assets/images/hero.webp 1537w"
+        sizes="(min-width: 64rem) 42vw, 100vw"
+        alt="Rita Almeida with private tour guests on Portugal's Atlantic coast"
+        width="960"
+        height="638"
+        decoding="async"
+        fetchpriority="high">
     </div>
   </div>
 </section>
@@ -513,41 +517,31 @@
     </div>
   </section>
 
-  <!-- 4. DIFFERENTIATORS -->
-  <section id="differentiators" class="section--tinted" aria-labelledby="diff-heading">
+  <!-- 4. ABOUT RITA -->
+  <section id="differentiators" class="section--tinted founder-section" aria-labelledby="diff-heading">
     <span id="why" class="anchor-target" aria-hidden="true"></span>
-    <div class="sec-head">
-      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="diff-kicker">Why Rita</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
-      <h2 id="diff-heading" class="anim-ready" data-i18n="diff-h2">Why book with Rita</h2>
-    </div>
-    <div class="why-layout">
-      <article class="founder-card reveal" id="about">
-        <div class="founder-photo about-photo">
-          <picture>
-            <source srcset="assets/images/rita.webp" type="image/webp">
-            <img src="assets/images/rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="640" height="640">
-          </picture>
-        </div>
-        <div class="founder-copy diff-guide-copy">
-          <div class="founder-name about-name" data-i18n="about-name">Rita Almeida</div>
-          <div class="founder-role about-role" data-i18n="about-role">Sintra-born · Private Tour Guide</div>
-          <p class="founder-bio about-bio" data-i18n="about-bio">Local insight, calm pacing, and routes shaped around your group — in English, Spanish, or Portuguese.</p>
-        </div>
-      </article>
-      <ul class="why-list diff-points" aria-label="What makes these tours different">
-        <li class="why-item diff-point reveal d1">
-          <h3 data-i18n="diff1-h3">Born and raised in Sintra</h3>
-          <p data-i18n="diff1-p">Roads, timing, and quiet corners only a local knows.</p>
-        </li>
-        <li class="why-item diff-point reveal d2">
-          <h3 data-i18n="diff2-h3">Only your group, never mixed</h3>
-          <p data-i18n="diff2-p">Private tours for up to 4 guests — your route, your tempo.</p>
-        </li>
-        <li class="why-item diff-point reveal d3">
-          <h3 data-i18n="diff3-h3">Flexible route and pacing</h3>
-          <p data-i18n="diff3-p">Rita adapts stops to your interests, weather, and energy.</p>
-        </li>
-      </ul>
+    <div class="founder-layout" id="about">
+      <div class="founder-intro">
+        <div class="sec-eyebrow" aria-hidden="true"><span class="sec-kicker" data-i18n="diff-kicker">About Rita</span></div>
+        <h2 id="diff-heading" class="anim-ready" data-i18n="diff-h2">Meet Rita, your local Sintra guide</h2>
+      </div>
+      <div class="founder-photo about-photo reveal">
+        <picture>
+          <source srcset="assets/images/rita.webp" type="image/webp">
+          <img src="assets/images/rita.webp" alt="Rita Almeida, Sintra tour guide based in Portugal" loading="lazy" decoding="async" width="640" height="800">
+        </picture>
+      </div>
+      <div class="founder-copy">
+        <p class="founder-bio about-bio" data-i18n="about-bio">Rita is a Sintra-born private guide who creates relaxed, personal tours for travelers who want more than a standard sightseeing route. She combines local stories, beautiful viewpoints, and hidden places to make each experience feel natural, warm, and easy to enjoy. Her tours are small, flexible, and shaped around people who want to discover Sintra with someone who truly knows the area.</p>
+        <ul class="founder-trust diff-points" data-i18n-aria="about-trust-aria" aria-label="Rita trust points">
+          <li class="reveal d1" data-i18n="diff1-h3">Sintra-born local guide</li>
+          <li class="reveal d2" data-i18n="diff2-h3">Small private tours</li>
+          <li class="reveal d3" data-i18n="diff3-h3">English / Portuguese / Spanish</li>
+        </ul>
+        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours." class="founder-cta btn-outlined" target="_blank" rel="noopener noreferrer" data-site-wa="about" data-analytics-label="about-rita-whatsapp">
+          <span data-i18n="about-cta">Message Rita on WhatsApp</span>
+        </a>
+      </div>
     </div>
   </section>
 
