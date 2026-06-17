@@ -686,85 +686,118 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 
 /* ─── PROBLEM ─── */
+.section-problem {
+  background: #FAFAFA;
+}
+
+#problem {
+  padding-block: 3.5rem;
+}
+
+.problem-wrap {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.problem-title {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 16em;
+  text-wrap: balance;
+}
+
 .problem-grid {
   display: grid;
-  gap: 0;
-  max-width: 40rem;
-  margin: 0 auto;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 28rem;
 }
 
 .problem-card {
-  padding: var(--s2) 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  display: grid;
-  grid-template-columns: 1.5rem 1fr;
-  gap: 0.25rem 1.25rem;
-  align-items: start;
-  border-bottom: 1px solid var(--border);
-}
-.problem-card:last-child { border-bottom: none; }
-
-.problem-icon {
-  grid-row: span 2;
-  width: 1.5rem;
-  height: auto;
-  border-radius: 0;
-  background: transparent;
-  color: transparent;
-  font-size: 0;
   display: flex;
   align-items: flex-start;
-  padding-top: 0.35rem;
-}
-.problem-icon::before {
-  content: '';
-  display: block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--brand);
-  flex-shrink: 0;
+  gap: 0.875rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-1);
 }
 
-.problem-card h3 {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.02em;
+.problem-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #B45309;
 }
+
 .problem-card p {
-  grid-column: 2;
   margin: 0;
   font-size: var(--text-base);
-  color: var(--text-3);
-  line-height: 1.55;
+  font-weight: 500;
+  color: var(--text-2);
+  line-height: 1.45;
+  text-wrap: pretty;
 }
 
-@media (min-width: 60rem) {
+.problem-solution {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0 0.5rem;
+  max-width: 28rem;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--brand-dark);
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.problem-solution-icon {
+  flex-shrink: 0;
+  display: flex;
+  color: var(--brand);
+}
+
+@media (min-width: 48rem) {
+  #problem { padding-block: 4.5rem; }
+  .problem-wrap { gap: 2.5rem; }
+  .problem-grid {
+    max-width: 36rem;
+    gap: 1rem;
+  }
+  .problem-card { padding: 1.25rem 1.375rem; }
+  .problem-solution { max-width: 36rem; font-size: var(--text-lg); }
+}
+
+@media (min-width: 64rem) {
+  #problem { padding-block: clamp(5rem, 8vh, 7.5rem); }
+  .problem-wrap { gap: 3rem; }
   .problem-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--s2);
-    max-width: var(--content-w);
+    max-width: none;
+    gap: 1.25rem;
   }
   .problem-card {
-    grid-template-columns: 1fr;
-    text-align: left;
-    padding: 1.375rem;
-    border-bottom: none;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    background: var(--surface);
-    box-shadow: var(--shadow-1);
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 7.5rem;
+    padding: 1.5rem;
   }
-  .problem-icon {
-    grid-row: auto;
-    margin: 0 0 0.75rem;
-    padding-top: 0;
-  }
-  .problem-card p { grid-column: auto; }
+  .problem-solution { max-width: 40rem; }
 }
 
 /* ─── SERVICES / PRICING (primary conversion section) ─── */
@@ -1462,42 +1495,40 @@ details[open] .faq-icon {
 /* ─── FINAL CTA ─── */
 #final-cta {
   background: var(--bg);
-  padding-block: calc(var(--section-py) * 0.75) var(--section-py);
+  padding: 72px 20px 80px;
 }
 
 .final-cta-shell {
-  max-width: 36rem;
+  max-width: 920px;
   margin: 0 auto;
-  padding: clamp(2rem, 5vw, 3rem);
-  background: linear-gradient(165deg, #121A10 0%, #1E2A18 50%, #243020 100%);
-  border-radius: calc(var(--radius-card) + 0.25rem);
-  box-shadow: var(--shadow-3);
-  color: #fff;
+  padding: clamp(3rem, 7vw, 5rem) 24px;
+  background:
+    linear-gradient(180deg, rgba(92, 107, 42, 0.055) 0%, rgba(92, 107, 42, 0.02) 100%),
+    #FAFAFA;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: none;
+  color: var(--text);
   text-align: center;
 }
 
-.final-cta-shell .kicker,
-.final-cta-shell .sec-kicker {
-  color: rgba(255, 255, 255, 0.7);
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
 .final-cta-shell h2 {
-  color: #fff;
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.75rem, 3vw + 0.5rem, 2.25rem);
+  color: var(--text);
+  margin: 0 auto 1rem;
+  max-width: 12em;
+  font-size: clamp(2rem, 8vw, 2.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 .final-cta-copy {
-  font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.6;
-  margin: 0 auto 1.5rem;
-  max-width: 24rem;
+  margin: 0 auto 1.75rem;
+  max-width: 46rem;
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .booking-steps {
@@ -1533,56 +1564,74 @@ details[open] .faq-icon {
 .booking-steps { counter-reset: step; }
 
 .cta-actions {
-  display: grid;
-  gap: 0.625rem;
-  max-width: 22rem;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
 }
 
 .final-cta-shell .btn-filled {
-  background: #fff;
-  color: var(--brand-dark);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  min-height: 3.25rem;
-  font-weight: 600;
+  min-height: 56px;
+  width: 100%;
+  padding-inline: 32px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(92, 107, 42, 0.22);
+  font-size: var(--text-base);
+  font-weight: 700;
 }
 .final-cta-shell .btn-filled:hover {
-  background: #F8F8F4;
+  background: var(--brand-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 18px 34px rgba(92, 107, 42, 0.27);
 }
 
-.final-cta-shell .btn-outlined,
-.cta-email-link {
-  color: rgba(255, 255, 255, 0.75);
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
-  width: 100%;
-  justify-content: center;
-  min-height: 2.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-btn);
-  font-weight: 500;
+.final-cta-trust {
+  margin: 1rem auto 0;
+  color: var(--text-3);
   font-size: var(--text-sm);
-  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-.final-cta-shell .btn-outlined:hover,
-.cta-email-link:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.35);
-  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  line-height: 1.5;
 }
 
-.final-cta-shell .btn-filled:focus-visible,
-.final-cta-shell .btn-outlined:focus-visible {
-  outline-color: #fff;
+.final-cta-shell .btn-filled:focus-visible {
+  outline-color: var(--brand-dark);
 }
 
 @media (min-width: 40rem) {
-  .cta-actions { grid-template-columns: 1fr; }
-  .final-cta-shell .btn-lg { width: 100%; }
+  #final-cta {
+    padding: 88px 24px 96px;
+  }
+
+  .final-cta-shell h2 {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+  }
+
+  .final-cta-copy {
+    font-size: 1.125rem;
+  }
+
+  .final-cta-shell .btn-filled {
+    width: min(60%, 22rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  #final-cta {
+    padding: 104px 24px 120px;
+  }
+
+  .final-cta-shell h2 {
+    font-size: clamp(3rem, 5vw, 4rem);
+  }
+
+  .final-cta-copy {
+    font-size: 1.1875rem;
+  }
+
+  .final-cta-shell .btn-filled {
+    width: auto;
+  }
 }
 
 /* ─── FOOTER ─── */
@@ -1680,8 +1729,7 @@ footer {
   .back-to-top { display: none !important; }
   .reviews-grid { grid-template-columns: 1fr; }
   .hero-ctas .btn-filled,
-  .pc-cta .btn,
-  .final-cta-shell .btn-massive {
+  .pc-cta .btn {
     font-size: var(--text-base);
     padding-inline: 1rem;
   }
@@ -1755,10 +1803,6 @@ main section[id] {
                   max(var(--pad-x), env(safe-area-inset-right, 0px));
 }
 
-#problem {
-  padding-block: calc(var(--section-py) * 0.65);
-}
-
 section.section--light { background: var(--bg); }
 section.section--tinted { background: var(--bg-alt); }
 
@@ -1794,6 +1838,7 @@ section.section--tinted { background: var(--bg-alt); }
 
 .sec-head,
 .tours-row,
+.problem-wrap,
 .problem-grid,
 .booking-shell,
 .reviews-panel,
