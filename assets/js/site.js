@@ -158,6 +158,7 @@ function applyLang(lang) {
   document.documentElement.lang = htmlLang[lang] || lang;
   updateDocumentMeta(lang);
   updateStructuredData(lang);
+  if (typeof window.updateReviewsExpand === 'function') window.updateReviewsExpand();
   closeLangDropdown();
 }
 
@@ -386,27 +387,6 @@ document.querySelectorAll('.tours-row, .reviews-grid').forEach(el => {
   staggerObs.observe(el);
 });
 
-// ─── RATING COUNTER ──────────────────────────────────
-function animateValue(el, end, duration) {
-  const startTime = performance.now();
-  function step(now) {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = (end * eased).toFixed(1);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = '5.0';
-  }
-  requestAnimationFrame(step);
-}
-
-const ratingEl = document.querySelector('.g-number');
-if (ratingEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const rObs = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) { animateValue(ratingEl, 5.0, 1400); rObs.disconnect(); }
-  }, { threshold: 0.5 });
-  rObs.observe(ratingEl);
-}
-
 // ─── EYEBROW LINE ANIMATION ──────────────────────────
 const eyeObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -434,35 +414,75 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// ─── REVIEWS EXPAND (mobile) ─────────────────────────
+// ─── REVIEWS EXPAND ──────────────────────────────────
 (function(){
+  const TOTAL_REVIEWS = 6;
   const btn = document.getElementById('reviews-expand');
   const grid = document.getElementById('reviews-grid');
+  const countEl = document.getElementById('reviews-expand-count');
+  const labelEl = btn && btn.querySelector('.reviews-expand-label');
   if (!btn || !grid) return;
-  const label = btn.querySelector('[data-i18n]');
-  const mq = window.matchMedia('(max-width: 47.99rem)');
-  function syncExpandControl() {
-    const mobile = mq.matches;
-    btn.hidden = !mobile;
-    if (!mobile) {
+
+  const breakpoints = [
+    window.matchMedia('(min-width: 120rem)'),
+    window.matchMedia('(min-width: 75rem)'),
+    window.matchMedia('(min-width: 48rem)'),
+    window.matchMedia('(min-width: 30rem)')
+  ];
+
+  function getVisibleCount() {
+    if (breakpoints[0].matches) return TOTAL_REVIEWS;
+    if (breakpoints[1].matches) return 4;
+    if (breakpoints[2].matches) return 3;
+    if (breakpoints[3].matches) return 2;
+    return 1;
+  }
+
+  function getHiddenCount() {
+    return Math.max(0, TOTAL_REVIEWS - getVisibleCount());
+  }
+
+  function updateExpandControl() {
+    const hidden = getHiddenCount();
+    const expanded = grid.classList.contains('is-expanded');
+
+    if (hidden === 0) {
+      btn.hidden = true;
       grid.classList.remove('is-expanded');
       btn.setAttribute('aria-expanded', 'false');
-      if (label) {
-        label.setAttribute('data-i18n', 'reviews-more');
-        label.textContent = i18n[currentLang]['reviews-more'];
-      }
+      return;
+    }
+
+    btn.hidden = false;
+    btn.setAttribute('aria-expanded', String(expanded));
+
+    if (countEl) {
+      countEl.textContent = expanded ? '' : '(+' + hidden + ')';
+      countEl.hidden = expanded;
+    }
+
+    if (labelEl && typeof i18n !== 'undefined' && i18n[currentLang]) {
+      const key = expanded ? 'reviews-less' : 'reviews-more';
+      labelEl.setAttribute('data-i18n', key);
+      labelEl.textContent = i18n[currentLang][key];
     }
   }
-  btn.addEventListener('click', () => {
-    const expanded = grid.classList.toggle('is-expanded');
-    btn.setAttribute('aria-expanded', String(expanded));
-    if (label) {
-      const key = expanded ? 'reviews-less' : 'reviews-more';
-      label.setAttribute('data-i18n', key);
-      label.textContent = i18n[currentLang][key];
-    }
+
+  btn.addEventListener('click', function() {
+    const willExpand = !grid.classList.contains('is-expanded');
+    grid.classList.toggle('is-expanded', willExpand);
+    updateExpandControl();
   });
-  mq.addEventListener('change', syncExpandControl);
-  syncExpandControl();
+
+  breakpoints.forEach(function(mq) {
+    mq.addEventListener('change', function() {
+      grid.classList.remove('is-expanded');
+      updateExpandControl();
+    });
+  });
+
+  window.addEventListener('resize', updateExpandControl, { passive: true });
+  updateExpandControl();
+  window.updateReviewsExpand = updateExpandControl;
 })();
 
