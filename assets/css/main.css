@@ -1094,8 +1094,12 @@ section[id]::before {
 .sec-eyebrow {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  align-self: center;
   gap: var(--sp-md);
   margin-bottom: var(--sp-md);
+  width: auto;
+  max-width: 100%;
 }
 
 .sec-eyebrow-line {
@@ -1106,6 +1110,10 @@ section[id]::before {
   border-radius: 1px;
   flex-shrink: 0;
   overflow: hidden;
+}
+
+.sec-eyebrow-line--end {
+  background: linear-gradient(270deg, rgba(92, 107, 42, 0.15) 0%, #5C6B2A 50%, #2E4220 100%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -2076,6 +2084,14 @@ details[open] .faq-a {
 .final-cta-shell .booking-steps,
 .final-cta-shell .cta-actions {
   text-align: left;
+}
+
+.final-cta-shell .sec-eyebrow {
+  align-self: flex-start;
+}
+
+.final-cta-shell .sec-eyebrow-line--end {
+  display: none;
 }
 
 .final-cta-shell h2 {
