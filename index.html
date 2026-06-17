@@ -571,74 +571,85 @@
         <p class="reviews-trust-line"><span class="reviews-trust-stars" aria-hidden="true">★★★★★</span> <span class="reviews-trust-value" aria-label="5.0 out of 5 average rating">5.0/5</span> <span data-i18n="reviews-average">average rating</span></p>
         <p class="reviews-trust-note" data-i18n="reviews-trust-note">5.0 from 6 TripAdvisor reviews</p>
       </div>
-      <div class="reviews-grid" id="reviews-grid" aria-label="Customer reviews">
-        <article class="review-card reveal">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">RB</div>
-            <div class="rv-identity">
-              <cite class="rv-name">Roman B.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv2-text">"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
-        <article class="review-card reveal d1">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">MM</div>
-            <div class="rv-identity">
-              <cite class="rv-name">Monica M.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv-monica-text">"Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
-        <article class="review-card reveal d2">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">FG</div>
-            <div class="rv-identity">
-              <cite class="rv-name">Fernando G.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv-fernando-text">"Local knowledge made the difference. We saw places we would never have found on our own."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
-        <article class="review-card reveal">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">AT</div>
-            <div class="rv-identity">
-              <cite class="rv-name">Amanda T.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
-        <article class="review-card reveal d1">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">LS</div>
-            <div class="rv-identity">
-              <cite class="rv-name">Laura S.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv5-text">"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
-        <article class="review-card reveal d2">
-          <header class="rv-header">
-            <div class="rv-avatar" aria-hidden="true">JW</div>
-            <div class="rv-identity">
-              <cite class="rv-name">James W.</cite>
-            </div>
-          </header>
-          <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <blockquote class="rv-text" data-i18n="rv6-text">"Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care."</blockquote>
-          <p class="rv-source">TripAdvisor</p>
-        </article>
+      <div class="reviews-carousel" aria-label="Customer reviews">
+        <button class="reviews-nav reviews-nav--prev" type="button" aria-label="Previous reviews" data-reviews-prev>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4.5L6.5 9l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="reviews-viewport" id="reviews-viewport" tabindex="0" aria-label="Swipe to browse reviews">
+          <div class="reviews-grid" id="reviews-grid">
+            <article class="review-card reveal">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">RB</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">Roman B.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv2-text">"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+            <article class="review-card reveal d1">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">MM</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">Monica M.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv-monica-text">"Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+            <article class="review-card reveal d2">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">FG</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">Fernando G.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv-fernando-text">"Local knowledge made the difference. We saw places we would never have found on our own."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+            <article class="review-card reveal">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">AT</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">Amanda T.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+            <article class="review-card reveal d1">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">LS</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">Laura S.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv5-text">"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+            <article class="review-card reveal d2">
+              <header class="rv-header">
+                <div class="rv-avatar" aria-hidden="true">JW</div>
+                <div class="rv-identity">
+                  <cite class="rv-name">James W.</cite>
+                </div>
+              </header>
+              <div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div>
+              <blockquote class="rv-text" data-i18n="rv6-text">"Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care."</blockquote>
+              <p class="rv-source">TripAdvisor</p>
+            </article>
+          </div>
+        </div>
+        <button class="reviews-nav reviews-nav--next" type="button" aria-label="Next reviews" data-reviews-next>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4.5L11.5 9 7 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
+      <div class="reviews-dots" id="reviews-dots" data-i18n-aria="reviews-carousel-aria" aria-label="Review navigation"></div>
       <div class="reviews-actions">
         <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" data-site-tripadvisor class="reviews-external-link" data-analytics-label="reviews-tripadvisor" data-i18n-aria="reviews-view-all-aria" aria-label="Read more reviews on TripAdvisor (opens in new tab)">
           <span data-i18n="reviews-view-all">Read more reviews on TripAdvisor</span>
