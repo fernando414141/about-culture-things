@@ -696,16 +696,18 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 
 /* ─── HERO (full-bleed video, vertically centered) ─── */
 .hero {
+  --hero-pad-bottom: clamp(1.5rem, 4vw, 2.5rem);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   max-width: none;
-  min-height: 100svh;
-  min-height: 100dvh;
+  /* +nav-h compensates for margin-top pull under fixed nav */
+  min-height: calc(100svh + var(--nav-h));
+  min-height: calc(100dvh + var(--nav-h));
   margin-top: calc(-1 * var(--nav-h));
-  padding: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px))) var(--content-x) clamp(1.5rem, 4vw, 2.5rem);
+  padding: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px))) var(--content-x) var(--hero-pad-bottom);
   background: var(--coast-blue);
   overflow: hidden;
 }
@@ -767,8 +769,8 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
   margin: 0 auto;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - var(--nav-h) - clamp(1.5rem, 4vw, 2.5rem));
-  min-height: calc(100dvh - var(--nav-h) - clamp(1.5rem, 4vw, 2.5rem));
+  min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+  min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
 }
 
 .hero-copy {
@@ -2524,14 +2526,15 @@ footer::before {
 
   .hero {
     align-items: center;
-    min-height: 100svh;
-    min-height: 100dvh;
-    padding-bottom: clamp(1.75rem, 5vw, 2.5rem);
+    --hero-pad-bottom: clamp(1.75rem, 5vw, 2.5rem);
+    min-height: calc(100svh + var(--nav-h));
+    min-height: calc(100dvh + var(--nav-h));
+    padding-bottom: var(--hero-pad-bottom);
   }
 
   .hero-inner {
-    min-height: calc(100svh - var(--nav-h) - clamp(1.75rem, 5vw, 2.5rem));
-    min-height: calc(100dvh - var(--nav-h) - clamp(1.75rem, 5vw, 2.5rem));
+    min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
   }
 
   .hero-copy { width: min(100%, 22rem); }
@@ -2608,15 +2611,16 @@ footer::before {
 
   .hero {
     align-items: center;
-    min-height: 100svh;
-    min-height: 100dvh;
+    --hero-pad-bottom: clamp(var(--stack-xl), 3.5vw, 2.85rem);
+    min-height: calc(100svh + var(--nav-h));
+    min-height: calc(100dvh + var(--nav-h));
     padding-top: calc(var(--nav-h) + max(0.5rem, env(safe-area-inset-top, 0px)));
-    padding-bottom: clamp(var(--stack-xl), 3.5vw, 2.85rem);
+    padding-bottom: var(--hero-pad-bottom);
   }
 
   .hero-inner {
-    min-height: calc(100svh - var(--nav-h) - clamp(var(--stack-xl), 3.5vw, 2.85rem));
-    min-height: calc(100dvh - var(--nav-h) - clamp(var(--stack-xl), 3.5vw, 2.85rem));
+    min-height: calc(100svh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
+    min-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top, 0px)) - var(--hero-pad-bottom));
   }
 
   .hero-copy {
