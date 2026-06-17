@@ -57,17 +57,20 @@
   else video.addEventListener('loadeddata', tryPlay, { once: true });
 })();
 
+// ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
+const mqDesktop = window.matchMedia('(min-width: 48rem)');
+
 // ─── BACK TO TOP ─────────────────────────────────────
 (function(){
   var btn = document.getElementById('back-to-top');
   if (!btn) return;
   function toggle() {
-    var desktopLike = window.innerWidth >= 768;
+    var desktopLike = mqDesktop.matches;
     btn.hidden = !desktopLike;
     btn.classList.toggle('visible', desktopLike && window.scrollY > 600);
   }
   window.addEventListener('scroll', toggle, { passive: true });
-  window.addEventListener('resize', toggle);
+  mqDesktop.addEventListener('change', toggle);
   toggle();
   btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
@@ -100,7 +103,7 @@ function updateStructuredData(lang) {
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  faq.mainEntity = [1, 2, 3, 4, 5, 6].map(n => ({
+  faq.mainEntity = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => ({
     '@type': 'Question',
     name: t['faq' + n + '-q'],
     acceptedAnswer: { '@type': 'Answer', text: t['faq' + n + '-a'] }
@@ -247,7 +250,7 @@ window.addEventListener('scroll', () => {
   ticking = true;
   requestAnimationFrame(() => {
     const sy = window.scrollY;
-    const compactViewport = window.innerWidth < 768;
+    const compactViewport = !mqDesktop.matches;
     const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
     nav.classList.toggle('elevated', sy > 10);
     nav.classList.toggle('nav-overlay', sy < heroHeight * 0.72 && !document.body.classList.contains('nav-open'));
@@ -342,8 +345,8 @@ document.querySelectorAll('.mob-lang-btn').forEach(function (btn) {
 // Initial nav overlay state
 nav.classList.add('nav-overlay');
 
-window.addEventListener('resize', () => {
-  if (window.innerWidth >= 768 && mobNav.classList.contains('open')) {
+mqDesktop.addEventListener('change', () => {
+  if (mqDesktop.matches && mobNav.classList.contains('open')) {
     navClose();
   }
 });
