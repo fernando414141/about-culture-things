@@ -323,13 +323,10 @@ h3 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--text);
-  max-width: 8.75rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .nav-tabs { display: none; gap: 0.125rem; }
+.nav-tab-wide { display: none; }
 .nav-tabs a {
   font-size: var(--text-sm);
   font-weight: 500;
@@ -435,7 +432,7 @@ body.nav-open .nav-overlay {
 
 .mob-nav-logo {
   font-size: var(--text-base);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--text);
 }
@@ -537,7 +534,7 @@ body.nav-open .nav-overlay {
 
 /* Language switcher */
 .lang-switcher { position: relative; }
-.nav-lang-switcher { display: block; }
+.nav-lang-switcher { display: none; }
 .lang-trigger {
   display: inline-flex;
   align-items: center;
@@ -1993,53 +1990,42 @@ details[open] .faq-icon {
 
 @media (min-width: 48rem) and (max-width: 63.99rem) {
   .nav-inner {
+    display: grid;
     grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo { justify-self: start; min-width: 0; }
+
+  .nav-tabs {
+    display: flex;
+    justify-self: center;
   }
 
   .nav-actions {
-    display: none;
+    display: flex;
+    justify-self: end;
   }
 
-  .nav-lang-switcher {
-    display: block;
-  }
+  .nav-utility { display: none; }
 
-  .mob-nav {
-    inset: 0 0 0 auto;
-    width: min(420px, calc(100vw - 48px));
-    padding: max(1.25rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom));
-    transform: translateX(1.5rem);
-    box-shadow: -24px 0 60px rgba(17, 24, 16, 0.16);
-  }
+  .logo-name { max-width: 11rem; }
+}
 
-  .mob-nav.open {
-    transform: translateX(0);
-  }
-
-  .mob-nav-body,
-  .mob-nav-footer {
-    max-width: none;
-  }
-
-  .mob-nav a:not(.mob-cta) {
-    font-size: 1.5rem;
-  }
-
-  .mob-contact-links {
-    display: none;
-  }
+@media (min-width: 48rem) {
+  .nav-lang-switcher { display: block; }
 }
 
 @media (min-width: 64rem) {
   .nav-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
     gap: 1rem;
   }
   .logo,
   .nav-tabs,
-  .nav-utility,
   .nav-actions {
     grid-row: 1;
   }
@@ -2051,17 +2037,13 @@ details[open] .faq-icon {
   }
   .nav-actions {
     display: flex;
-    grid-column: 4;
-    justify-self: end;
-  }
-  .nav-utility {
-    display: flex;
     grid-column: 3;
     justify-self: end;
   }
-  .nav-lang-switcher { display: block; }
+  .nav-utility { display: none; }
+  .nav-tab-wide { display: inline-flex; }
   .burger { display: none; }
-  .logo-name { max-width: 11rem; }
+  .logo-name { max-width: none; }
 }
 
 @media (max-width: 47.99rem) {
@@ -2222,11 +2204,5 @@ section.section--tinted { background: var(--bg-alt); }
 
 /* Small phones */
 @media (max-width: 23.99rem) {
-  .logo-name {
-    font-size: var(--text-sm);
-    max-width: 10rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .logo-name { font-size: var(--text-sm); }
 }
