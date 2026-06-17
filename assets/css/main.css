@@ -2781,8 +2781,6 @@ footer::before {
   }
 }
 
-/* ≥ 120rem (4K) — merged above */
-
 /* ─── REDUCED MOTION ─── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
