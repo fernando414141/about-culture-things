@@ -236,7 +236,27 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260617">
+<link rel="stylesheet" href="assets/css/main.css?v=20260618">
+<style id="sec-head-critical">
+  main section[id] > .sec-head {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+  main section[id] > .sec-head .sec-eyebrow {
+    justify-self: center !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  main section[id] > .sec-head h2,
+  main section[id] > .sec-head .sec-desc {
+    width: auto !important;
+    max-width: 38rem !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+</style>
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -387,7 +407,7 @@
 
   <!-- WHY RITA -->
   <section id="why" class="section--tinted" aria-labelledby="why-heading">
-  <div class="sec-head">
+  <div class="sec-head" style="display:grid;justify-items:center;text-align:center">
     <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="why-kicker">Why Rita</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
     <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Quiet luxury. <em>Local access</em></h2>
     <p class="sec-desc" data-i18n="why-desc">A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.</p>
@@ -422,7 +442,7 @@
 
   <!-- TOURS -->
   <section id="tours" class="section--light" aria-labelledby="tours-heading">
-    <div class="sec-head">
+    <div class="sec-head" style="display:grid;justify-items:center;text-align:center">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="tours-kicker">Tours</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
       <h2 id="tours-heading" class="anim-ready" data-i18n="tours-h2">Choose your day</h2>
       <p class="sec-desc" data-i18n="tours-desc">Two private routes, one standard: elegant pacing, local insight, and direct booking with Rita.</p>
@@ -503,7 +523,7 @@
 
   <!-- ABOUT RITA -->
   <section id="about" class="section--tinted" aria-labelledby="about-heading">
-    <div class="sec-head">
+    <div class="sec-head" style="display:grid;justify-items:center;text-align:center">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="about-kicker">About Rita</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
       <h2 id="about-heading" class="anim-ready" data-i18n="about-h2">The person behind <em>the day</em></h2>
     </div>
@@ -544,7 +564,7 @@
 
   <!-- REVIEWS -->
   <section id="reviews" class="section--light" aria-labelledby="reviews-heading">
-    <div class="sec-head">
+    <div class="sec-head" style="display:grid;justify-items:center;text-align:center">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="reviews-kicker">Reviews</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
       <h2 id="reviews-heading" class="anim-ready" data-i18n="reviews-h2">Trusted by travelers</h2>
     </div>
@@ -651,7 +671,7 @@
 
   <!-- FAQ -->
   <section id="faq" class="section--tinted" aria-labelledby="faq-heading">
-    <div class="sec-head">
+    <div class="sec-head" style="display:grid;justify-items:center;text-align:center">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line" aria-hidden="true"></span><span class="sec-kicker" data-i18n="faq-kicker">FAQ</span><span class="sec-eyebrow-line sec-eyebrow-line--end" aria-hidden="true"></span></div>
       <h2 id="faq-heading" class="anim-ready" data-i18n="faq-h2">Common questions</h2>
     </div>
@@ -789,6 +809,6 @@
 
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/analytics.js" defer></script>
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/site.js?v=20260618" defer></script>
 </body>
 </html>

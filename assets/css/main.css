@@ -1078,15 +1078,24 @@ section[id]::before {
 }
 
 /* ─── SECTION HEADERS ─── */
-/* Centered intros — standard for symmetric one-page section modules */
-.sec-head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+main section[id] > .sec-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
   width: 100%;
   max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
+  margin-bottom: clamp(var(--stack-md), 2.5vw, var(--stack-lg));
+  text-align: center;
+}
+
+.sec-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
   margin-bottom: clamp(var(--stack-md), 2.5vw, var(--stack-lg));
   text-align: center;
 }
@@ -1147,21 +1156,20 @@ h2 {
 }
 
 .sec-head h2 {
-  width: 100%;
+  width: auto;
   max-width: var(--measure);
   text-align: center;
-  margin-inline: auto;
 }
 
 .sec-desc {
   font-size: clamp(1rem, 0.35vw + 0.92rem, 1.0625rem);
   color: var(--text-secondary);
   line-height: 1.68;
-  width: 100%;
+  width: auto;
   max-width: var(--measure);
   text-align: center;
   text-wrap: pretty;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .sec-head h2 em,
