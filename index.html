@@ -53,14 +53,14 @@
 <meta name="twitter:image:alt" content="Pena Palace above the forests of Sintra, Portugal">
 
 <!-- Favicon -->
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap"></noscript>
 <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
 
 <!-- Structured Data -->
@@ -143,7 +143,7 @@
 
 /* ─── DESIGN TOKENS ─── */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   /* Surfaces */
   --brand-green:  #5C6B2A;
   --forest:       #2E4220;
@@ -538,8 +538,7 @@ body.nav-open .burger span:nth-child(1) { transform: rotate(45deg) translate(0, 
 body.nav-open .burger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0, -6px); }
 body.nav-open .burger {
-  opacity: 0;
-  pointer-events: none;
+  z-index: 260;
 }
 
 /* Mobile nav */
@@ -553,7 +552,6 @@ body.nav-open .burger {
   -webkit-backdrop-filter: blur(20px);
   overflow-y: auto;
   padding: var(--stack-xs) var(--content-x) max(var(--stack-md), env(safe-area-inset-bottom));
-  display: none;
   flex-direction: column;
 }
 .mob-nav.open { display: flex; }
@@ -2593,6 +2591,7 @@ section[id]::before {
     radial-gradient(circle at 100% 0%, rgba(255,255,255,.08), transparent 26%);
   pointer-events: none;
 }
+.final-cta-shell .booking-steps,
 .final-cta-shell .sec-eyebrow,
 .final-cta-shell h2,
 .final-cta-shell .final-cta-copy,
@@ -2949,6 +2948,7 @@ body { padding-top: 0; }
     gap: .85rem 1rem;
   }
 }
+@media (max-width: 29.99rem) {
   .hero-ctas .btn-filled,
   .hero-ctas .btn-outlined {
     width: 100%;
@@ -3188,6 +3188,132 @@ body.nav-open .nav .burger span {
   .sec-head { margin-bottom: clamp(1rem, 3vw, 1.35rem); }
   #final-cta { padding-top: clamp(1.25rem, 3vw, 1.75rem); }
 }
+
+/* ─── AUDIT FIXES ─── */
+:root {
+  --measure: 38rem;
+  --content-max: 64rem;
+}
+.sec-head { max-width: var(--measure); }
+.hero-trust-bar span {
+  font-size: var(--t-sm);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+.hero-note { color: rgba(255,255,255,.78); }
+.hero h1 em {
+  color: var(--gold-l);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 em {
+    background: linear-gradient(135deg, var(--gold-l) 0%, #fff 50%, var(--gold-l) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-shimmer 5s linear 2s infinite;
+  }
+}
+.hero-ctas .btn-outlined {
+  padding: var(--btn-py-sm) var(--btn-px-sm);
+  min-height: var(--btn-h-md);
+}
+@media (max-width: 47.99rem) {
+  .hero {
+    min-height: auto;
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .hero-trust-bar .hero-trust-extra { display: none; }
+  .hero-trust-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: .4rem;
+  }
+}
+@media (min-width: 64rem) {
+  .reviews-grid .review-card:nth-child(n+4) { display: none; }
+}
+.pc-price-sub {
+  display: block;
+  font-size: var(--t-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: .15rem;
+}
+.pricing-card.featured .pc-price-sub { color: rgba(255,255,255,.62); }
+.booking-steps {
+  display: grid;
+  gap: .65rem;
+  margin: 1rem 0 1.15rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.booking-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: .92rem;
+  line-height: 1.45;
+  color: rgba(255,255,255,.82);
+}
+.booking-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: .1rem;
+}
+.reviews-count {
+  font-size: var(--t-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: .2rem;
+}
+.hero-scroll-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  transition: color .2s;
+}
+.hero-scroll-link:hover { color: #fff; }
+.hero-scroll-link:focus-visible { outline-color: #fff; }
+.lang-dropdown[hidden] { display: none !important; }
+body.nav-open .burger {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.nav-open .burger span { background: var(--text-secondary); }
+.mob-nav:not(.open) { visibility: hidden; }
+.mob-nav.open { visibility: visible; }
+.nav-tabs a.nav-book {
+  color: var(--accent);
+  font-weight: 650;
+}
+.nav.nav-overlay .nav-tabs a.nav-book { color: var(--gold-l); }
+@media (max-width: 72rem) {
+  .lang-trigger-kicker { display: none; }
+  .lang-trigger-copy { flex-direction: row; align-items: center; gap: .35rem; }
+  .lang-trigger { gap: .45rem; padding-inline: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 em {
+    -webkit-text-fill-color: var(--gold-l);
+    background: none;
+    animation: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -3219,7 +3345,7 @@ body.nav-open .nav .burger span {
 <!-- ── NAV ── -->
 <header class="nav" id="nav" role="banner">
   <div class="nav-inner">
-    <a href="/" class="logo" aria-label="About Culture Things — home">
+    <a href="./" class="logo" aria-label="About Culture Things — home">
       <img src="favicon.png" class="logo-img" alt="" width="32" height="32">
       <span class="logo-name">About Culture Things</span>
     </a>
@@ -3229,6 +3355,7 @@ body.nav-open .nav .burger span {
       <a href="#about"       data-i18n="nav-about">About</a>
       <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
       <a href="#faq"         data-i18n="nav-faq">FAQ</a>
+      <a href="#final-cta"   class="nav-book" data-i18n="nav-book">Book</a>
     </nav>
     <div class="nav-actions">
       <div class="lang-switcher" id="lang-switcher">
@@ -3244,7 +3371,7 @@ body.nav-open .nav .burger span {
           </span>
           <svg class="lang-trigger-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="lang-dropdown" role="listbox" aria-label="Language options" id="lang-dropdown">
+        <div class="lang-dropdown" role="listbox" aria-label="Language options" id="lang-dropdown" hidden>
           <button class="lang-option active" data-lang="en" role="option" aria-selected="true" type="button">
             <span class="lang-option-copy">
               <span class="lang-option-name">English</span>
@@ -3270,7 +3397,7 @@ body.nav-open .nav .burger span {
       </div>
       <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled" target="_blank" rel="noopener noreferrer">
         <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-        <span data-i18n="nav-cta">Check Availability</span>
+        <span data-i18n="nav-cta">Book now</span>
       </a>
     </div>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
@@ -3280,7 +3407,7 @@ body.nav-open .nav .burger span {
 </header>
 
 <!-- ── MOBILE NAV ── -->
-<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
+<nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div class="mob-nav-top">
     <span class="mob-nav-title" data-i18n="mob-nav-title">Menu</span>
     <button class="mob-nav-close" type="button" aria-label="Close menu" onclick="navClose()">
@@ -3293,6 +3420,7 @@ body.nav-open .nav .burger span {
     <a href="#about"       onclick="navClose()" data-i18n="nav-about">About</a>
     <a href="#reviews"     onclick="navClose()" data-i18n="nav-reviews">Reviews</a>
     <a href="#faq"         onclick="navClose()" data-i18n="nav-faq">FAQ</a>
+    <a href="#final-cta"   onclick="navClose()" class="nav-book" data-i18n="nav-book">Book</a>
     <div class="mob-nav-footer">
       <label class="mob-lang-select-wrap" aria-label="Language selector">
         <span class="mob-lang-label" data-i18n="lang-kicker">Language</span>
@@ -3305,7 +3433,7 @@ body.nav-open .nav .burger span {
       <div class="mob-cta">
         <a href="https://wa.me/351968510019" onclick="navClose()" target="_blank" rel="noopener noreferrer">
           <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="mob-whatsapp">Check Availability</span>
+          <span data-i18n="mob-whatsapp">Book now</span>
         </a>
       </div>
     </div>
@@ -3314,8 +3442,8 @@ body.nav-open .nav .burger span {
 
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Discover Portugal with Rita Almeida">
-  <video class="hero-bg" autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="hero.webp">
-    <source src="hero.mp4" type="video/mp4" media="(min-width: 48rem) and (prefers-reduced-motion: no-preference)">
+  <video class="hero-bg" muted playsinline preload="none" aria-hidden="true" poster="hero.webp" disablepictureinpicture>
+    <source data-src="hero.mp4" type="video/mp4" media="(min-width: 48rem) and (prefers-reduced-motion: no-preference)">
   </video>
   <div class="hero-inner">
     <div class="hero-copy">
@@ -3328,22 +3456,22 @@ body.nav-open .nav .burger span {
       <div class="hero-trust-bar" role="list" aria-label="Key facts">
         <span role="listitem" data-i18n="hero-trust-1">Private tours only</span>
         <span role="listitem" data-i18n="hero-trust-2">5.0 ★ TripAdvisor</span>
-        <span role="listitem" data-i18n="hero-trust-3">Lisbon pickup included</span>
-        <span role="listitem" data-i18n="hero-trust-4">Up to 4 guests</span>
+        <span role="listitem" data-i18n="hero-trust-3" class="hero-trust-extra">Lisbon pickup included</span>
+        <span role="listitem" data-i18n="hero-trust-4" class="hero-trust-extra">Up to 4 guests</span>
       </div>
       <div class="hero-ctas">
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-filled" target="_blank" rel="noopener noreferrer">
           <svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="hero-cta-primary">Check Availability</span>
+          <span data-i18n="hero-cta-primary">Check availability</span>
         </a>
         <a href="#tours" class="btn-outlined" data-i18n="hero-cta-secondary">See tours</a>
       </div>
       <p class="hero-note" data-i18n="hero-note">Direct booking with Rita · Typical reply within 24h</p>
     </div>
   </div>
-  <div class="hero-scroll" aria-hidden="true">
+  <a href="#why" class="hero-scroll hero-scroll-link" aria-label="Scroll to Why Rita section">
     <div class="hero-scroll-line"></div>
-  </div>
+  </a>
 </section>
 
 <!-- ── MAIN ── -->
@@ -3415,11 +3543,12 @@ body.nav-open .nav .burger span {
           <span class="pc-price" data-i18n="tour1-price">€299</span>
           <span class="pc-per" data-i18n="tour-per">per group</span>
         </div>
+        <span class="pc-price-sub" data-i18n="tour1-price-sub">From €75/person · group of 4</span>
         <p class="pc-note" data-i18n="tour-note-tickets">Tickets not included · Lisbon pickup</p>
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20Complete%20Experience." class="btn-filled" target="_blank" rel="noopener noreferrer">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-            <span data-i18n="tour-cta">Check Availability</span>
+            <span data-i18n="tour1-cta">Book full-day tour</span>
           </a>
         </div>
       </article>
@@ -3446,11 +3575,12 @@ body.nav-open .nav .burger span {
           <span class="pc-price" data-i18n="tour2-price">€275</span>
           <span class="pc-per" data-i18n="tour-per">per group</span>
         </div>
+        <span class="pc-price-sub" data-i18n="tour2-price-sub">From €69/person · group of 4</span>
         <p class="pc-note" data-i18n="tour-note-tickets">Tickets not included · Lisbon pickup</p>
         <div class="pc-cta">
           <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20the%20Sintra%20%26%20Hidden%20Beaches%20Experience." class="btn-filled btn-filled--light" target="_blank" rel="noopener noreferrer">
             <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-            <span data-i18n="tour-cta">Check Availability</span>
+            <span data-i18n="tour2-cta">Book coastal tour</span>
           </a>
         </div>
       </article>
@@ -3489,13 +3619,13 @@ body.nav-open .nav .burger span {
             <span class="about-cred-value" data-i18n="about-cred-3-value">PT · EN · ES</span>
           </div>
           <div class="about-cred">
-            <span class="about-cred-label" data-i18n="about-cred-4-label">Years guiding</span>
-            <span class="about-cred-value" data-i18n="about-cred-4-value">Private host with local experience</span>
+            <span class="about-cred-label" data-i18n="about-cred-4-label">Reviews</span>
+            <span class="about-cred-value" data-i18n="about-cred-4-value">6 verified TripAdvisor reviews</span>
           </div>
         </div>
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20tours." class="btn-filled" target="_blank" rel="noopener noreferrer">
           <svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="about-cta">Check Availability</span>
+          <span data-i18n="about-cta">Message Rita</span>
         </a>
       </div>
     </div>
@@ -3516,6 +3646,7 @@ body.nav-open .nav .burger span {
           <div>
             <span class="g-stars" aria-label="5 stars">★★★★★</span>
             <div class="g-label" data-i18n="reviews-google-label">TripAdvisor</div>
+            <div class="reviews-count" data-i18n="reviews-count">6 verified reviews</div>
           </div>
         </div>
         <a href="https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="reviews-tripadvisor-link" aria-label="View About Culture Things on TripAdvisor (opens in new tab)">
@@ -3651,6 +3782,11 @@ body.nav-open .nav .burger span {
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="final-kicker">Final Step</span></div>
       <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Reserve your day in Sintra.</h2>
       <p class="final-cta-copy" data-i18n="cta-tagline">Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.</p>
+      <ol class="booking-steps" data-i18n-aria="booking-steps-aria" aria-label="How booking works">
+        <li data-i18n="booking-step-1">Message Rita on WhatsApp with your dates and group size</li>
+        <li data-i18n="booking-step-2">Confirm your route, timing, and availability together</li>
+        <li data-i18n="booking-step-3">Pay and enjoy your private day in Sintra</li>
+      </ol>
       <ul class="cta-points" data-i18n-aria="cta-points-aria" aria-label="Response details">
         <li data-i18n="cta-point-1">Reply within 24h</li>
         <li data-i18n="cta-point-2">WhatsApp response usually within 1h</li>
@@ -3658,7 +3794,7 @@ body.nav-open .nav .burger span {
       <div class="cta-actions">
         <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-massive" target="_blank" rel="noopener noreferrer">
           <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="cta-book">Check Availability</span>
+          <span data-i18n="cta-book">Message Rita on WhatsApp</span>
         </a>
         <p class="cta-note" data-i18n="cta-note">Direct with Rita · No booking fee</p>
       </div>
@@ -3685,6 +3821,7 @@ body.nav-open .nav .burger span {
           <a href="#tours" data-i18n="foot-tours">Tours</a>
           <a href="#about" data-i18n="foot-about">About</a>
           <a href="#reviews" data-i18n="foot-reviews">Reviews</a>
+          <a href="#final-cta" data-i18n="foot-book">Book</a>
           <a href="#faq" data-i18n="foot-faq">FAQ</a>
         </nav>
       </div>
@@ -3741,6 +3878,7 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
 // ─── HERO PARALLAX ───────────────────────────────────
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(max-width: 47.99rem)').matches) return;
   var hero = document.querySelector('.hero');
   var bg = document.querySelector('.hero-bg');
   if (!hero || !bg) return;
@@ -3758,13 +3896,33 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
   }, { passive: true });
 })();
 
-// ─── HERO VIDEO (skip when data saver is on) ────────
+// ─── HERO VIDEO (lazy load, save-data aware) ────────
 (function(){
   var video = document.querySelector('.hero-bg');
-  if (!video || !(navigator.connection && navigator.connection.saveData)) return;
-  video.pause();
-  video.removeAttribute('autoplay');
-  video.style.display = 'none';
+  if (!video) return;
+  var source = video.querySelector('source');
+  if (navigator.connection && navigator.connection.saveData) {
+    video.style.display = 'none';
+    return;
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(max-width: 47.99rem)').matches) return;
+  function startVideo() {
+    if (source && source.dataset.src && !source.src) {
+      source.src = source.dataset.src;
+    }
+    video.load();
+    video.play().catch(function(){});
+    video.loop = true;
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      if (entries[0].isIntersecting) { startVideo(); obs.disconnect(); }
+    }, { threshold: 0.12 });
+    obs.observe(video);
+  } else {
+    startVideo();
+  }
 })();
 
 // ─── BACK TO TOP ─────────────────────────────────────
@@ -3790,15 +3948,16 @@ const i18n = {
     "nav-about": "About",
     "nav-reviews": "Reviews",
     "nav-faq": "FAQ",
-    "mob-whatsapp": "Check Availability",
+    "nav-book": "Book",
+    "mob-whatsapp": "Book now",
     "mob-nav-title": "Menu",
     "lang-kicker": "Language",
-    "fab-aria": "Check availability on WhatsApp",
-    "fab-tooltip": "Check availability",
+    "fab-aria": "Book on WhatsApp",
+    "fab-tooltip": "Book on WhatsApp",
     "about-name": "Rita Almeida",
     "badge-popular": "Signature Journey",
     "badge-value": "Best Value",
-    "nav-cta": "Check Availability",
+    "nav-cta": "Book now",
     "hero-trust-1": "Private tours only",
     "hero-trust-2": "5.0 ★ TripAdvisor",
     "hero-trust-3": "Lisbon pickup included",
@@ -3807,7 +3966,7 @@ const i18n = {
     "hero-brand": "About Culture Things",
     "hero-h1": "Private Sintra,<br><em>beautifully guided.</em>",
     "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
-    "hero-cta-primary": "Check Availability",
+    "hero-cta-primary": "Check availability",
     "hero-cta-secondary": "See tours",
     "hero-note": "Direct booking with Rita · Typical reply within 24h",
     "why-kicker": "Why Rita",
@@ -3841,6 +4000,7 @@ const i18n = {
     "tour1-highlight-1": "Best for a full first day in Sintra",
     "tour1-highlight-2": "Combines palaces, coast, and Cascais",
     "tour1-price": "€299",
+    "tour1-price-sub": "From €75/person · group of 4",
     "tour1-places": "Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Hidden Beaches Experience",
     "tour2-tag": "5 hours · Max 4 people",
@@ -3848,10 +4008,12 @@ const i18n = {
     "tour2-highlight-1": "Best for a shorter coastal escape",
     "tour2-highlight-2": "Focused on hidden beaches and sea views",
     "tour2-price": "€275",
+    "tour2-price-sub": "From €69/person · group of 4",
     "tour2-places": "Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "per group",
     "tour-note-tickets": "Tickets not included · Lisbon pickup",
-    "tour-cta": "Check Availability",
+    "tour1-cta": "Book full-day tour",
+    "tour2-cta": "Book coastal tour",
     "tour-details-open": "Full itinerary",
     "about-kicker": "About Rita",
     "about-h2": "The person behind<br><em>the day.</em>",
@@ -3865,12 +4027,13 @@ const i18n = {
     "about-cred-2-value": "5.0 TripAdvisor",
     "about-cred-3-label": "Languages",
     "about-cred-3-value": "PT · EN · ES",
-    "about-cred-4-label": "Years guiding",
-    "about-cred-4-value": "Private host with local experience",
-    "about-cta": "Check Availability",
+    "about-cred-4-label": "Reviews",
+    "about-cred-4-value": "6 verified TripAdvisor reviews",
+    "about-cta": "Message Rita",
     "reviews-kicker": "Reviews",
     "reviews-h2": "Trusted by travelers.",
     "reviews-google-label": "TripAdvisor",
+    "reviews-count": "6 verified reviews",
     "reviews-view-btn": "View more on TripAdvisor",
     "rv-tag-tour": "Sintra Tour",
     "rv2-text": "\"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish.\"",
@@ -3902,16 +4065,21 @@ const i18n = {
     "reviews-less": "View less",
     "cta-h2": "Reserve your day in Sintra.",
     "cta-tagline": "Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.",
+    "booking-steps-aria": "How booking works",
+    "booking-step-1": "Message Rita on WhatsApp with your dates and group size",
+    "booking-step-2": "Confirm your route, timing, and availability together",
+    "booking-step-3": "Pay and enjoy your private day in Sintra",
     "cta-points-aria": "Response details",
     "cta-point-1": "Reply within 24h",
     "cta-point-2": "WhatsApp response usually within 1h",
     "cta-email-label": "Or send an email",
-    "cta-book": "Check Availability",
+    "cta-book": "Message Rita on WhatsApp",
     "cta-note": "Direct with Rita · No booking fee",
     "foot-why": "Why Rita",
     "foot-tours": "Tours",
     "foot-about": "About",
     "foot-reviews": "Reviews",
+    "foot-book": "Book",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
@@ -3927,15 +4095,16 @@ const i18n = {
     "nav-about": "Sobre",
     "nav-reviews": "Reseñas",
     "nav-faq": "FAQ",
-    "mob-whatsapp": "Consultar Disponibilidad",
+    "nav-book": "Reservar",
+    "mob-whatsapp": "Reservar",
     "mob-nav-title": "Menú",
     "lang-kicker": "Idioma",
-    "fab-aria": "Consultar disponibilidad en WhatsApp",
-    "fab-tooltip": "Consultar disponibilidad",
+    "fab-aria": "Reservar por WhatsApp",
+    "fab-tooltip": "Reservar por WhatsApp",
     "about-name": "Rita Almeida",
     "badge-popular": "Experiencia Exclusiva",
     "badge-value": "Mejor Valor",
-    "nav-cta": "Consultar Disponibilidad",
+    "nav-cta": "Reservar",
     "hero-trust-1": "Tours solo privados",
     "hero-trust-2": "5.0 ★ TripAdvisor",
     "hero-trust-3": "Recogida en Lisboa incluida",
@@ -3944,7 +4113,7 @@ const i18n = {
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra en privado,<br><em>bien guiada.</em>",
     "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
-    "hero-cta-primary": "Consultar Disponibilidad",
+    "hero-cta-primary": "Consultar disponibilidad",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva directa con Rita · Respuesta habitual en 24h",
     "why-kicker": "Por qué Rita",
@@ -3978,6 +4147,7 @@ const i18n = {
     "tour1-highlight-1": "Ideal para un primer día completo en Sintra",
     "tour1-highlight-2": "Combina palacios, costa y Cascais",
     "tour1-price": "€299",
+    "tour1-price-sub": "Desde €75/persona · grupo de 4",
     "tour1-places": "Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Playas Escondidas",
     "tour2-tag": "5 horas · Máx. 4 personas",
@@ -3985,10 +4155,12 @@ const i18n = {
     "tour2-highlight-1": "Ideal para una escapada costera más corta",
     "tour2-highlight-2": "Enfocado en playas escondidas y vistas al mar",
     "tour2-price": "€275",
+    "tour2-price-sub": "Desde €69/persona · grupo de 4",
     "tour2-places": "Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "por grupo",
     "tour-note-tickets": "Entradas no incluidas · Recogida en Lisboa",
-    "tour-cta": "Consultar Disponibilidad",
+    "tour1-cta": "Reservar día completo",
+    "tour2-cta": "Reservar tour costero",
     "tour-details-open": "Itinerario completo",
     "about-kicker": "Sobre Rita",
     "about-h2": "La persona detrás<br><em>del día.</em>",
@@ -4002,12 +4174,13 @@ const i18n = {
     "about-cred-2-value": "5.0 TripAdvisor",
     "about-cred-3-label": "Idiomas",
     "about-cred-3-value": "PT · EN · ES",
-    "about-cred-4-label": "Años guiando",
-    "about-cred-4-value": "Anfitriona privada con experiencia local",
-    "about-cta": "Consultar Disponibilidad",
+    "about-cred-4-label": "Reseñas",
+    "about-cred-4-value": "6 reseñas verificadas en TripAdvisor",
+    "about-cta": "Escribir a Rita",
     "reviews-kicker": "Reseñas",
     "reviews-h2": "La confianza de los viajeros.",
     "reviews-google-label": "TripAdvisor",
+    "reviews-count": "6 reseñas verificadas",
     "reviews-view-btn": "Ver más en TripAdvisor",
     "rv-tag-tour": "Tour Sintra",
     "rv2-text": "\"Cálida, cercana y con mucho conocimiento local. Rita hizo que Sintra se sintiera especial.\"",
@@ -4039,16 +4212,21 @@ const i18n = {
     "reviews-less": "Ver menos",
     "cta-h2": "Reserva tu día en Sintra.",
     "cta-tagline": "Cuéntale a Rita tus fechas, el tamaño de tu grupo y el tipo de día que buscas. Ella responderá con la mejor ruta y disponibilidad.",
+    "booking-steps-aria": "Cómo funciona la reserva",
+    "booking-step-1": "Escríbele a Rita por WhatsApp con tus fechas y el tamaño del grupo",
+    "booking-step-2": "Confirmad juntos la ruta, el horario y la disponibilidad",
+    "booking-step-3": "Paga y disfruta de tu día privado en Sintra",
     "cta-points-aria": "Detalles de respuesta",
     "cta-point-1": "Respuesta en 24h",
     "cta-point-2": "Respuesta por WhatsApp normalmente en 1h",
     "cta-email-label": "O envíanos un email",
-    "cta-book": "Consultar Disponibilidad",
+    "cta-book": "Escribir a Rita por WhatsApp",
     "cta-note": "Directo con Rita · Sin comisión de reserva",
     "foot-why": "Por qué Rita",
     "foot-tours": "Tours",
     "foot-about": "Sobre",
     "foot-reviews": "Reseñas",
+    "foot-book": "Reservar",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
@@ -4064,15 +4242,16 @@ const i18n = {
     "nav-about": "Sobre",
     "nav-reviews": "Avaliações",
     "nav-faq": "FAQ",
-    "mob-whatsapp": "Verificar Disponibilidade",
+    "nav-book": "Reservar",
+    "mob-whatsapp": "Reservar",
     "mob-nav-title": "Menu",
     "lang-kicker": "Idioma",
-    "fab-aria": "Verificar disponibilidade no WhatsApp",
-    "fab-tooltip": "Verificar disponibilidade",
+    "fab-aria": "Reservar no WhatsApp",
+    "fab-tooltip": "Reservar no WhatsApp",
     "about-name": "Rita Almeida",
     "badge-popular": "Experiência Assinatura",
     "badge-value": "Melhor Valor",
-    "nav-cta": "Verificar Disponibilidade",
+    "nav-cta": "Reservar",
     "hero-trust-1": "Tours apenas privados",
     "hero-trust-2": "5.0 ★ TripAdvisor",
     "hero-trust-3": "Recolha em Lisboa incluída",
@@ -4081,7 +4260,7 @@ const i18n = {
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra em privado,<br><em>bem guiada.</em>",
     "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
-    "hero-cta-primary": "Verificar Disponibilidade",
+    "hero-cta-primary": "Verificar disponibilidade",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva direta com a Rita · Resposta habitual em 24h",
     "why-kicker": "Porquê a Rita",
@@ -4115,6 +4294,7 @@ const i18n = {
     "tour1-highlight-1": "Ideal para um primeiro dia completo em Sintra",
     "tour1-highlight-2": "Junta palácios, costa e Cascais",
     "tour1-price": "€299",
+    "tour1-price-sub": "Desde €75/pessoa · grupo de 4",
     "tour1-places": "Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Cabo da Roca · Cascais",
     "tour2-name": "Sintra & Praias Escondidas",
     "tour2-tag": "5 horas · Máx. 4 pessoas",
@@ -4122,10 +4302,12 @@ const i18n = {
     "tour2-highlight-1": "Ideal para uma escapadinha costeira mais curta",
     "tour2-highlight-2": "Focado em praias escondidas e vistas de mar",
     "tour2-price": "€275",
+    "tour2-price-sub": "Desde €69/pessoa · grupo de 4",
     "tour2-places": "Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda",
     "tour-per": "por grupo",
     "tour-note-tickets": "Bilhetes não incluídos · Recolha em Lisboa",
-    "tour-cta": "Verificar Disponibilidade",
+    "tour1-cta": "Reservar dia completo",
+    "tour2-cta": "Reservar tour costeiro",
     "tour-details-open": "Itinerário completo",
     "about-kicker": "Sobre a Rita",
     "about-h2": "A pessoa por trás<br><em>do dia.</em>",
@@ -4139,12 +4321,13 @@ const i18n = {
     "about-cred-2-value": "5.0 TripAdvisor",
     "about-cred-3-label": "Idiomas",
     "about-cred-3-value": "PT · EN · ES",
-    "about-cred-4-label": "Anos a guiar",
-    "about-cred-4-value": "Anfitriã privada com experiência local",
-    "about-cta": "Verificar Disponibilidade",
+    "about-cred-4-label": "Avaliações",
+    "about-cred-4-value": "6 avaliações verificadas no TripAdvisor",
+    "about-cta": "Falar com a Rita",
     "reviews-kicker": "Avaliações",
     "reviews-h2": "A confiança dos viajantes.",
     "reviews-google-label": "TripAdvisor",
+    "reviews-count": "6 avaliações verificadas",
     "reviews-view-btn": "Ver mais no TripAdvisor",
     "rv-tag-tour": "Tour Sintra",
     "rv2-text": "\"Quente, próxima e cheia de conhecimento local. A Rita tornou Sintra especial do início ao fim.\"",
@@ -4176,16 +4359,21 @@ const i18n = {
     "reviews-less": "Ver menos",
     "cta-h2": "Reserva o teu dia em Sintra.",
     "cta-tagline": "Diz à Rita as tuas datas, o tamanho do grupo e o tipo de dia que procuras. Ela responde com a melhor rota e disponibilidade.",
+    "booking-steps-aria": "Como funciona a reserva",
+    "booking-step-1": "Envia mensagem à Rita no WhatsApp com as tuas datas e o tamanho do grupo",
+    "booking-step-2": "Confirmem juntos a rota, o horário e a disponibilidade",
+    "booking-step-3": "Paga e desfruta do teu dia privado em Sintra",
     "cta-points-aria": "Detalhes de resposta",
     "cta-point-1": "Resposta em 24h",
     "cta-point-2": "Resposta por WhatsApp normalmente em 1h",
     "cta-email-label": "Ou envia-nos um email",
-    "cta-book": "Verificar Disponibilidade",
+    "cta-book": "Falar com a Rita no WhatsApp",
     "cta-note": "Direto com a Rita · Sem taxa de reserva",
     "foot-why": "Porquê a Rita",
     "foot-tours": "Tours",
     "foot-about": "Sobre",
     "foot-reviews": "Avaliações",
+    "foot-book": "Reservar",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
     "foot-whatsapp": "WhatsApp ↗",
@@ -4252,10 +4440,13 @@ function applyLang(lang) {
 const langSwitcher = document.getElementById('lang-switcher');
 const langTrigger  = document.getElementById('lang-trigger');
 
+const langDropdown = document.getElementById('lang-dropdown');
+
 function closeLangDropdown() {
   if (!langSwitcher) return;
   langSwitcher.classList.remove('open');
   if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+  if (langDropdown) langDropdown.hidden = true;
 }
 
 if (langTrigger) {
@@ -4264,6 +4455,7 @@ if (langTrigger) {
     const opening = !langSwitcher.classList.contains('open');
     langSwitcher.classList.toggle('open', opening);
     langTrigger.setAttribute('aria-expanded', String(opening));
+    if (langDropdown) langDropdown.hidden = !opening;
   });
   langTrigger.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
@@ -4273,6 +4465,7 @@ if (langTrigger) {
       const nextIndex = e.key === 'ArrowDown' ? 0 : options.length - 1;
       langSwitcher.classList.add('open');
       langTrigger.setAttribute('aria-expanded', 'true');
+      if (langDropdown) langDropdown.hidden = false;
       options[nextIndex].focus();
     }
   });
@@ -4320,6 +4513,8 @@ const nav    = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
 const fabWa  = document.getElementById('fab-wa');
+const mainEl = document.getElementById('main');
+let menuFocusReturn = null;
 
 let ticking = false;
 window.addEventListener('scroll', () => {
@@ -4331,7 +4526,7 @@ window.addEventListener('scroll', () => {
     const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
     nav.classList.toggle('elevated', sy > 10);
     nav.classList.toggle('nav-overlay', sy < heroHeight * 0.72 && !document.body.classList.contains('nav-open'));
-    if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 640 : 380));
+    if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
 
     // Active nav link highlighting
     const sections = document.querySelectorAll('section[id]');
@@ -4351,19 +4546,50 @@ function navOpen() {
   const open = mobNav.classList.toggle('open');
   document.body.classList.toggle('nav-open', open);
   document.body.style.overflow = open ? 'hidden' : '';
+  mobNav.setAttribute('aria-hidden', String(!open));
+  if (mainEl) mainEl.toggleAttribute('aria-hidden', open);
   nav.classList.toggle('nav-overlay', !open && window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  if (open) {
+    menuFocusReturn = document.activeElement;
+    var first = mobNav.querySelector('.mob-nav-body a, .mob-nav-close, .mob-lang-select');
+    if (first) first.focus();
+  } else if (menuFocusReturn) {
+    menuFocusReturn.focus();
+    menuFocusReturn = null;
+  }
 }
 
 function navClose() {
   mobNav.classList.remove('open');
   document.body.classList.remove('nav-open');
   document.body.style.overflow = '';
+  mobNav.setAttribute('aria-hidden', 'true');
+  if (mainEl) mainEl.removeAttribute('aria-hidden');
   nav.classList.toggle('nav-overlay', window.scrollY < (document.querySelector('.hero')?.offsetHeight || 600) * 0.72);
   burger.setAttribute('aria-expanded', 'false');
   burger.setAttribute('aria-label', 'Open menu');
+  if (menuFocusReturn) {
+    menuFocusReturn.focus();
+    menuFocusReturn = null;
+  }
 }
+
+mobNav.addEventListener('keydown', function(e) {
+  if (e.key !== 'Tab' || !mobNav.classList.contains('open')) return;
+  var focusable = mobNav.querySelectorAll('a, button, select, [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  var first = focusable[0];
+  var last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+});
 
 burger.addEventListener('click', navOpen);
 
@@ -4429,7 +4655,7 @@ function animateValue(el, end, duration) {
 }
 
 const ratingEl = document.querySelector('.g-number');
-if (ratingEl) {
+if (ratingEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const rObs = new IntersectionObserver(([e]) => {
     if (e.isIntersecting) { animateValue(ratingEl, 5.0, 1400); rObs.disconnect(); }
   }, { threshold: 0.5 });
@@ -4452,46 +4678,6 @@ const eyeObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 document.querySelectorAll('.sec-head').forEach(el => eyeObs.observe(el));
-
-// ─── FAQ SMOOTH ANIMATION ────────────────────────────
-document.querySelectorAll('.faq-item').forEach(item => {
-  const summary = item.querySelector('summary');
-  if (!summary) return;
-  summary.addEventListener('click', e => {
-    e.preventDefault();
-    if (item.open) {
-      const ans = item.querySelector('.faq-a');
-      if (ans) {
-        ans.style.height = ans.scrollHeight + 'px';
-        ans.style.overflow = 'hidden';
-        ans.style.transition = 'height 0.3s cubic-bezier(.22,1,.36,1)';
-        requestAnimationFrame(() => { ans.style.height = '0'; });
-        ans.addEventListener('transitionend', () => {
-          item.open = false;
-          ans.style.height = '';
-          ans.style.overflow = '';
-        }, { once: true });
-      } else { item.open = false; }
-    } else {
-      item.open = true;
-      const ans = item.querySelector('.faq-a');
-      if (ans) {
-        const h = ans.scrollHeight;
-        ans.style.height = '0';
-        ans.style.overflow = 'hidden';
-        ans.style.transition = 'height 0.38s cubic-bezier(.22,1,.36,1)';
-        requestAnimationFrame(() => { ans.style.height = h + 'px'; });
-        ans.addEventListener('transitionend', () => {
-          ans.style.height = '';
-          ans.style.overflow = '';
-        }, { once: true });
-      }
-    }
-  });
-});
-
-// ─── REVIEWS MORE ────────────────────────────────────
-// Reviews now link straight to TripAdvisor instead of expanding inline.
 
 </script>
 </body>
