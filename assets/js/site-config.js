@@ -15,7 +15,8 @@ const SITE = {
   },
   legal: {
     privacy: 'https://aboutculturethings.com/privacy',
-    terms: 'https://aboutculturethings.com/terms'
+    terms: 'https://aboutculturethings.com/terms',
+    cookies: 'https://aboutculturethings.com/cookies'
   },
   tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
   twitter: '@aboutculturethings',
@@ -100,6 +101,8 @@ function applySiteConfig() {
   if (privacyLink && SITE.legal && SITE.legal.privacy) privacyLink.href = SITE.legal.privacy;
   var termsLink = document.querySelector('.footer-legal-link[data-i18n="footer-terms"]');
   if (termsLink && SITE.legal && SITE.legal.terms) termsLink.href = SITE.legal.terms;
+  var cookiesLink = document.querySelector('.footer-legal-link[data-i18n="footer-cookies"]');
+  if (cookiesLink && SITE.legal && SITE.legal.cookies) cookiesLink.href = SITE.legal.cookies;
 
   document.querySelectorAll('[data-site-tripadvisor]').forEach(function (el) {
     el.href = SITE.tripadvisor;

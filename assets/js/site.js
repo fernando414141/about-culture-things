@@ -89,6 +89,11 @@ function applyLang(lang) {
     btn.classList.toggle('active', active);
     btn.setAttribute('aria-pressed', String(active));
   });
+  document.querySelectorAll('.footer-lang-btn').forEach(btn => {
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
 
   const triggerLabel = document.getElementById('lang-trigger-label');
   if (triggerLabel) triggerLabel.textContent = langCodes[lang] || lang.toUpperCase();
@@ -288,7 +293,7 @@ if (navOverlay) navOverlay.addEventListener('click', navClose);
 mobNav.querySelectorAll('a').forEach(function (a) {
   a.addEventListener('click', navClose);
 });
-document.querySelectorAll('.mob-lang-btn').forEach(function (btn) {
+document.querySelectorAll('.mob-lang-btn, .footer-lang-btn').forEach(function (btn) {
   btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
 });
 
