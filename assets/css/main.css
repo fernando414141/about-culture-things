@@ -1078,18 +1078,24 @@ section[id]::before {
 }
 
 /* ─── SECTION HEADERS ─── */
+/* Centered intros — standard for symmetric one-page section modules */
 .sec-head {
-  max-width: min(100%, var(--measure));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: clamp(var(--stack-md), 2.5vw, var(--stack-lg));
-  text-align: left;
+  text-align: center;
 }
 
 .sec-eyebrow {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--sp-md);
   margin-bottom: var(--sp-md);
-  justify-content: flex-start;
 }
 
 .sec-eyebrow-line {
@@ -1132,20 +1138,29 @@ h2 {
   overflow-wrap: break-word;
 }
 
-.sec-head h2 em,
-.final-cta-shell h2 em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent);
+.sec-head h2 {
+  width: 100%;
+  max-width: var(--measure);
+  text-align: center;
+  margin-inline: auto;
 }
 
 .sec-desc {
   font-size: clamp(1rem, 0.35vw + 0.92rem, 1.0625rem);
   color: var(--text-secondary);
   line-height: 1.68;
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--measure);
+  text-align: center;
   text-wrap: pretty;
-  margin: 0;
+  margin: 0 auto;
+}
+
+.sec-head h2 em,
+.final-cta-shell h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
 }
 
 /* ─── REVEAL ANIMATIONS ─── */
@@ -2651,8 +2666,6 @@ footer::before {
 
   .nav-tabs { gap: 0.25rem; }
   .nav-tabs a { padding: 0.5rem 0.8rem; }
-
-  .sec-head { max-width: min(100%, 42rem); }
 }
 
 /* Desktop 1440px+ */
