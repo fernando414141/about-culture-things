@@ -22,7 +22,7 @@
   --surface:      #FFFCF7;
   --text:         #1C2834;
   --text-2:       #2E3D4A;
-  --text-3:       #5C6B78;
+  --text-3:       #4A5562;
   --border:       rgba(28, 40, 52, 0.08);
   --border-strong:rgba(28, 40, 52, 0.14);
   --rating:       #9A7B3A; /* warm sand / golden hour */
@@ -731,7 +731,7 @@ body.nav-open .nav-overlay {
   margin: 0;
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--text-3);
+  color: var(--text-2);
   line-height: 1.45;
   max-width: 28rem;
   text-wrap: pretty;

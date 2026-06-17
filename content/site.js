@@ -34,18 +34,18 @@ const SITE_CONTENT = {
   assets: {
     logo: 'assets/images/logo.png',
     hero: {
-      src: 'assets/images/hero-640.jpg',
-      srcset: 'assets/images/hero-640.jpg 640w, assets/images/hero-960.jpg 960w, assets/images/hero.webp 1537w',
-      full: 'assets/images/hero.webp',
+      src: 'assets/images/hero-640.webp',
+      srcset: 'assets/images/hero-640.webp 640w, assets/images/hero-960.webp 960w',
+      full: 'assets/images/hero-960.webp',
       width: 960,
       height: 638
     },
     founder: {
-      src: 'assets/images/rita.webp',
+      src: 'assets/images/rita-640.webp',
       width: 640,
       height: 800
     },
-    ogImage: 'https://aboutculturethings.com/assets/images/hero.webp'
+    ogImage: 'https://aboutculturethings.com/assets/images/hero-960.webp'
   },
   links: {
     instagram: 'https://www.instagram.com/aboutculturethings/',
@@ -163,7 +163,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast.webp',
+            image: 'assets/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Sintra Complete Experience & Atlantic Coast',
             featured: true
           },
@@ -178,7 +178,7 @@ const SITE_CONTENT = {
             priceValue: '275',
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches.webp',
+            image: 'assets/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Sintra & Hidden Beaches Experience'
           }
         ]
@@ -328,7 +328,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast.webp',
+            image: 'assets/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Sintra Completa & Costa Atlántica',
             featured: true
           },
@@ -343,7 +343,7 @@ const SITE_CONTENT = {
             priceValue: '275',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches.webp',
+            image: 'assets/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Sintra & Playas Escondidas'
           }
         ]
@@ -493,7 +493,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast.webp',
+            image: 'assets/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Sintra Completa & Costa Atlântica',
             featured: true
           },
@@ -508,7 +508,7 @@ const SITE_CONTENT = {
             priceValue: '275',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches.webp',
+            image: 'assets/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Sintra & Praias Escondidas'
           }
         ]

@@ -56,7 +56,8 @@ function updateStructuredData(lang) {
   node.textContent = JSON.stringify(data);
 }
 
-function applyLang(lang) {
+function applyLang(lang, options) {
+  options = options || {};
   const t = i18n[lang];
   if (!t) return;
   currentLang = lang;
@@ -65,7 +66,9 @@ function applyLang(lang) {
   if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
   history.replaceState({}, '', url);
 
-  if (typeof window.renderSiteContent === 'function') window.renderSiteContent(lang);
+  if (!options.skipRender && typeof window.renderSiteContent === 'function') {
+    window.renderSiteContent(lang);
+  }
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -190,7 +193,7 @@ document.querySelectorAll('.lang-option').forEach(btn => {
 if (langDropdown) {
   langDropdown.addEventListener('click', e => {
     const btn = e.target.closest('.lang-option');
-    if (btn) applyLang(btn.dataset.lang);
+    if (btn) applyLang(btn.dataset.lang, { skipRender: true });
   });
   langDropdown.addEventListener('keydown', e => {
     const btn = e.target.closest('.lang-option');
@@ -224,7 +227,12 @@ document.addEventListener('keydown', e => {
   const urlLang = params.get('lang');
   const supported = Object.keys(i18n);
   const lang = (urlLang && supported.includes(urlLang)) ? urlLang : 'en';
-  applyLang(lang);
+  const run = function () { applyLang(lang, { skipRender: true }); };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(run, { timeout: 1200 });
+  } else {
+    requestAnimationFrame(run);
+  }
 })();
 
 // ─── NAV BEHAVIOUR ───────────────────────────────────
@@ -333,7 +341,7 @@ mobNav.addEventListener('click', function (e) {
 });
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.mob-lang-btn, .footer-lang-btn');
-  if (btn) applyLang(btn.dataset.lang);
+  if (btn) applyLang(btn.dataset.lang, { skipRender: true });
 });
 
 mqDesktop.addEventListener('change', () => {
@@ -385,13 +393,20 @@ document.addEventListener('keydown', e => {
     return Math.max(0, Math.min(index, getMaxStart()));
   }
 
+  let cardOffsets = [];
+
+  function measureCards() {
+    cardOffsets = cards.map(function (card) { return card.offsetLeft; });
+  }
+
   function findClosestIndex() {
     const scrollLeft = viewport.scrollLeft;
     let bestIndex = 0;
     let bestDistance = Infinity;
     const maxStart = getMaxStart();
+    if (!cardOffsets.length) measureCards();
     for (let i = 0; i <= maxStart; i += 1) {
-      const distance = Math.abs(scrollLeft - cards[i].offsetLeft);
+      const distance = Math.abs(scrollLeft - cardOffsets[i]);
       if (distance < bestDistance) {
         bestDistance = distance;
         bestIndex = i;
@@ -403,7 +418,8 @@ document.addEventListener('keydown', e => {
   function scrollToIndex(index, behavior) {
     const targetIndex = clampIndex(index);
     activeIndex = targetIndex;
-    viewport.scrollTo({ left: cards[targetIndex].offsetLeft, behavior: behavior || 'smooth' });
+    if (!cardOffsets.length) measureCards();
+    viewport.scrollTo({ left: cardOffsets[targetIndex], behavior: behavior || 'smooth' });
     renderState(targetIndex);
   }
 
@@ -456,7 +472,8 @@ document.addEventListener('keydown', e => {
     if (force || countChanged) {
       buildDots();
       activeIndex = clampIndex(activeIndex);
-      viewport.scrollTo({ left: cards[activeIndex].offsetLeft, behavior: 'auto' });
+      measureCards();
+      viewport.scrollTo({ left: cardOffsets[activeIndex], behavior: 'auto' });
     }
     updateState();
   }
@@ -494,7 +511,8 @@ document.addEventListener('keydown', e => {
     visibleCount = getVisibleCount();
     activeIndex = clampIndex(activeIndex);
     buildDots();
-    viewport.scrollTo({ left: cards[activeIndex].offsetLeft, behavior: 'auto' });
+    measureCards();
+    viewport.scrollTo({ left: cardOffsets[activeIndex], behavior: 'auto' });
     updateState();
   };
 
