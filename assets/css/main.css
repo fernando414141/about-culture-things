@@ -632,7 +632,7 @@ body.nav-open .burger {
 
 /* ─── HERO ─── */
 .hero {
-  background: var(--coast-blue) url('hero.webp') center / cover no-repeat;
+  background: var(--coast-blue);
   min-height: min(calc(100svh - var(--nav-h)), 52rem);
   min-height: min(calc(100dvh - var(--nav-h)), 52rem);
   display: flex;
@@ -642,7 +642,23 @@ body.nav-open .burger {
   position: relative;
   overflow: hidden;
 }
-.hero-bg {
+.hero-bg,
+.hero-lcp-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform;
+}
+picture.hero-bg {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg-video {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   object-fit: cover;
@@ -693,10 +709,11 @@ body.nav-open .burger {
     position: absolute; inset: 0;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,.88), transparent);
     animation: shimmer-line 3s ease-in-out 1s infinite;
+    will-change: transform;
   }
   @keyframes shimmer-line {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(200%); }
+    0%, 100% { transform: translate3d(-100%, 0, 0); }
+    50% { transform: translate3d(200%, 0, 0); }
   }
 }
 .hero-kicker {
@@ -2943,10 +2960,16 @@ body { padding-top: 0; }
   padding-top: calc(var(--nav-h) + clamp(1.25rem, 3vw, 2.25rem));
   margin-top: calc(-1 * var(--nav-h));
 }
-.hero-bg {
+.hero-bg,
+.hero-lcp-img,
+.hero-bg-video {
   width: 100%;
   max-width: 100%;
   inset: 0;
+}
+picture.hero-bg {
+  display: block;
+  position: absolute;
 }
 .hero::before {
   background:
@@ -2959,6 +2982,13 @@ body { padding-top: 0; }
   gap: .45rem .5rem;
   justify-content: stretch;
   align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hero-trust-bar li {
+  display: flex;
+  align-items: center;
 }
 @media (min-width: 40rem) {
   .hero-trust-bar {
@@ -3719,6 +3749,9 @@ main section[id] {
   flex-wrap: wrap;
   gap: var(--sp-xs);
   margin-top: var(--stack-sm);
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
 }
 .footer-badge {
   display: inline-flex;

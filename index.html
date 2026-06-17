@@ -28,6 +28,7 @@
 <link rel="alternate" hreflang="pt-PT" href="https://aboutculturethings.com/?lang=pt">
 <link rel="alternate" hreflang="x-default" href="https://aboutculturethings.com/">
 <link rel="manifest" href="site.webmanifest">
+<link rel="alternate" type="text/plain" href="https://aboutculturethings.com/llms.txt" title="LLM site summary">
 
 <script>
 (function(){
@@ -47,8 +48,8 @@
 <meta property="og:title" content="About Culture Things — Private Sintra Tours | Rita Almeida">
 <meta property="og:description" content="Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Max 4 people, Lisbon pickup.">
 <meta property="og:url" content="https://aboutculturethings.com/">
-<meta property="og:image" content="https://aboutculturethings.com/hero.webp">
-<meta property="og:image:secure_url" content="https://aboutculturethings.com/hero.webp">
+<meta property="og:image" content="https://aboutculturethings.com/hero-960.webp">
+<meta property="og:image:secure_url" content="https://aboutculturethings.com/hero-960.webp">
 <meta property="og:image:alt" content="Pena Palace rising above the forests of Sintra, Portugal — About Culture Things tours with Rita Almeida">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
@@ -59,19 +60,20 @@
 <meta name="twitter:creator" content="@aboutculturethings">
 <meta name="twitter:title" content="About Culture Things — Sintra Tours">
 <meta name="twitter:description" content="Private Sintra tours with Rita Almeida. 5.0★ TripAdvisor. Pena Palace, hidden beaches, Cascais. Max 4 people, Lisbon pickup.">
-<meta name="twitter:image" content="https://aboutculturethings.com/hero.webp">
+<meta name="twitter:image" content="https://aboutculturethings.com/hero-960.webp">
 <meta name="twitter:image:alt" content="Pena Palace above the forests of Sintra, Portugal">
 
 <!-- Favicon -->
 <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
 
-<!-- Fonts -->
+<!-- Fonts (non-blocking) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap"></noscript>
-<link rel="preload" as="image" href="hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="hero-mobile.webp" fetchpriority="high" media="(max-width: 47.99rem)">
+<link rel="preload" as="image" href="hero-960.webp" fetchpriority="high" media="(min-width: 48rem)">
 
 <!-- Structured Data -->
 <script type="application/ld+json" id="structured-data">
@@ -235,8 +237,8 @@
 }
 </script>
 
-<link rel="preload" href="assets/css/main.css" as="style">
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="preload" href="assets/css/main.min.css" as="style">
+<link rel="stylesheet" href="assets/css/main.min.css">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -269,7 +271,7 @@
 <header class="nav" id="nav" role="banner">
   <div class="nav-inner">
     <a href="./" class="logo" aria-label="About Culture Things — home">
-      <img src="logo.png" class="logo-img" alt="" width="32" height="32" decoding="async">
+      <img src="logo-64.webp" srcset="logo-64.webp 1x, logo-128.webp 2x" class="logo-img" alt="" width="32" height="32" decoding="async">
       <span class="logo-name">About Culture Things</span>
     </a>
     <nav class="nav-tabs" aria-label="Primary navigation">
@@ -282,7 +284,7 @@
     </nav>
     <div class="nav-actions">
       <div class="lang-switcher" id="lang-switcher">
-        <button class="lang-trigger" id="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language. Current language: English.">
+        <button class="lang-trigger" id="lang-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Select language. Current language: English.">
           <svg class="lang-trigger-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 21a9 9 0 1 0-9-9c0 4.97 4.03 9 9 9Z" stroke="currentColor" stroke-width="1.6"/>
             <path d="M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -294,22 +296,22 @@
           </span>
           <svg class="lang-trigger-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="lang-dropdown" role="listbox" aria-label="Language options" id="lang-dropdown" hidden>
-          <button class="lang-option active" data-lang="en" role="option" aria-selected="true" type="button">
+        <div class="lang-dropdown" id="lang-dropdown" hidden>
+          <button class="lang-option active" data-lang="en" type="button" aria-pressed="true">
             <span class="lang-option-copy">
               <span class="lang-option-name">English</span>
               <span class="lang-option-desc">Site language</span>
             </span>
             <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button class="lang-option" data-lang="es" role="option" aria-selected="false" type="button">
+          <button class="lang-option" data-lang="es" type="button" aria-pressed="false">
             <span class="lang-option-copy">
               <span class="lang-option-name">Español</span>
               <span class="lang-option-desc">Idioma del sitio</span>
             </span>
             <svg class="lang-option-check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button class="lang-option" data-lang="pt" role="option" aria-selected="false" type="button">
+          <button class="lang-option" data-lang="pt" type="button" aria-pressed="false">
             <span class="lang-option-copy">
               <span class="lang-option-name">Português</span>
               <span class="lang-option-desc">Idioma do site</span>
@@ -333,28 +335,28 @@
 <nav class="mob-nav" id="mob-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div class="mob-nav-top">
     <span class="mob-nav-title" data-i18n="mob-nav-title">Menu</span>
-    <button class="mob-nav-close" type="button" aria-label="Close menu" onclick="navClose()">
+    <button class="mob-nav-close" type="button" aria-label="Close menu">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <div class="mob-nav-body">
-    <a href="#why"         onclick="navClose()" data-i18n="nav-why">Why Rita</a>
-    <a href="#tours"       onclick="navClose()" data-i18n="nav-tours">Tours</a>
-    <a href="#about"       onclick="navClose()" data-i18n="nav-about">About</a>
-    <a href="#reviews"     onclick="navClose()" data-i18n="nav-reviews">Reviews</a>
-    <a href="#faq"         onclick="navClose()" data-i18n="nav-faq">FAQ</a>
-    <a href="#final-cta"   onclick="navClose()" class="nav-book" data-i18n="nav-book">Book</a>
+    <a href="#why"         data-i18n="nav-why">Why Rita</a>
+    <a href="#tours"       data-i18n="nav-tours">Tours</a>
+    <a href="#about"       data-i18n="nav-about">About</a>
+    <a href="#reviews"     data-i18n="nav-reviews">Reviews</a>
+    <a href="#faq"         data-i18n="nav-faq">FAQ</a>
+    <a href="#final-cta"   class="nav-book" data-i18n="nav-book">Book</a>
     <div class="mob-nav-footer">
       <label class="mob-lang-select-wrap" aria-label="Language selector">
         <span class="mob-lang-label" data-i18n="lang-kicker">Language</span>
-        <select class="mob-lang-select" id="mob-lang-select" onchange="applyLang(this.value)">
+        <select class="mob-lang-select" id="mob-lang-select">
           <option value="en">English</option>
           <option value="es">Español</option>
           <option value="pt">Português</option>
         </select>
       </label>
       <div class="mob-cta">
-        <a href="#" onclick="navClose()" target="_blank" data-site-wa="book" data-analytics-label="mob-book">
+        <a href="#" target="_blank" data-site-wa="book" data-analytics-label="mob-book">
           <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
           <span data-i18n="mob-whatsapp">Book now</span>
         </a>
@@ -365,7 +367,12 @@
 
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Discover Portugal with Rita Almeida">
-  <video class="hero-bg" muted playsinline preload="none" aria-hidden="true" poster="hero.webp" disablepictureinpicture>
+  <picture class="hero-bg" aria-hidden="true">
+    <source media="(max-width: 47.99rem)" srcset="hero-mobile.webp" type="image/webp">
+    <source media="(min-width: 48rem)" srcset="hero-960.webp" type="image/webp">
+    <img class="hero-lcp-img" src="hero-mobile.webp" alt="" width="768" height="511" fetchpriority="high" decoding="sync">
+  </picture>
+  <video class="hero-bg-video" muted playsinline preload="none" aria-hidden="true" poster="hero-960.webp" disablepictureinpicture hidden>
     <source data-src="hero.mp4" type="video/mp4" media="(min-width: 48rem) and (prefers-reduced-motion: no-preference)">
   </video>
   <div class="hero-inner">
@@ -376,12 +383,12 @@
       </div>
       <h1 data-i18n="hero-h1">Private Sintra, <em>beautifully guided.</em></h1>
       <p class="hero-desc" data-i18n="hero-desc">Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.</p>
-      <div class="hero-trust-bar" role="list" aria-label="Key facts">
-        <span role="listitem" data-i18n="hero-trust-1">Private tours only</span>
-        <span role="listitem" data-i18n="hero-trust-2">5.0 ★ TripAdvisor</span>
-        <span role="listitem" data-i18n="hero-trust-3" class="hero-trust-extra">Lisbon pickup included</span>
-        <span role="listitem" data-i18n="hero-trust-4" class="hero-trust-extra">Up to 4 guests</span>
-      </div>
+      <ul class="hero-trust-bar" aria-label="Key facts">
+        <li data-i18n="hero-trust-1">Private tours only</li>
+        <li data-i18n="hero-trust-2">5.0 ★ TripAdvisor</li>
+        <li data-i18n="hero-trust-3" class="hero-trust-extra">Lisbon pickup included</li>
+        <li data-i18n="hero-trust-4" class="hero-trust-extra">Up to 4 guests</li>
+      </ul>
       <div class="hero-ctas">
         <a href="#" class="btn-filled" target="_blank" data-site-wa="book" data-analytics-label="hero-primary">
           <svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
@@ -407,8 +414,8 @@
     <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Quiet luxury. <em>Local access.</em></h2>
     <p class="sec-desc" data-i18n="why-desc">A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.</p>
   </div>
-  <div class="why-grid" role="list" aria-label="Why book with Rita">
-    <article class="why-item reveal d1" role="listitem">
+  <div class="why-grid" aria-label="Why book with Rita">
+    <article class="why-item reveal d1">
       <span class="why-num" aria-hidden="true">01</span>
       <div class="why-content">
         <div class="why-kicker" data-i18n="why1-kicker">Sintra native</div>
@@ -416,7 +423,7 @@
         <p data-i18n="why1-p">Rita knows the roads, timing, viewpoints, and quieter corners that typical day trips miss.</p>
       </div>
     </article>
-    <article class="why-item reveal d2" role="listitem">
+    <article class="why-item reveal d2">
       <span class="why-num" aria-hidden="true">02</span>
       <div class="why-content">
         <div class="why-kicker" data-i18n="why2-kicker">Private only</div>
@@ -424,7 +431,7 @@
         <p data-i18n="why2-p">Every route, stop, and tempo is adapted to your interests instead of a rigid group schedule.</p>
       </div>
     </article>
-    <article class="why-item reveal d3" role="listitem">
+    <article class="why-item reveal d3">
       <span class="why-num" aria-hidden="true">03</span>
       <div class="why-content">
         <div class="why-kicker" data-i18n="why3-kicker">Hidden spots</div>
@@ -466,8 +473,8 @@
       <article class="pricing-card featured reveal d1" data-badge-key="badge-popular" data-badge="Signature Journey">
         <div class="pc-img-wrap">
           <picture>
-            <source srcset="tour-full-sintra-coast.webp" type="image/webp">
-            <img src="tour-full-sintra-coast.webp" alt="Sintra Complete Experience &amp; Atlantic Coast" loading="lazy" decoding="async" width="480" height="300">
+            <source srcset="tour-full-sintra-coast-640.webp" type="image/webp">
+            <img src="tour-full-sintra-coast-640.webp" alt="Sintra Complete Experience &amp; Atlantic Coast" loading="lazy" decoding="async" width="480" height="360">
           </picture>
         </div>
         <div class="pc-name" data-i18n="tour1-name">Sintra Complete Experience &amp; Atlantic Coast</div>
@@ -498,8 +505,8 @@
       <article class="pricing-card alt reveal d2" data-badge-key="badge-value" data-badge="Best Value">
         <div class="pc-img-wrap">
           <picture>
-            <source srcset="tour-hidden-beaches.webp" type="image/webp">
-            <img src="tour-hidden-beaches.webp" alt="Sintra &amp; Hidden Beaches Experience" loading="lazy" decoding="async" width="480" height="300">
+            <source srcset="tour-hidden-beaches-640.webp" type="image/webp">
+            <img src="tour-hidden-beaches-640.webp" alt="Sintra &amp; Hidden Beaches Experience" loading="lazy" decoding="async" width="480" height="421">
           </picture>
         </div>
         <div class="pc-name" data-i18n="tour2-name">Sintra &amp; Hidden Beaches Experience</div>
@@ -597,8 +604,8 @@
           <svg width="13" height="13" aria-hidden="true"><use href="#arrow-ext"/></svg>
         </a>
       </div>
-      <div class="reviews-grid" id="reviews-grid" role="list" aria-label="Customer reviews">
-        <article class="review-card" role="listitem">
+      <div class="reviews-grid" id="reviews-grid" aria-label="Customer reviews">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">R</div>
             <div class="rv-meta">
@@ -610,7 +617,7 @@
           <blockquote class="rv-text" data-i18n="rv2-text">"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish."</blockquote>
           <div class="rv-author">Roman B. · North Carolina</div>
         </article>
-        <article class="review-card" role="listitem">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">M</div>
             <div class="rv-meta">
@@ -622,7 +629,7 @@
           <blockquote class="rv-text" data-i18n="rv-monica-text">"Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy."</blockquote>
           <div class="rv-author">Monica M.</div>
         </article>
-        <article class="review-card" role="listitem">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">F</div>
             <div class="rv-meta">
@@ -634,7 +641,7 @@
           <blockquote class="rv-text" data-i18n="rv-fernando-text">"Local knowledge made the difference. We saw places we would never have found on our own."</blockquote>
           <div class="rv-author">Fernando G.</div>
         </article>
-        <article class="review-card" role="listitem">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">A</div>
             <div class="rv-meta">
@@ -646,7 +653,7 @@
           <blockquote class="rv-text" data-i18n="rv4-text">"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."</blockquote>
           <div class="rv-author">Amanda T.</div>
         </article>
-        <article class="review-card" role="listitem">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">L</div>
             <div class="rv-meta">
@@ -658,7 +665,7 @@
           <blockquote class="rv-text" data-i18n="rv5-text">"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."</blockquote>
           <div class="rv-author">Laura S.</div>
         </article>
-        <article class="review-card" role="listitem">
+        <article class="review-card">
           <div class="rv-top">
             <div class="rv-avatar" aria-hidden="true">J</div>
             <div class="rv-meta">
@@ -769,11 +776,11 @@
           About Culture Things
         </span>
         <p class="footer-note" data-i18n="footer-note">Private Sintra tours by Rita Almeida. Local knowledge, quiet pacing, and direct booking with one guide.</p>
-        <div class="footer-badges" role="list" data-i18n-aria="footer-badges-aria" aria-label="Service highlights">
-          <span class="footer-badge" role="listitem" data-i18n="foot-badge-online">Sintra & Lisbon</span>
-          <span class="footer-badge" role="listitem" data-i18n="foot-remote">5.0★ TripAdvisor</span>
-          <span class="footer-badge" role="listitem" data-i18n="foot-worldwide">Premium Service</span>
-        </div>
+        <ul class="footer-badges" data-i18n-aria="footer-badges-aria" aria-label="Service highlights">
+          <li class="footer-badge" data-i18n="foot-badge-online">Sintra & Lisbon</li>
+          <li class="footer-badge" data-i18n="foot-remote">5.0★ TripAdvisor</li>
+          <li class="footer-badge" data-i18n="foot-worldwide">Premium Service</li>
+        </ul>
       </div>
       <div class="footer-column">
         <span class="footer-column-title" data-i18n="footer-explore">Explore</span>

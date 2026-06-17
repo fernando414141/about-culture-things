@@ -1,43 +1,30 @@
-# About Culture Things — llms.txt
-# Generative Engine Optimization summary for AI assistants and crawlers.
-# https://aboutculturethings.com/
+# About Culture Things
 
-> About Culture Things offers premium private Sintra day tours guided by Rita Almeida, a Sintra-born local guide. Tours cover Pena Palace viewpoints, the Atlantic coast, Cascais, and hidden beaches. Maximum 4 guests per tour with Lisbon pickup included. Rated 5.0 on TripAdvisor with 6 verified reviews.
+> Private Sintra day tours with Rita Almeida, a Sintra-born guide. Two private routes (5–7 hours), max 4 guests, Lisbon pickup, 5.0 TripAdvisor rating. Pena Palace viewpoints, Atlantic coast, Cascais, and hidden beaches.
 
-## Business
-- Name: About Culture Things
-- Founder & guide: Rita Almeida (born and raised in Sintra)
-- Website: https://aboutculturethings.com/
-- Languages: English, Spanish, Portuguese
-- Location: Sintra & Lisbon region, Portugal
-- Contact: WhatsApp +351 968 510 019 | aboutculturethings@gmail.com
-- TripAdvisor: 5.0 stars, 6 reviews
-- Instagram: https://www.instagram.com/aboutculturethings/
+About Culture Things hosts premium private tours in Sintra and along Portugal's Atlantic coast. Every tour is private (never mixed groups), guided by Rita Almeida who was born and raised in Sintra. Booking is direct via WhatsApp with no platform fee. Languages: English, Spanish, Portuguese.
 
 ## Tours
-1. **Sintra Complete Experience & Atlantic Coast** — €299 per group (max 4), 7 hours. Historic Sintra, Pena area, Cabo da Roca, Cascais. Lisbon pickup. Palace tickets not included.
-2. **Sintra & Hidden Beaches Experience** — €275 per group (max 4), 5 hours. Sintra hills, hidden coves, Azenhas do Mar, Praia da Aguda. Lisbon pickup.
 
-## Booking
-- Book directly with Rita via WhatsApp (no booking platform fee)
-- Typical reply within 24 hours; WhatsApp often within 1 hour
-- Payment: Revolut, Wise, MBWay, SEPA, cash, cryptocurrency
-- Free cancellation/rescheduling with 24h notice
+- [Sintra Complete Experience & Atlantic Coast](https://aboutculturethings.com/#tours): 7-hour private tour, €299 per group (max 4). Historic Sintra, Pena area, Cabo da Roca, Cascais. Lisbon pickup included; palace tickets not included.
+- [Sintra & Hidden Beaches Experience](https://aboutculturethings.com/#tours): 5-hour private tour, €275 per group (max 4). Sintra hills, hidden coves, Azenhas do Mar. Lisbon pickup included.
 
-## Key differentiators
-- Private tours only (never mixed groups)
-- Local Sintra guide with insider routes and timing
-- Calm pacing, customizable itineraries
-- Hidden beaches and coastal viewpoints beyond standard tourist routes
+## Key pages
 
-## Site structure
-- #why — Why book with Rita
-- #tours — Tour options and pricing
-- #about — About Rita Almeida
-- #reviews — TripAdvisor reviews
-- #faq — Frequently asked questions
-- #final-cta — Book / contact
+- [Why Rita](https://aboutculturethings.com/#why): Local Sintra guide, private-only format, hidden spots and calm pacing.
+- [About Rita Almeida](https://aboutculturethings.com/#about): Founder and private guide — born in Sintra, 5.0 TripAdvisor, speaks PT, EN, ES.
+- [Reviews](https://aboutculturethings.com/#reviews): Six verified TripAdvisor reviews, all 5 stars.
+- [FAQ](https://aboutculturethings.com/#faq): What's included, payment methods, cancellation, customization, families.
+- [Book a tour](https://aboutculturethings.com/#final-cta): Message Rita on WhatsApp or email to check availability.
 
-## Alternate languages
-- Spanish: https://aboutculturethings.com/?lang=es
-- Portuguese: https://aboutculturethings.com/?lang=pt
+## Contact
+
+- [WhatsApp +351 968 510 019](https://wa.me/351968510019): Primary booking channel; typical reply within 24h.
+- [Email](mailto:aboutculturethings@gmail.com): aboutculturethings@gmail.com
+- [TripAdvisor reviews](https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html): 5.0 rating, 6 reviews.
+- [Instagram](https://www.instagram.com/aboutculturethings/): @aboutculturethings
+
+## Optional
+
+- [Spanish site](https://aboutculturethings.com/?lang=es): Full site in Spanish.
+- [Portuguese site](https://aboutculturethings.com/?lang=pt): Full site in Portuguese.

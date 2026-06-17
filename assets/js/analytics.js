@@ -6,7 +6,7 @@
   window.dataLayer = window.dataLayer || [];
 
   function pushEvent(name, params) {
-    if (!SITE || !SITE.analytics || !SITE.analytics.enabled) return;
+    if (typeof SITE === 'undefined' || !SITE.analytics || !SITE.analytics.enabled) return;
     var payload = Object.assign({ event: name, page_path: location.pathname, page_lang: document.documentElement.lang }, params || {});
     window.dataLayer.push(payload);
     if (typeof window.gtag === 'function' && SITE.analytics.ga4Id) {
@@ -15,7 +15,7 @@
   }
 
   function initGTM() {
-    if (!SITE || !SITE.analytics || !SITE.analytics.gtmId) return;
+    if (typeof SITE === 'undefined' || !SITE.analytics || !SITE.analytics.gtmId) return;
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -29,7 +29,7 @@
   }
 
   function initGA4() {
-    if (!SITE || !SITE.analytics || !SITE.analytics.ga4Id) return;
+    if (typeof SITE === 'undefined' || !SITE.analytics || !SITE.analytics.ga4Id) return;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + SITE.analytics.ga4Id;
