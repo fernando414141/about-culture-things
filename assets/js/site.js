@@ -14,9 +14,8 @@
 // ─── HERO PARALLAX ───────────────────────────────────
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.matchMedia('(max-width: 47.99rem)').matches) return;
   var hero = document.querySelector('.hero');
-  var bg = document.querySelector('.hero-lcp-img');
+  var bg = document.querySelector('.hero-poster');
   if (!hero || !bg) return;
   var ticking = false;
   window.addEventListener('scroll', function(){
@@ -25,41 +24,37 @@
     requestAnimationFrame(function(){
       var y = window.scrollY;
       if (y < hero.offsetHeight) {
-        bg.style.transform = 'scale(1.02) translateY(' + (y * 0.15).toFixed(1) + 'px)';
+        bg.style.transform = 'scale(1.02) translateY(' + (y * 0.12).toFixed(1) + 'px)';
       }
       ticking = false;
     });
   }, { passive: true });
 })();
 
-// ─── HERO VIDEO (lazy load, save-data aware) ────────
+// ─── HERO VIDEO ──────────────────────────────────────
 (function(){
   var video = document.querySelector('.hero-bg-video');
-  if (!video) return;
-  var source = video.querySelector('source');
+  var hero = document.querySelector('.hero');
+  if (!video || !hero) return;
   var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g' || conn.effectiveType === '3g')) {
-    return;
-  }
+  if (conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.matchMedia('(max-width: 47.99rem)').matches) return;
-  function startVideo() {
-    video.hidden = false;
-    if (source && source.dataset.src && !source.src) {
-      source.src = source.dataset.src;
-    }
-    video.load();
-    video.play().catch(function(){});
-    video.loop = true;
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.setAttribute('muted', '');
+
+  function markPlaying() { hero.classList.add('has-video-playing'); }
+
+  function tryPlay() {
+    var playAttempt = video.play();
+    if (playAttempt && typeof playAttempt.then === 'function') {
+      playAttempt.then(markPlaying).catch(function(){});
+    } else if (!video.paused) markPlaying();
   }
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries){
-      if (entries[0].isIntersecting) { startVideo(); obs.disconnect(); }
-    }, { threshold: 0.12 });
-    obs.observe(video);
-  } else {
-    startVideo();
-  }
+
+  if (video.readyState >= 2) tryPlay();
+  else video.addEventListener('loadeddata', tryPlay, { once: true });
 })();
 
 // ─── BACK TO TOP ─────────────────────────────────────
@@ -109,10 +104,9 @@ const i18n = {
     "hero-kicker": "Private Sintra Tours",
     "hero-brand": "About Culture Things",
     "hero-h1": "Private Sintra, <em>beautifully guided.</em>",
-    "hero-desc": "Private day tours across <strong>Sintra and the Atlantic coast</strong>, guided by Rita Almeida, a Sintra local.",
+    "hero-desc": "Sintra and the Atlantic coast, privately guided by Rita Almeida — a Sintra local.",
     "hero-cta-primary": "Check availability",
     "hero-cta-secondary": "See tours",
-    "hero-note": "Direct booking with Rita · Typical reply within 24h",
     "why-kicker": "Why Rita",
     "why-h2": "Quiet luxury. <em>Local access.</em>",
     "why-desc": "A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.",
@@ -162,7 +156,7 @@ const i18n = {
     "about-kicker": "About Rita",
     "about-h2": "The person behind <em>the day.</em>",
     "about-role": "Founder · Private Tour Guide",
-    "about-bio": "Rita was born and raised in Sintra and hosts private tours with a calm pace, thoughtful storytelling, and an instinct for what makes the region feel personal rather than rushed.",
+    "about-bio": "Born and raised in Sintra, Rita hosts private tours with calm pacing, local insight, and room to enjoy the day.",
     "about-pull": "\"Private guiding with warmth, local instinct, and room to actually enjoy the day.\"",
     "about-creds-aria": "Rita Almeida's skills and credentials",
     "about-cred-1-label": "Local guide",
@@ -268,7 +262,7 @@ const i18n = {
     "hero-kicker": "Tours Privados en Sintra",
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra en privado, <em>bien guiada.</em>",
-    "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, guiados por Rita Almeida, local de Sintra.",
+    "hero-desc": "Sintra y la costa atlántica, en privado con Rita Almeida — local de Sintra.",
     "hero-cta-primary": "Consultar disponibilidad",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva directa con Rita · Respuesta habitual en 24h",
@@ -321,7 +315,7 @@ const i18n = {
     "about-kicker": "Sobre Rita",
     "about-h2": "La persona detrás <em>del día.</em>",
     "about-role": "Fundadora · Guía privada",
-    "about-bio": "Rita nació y creció en Sintra y guía tours privados con ritmo tranquilo, historias bien contadas y una intuición muy local para que el día se sienta personal, no apresurado.",
+    "about-bio": "Nacida y criada en Sintra, Rita guía tours privados con ritmo tranquilo, conocimiento local y tiempo para disfrutar el día.",
     "about-pull": "\"Guía privada con calidez, intuición local y tiempo real para disfrutar el día.\"",
     "about-creds-aria": "Habilidades y credenciales de Rita Almeida",
     "about-cred-1-label": "Guía local",
@@ -427,7 +421,7 @@ const i18n = {
     "hero-kicker": "Tours Privados em Sintra",
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra em privado, <em>bem guiada.</em>",
-    "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, guiados pela Rita Almeida, local de Sintra.",
+    "hero-desc": "Sintra e a costa atlântica, em privado com a Rita Almeida — local de Sintra.",
     "hero-cta-primary": "Verificar disponibilidade",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva direta com a Rita · Resposta habitual em 24h",
@@ -480,7 +474,7 @@ const i18n = {
     "about-kicker": "Sobre a Rita",
     "about-h2": "A pessoa por trás <em>do dia.</em>",
     "about-role": "Fundadora · Guia privada",
-    "about-bio": "A Rita nasceu e cresceu em Sintra e conduz tours privados com ritmo calmo, boa narrativa e uma intuição muito local para tornar o dia pessoal, e não apressado.",
+    "about-bio": "Nascida e criada em Sintra, a Rita conduz tours privados com ritmo calmo, conhecimento local e tempo para aproveitar o dia.",
     "about-pull": "\"Guia privada com calor humano, instinto local e tempo real para aproveitar o dia.\"",
     "about-creds-aria": "Competências e credenciais da Rita Almeida",
     "about-cred-1-label": "Guia local",
@@ -559,6 +553,7 @@ const i18n = {
 };
 
 const langNames = { en: 'English', es: 'Español', pt: 'Português' };
+const langCodes = { en: 'EN', es: 'ES', pt: 'PT' };
 const ogLocales = { en: 'en_GB', es: 'es_ES', pt: 'pt_PT' };
 let currentLang  = 'en';
 
@@ -628,13 +623,16 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-option').forEach(btn => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', String(active));
+  });
+  document.querySelectorAll('.mob-lang-btn').forEach(btn => {
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('active', active);
     btn.setAttribute('aria-pressed', String(active));
   });
-  const mobLangSelect = document.getElementById('mob-lang-select');
-  if (mobLangSelect && mobLangSelect.value !== lang) mobLangSelect.value = lang;
 
   const triggerLabel = document.getElementById('lang-trigger-label');
-  if (triggerLabel) triggerLabel.textContent = langNames[lang] || lang.toUpperCase();
+  if (triggerLabel) triggerLabel.textContent = langCodes[lang] || lang.toUpperCase();
   if (langTrigger) {
     langTrigger.setAttribute('aria-label', `Select language. Current language: ${langNames[lang] || lang}.`);
   }
@@ -771,7 +769,7 @@ function navOpen() {
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   if (open) {
     menuFocusReturn = document.activeElement;
-    var first = mobNav.querySelector('.mob-nav-body a, .mob-nav-close, .mob-lang-select');
+    var first = mobNav.querySelector('.mob-nav-body a, .mob-nav-close, .mob-lang-btn');
     if (first) first.focus();
   } else if (menuFocusReturn) {
     menuFocusReturn.focus();
@@ -819,10 +817,9 @@ if (mobNavClose) mobNavClose.addEventListener('click', navClose);
 mobNav.querySelectorAll('a[href^="#"], [data-site-wa]').forEach(function (a) {
   a.addEventListener('click', navClose);
 });
-var mobLangSelect = document.getElementById('mob-lang-select');
-if (mobLangSelect) {
-  mobLangSelect.addEventListener('change', function () { applyLang(this.value); });
-}
+document.querySelectorAll('.mob-lang-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+});
 
 // Initial nav overlay state
 nav.classList.add('nav-overlay');
