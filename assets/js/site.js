@@ -333,13 +333,3 @@ document.querySelectorAll('.faq-item').forEach(item => {
     });
   });
 });
-
-// ─── HERO VIDEO (respect reduced motion) ─────────────
-(function(){
-  var video = document.querySelector('.hero-video');
-  if (!video) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    video.pause();
-    video.removeAttribute('autoplay');
-  }
-})();

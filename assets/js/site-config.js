@@ -1,7 +1,4 @@
-/**
- * Site configuration — edit when cloning this one-page template.
- * See template/README.md for structure and customization guide.
- */
+/** Site configuration for About Culture Things. */
 const SITE = {
   url: 'https://aboutculturethings.com',
   name: 'About Culture Things',
@@ -13,7 +10,6 @@ const SITE = {
   tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
   twitter: '@aboutculturethings',
   themeColor: '#5C6B2A',
-  heroVideo: 'assets/media/hero.mp4',
   heroPoster: 'assets/images/hero.webp',
   ogImage: 'assets/images/hero.webp',
   locale: { en: 'en-GB', es: 'es-ES', pt: 'pt-PT' },
@@ -81,13 +77,6 @@ function applySiteConfig() {
     credit.textContent = SITE.credit.label;
     credit.target = '_blank';
     credit.rel = 'noopener noreferrer';
-  }
-
-  var heroVideo = document.querySelector('.hero-video');
-  if (heroVideo && SITE.heroVideo) {
-    var source = heroVideo.querySelector('source');
-    if (source) source.src = SITE.heroVideo;
-    if (SITE.heroPoster) heroVideo.setAttribute('poster', SITE.heroPoster);
   }
 
   var yearEl = document.getElementById('footer-year');
