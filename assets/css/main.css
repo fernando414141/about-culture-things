@@ -2510,7 +2510,9 @@ footer::before {
   transform: translateY(-4px) scale(1.08);
 }
 
-.fab-wa::before { display: none; }
+.fab-wa::before {
+  content: attr(data-tooltip);
+  display: none;
   position: absolute;
   right: calc(100% + var(--btn-py-lg));
   top: 50%;
