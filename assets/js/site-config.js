@@ -7,6 +7,16 @@ const SITE = {
   phone: '+351968510019',
   whatsapp: '351968510019',
   instagram: 'https://www.instagram.com/aboutculturethings/',
+  social: {
+    instagram: 'https://www.instagram.com/aboutculturethings/',
+    linkedin: '',
+    facebook: '',
+    tiktok: ''
+  },
+  legal: {
+    privacy: 'https://aboutculturethings.com/privacy',
+    terms: 'https://aboutculturethings.com/terms'
+  },
   tripadvisor: 'https://www.tripadvisor.pt/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
   twitter: '@aboutculturethings',
   themeColor: '#5C6B2A',
@@ -64,6 +74,32 @@ function applySiteConfig() {
     el.rel = 'noopener noreferrer';
     el.target = '_blank';
   });
+
+  document.querySelectorAll('[data-site-social]').forEach(function (el) {
+    var network = el.getAttribute('data-site-social');
+    var url = SITE.social && SITE.social[network];
+    if (!url) {
+      el.remove();
+      return;
+    }
+    el.href = url;
+    el.rel = 'noopener noreferrer';
+    el.target = '_blank';
+  });
+
+  if (SITE.legal) {
+    document.querySelectorAll('[data-site-privacy]').forEach(function (el) {
+      if (SITE.legal.privacy) el.href = SITE.legal.privacy;
+    });
+    document.querySelectorAll('[data-site-terms]').forEach(function (el) {
+      if (SITE.legal.terms) el.href = SITE.legal.terms;
+    });
+  }
+
+  var privacyLink = document.querySelector('.footer-legal-link[data-i18n="footer-privacy"]');
+  if (privacyLink && SITE.legal && SITE.legal.privacy) privacyLink.href = SITE.legal.privacy;
+  var termsLink = document.querySelector('.footer-legal-link[data-i18n="footer-terms"]');
+  if (termsLink && SITE.legal && SITE.legal.terms) termsLink.href = SITE.legal.terms;
 
   document.querySelectorAll('[data-site-tripadvisor]').forEach(function (el) {
     el.href = SITE.tripadvisor;
