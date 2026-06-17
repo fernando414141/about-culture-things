@@ -2282,7 +2282,7 @@ h2 {
 }
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(8,13,10,.86) 0%, rgba(8,13,10,.56) 38%, rgba(8,13,10,.16) 70%, rgba(8,13,10,.04) 100%),
+    linear-gradient(90deg, rgba(8,13,10,.9) 0%, rgba(8,13,10,.7) 34%, rgba(8,13,10,.28) 64%, rgba(8,13,10,.08) 100%),
     linear-gradient(to top, rgba(8,13,10,.9) 0%, rgba(8,13,10,.45) 28%, transparent 54%);
 }
 .hero::after {
@@ -2294,29 +2294,32 @@ h2 {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  width: min(100%, var(--max));
+  margin: 0 auto;
 }
 .hero-copy {
-  width: min(100%, 31rem);
+  width: min(100%, 27rem);
 }
 .hero-desc {
-  max-width: 26rem;
-  margin-bottom: .85rem;
-  font-size: .95rem;
-  line-height: 1.52;
-  color: rgba(255,255,255,.82);
+  max-width: 24rem;
+  margin-bottom: .7rem;
+  font-size: .94rem;
+  line-height: 1.58;
+  color: rgba(255,255,255,.86);
 }
 .hero-trust-bar {
-  margin-bottom: .75rem;
-  gap: .4rem;
+  margin-bottom: .65rem;
+  gap: .45rem;
 }
 .hero-trust-bar span {
   min-height: var(--btn-h-sm);
-  padding: var(--sp-compact) var(--btn-px-sm);
+  padding: .42rem .72rem;
   font-size: var(--t-xs);
-  letter-spacing: 0.1em;
-  background: rgba(255,255,255,.07);
-  border-color: rgba(255,255,255,.14);
+  letter-spacing: 0.08em;
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.1);
 }
+.hero-trust-bar .hero-trust-extra { display: none; }
 .hero-ctas {
   align-items: flex-start;
   gap: var(--stack-xs);
@@ -2326,19 +2329,19 @@ h2 {
   padding-inline: var(--btn-px-lg);
   background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(246,246,241,.95) 100%);
   color: #21301b;
-  box-shadow: 0 14px 30px rgba(0,0,0,.24);
+  box-shadow: 0 16px 32px rgba(0,0,0,.24);
 }
 .hero-ctas .btn-outlined {
-  min-height: var(--btn-h-sm);
-  padding: var(--btn-py-sm) 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: rgba(255,255,255,.72);
-  box-shadow: none;
+  min-height: var(--btn-h-md);
+  padding: .72rem .95rem;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
 }
 .hero-ctas .btn-outlined:hover {
-  background: transparent;
+  background: rgba(255,255,255,.1);
   color: #fff;
   transform: none;
   box-shadow: none;
@@ -3060,9 +3063,7 @@ body { padding-top: 0; }
   color: var(--gold-l);
 }
 .nav.nav-overlay .nav-actions .btn-filled {
-  background: rgba(255,255,255,.96);
-  color: #21301b;
-  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  display: none;
 }
 .nav.nav-overlay .burger span {
   background: rgba(255,255,255,.92);
@@ -3703,7 +3704,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
     align-items: flex-start;
   }
   .hero-copy {
-    width: min(100%, 31rem);
+    width: min(100%, 27rem);
     gap: clamp(.95rem, 1.8vw, 1.25rem);
   }
   .hero-copy .hero-trust-bar {
@@ -4531,7 +4532,7 @@ const i18n = {
     "hero-kicker": "Private Sintra Tours",
     "hero-brand": "About Culture Things",
     "hero-h1": "Private Sintra, <em>beautifully guided.</em>",
-    "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
+    "hero-desc": "Private day tours across <strong>Sintra and the Atlantic coast</strong>, guided by Rita Almeida, a Sintra local.",
     "hero-cta-primary": "Check availability",
     "hero-cta-secondary": "See tours",
     "hero-note": "Direct booking with Rita · Typical reply within 24h",
@@ -4689,7 +4690,7 @@ const i18n = {
     "hero-kicker": "Tours Privados en Sintra",
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra en privado, <em>bien guiada.</em>",
-    "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
+    "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, guiados por Rita Almeida, local de Sintra.",
     "hero-cta-primary": "Consultar disponibilidad",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva directa con Rita · Respuesta habitual en 24h",
@@ -4847,7 +4848,7 @@ const i18n = {
     "hero-kicker": "Tours Privados em Sintra",
     "hero-brand": "About Culture Things",
     "hero-h1": "Sintra em privado, <em>bem guiada.</em>",
-    "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
+    "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, guiados pela Rita Almeida, local de Sintra.",
     "hero-cta-primary": "Verificar disponibilidade",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva direta com a Rita · Resposta habitual em 24h",
