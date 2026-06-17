@@ -931,8 +931,6 @@ body.nav-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(0,
 }
 
 main section[id] {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 520px;
   width: 100%;
   max-width: none;
   scroll-margin-top: calc(var(--nav-h) + 0.75rem);
@@ -2592,7 +2590,7 @@ footer::before {
 
   .faq-item summary {
     padding: 0.65rem 0;
-    min-height: auto;
+    min-height: 2.75rem;
   }
 
   .faq-q {
