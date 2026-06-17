@@ -2678,6 +2678,18 @@ section[id]::before {
   position: relative;
   overflow: hidden;
 }
+.final-cta-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+  gap: clamp(1.1rem, 2.4vw, 2rem);
+  align-items: start;
+}
+.final-cta-main,
+.final-cta-side {
+  min-width: 0;
+}
 .final-cta-shell::before {
   content: '';
   position: absolute;
@@ -2692,40 +2704,118 @@ section[id]::before {
 .final-cta-shell h2,
 .final-cta-shell .final-cta-copy,
 .final-cta-shell .cta-points,
-.final-cta-shell .cta-actions {
+.final-cta-shell .cta-actions,
+.final-cta-main,
+.final-cta-side {
   position: relative;
   z-index: 1;
 }
 .final-cta-shell h2 {
-  max-width: 100%;
-  margin-bottom: .65rem;
+  max-width: 12ch;
+  margin-bottom: .7rem;
   color: #fff;
 }
 .final-cta-copy {
-  max-width: 36rem;
+  max-width: 33rem;
   color: rgba(255,255,255,.78);
-  font-size: .96rem;
-  line-height: 1.6;
+  font-size: .98rem;
+  line-height: 1.62;
 }
 .cta-points {
-  margin-top: .8rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.cta-points li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .38rem .72rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.82);
+  font-size: .82rem;
+  letter-spacing: .02em;
+}
+.cta-points li::before {
+  content: '';
+  width: .38rem;
+  height: .38rem;
+  margin-right: .5rem;
+  border-radius: 50%;
+  background: rgba(212,187,112,.92);
+  flex-shrink: 0;
+}
+.final-cta-side {
+  padding: 1rem 1rem 1.05rem;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 1.15rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.04) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+.booking-steps {
+  display: grid;
+  gap: .7rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: booking-steps;
+}
+.booking-steps li {
+  position: relative;
+  min-height: 2.9rem;
+  padding-left: 2.8rem;
+  color: rgba(255,255,255,.84);
+  line-height: 1.45;
+  font-size: .92rem;
+}
+.booking-steps li::before {
+  counter-increment: booking-steps;
+  content: counter(booking-steps);
+  position: absolute;
+  top: .05rem;
+  left: 0;
+  width: 1.95rem;
+  height: 1.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  font-size: .84rem;
+  font-weight: 700;
+}
+.booking-steps li + li::after {
+  content: '';
+  position: absolute;
+  left: .95rem;
+  top: -0.45rem;
+  bottom: calc(100% - .4rem);
+  width: 1px;
+  background: rgba(255,255,255,.12);
 }
 .cta-actions {
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .85rem 1rem;
+  display: grid;
+  gap: .72rem;
+  align-items: start;
 }
 .btn-massive {
   min-height: var(--btn-h-xl);
   padding: var(--btn-py-xl) var(--btn-px-xl);
   font-size: var(--btn-fs-lg);
   color: #1b2817;
+  width: 100%;
+  justify-content: center;
 }
 .cta-note {
   margin: 0;
-  color: rgba(255,255,255,.56);
+  color: rgba(255,255,255,.6);
+  font-size: .84rem;
 }
 
 footer {
@@ -2862,12 +2952,14 @@ footer {
   .final-cta-shell {
     border-radius: 1.25rem;
   }
+  .final-cta-grid {
+    grid-template-columns: 1fr;
+  }
+  .final-cta-side {
+    padding: .95rem;
+  }
   .cta-actions {
     align-items: flex-start;
-  }
-  .btn-massive {
-    width: 100%;
-    justify-content: center;
   }
   .footer-shell {
     gap: 1rem;
@@ -3486,9 +3578,6 @@ body.nav-open .burger span { background: var(--text-secondary); }
 .final-cta-shell .cta-actions {
   text-align: left;
   align-items: flex-start;
-}
-.cta-actions {
-  justify-content: flex-start;
 }
 .footer-bottom {
   display: flex;
@@ -4225,24 +4314,30 @@ body.nav-open .burger span { background: var(--text-secondary); }
 
   <section id="final-cta" class="section--light" aria-labelledby="final-cta-heading">
     <div class="final-cta-shell">
-      <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="final-kicker">Final Step</span></div>
-      <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Reserve your day in Sintra.</h2>
-      <p class="final-cta-copy" data-i18n="cta-tagline">Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.</p>
-      <ol class="booking-steps" data-i18n-aria="booking-steps-aria" aria-label="How booking works">
-        <li data-i18n="booking-step-1">Message Rita on WhatsApp with your dates and group size</li>
-        <li data-i18n="booking-step-2">Confirm your route, timing, and availability together</li>
-        <li data-i18n="booking-step-3">Pay and enjoy your private day in Sintra</li>
-      </ol>
-      <ul class="cta-points" data-i18n-aria="cta-points-aria" aria-label="Response details">
-        <li data-i18n="cta-point-1">Reply within 24h</li>
-        <li data-i18n="cta-point-2">WhatsApp response usually within 1h</li>
-      </ul>
-      <div class="cta-actions">
-        <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-massive" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-          <span data-i18n="cta-book">Message Rita on WhatsApp</span>
-        </a>
-        <p class="cta-note" data-i18n="cta-note">Direct with Rita · No booking fee</p>
+      <div class="final-cta-grid">
+        <div class="final-cta-main">
+          <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="final-kicker">Final Step</span></div>
+          <h2 id="final-cta-heading" class="anim-ready" data-i18n="cta-h2">Reserve your day in Sintra.</h2>
+          <p class="final-cta-copy" data-i18n="cta-tagline">Tell Rita your dates, your group size, and the kind of day you want. She’ll come back with the best route and availability.</p>
+          <ul class="cta-points" data-i18n-aria="cta-points-aria" aria-label="Response details">
+            <li data-i18n="cta-point-1">Reply within 24h</li>
+            <li data-i18n="cta-point-2">WhatsApp response usually within 1h</li>
+          </ul>
+        </div>
+        <div class="final-cta-side">
+          <ol class="booking-steps" data-i18n-aria="booking-steps-aria" aria-label="How booking works">
+            <li data-i18n="booking-step-1">Message Rita on WhatsApp with your dates and group size</li>
+            <li data-i18n="booking-step-2">Confirm your route, timing, and availability together</li>
+            <li data-i18n="booking-step-3">Pay and enjoy your private day in Sintra</li>
+          </ol>
+          <div class="cta-actions">
+            <a href="https://wa.me/351968510019?text=Hi%20Rita%2C%20I%27d%20like%20to%20book%20a%20tour." class="btn-massive" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
+              <span data-i18n="cta-book">Message Rita on WhatsApp</span>
+            </a>
+            <p class="cta-note" data-i18n="cta-note">Direct with Rita · No booking fee</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
