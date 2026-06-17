@@ -70,9 +70,9 @@
 <!-- Fonts (non-blocking) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"></noscript>
-<link rel="preload" as="image" href="assets/images/hero.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/images/hero-640.jpg" imagesrcset="assets/images/hero-640.jpg 640w, assets/images/hero-960.jpg 960w, assets/images/hero.webp 1537w" imagesizes="(min-width: 64rem) 42vw, 100vw" fetchpriority="high">
 
 <!-- Structured Data -->
 <script type="application/ld+json" id="structured-data">
@@ -264,7 +264,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/css/main.css?v=20260617-12">
+<link rel="stylesheet" href="assets/css/main.css?v=20260617-13">
 <link rel="author" href="https://aboutculturethings.com/#about">
 </head>
 <body>
@@ -389,10 +389,13 @@
         </a>
         <a href="#tours" class="btn-outlined hero-cta-secondary" data-i18n="hero-cta-secondary">See tours</a>
       </div>
-      <a href="#reviews" class="hero-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View customer reviews">
-        <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
-        <span data-i18n="hero-review-trust">5.0 ★ TripAdvisor</span>
-      </a>
+      <div class="hero-trust-block">
+        <a href="#reviews" class="hero-trust" data-i18n-aria="hero-review-trust-aria" aria-label="View customer reviews">
+          <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
+          <span data-i18n="hero-review-trust">5.0 ★ TripAdvisor</span>
+        </a>
+        <p class="hero-highlights" data-i18n="hero-highlights">Private groups up to 4 · Lisbon pickup · Free reschedule</p>
+      </div>
       <a href="#tours" class="hero-scroll" data-i18n-aria="hero-scroll-aria" aria-label="Scroll to explore">
         <span data-i18n="hero-scroll">Scroll to explore</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -401,8 +404,8 @@
     <div class="hero-media">
       <img
         class="hero-poster"
-        src="assets/images/hero.webp"
-        srcset="assets/images/hero.webp 1537w"
+        src="assets/images/hero-640.jpg"
+        srcset="assets/images/hero-640.jpg 640w, assets/images/hero-960.jpg 960w, assets/images/hero.webp 1537w"
         sizes="(min-width: 64rem) 42vw, 100vw"
         alt="Rita Almeida with private tour guests on Portugal's Atlantic coast"
         width="960"

@@ -76,6 +76,7 @@
       'cta-final': c.ctas && c.ctas.final,
       'hero-review-trust': c.hero && c.hero.trust,
       'hero-review-trust-aria': c.hero && c.hero.trustAria,
+      'hero-highlights': c.hero && c.hero.highlights,
       'hero-guide': c.hero && c.hero.guide,
       'hero-price': c.hero && c.hero.price,
       'hero-price-link': c.hero && c.hero.priceLink,

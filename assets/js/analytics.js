@@ -67,12 +67,13 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', bindTracking);
+
+  window.addEventListener('load', function () {
     initGTM();
     initGA4();
-    bindTracking();
     pushEvent('page_view', { page_title: document.title });
-  });
+  }, { once: true });
 
   window.siteAnalytics = { pushEvent: pushEvent };
 })();

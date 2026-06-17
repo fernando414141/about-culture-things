@@ -34,8 +34,8 @@ const SITE_CONTENT = {
   assets: {
     logo: 'assets/images/logo.png',
     hero: {
-      src: 'assets/images/hero.webp',
-      srcset: 'assets/images/hero.webp 1537w',
+      src: 'assets/images/hero-640.jpg',
+      srcset: 'assets/images/hero-640.jpg 640w, assets/images/hero-960.jpg 960w, assets/images/hero.webp 1537w',
       full: 'assets/images/hero.webp',
       width: 960,
       height: 638
@@ -123,6 +123,7 @@ const SITE_CONTENT = {
         secondaryCta: 'See tours',
         trust: '5.0 ★ TripAdvisor',
         trustAria: 'View customer reviews',
+        highlights: 'Private groups up to 4 · Lisbon pickup · Free reschedule',
         guide: 'With Rita Almeida, Sintra-born guide',
         price: 'From €275 per private group (up to 4)',
         priceLink: 'See both tours ↓',
@@ -287,6 +288,7 @@ const SITE_CONTENT = {
         secondaryCta: 'Ver tours',
         trust: '5.0 ★ TripAdvisor',
         trustAria: 'Ver reseñas de clientes',
+        highlights: 'Grupos privados hasta 4 · Recogida en Lisboa · Reagenda gratis',
         guide: 'Con Rita Almeida, guía nacida en Sintra',
         price: 'Desde €275 por grupo privado (hasta 4)',
         priceLink: 'Ver ambos tours ↓',
@@ -451,6 +453,7 @@ const SITE_CONTENT = {
         secondaryCta: 'Ver tours',
         trust: '5.0 ★ TripAdvisor',
         trustAria: 'Ver avaliações de clientes',
+        highlights: 'Grupos privados até 4 · Recolha em Lisboa · Reagendamento grátis',
         guide: 'Com a Rita Almeida, guia nascida em Sintra',
         price: 'Desde €275 por grupo privado (até 4)',
         priceLink: 'Ver ambos os tours ↓',
