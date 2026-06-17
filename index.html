@@ -529,17 +529,33 @@ a {
 .burger {
   display: flex;
   width: var(--btn-h-md); height: var(--btn-h-md);
+  min-width: var(--btn-h-md); min-height: var(--btn-h-md);
+  border: none;
+  padding: 0;
+  background: transparent;
   border-radius: 50%;
   align-items: center; justify-content: center;
+  align-self: center;
   flex-direction: column; gap: var(--sp-xs);
   transition: background .15s;
   margin-left: auto; flex-shrink: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .burger:hover { background: rgba(92,107,42,.08); }
+.burger:focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
 .burger span {
   display: block; width: 1.125rem; height: 1.5px;
   background: var(--text-secondary); border-radius: 2px;
   transition: transform .28s var(--ease), opacity .2s, width .2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .burger span { transition: none; }
 }
 body.nav-open .burger span:nth-child(1) { transform: rotate(45deg) translate(0, 6px); }
 body.nav-open .burger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
@@ -832,17 +848,6 @@ body.nav-open .burger {
   color: rgba(200,168,75,.9);
 }
 
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: 5.25rem;
-  font-weight: 300;
-  line-height: 1.0;
-  letter-spacing: 0;
-  color: #fff;
-  margin-bottom: var(--sp-lg);
-  text-wrap: balance;
-  max-width: 13ch;
-}
 .hero h1 em {
   font-style: italic; font-weight: 300;
 }
@@ -1034,13 +1039,15 @@ section[id]::before {
 }
 h2 {
   font-family: var(--font-display);
-  font-size: 3.4rem;
+  font-size: clamp(1.85rem, 3.2vw + 0.75rem, 3.4rem);
   font-weight: 300;
-  letter-spacing: 0;
-  line-height: 1.04;
+  letter-spacing: -0.01em;
+  line-height: 1.06;
   color: var(--text-primary);
   margin-bottom: var(--sp-md);
+  max-width: 100%;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 .sec-head h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
 .sec-desc {
@@ -1064,8 +1071,8 @@ h2 {
     transition: opacity .8s var(--ease), transform .8s var(--ease);
   }
   .reveal.in { opacity: 1; transform: translateY(0); }
-  .d1 { transition-delay: .09s; }
-  .d2 { transition-delay: .2s; }
+  .d1 { transition-delay: 0s; }
+  .d2 { transition-delay: .08s; }
   .d3 { transition-delay: .32s; }
   .d4 { transition-delay: .44s; }
 }
@@ -1200,6 +1207,7 @@ h2 {
   transition: all .4s var(--ease);
   position: relative; overflow: hidden;
   box-shadow: var(--elev-1);
+  container-type: inline-size;
 }
 .pricing-card.alt {
   background: linear-gradient(180deg, var(--surface) 0%, rgba(244,241,232,.88) 100%);
@@ -1227,11 +1235,12 @@ h2 {
 .pricing-card.featured .pc-name { color: #fff; }
 .pricing-card.featured .pc-tag { color: var(--gold-l); opacity: 1; }
 .pricing-card.featured .pc-places { color: rgba(255,255,255,.76); }
-.pricing-card.featured .pc-per { color: rgba(255,255,255,.6); }
+.pricing-card.featured .pc-per { color: rgba(255,255,255,.72); }
 .pricing-card.featured .pc-price { color: #fff; }
-.pricing-card.featured .pc-note { color: rgba(255,255,255,.45); }
-.pricing-card.featured .pc-details summary { color: rgba(255,255,255,.72); }
-.pricing-card.featured .pc-details summary::after { color: var(--gold-l); }
+.pricing-card.featured .pc-note { color: rgba(255,255,255,.62); }
+.pricing-card.featured .pc-details summary { color: rgba(255,255,255,.88); }
+.pricing-card.featured .pc-details summary::before { color: var(--gold-l); border-color: rgba(255,255,255,.42); }
+.pricing-card.featured .pc-details summary::after { border-color: var(--gold-l); }
 .pricing-card.featured .pc-details p { color: rgba(255,255,255,.78); }
 .pricing-card.featured .pc-divider { background: rgba(255,255,255,.1); }
 .pricing-card.featured .btn-filled {
@@ -1239,11 +1248,15 @@ h2 {
   color: var(--accent);
   box-shadow: 0 4px 20px rgba(0,0,0,.2);
   font-weight: 700;
+  min-height: var(--btn-h-sm);
 }
 .pricing-card.featured .btn-filled:hover { background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,.28); }
 .pricing-card.featured::before {
   content: attr(data-badge);
-  position: absolute; top: var(--stack-md); right: var(--stack-md); z-index: 3;
+  position: absolute; z-index: 3;
+  top: calc(100cqw / 1.7 - 2.65rem);
+  left: max(.75rem, var(--inset-card));
+  right: auto;
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-l) 100%);
   color: #1A1000;
   font-size: var(--t-xs); font-weight: 800;
@@ -1254,15 +1267,33 @@ h2 {
 }
 .pricing-card.alt::before {
   content: attr(data-badge);
-  position: absolute; top: var(--stack-md); right: var(--stack-md); z-index: 3;
-  background: rgba(13,34,56,.9);
+  position: absolute; z-index: 3;
+  top: calc(100cqw / 1.7 - 2.65rem);
+  left: max(.75rem, var(--inset-card));
+  right: auto;
+  background: #0D2238;
   color: #fff;
   font-size: var(--t-xs); font-weight: 800;
   letter-spacing: 0.07em; text-transform: uppercase;
   padding: var(--sp-compact) var(--btn-px-sm);
   border-radius: var(--r-pill);
-  box-shadow: var(--elev-2);
+  box-shadow: 0 2px 12px rgba(13,34,56,.28);
 }
+.pricing-card.alt .pc-places { color: var(--text-secondary); }
+.pricing-card.alt .pc-per,
+.pricing-card.alt .pc-price-sub { color: #4A5D42; }
+.pricing-card.alt .pc-note { color: #5E6E56; }
+.pricing-card.alt .pc-details summary { color: #4A5D42; }
+.pricing-card.alt .pc-details summary::before {
+  color: var(--accent);
+  border-color: rgba(92,107,42,.5);
+}
+.pricing-card.alt .pc-details summary::after {
+  border-color: var(--accent);
+  opacity: .72;
+}
+.pricing-card.alt .pc-details p { color: var(--text-secondary); }
+.pricing-card.alt .pc-details summary:focus-visible { outline-color: var(--accent); }
 
 .pricing-card.alt .btn-outlined {
   border-color: var(--outline-v);
@@ -1317,9 +1348,12 @@ h2 {
 }
 .pc-details summary {
   list-style: none;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: var(--btn-h-sm);
+  padding: 0.45rem 0;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1327,15 +1361,43 @@ h2 {
   color: var(--text-muted);
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .pc-details summary::-webkit-details-marker { display: none; }
-.pc-details summary::after {
+.pc-details summary::before {
   content: '+';
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
   font-size: 0.95rem;
+  font-weight: 700;
   line-height: 1;
   color: var(--accent);
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
 }
-.pc-details[open] summary::after { content: '−'; }
+.pc-details[open] summary::before { content: '−'; }
+.pc-details summary::after {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.1rem);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+.pc-details[open] summary::after {
+  transform: rotate(-135deg) translateY(0.1rem);
+}
+.pc-details summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
 .pc-details p {
   margin-top: 0.55rem;
   color: var(--text-secondary);
@@ -1710,6 +1772,10 @@ details[open] .faq-a { border-left: 3px solid var(--accent); padding-left: 1rem;
   .review-card:hover {
     box-shadow: var(--elev-1);
   }
+  .pricing-card.featured:hover {
+    box-shadow: 0 12px 48px rgba(6,14,8,.36), 0 4px 16px rgba(6,14,8,.18);
+  }
+  .pricing-card:hover .pc-img-wrap img { transform: none; }
   .btn-filled:active,
   .btn-outlined:active,
   .btn-massive:active,
@@ -1805,17 +1871,34 @@ footer::after {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-compact);
+  width: 100%;
   padding: var(--sp-compact) 0;
   min-height: var(--btn-h-sm);
-  border-radius: 0;
+  border-radius: var(--r-xs);
   background: transparent;
   color: rgba(255,255,255,.88);
   font-size: var(--btn-fs-md);
   font-weight: 700;
-  transition: color .15s, transform .15s;
+  transition: color .15s, background-color .15s;
 }
-.footer-action:hover { color: rgba(255,255,255,.98); transform: translateY(-1px); }
+.footer-action:hover { color: rgba(255,255,255,.98); background-color: rgba(255,255,255,.04); }
+.footer-action:focus-visible {
+  outline-color: rgba(255,255,255,.92);
+  outline-offset: 2px;
+}
+.footer-action:active { background-color: rgba(255,255,255,.07); }
 .footer-action svg { flex-shrink: 0; }
+.footer-action-label { flex: 1; min-width: 0; }
+.footer-action-ext {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: auto;
+  opacity: 0.55;
+  transition: opacity .15s;
+}
+.footer-action:hover .footer-action-ext,
+.footer-action:focus-visible .footer-action-ext { opacity: 0.9; }
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1898,7 +1981,6 @@ footer::after {
   .hero { align-items: flex-end; padding: var(--sp-3xl) var(--content-x) var(--sp-2xl); }
   .hero-inner > div:first-child { max-width: 100%; text-align: left; }
   .hero-eyebrow { justify-content: flex-start; }
-  .hero h1 { font-size: 3rem; line-height: 1.08; }
   .hero-desc { font-size: 1rem; max-width: 100%; margin-left: 0; margin-right: 0; }
   .hero-trust-bar { justify-content: flex-start; }
   .hero-trust-bar span { font-size: var(--t-xs); padding: var(--sp-compact) var(--stack-sm); }
@@ -1937,11 +2019,9 @@ footer::after {
   footer { padding: clamp(var(--stack-xl), 5vw, var(--sp-3xl)) var(--content-x) clamp(var(--stack-md), 3vw, var(--stack-xl)); }
   .footer-shell { grid-template-columns: 1fr; padding-bottom: var(--stack-md); }
   .footer-note { max-width: 100%; }
-  .footer-actions { gap: var(--sp-xs); }
-  .footer-action { width: fit-content; }
+  .footer-actions { gap: var(--stack-xs); }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--sp-compact); padding-top: var(--stack-sm); }
   .sec-head { margin-bottom: var(--stack-md); }
-  h2 { font-size: 2.45rem; }
   .pc-price { font-size: 2.85rem; }
   .back-to-top { display: none; }
   .fab-wa {
@@ -1976,14 +2056,12 @@ footer::after {
   }
   .hero-inner > div:first-child { max-width: 100%; text-align: left; }
   .hero-eyebrow { justify-content: flex-start; }
-  .hero h1 { font-size: 2.35rem; line-height: 1.1; max-width: 10ch; }
-  .hero-desc { font-size: 0.98rem; line-height: 1.56; margin-left: 0; margin-right: 0; max-width: 22rem; }
+  .hero-desc { font-size: 0.98rem; line-height: 1.56; margin-left: 0; margin-right: 0; max-width: 100%; }
   .hero-trust-bar { gap: var(--sp-xs); justify-content: start; }
   .hero-trust-bar span { font-size: var(--t-xs); padding: var(--sp-xs) var(--stack-sm); letter-spacing: 0.08em; }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: var(--stack-xs); }
   .hero-ctas .btn-filled, .hero-ctas .btn-outlined { justify-content: center; width: 100%; }
   .hero-scroll { display: none; }
-  h2 { font-size: 2.05rem; }
   .g-number { font-size: 2.5rem; }
   .pc-price { font-size: 2.55rem; }
   #why {
@@ -2177,22 +2255,23 @@ section[id] {
   margin-right: auto;
 }
 .sec-head {
-  max-width: 38rem;
+  max-width: min(100%, 38rem);
   margin-bottom: 1.4rem;
 }
 .sec-kicker {
   letter-spacing: .18em;
 }
 h2 {
-  font-size: clamp(2.2rem, 4.1vw, 3.55rem);
-  line-height: 1.0;
-  margin-bottom: .55rem;
+  font-size: clamp(1.85rem, 3.2vw + 0.75rem, 3.4rem);
+  line-height: 1.06;
+  margin-bottom: var(--sp-md);
 }
 .sec-desc {
   max-width: 34rem;
-  font-size: .98rem;
-  line-height: 1.6;
-  color: var(--text-muted);
+  font-size: clamp(1rem, 0.35vw + 0.92rem, 1.0625rem);
+  line-height: 1.68;
+  color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
 .hero {
@@ -2218,11 +2297,6 @@ h2 {
 }
 .hero-copy {
   width: min(100%, 31rem);
-}
-.hero h1 {
-  font-size: clamp(2.8rem, 5.9vw, 4.3rem);
-  max-width: 9ch;
-  margin-bottom: .65rem;
 }
 .hero-desc {
   max-width: 26rem;
@@ -2354,7 +2428,7 @@ section[id]::before {
   gap: 1rem;
 }
 .pricing-card {
-  padding: .9rem .9rem .95rem;
+  padding: var(--inset-card) var(--inset-card) var(--stack-sm);
   border-radius: calc(var(--r-card) + .1rem);
   min-height: 100%;
   box-shadow: var(--elev-2);
@@ -2372,13 +2446,16 @@ section[id]::before {
 }
 .pricing-card.featured::before,
 .pricing-card.alt::before {
-  top: .9rem;
-  right: .9rem;
+  top: calc(100cqw / 1.7 - 2.65rem);
+  left: max(.75rem, var(--inset-card));
+  right: auto;
   font-size: .64rem;
   padding: .42rem .7rem;
+  max-width: calc(100% - 1.5rem);
+  line-height: 1.2;
 }
 .pc-img-wrap {
-  margin: -.9rem -.9rem .9rem;
+  margin: calc(-1 * var(--inset-card)) calc(-1 * var(--inset-card)) var(--stack-sm);
 }
 .pc-img-wrap img {
   aspect-ratio: 1.7 / 1;
@@ -2428,6 +2505,17 @@ section[id]::before {
 .pricing-card.featured .pc-highlights li {
   color: rgba(255,255,255,.82);
 }
+.pricing-card.alt .pc-highlights li {
+  color: var(--text-secondary);
+}
+.pricing-card.featured .pc-highlights li::before {
+  background: var(--gold-l);
+  opacity: .85;
+}
+.pricing-card.alt .pc-highlights li::before {
+  background: var(--accent);
+  opacity: .78;
+}
 .pc-details {
   margin-bottom: .65rem;
 }
@@ -2442,7 +2530,7 @@ section[id]::before {
 }
 .pc-cta .btn-filled,
 .pc-cta .btn-outlined {
-  min-height: 2.85rem;
+  min-height: var(--btn-h-sm);
   width: 100%;
   justify-content: center;
 }
@@ -2609,7 +2697,7 @@ section[id]::before {
   z-index: 1;
 }
 .final-cta-shell h2 {
-  max-width: 11ch;
+  max-width: 100%;
   margin-bottom: .65rem;
   color: #fff;
 }
@@ -2654,10 +2742,13 @@ footer {
 .footer-note {
   max-width: 22rem;
 }
-.footer-links a,
-.footer-action {
+.footer-links a {
   min-height: 2rem;
   padding: .2rem 0;
+}
+.footer-action {
+  min-height: var(--btn-h-sm);
+  padding: var(--sp-compact) 0;
 }
 .footer-bottom {
   padding-top: 1rem;
@@ -2708,12 +2799,8 @@ footer {
   .hero-copy {
     width: 100%;
   }
-  .hero h1 {
-    font-size: clamp(2.35rem, 10vw, 3rem);
-    max-width: 9ch;
-  }
   .hero-desc {
-    max-width: 20rem;
+    max-width: 100%;
     margin-bottom: var(--stack-sm);
     font-size: var(--t-base);
     line-height: 1.56;
@@ -2751,7 +2838,6 @@ footer {
     margin-bottom: .95rem;
   }
   .sec-head { margin-bottom: 1rem; }
-  h2 { font-size: 2rem; }
   .why-grid { gap: .7rem; }
   .why-item { padding: .9rem; }
   .pc-name { font-size: 1.18rem; }
@@ -2797,16 +2883,14 @@ footer {
     --nav-h: 3.25rem;
   }
   .nav {
-    padding-inline: .95rem;
+    padding-left: max(.95rem, env(safe-area-inset-left, 0px));
+    padding-right: max(.95rem, env(safe-area-inset-right, 0px));
   }
   .hero-trust-bar span {
     font-size: var(--t-xs);
   }
-  .hero h1 {
-    font-size: clamp(2rem, 9vw, 2.35rem);
-  }
   .hero-desc {
-    max-width: 18rem;
+    max-width: 100%;
     font-size: var(--t-base);
   }
   .about-grid { gap: 1rem; }
@@ -2814,10 +2898,10 @@ footer {
     grid-template-columns: 1fr;
   }
   .pricing-card {
-    padding: .9rem;
+    padding: var(--inset-card);
   }
   .pc-img-wrap {
-    margin: -.9rem -.9rem .9rem;
+    margin: calc(-1 * var(--inset-card)) calc(-1 * var(--inset-card)) var(--stack-sm);
   }
   .about-photo {
     max-width: 13.5rem;
@@ -2891,6 +2975,9 @@ body { padding-top: 0; }
 .nav.nav-overlay .burger span {
   background: rgba(255,255,255,.92);
 }
+.nav.nav-overlay .burger:focus-visible {
+  outline-color: #fff;
+}
 .nav.nav-overlay .logo-img {
   filter: brightness(1.15);
 }
@@ -2915,16 +3002,12 @@ body { padding-top: 0; }
     linear-gradient(90deg, rgba(8,13,10,.92) 0%, rgba(8,13,10,.68) 42%, rgba(8,13,10,.24) 72%, rgba(8,13,10,.08) 100%),
     linear-gradient(to top, rgba(6,10,8,.95) 0%, rgba(6,10,8,.55) 22%, transparent 48%);
 }
-.hero h1 {
-  line-height: 1.08;
-  max-width: 10ch;
-}
 .hero-trust-bar {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
-  gap: .45rem .55rem;
-  justify-content: start;
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .45rem .5rem;
+  justify-content: stretch;
+  align-items: stretch;
 }
 @media (min-width: 40rem) {
   .hero-trust-bar {
@@ -2957,11 +3040,14 @@ body { padding-top: 0; }
   }
 }
 @media (max-width: 29.99rem) {
-  .hero-ctas .btn-filled,
-  .hero-ctas .btn-outlined {
+  .hero-ctas .btn-filled {
     width: 100%;
     justify-content: center;
-    text-decoration: none;
+  }
+  .hero-ctas .btn-outlined {
+    width: auto;
+    align-self: flex-start;
+    justify-content: flex-start;
   }
 }
 
@@ -3127,11 +3213,6 @@ body.nav-open .nav .burger span {
   background: var(--text-secondary);
 }
 
-.burger {
-  width: 2.75rem;
-  height: 2.75rem;
-}
-
 .hero-copy h1,
 .hero-desc,
 .hero-kicker,
@@ -3202,7 +3283,7 @@ body.nav-open .nav .burger span {
   --measure: 38rem;
   --content-max: 64rem;
 }
-.sec-head { max-width: var(--measure); }
+.sec-head { max-width: min(100%, var(--measure)); }
 .hero-trust-bar span {
   font-size: var(--t-sm);
   letter-spacing: 0.06em;
@@ -3247,7 +3328,8 @@ body.nav-open .nav .burger span {
   font-weight: 500;
   margin-top: .15rem;
 }
-.pricing-card.featured .pc-price-sub { color: rgba(255,255,255,.62); }
+.pricing-card.featured .pc-price-sub { color: rgba(255,255,255,.72); }
+.pricing-card.featured .pc-details summary:focus-visible { outline-color: var(--gold-l); }
 .booking-steps {
   display: grid;
   gap: .65rem;
@@ -3303,6 +3385,12 @@ body.nav-open .burger {
   pointer-events: auto;
 }
 body.nav-open .burger span { background: var(--text-secondary); }
+@media (max-width: 47.99rem) {
+  .nav {
+    padding-left: max(var(--content-x), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--content-x), env(safe-area-inset-right, 0px));
+  }
+}
 .mob-nav:not(.open) { visibility: hidden; }
 .mob-nav.open { visibility: visible; }
 .nav-tabs a.nav-book {
@@ -3462,11 +3550,191 @@ body.nav-open .burger span { background: var(--text-secondary); }
   }
 }
 
+/* ─── HERO COPY — layout & mobile UX (2026) ─── */
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(.8rem, 2.4vw, 1.1rem);
+  width: min(100%, 22rem);
+}
+.hero-copy .hero-eyebrow,
+.hero-copy h1,
+.hero-copy .hero-desc,
+.hero-copy .hero-trust-bar,
+.hero-copy .hero-ctas {
+  margin-bottom: 0;
+}
+.hero-copy .hero-desc {
+  max-width: 100%;
+  width: 100%;
+}
+.hero-copy .hero-trust-bar {
+  width: 100%;
+}
+.hero-copy .hero-trust-bar span {
+  min-width: 0;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.35;
+  white-space: normal;
+}
+.hero-copy .hero-ctas {
+  width: 100%;
+  gap: .55rem;
+}
+.hero-copy .hero-note {
+  margin: 0;
+  max-width: 100%;
+}
+@media (max-width: 47.99rem) {
+  .hero {
+    align-items: flex-end;
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + max(.75rem, env(safe-area-inset-top, 0px)) + .85rem);
+    padding-bottom: clamp(1.25rem, 4vw, 2rem);
+  }
+  .hero-trust-bar .hero-trust-extra { display: none; }
+  .hero-copy .hero-ctas .btn-filled {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-copy .hero-ctas .btn-outlined {
+    width: auto;
+    align-self: flex-start;
+    min-height: var(--btn-h-sm);
+    padding-inline: 0;
+  }
+}
+@media (min-width: 48rem) {
+  .hero {
+    align-items: flex-start;
+  }
+  .hero-inner {
+    align-items: flex-start;
+  }
+  .hero-copy {
+    width: min(100%, 31rem);
+    gap: clamp(.95rem, 1.8vw, 1.25rem);
+  }
+  .hero-copy .hero-trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .hero-copy .hero-trust-bar span {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .hero-copy .hero-ctas {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: auto;
+    gap: .85rem 1rem;
+  }
+  .hero-copy .hero-ctas .btn-filled,
+  .hero-copy .hero-ctas .btn-outlined {
+    width: auto;
+  }
+}
+
+/* ─── SECTION HEADING TYPOGRAPHY (2026) ─── */
+.hero h1 em {
+  display: inline;
+  font-style: italic;
+  font-weight: 300;
+}
+.sec-head {
+  width: 100%;
+  max-width: min(100%, var(--measure));
+  min-width: 0;
+}
+.sec-head h2,
+.final-cta-shell h2 {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  margin-bottom: clamp(0.75rem, 1.2vw, var(--sp-md));
+}
+.sec-head h2 em,
+.final-cta-shell h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+.sec-head .sec-desc {
+  max-width: 100%;
+  min-width: 0;
+  font-size: clamp(1rem, 0.35vw + 0.92rem, 1.0625rem);
+  line-height: 1.68;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero h1 em {
     -webkit-text-fill-color: var(--gold-l);
     background: none;
     animation: none;
+  }
+}
+
+/* ─── HERO H1 — authoritative typography (2026) ─── */
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw + 0.5rem, 4.25rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-wrap: balance;
+  max-width: none;
+  width: 100%;
+  margin-bottom: 0;
+}
+@media (min-width: 48rem) {
+  .hero h1 {
+    max-width: min(100%, 31rem);
+  }
+}
+
+/* ─── PRICING CARD PARITY (2026) ─── */
+.pricing-card.featured .pc-details summary::after {
+  border-color: var(--gold-l);
+  opacity: .72;
+}
+.pricing-card.featured .btn-filled,
+.pricing-card.alt .btn-filled--light,
+.pc-cta .btn-filled,
+.pc-cta .btn-outlined {
+  min-height: var(--btn-h-sm);
+  justify-content: center;
+  text-align: center;
+}
+.pc-details summary {
+  min-height: var(--btn-h-sm);
+  padding-block: .5rem;
+}
+.pc-price {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.pc-price-row .pc-per {
+  font-weight: 500;
+}
+.pc-price-sub {
+  line-height: 1.35;
+}
+@media (min-width: 48rem) {
+  .pricing-card.featured .btn-filled,
+  .pricing-card.alt .btn-filled--light,
+  .pc-cta .btn-filled,
+  .pc-cta .btn-outlined {
+    min-height: var(--btn-h-md);
   }
 }
 </style>
@@ -3555,8 +3823,8 @@ body.nav-open .burger span { background: var(--text-secondary); }
         <span data-i18n="nav-cta">Book now</span>
       </a>
     </div>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
-      <span></span><span></span><span></span>
+    <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
     </button>
   </div>
 </header>
@@ -3606,7 +3874,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
         <span class="hero-eyebrow-line" aria-hidden="true"></span>
         <p class="hero-kicker" data-i18n="hero-kicker">Private Sintra Tours</p>
       </div>
-      <h1 data-i18n="hero-h1">Private Sintra,<br><em>beautifully guided.</em></h1>
+      <h1 data-i18n="hero-h1">Private Sintra, <em>beautifully guided.</em></h1>
       <p class="hero-desc" data-i18n="hero-desc">Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.</p>
       <div class="hero-trust-bar" role="list" aria-label="Key facts">
         <span role="listitem" data-i18n="hero-trust-1">Private tours only</span>
@@ -3636,7 +3904,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
   <section id="why" class="section--tinted" aria-labelledby="why-heading">
   <div class="sec-head">
     <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="why-kicker">Why Rita</span></div>
-    <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Quiet luxury.<br><em>Local access.</em></h2>
+    <h2 id="why-heading" class="anim-ready" data-i18n="why-h2">Quiet luxury. <em>Local access.</em></h2>
     <p class="sec-desc" data-i18n="why-desc">A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.</p>
   </div>
   <div class="why-grid" role="list" aria-label="Why book with Rita">
@@ -3766,7 +4034,7 @@ body.nav-open .burger span { background: var(--text-secondary); }
   <section id="about" class="section--tinted" aria-labelledby="about-heading">
     <div class="sec-head">
       <div class="sec-eyebrow" aria-hidden="true"><span class="sec-eyebrow-line"></span><span class="sec-kicker" data-i18n="about-kicker">About Rita</span></div>
-      <h2 id="about-heading" class="anim-ready" data-i18n="about-h2">The person behind<br><em>the day.</em></h2>
+      <h2 id="about-heading" class="anim-ready" data-i18n="about-h2">The person behind <em>the day.</em></h2>
     </div>
     <div class="about-grid">
       <div class="about-photo reveal">
@@ -4005,20 +4273,22 @@ body.nav-open .burger span { background: var(--text-secondary); }
       </div>
       <div class="footer-column">
         <span class="footer-column-title" data-i18n="footer-connect">Connect</span>
-        <div class="footer-actions">
-          <a class="footer-action" href="https://wa.me/351968510019" target="_blank" rel="noopener noreferrer">
+        <nav class="footer-actions" data-i18n-aria="footer-connect-aria" aria-label="Connect">
+          <a class="footer-action" href="https://wa.me/351968510019" target="_blank" rel="noopener noreferrer" data-i18n-aria="foot-whatsapp-aria" aria-label="WhatsApp (opens in new tab)">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>
-            <span data-i18n="foot-whatsapp">WhatsApp ↗</span>
+            <span class="footer-action-label" data-i18n="foot-whatsapp" aria-hidden="true">WhatsApp</span>
+            <svg class="footer-action-ext" width="14" height="14" aria-hidden="true"><use href="#arrow-ext"/></svg>
           </a>
-          <a class="footer-action" href="mailto:aboutculturethings@gmail.com?subject=Tour%20enquiry">
+          <a class="footer-action" href="mailto:aboutculturethings@gmail.com?subject=Tour%20enquiry" data-i18n-aria="foot-email-aria" aria-label="Email Rita">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#email-icon"/></svg>
-            <span data-i18n="foot-email">Email ↗</span>
+            <span class="footer-action-label" data-i18n="foot-email" aria-hidden="true">Email</span>
           </a>
-          <a class="footer-action" href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer">
+          <a class="footer-action" href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer" data-i18n-aria="foot-instagram-aria" aria-label="Instagram (opens in new tab)">
             <svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#ig"/></svg>
-            <span data-i18n="foot-instagram">Instagram ↗</span>
+            <span class="footer-action-label" data-i18n="foot-instagram" aria-hidden="true">Instagram</span>
+            <svg class="footer-action-ext" width="14" height="14" aria-hidden="true"><use href="#arrow-ext"/></svg>
           </a>
-        </div>
+        </nav>
       </div>
     </div>
     <div class="footer-bottom">
@@ -4165,13 +4435,13 @@ const i18n = {
     "hero-trust-4": "Up to 4 guests",
     "hero-kicker": "Private Sintra Tours",
     "hero-brand": "About Culture Things",
-    "hero-h1": "Private Sintra,<br><em>beautifully guided.</em>",
+    "hero-h1": "Private Sintra, <em>beautifully guided.</em>",
     "hero-desc": "Private day tours through <strong>Sintra and the Atlantic coast</strong>, hosted by Rita Almeida, born and raised in Sintra.",
     "hero-cta-primary": "Check availability",
     "hero-cta-secondary": "See tours",
     "hero-note": "Direct booking with Rita · Typical reply within 24h",
     "why-kicker": "Why Rita",
-    "why-h2": "Quiet luxury.<br><em>Local access.</em>",
+    "why-h2": "Quiet luxury. <em>Local access.</em>",
     "why-desc": "A private day shaped around your pace, with the confidence of a Sintra local guiding every stop.",
     "why1-kicker": "Sintra native",
     "why1-h3": "Born and raised in Sintra",
@@ -4217,7 +4487,7 @@ const i18n = {
     "tour2-cta": "Book coastal tour",
     "tour-details-open": "Full itinerary",
     "about-kicker": "About Rita",
-    "about-h2": "The person behind<br><em>the day.</em>",
+    "about-h2": "The person behind <em>the day.</em>",
     "about-role": "Founder · Private Tour Guide",
     "about-bio": "Rita was born and raised in Sintra and hosts private tours with a calm pace, thoughtful storytelling, and an instinct for what makes the region feel personal rather than rushed.",
     "about-pull": "\"Private guiding with warmth, local instinct, and room to actually enjoy the day.\"",
@@ -4262,6 +4532,7 @@ const i18n = {
     "footer-note": "Private Sintra tours by Rita Almeida. Local knowledge, quiet pacing, and direct booking with one guide.",
     "footer-explore": "Explore",
     "footer-connect": "Connect",
+    "footer-connect-aria": "Connect with Rita",
     "reviews-more": "View more",
     "reviews-less": "View less",
     "cta-h2": "Reserve your day in Sintra.",
@@ -4283,9 +4554,12 @@ const i18n = {
     "foot-book": "Book",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
-    "foot-whatsapp": "WhatsApp ↗",
-    "foot-email": "Email ↗",
-    "foot-instagram": "Instagram ↗",
+    "foot-whatsapp": "WhatsApp",
+    "foot-whatsapp-aria": "WhatsApp (opens in new tab)",
+    "foot-email": "Email",
+    "foot-email-aria": "Email Rita",
+    "foot-instagram": "Instagram",
+    "foot-instagram-aria": "Instagram (opens in new tab)",
     "foot-badge-online": "Sintra & Lisbon",
     "foot-remote": "5.0★ TripAdvisor",
     "foot-worldwide": "Premium Service"
@@ -4319,13 +4593,13 @@ const i18n = {
     "hero-trust-4": "Hasta 4 personas",
     "hero-kicker": "Tours Privados en Sintra",
     "hero-brand": "About Culture Things",
-    "hero-h1": "Sintra en privado,<br><em>bien guiada.</em>",
+    "hero-h1": "Sintra en privado, <em>bien guiada.</em>",
     "hero-desc": "Tours privados de día por <strong>Sintra y la costa atlántica</strong>, con Rita Almeida, nacida y criada en Sintra.",
     "hero-cta-primary": "Consultar disponibilidad",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva directa con Rita · Respuesta habitual en 24h",
     "why-kicker": "Por qué Rita",
-    "why-h2": "Lujo tranquilo.<br><em>Acceso local.</em>",
+    "why-h2": "Lujo tranquilo. <em>Acceso local.</em>",
     "why-desc": "Un día privado marcado por tu ritmo, con la seguridad de una guía local de Sintra.",
     "why1-kicker": "Nativa de Sintra",
     "why1-h3": "Nacida y criada en Sintra",
@@ -4371,7 +4645,7 @@ const i18n = {
     "tour2-cta": "Reservar tour costero",
     "tour-details-open": "Itinerario completo",
     "about-kicker": "Sobre Rita",
-    "about-h2": "La persona detrás<br><em>del día.</em>",
+    "about-h2": "La persona detrás <em>del día.</em>",
     "about-role": "Fundadora · Guía privada",
     "about-bio": "Rita nació y creció en Sintra y guía tours privados con ritmo tranquilo, historias bien contadas y una intuición muy local para que el día se sienta personal, no apresurado.",
     "about-pull": "\"Guía privada con calidez, intuición local y tiempo real para disfrutar el día.\"",
@@ -4416,6 +4690,7 @@ const i18n = {
     "footer-note": "Tours privados por Sintra con Rita Almeida. Conocimiento local, ritmo tranquilo y reserva directa con una sola guía.",
     "footer-explore": "Explorar",
     "footer-connect": "Conectar",
+    "footer-connect-aria": "Conectar con Rita",
     "reviews-more": "Ver más",
     "reviews-less": "Ver menos",
     "cta-h2": "Reserva tu día en Sintra.",
@@ -4437,9 +4712,12 @@ const i18n = {
     "foot-book": "Reservar",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
-    "foot-whatsapp": "WhatsApp ↗",
-    "foot-email": "Email ↗",
-    "foot-instagram": "Instagram ↗",
+    "foot-whatsapp": "WhatsApp",
+    "foot-whatsapp-aria": "WhatsApp (se abre en una pestaña nueva)",
+    "foot-email": "Email",
+    "foot-email-aria": "Enviar email a Rita",
+    "foot-instagram": "Instagram",
+    "foot-instagram-aria": "Instagram (se abre en una pestaña nueva)",
     "foot-badge-online": "Sintra & Lisboa",
     "foot-remote": "5.0★ TripAdvisor",
     "foot-worldwide": "Servicio Premium"
@@ -4473,13 +4751,13 @@ const i18n = {
     "hero-trust-4": "Até 4 pessoas",
     "hero-kicker": "Tours Privados em Sintra",
     "hero-brand": "About Culture Things",
-    "hero-h1": "Sintra em privado,<br><em>bem guiada.</em>",
+    "hero-h1": "Sintra em privado, <em>bem guiada.</em>",
     "hero-desc": "Tours privados de dia por <strong>Sintra e a costa atlântica</strong>, com Rita Almeida, nascida e criada em Sintra.",
     "hero-cta-primary": "Verificar disponibilidade",
     "hero-cta-secondary": "Ver tours",
     "hero-note": "Reserva direta com a Rita · Resposta habitual em 24h",
     "why-kicker": "Porquê a Rita",
-    "why-h2": "Luxo tranquilo.<br><em>Acesso local.</em>",
+    "why-h2": "Luxo tranquilo. <em>Acesso local.</em>",
     "why-desc": "Um dia privado moldado ao teu ritmo, com a confiança de uma guia local de Sintra.",
     "why1-kicker": "Nascida em Sintra",
     "why1-h3": "Nascida e criada em Sintra",
@@ -4525,7 +4803,7 @@ const i18n = {
     "tour2-cta": "Reservar tour costeiro",
     "tour-details-open": "Itinerário completo",
     "about-kicker": "Sobre a Rita",
-    "about-h2": "A pessoa por trás<br><em>do dia.</em>",
+    "about-h2": "A pessoa por trás <em>do dia.</em>",
     "about-role": "Fundadora · Guia privada",
     "about-bio": "A Rita nasceu e cresceu em Sintra e conduz tours privados com ritmo calmo, boa narrativa e uma intuição muito local para tornar o dia pessoal, e não apressado.",
     "about-pull": "\"Guia privada com calor humano, instinto local e tempo real para aproveitar o dia.\"",
@@ -4570,6 +4848,7 @@ const i18n = {
     "footer-note": "Tours privados em Sintra com a Rita Almeida. Conhecimento local, ritmo tranquilo e reserva direta com uma única guia.",
     "footer-explore": "Explorar",
     "footer-connect": "Contactar",
+    "footer-connect-aria": "Contactar a Rita",
     "reviews-more": "Ver mais",
     "reviews-less": "Ver menos",
     "cta-h2": "Reserva o teu dia em Sintra.",
@@ -4591,9 +4870,12 @@ const i18n = {
     "foot-book": "Reservar",
     "foot-instagram-link": "Instagram",
     "foot-faq": "FAQ",
-    "foot-whatsapp": "WhatsApp ↗",
-    "foot-email": "Email ↗",
-    "foot-instagram": "Instagram ↗",
+    "foot-whatsapp": "WhatsApp",
+    "foot-whatsapp-aria": "WhatsApp (abre num novo separador)",
+    "foot-email": "Email",
+    "foot-email-aria": "Enviar email à Rita",
+    "foot-instagram": "Instagram",
+    "foot-instagram-aria": "Instagram (abre num novo separador)",
     "foot-badge-online": "Sintra & Lisboa",
     "foot-remote": "5.0★ TripAdvisor",
     "foot-worldwide": "Serviço Premium"
