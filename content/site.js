@@ -63,11 +63,10 @@ const SITE_CONTENT = {
     }
   },
   whatsappMessages: {
-    default: "Hi Rita, I'd like to book a tour.",
-    book: "Hi Rita, I'd like to book a tour.",
-    tour1: "Hi Rita, I'd like to book the Sintra Complete Experience.",
-    tour2: "Hi Rita, I'd like to book the Sintra & Hidden Beaches Experience.",
-    about: "Hi Rita, I'd like to learn more about your tours.",
+    default: "Hi, I'd like to check dates for a private Sintra tour.",
+    book: "Hi, I'd like to check dates for a private Sintra tour.",
+    tour1: "Hi, I'd like to check dates for the Sintra Complete Experience.",
+    tour2: "Hi, I'd like to check dates for the Sintra & Hidden Beaches Experience.",
     final: "Hi Rita, I'd like to check dates for a private Sintra tour.",
     faq: 'Hi Rita, I have a question.'
   },
@@ -83,13 +82,13 @@ const SITE_CONTENT = {
   content: {
     en: {
       seo: {
-        title: 'About Culture Things — Private Sintra Tours | Rita Almeida',
-        description: 'Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Lisbon pickup, max 4 people.',
+        title: 'About Culture Things — Private Sintra Tours',
+        description: 'Private Sintra tours from Lisbon with local experts, iconic landmarks, hidden viewpoints, flexible pacing, and Lisbon pickup. 5.0★ TripAdvisor.',
         author: 'Rita Almeida — About Culture Things',
-        ogTitle: 'About Culture Things — Private Sintra Tours | Rita Almeida',
-        ogDescription: 'Private Sintra tours with Rita Almeida — Pena Palace, hidden beaches, Cascais coast. 5.0★ TripAdvisor. Max 4 people, Lisbon pickup.',
+        ogTitle: 'About Culture Things — Private Sintra Tours',
+        ogDescription: 'Private Sintra tours from Lisbon with local experts, iconic landmarks, hidden viewpoints, flexible pacing, and Lisbon pickup.',
         twitterTitle: 'About Culture Things — Sintra Tours',
-        twitterDescription: 'Private Sintra tours with Rita Almeida. 5.0★ TripAdvisor. Pena Palace, hidden beaches, Cascais. Max 4 people, Lisbon pickup.',
+        twitterDescription: 'Private Sintra tours from Lisbon with local experts. 5.0★ TripAdvisor. Pena Palace, hidden beaches, Cascais.',
         imageAlt: "Rita Almeida with private tour guests on Portugal's Atlantic coast — About Culture Things Sintra tours"
       },
       ui: {
@@ -102,53 +101,53 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'About Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Why Choose Us', href: '#benefits', key: 'why', wide: true },
+        { label: 'Gallery', href: '#gallery', key: 'gallery' },
         { label: 'Reviews', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
         nav: 'Check dates',
         hero: 'Check dates on WhatsApp',
-        offer: 'Check dates for this tour',
+        offer: 'Check dates on WhatsApp',
         final: 'Check dates on WhatsApp',
-        about: 'Message Rita on WhatsApp',
         navAria: 'Book on WhatsApp',
-        fabAria: 'Message Rita on WhatsApp',
-        fabTooltip: 'Message Rita on WhatsApp'
+        fabAria: 'Check dates on WhatsApp',
+        fabTooltip: 'Check dates on WhatsApp'
       },
       hero: {
         kicker: 'Private Sintra Tours',
-        title: 'Private Sintra tours with a local guide',
-        subtitle: 'Private tours from €275 per group, with Lisbon pickup, flexible pacing, and Rita Almeida as your local guide.',
+        title: 'Private Sintra Tours With Local Experts',
+        subtitle: 'Private tours from Lisbon with flexible pacing, iconic landmarks, hidden viewpoints, and personalized experiences for your group.',
         secondaryCta: 'See tours',
-        trust: '5.0 ★ TripAdvisor',
+        trust: '★★★★★ 5.0 Rating',
         trustAria: 'View customer reviews',
-        highlights: 'Private groups up to 4 · Lisbon pickup · Free reschedule',
-        guide: 'With Rita Almeida, Sintra-born guide',
+        highlights: 'Private Groups Up To 4 Guests · Lisbon Pickup Included',
+        guide: 'Sintra-born local expertise with English, Portuguese, and Spanish support',
         price: 'From €275 per private group (up to 4)',
         priceLink: 'See both tours ↓',
         imageAlt: "Rita Almeida with private tour guests on Portugal's Atlantic coast"
       },
       benefits: {
         kicker: 'Why choose us',
-        title: 'A private tour designed around your pace',
-        description: 'Skip the shared bus routine and discover Sintra with a local guide, simple planning, and room to enjoy the day.',
+        title: 'Why Travelers Choose Our Private Sintra Tours',
+        description: '',
         aria: 'Why choose About Culture Things',
         items: [
-          { title: 'Your pace, not a group schedule', text: 'Private routes for up to 4 guests, with time for viewpoints, photos, and quiet stops.', icon: 'plus' },
-          { title: 'Local insight beyond the checklist', text: 'Rita blends famous sights with stories, coastal views, and places many visitors miss.', icon: 'pin' },
-          { title: 'Easy from first message to pickup', text: 'Check dates on WhatsApp, confirm your route, and start with Lisbon pickup included.', icon: 'bag' }
+          { title: 'Private Experience', text: 'Explore at your own pace without large tour groups.', icon: 'plus' },
+          { title: 'Local Expertise', text: 'Discover iconic landmarks and lesser-known locations.', icon: 'pin' },
+          { title: 'Easy Planning', text: 'Simple booking and direct communication through WhatsApp.', icon: 'bag' }
         ]
       },
       offers: {
-        kicker: 'Offer',
-        title: 'Choose your private Sintra experience',
-        description: 'Two ready-to-book routes with clear pricing, private transport, and flexible pacing.',
+        kicker: 'Tours & pricing',
+        title: 'Choose Your Private Sintra Tour',
+        description: '',
         trustAria: 'Tour guarantees',
-        trust: ['Private-only tours', 'Lisbon pickup included', 'Free reschedule with 24h notice'],
+        trust: ['Private groups up to 4 guests', 'Lisbon pickup included', 'Flexible pacing'],
         perGroup: 'per private group',
         ticketNote: 'Palace tickets not included (~€20/person extra)',
-        detailsLabel: 'What’s included & full itinerary',
+        detailsLabel: 'Main highlights',
         included: ['Private guide', 'Lisbon pickup', 'Transport'],
         excluded: ['Meals'],
         items: [
@@ -183,13 +182,25 @@ const SITE_CONTENT = {
           }
         ]
       },
+      gallery: {
+        kicker: 'Experience gallery',
+        title: 'See What Your Day In Sintra Could Look Like',
+        items: [
+          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Pena Palace exterior with dramatic evening light' },
+          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
+          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar coastal village above the Atlantic' },
+          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Private travelers enjoying a scenic viewpoint' },
+          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Hidden beach on the Sintra coastline' },
+          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Premium private vehicle experience in Portugal' }
+        ]
+      },
       reviews: {
         kicker: 'Social proof',
-        title: 'What guests say after touring with Rita',
+        title: 'What Guests Say About Their Experience',
         trustAria: 'TripAdvisor rating summary',
         averageLabel: 'average rating',
         trustNote: '5.0 from 6 TripAdvisor reviews',
-        carouselAria: 'Browse customer reviews',
+        gridAria: 'Customer reviews',
         dotsAria: 'Review pagination',
         previousAria: 'Show previous reviews',
         nextAria: 'Show next reviews',
@@ -199,12 +210,12 @@ const SITE_CONTENT = {
         ratingValue: '5.0',
         ratingLabel: '5.0 out of 5 average rating',
         items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Warm, personal, and full of local insight. Rita made Sintra feel special from start to finish."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Clear, friendly, and well-paced. Rita knew exactly where to go and how to make it easy."' },
+          { initials: 'RB', name: 'Roman B.', text: '"Warm, personal, and full of local insight. Our guide made Sintra feel special from start to finish."' },
+          { initials: 'MM', name: 'Monica M.', text: '"Clear, friendly, and well-paced. Our guide knew exactly where to go and how to make it easy."' },
           { initials: 'FG', name: 'Fernando G.', text: '"Local knowledge made the difference. We saw places we would never have found on our own."' },
           { initials: 'AT', name: 'Amanda T.', text: '"A relaxed private tour with great stories, smart pacing, and thoughtful local recommendations."' },
           { initials: 'LS', name: 'Laura S.', text: '"Professional, warm, and deeply knowledgeable. The whole day felt easy and well looked after."' },
-          { initials: 'JW', name: 'James W.', text: '"Memorable from the first stop. Rita showed the best viewpoints and hidden spots with care."' }
+          { initials: 'JW', name: 'James W.', text: '"Memorable from the first stop. Our local team showed the best viewpoints and hidden spots with care."' }
         ]
       },
       founder: {
@@ -219,19 +230,19 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'FAQ',
-        title: 'Common questions before you book',
+        title: 'Frequently Asked Questions',
         items: [
-          { question: 'What do the Sintra tours include?', answer: 'Pickup in Lisbon, private guide (Rita Almeida), and transport. Max 4 guests. Palace tickets are not included.' },
-          { question: 'How do I book?', answer: 'Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.' },
-          { question: 'Can I cancel or reschedule?', answer: "Yes — with 24 hours' notice at no cost." },
-          { question: 'Where does pickup happen?', answer: 'From your hotel or accommodation in Lisbon. Rita confirms details when you book.' },
-          { question: 'Can the tour be customized?', answer: 'Yes. Rita adapts stops, pace, and route for your group, weather, and interests.' }
+          { question: 'What do the Sintra tours include?', answer: 'Pickup in Lisbon, private guide, and transport. Max 4 guests. Palace tickets are not included.' },
+          { question: 'How do I book?', answer: 'Message us on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.' },
+          { question: 'Can I cancel?', answer: "Yes, with 24 hours' notice at no cost." },
+          { question: 'Where does pickup happen?', answer: 'From your hotel or accommodation in Lisbon. Pickup details are confirmed when you book.' },
+          { question: 'Can the tour be customized?', answer: 'Yes. Stops, pace, and route can be adapted for your group, weather, and interests.' }
         ]
       },
       finalCta: {
-        title: 'Ready to plan your private Sintra tour?',
-        text: 'Send your preferred date and Rita will help you choose the best route.',
-        trust: '✓&nbsp;Private tours • Lisbon pickup • Free reschedule with 24h notice'
+        title: 'Ready To Explore Sintra Your Way?',
+        text: 'Send your preferred date and our local team will help you choose the best route.',
+        trust: '★★★★★ 5.0 Rating · Private Groups · Lisbon Pickup Included'
       },
       footer: {
         note: 'Private Sintra tours — local guide, your pace.',
@@ -266,28 +277,28 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Sobre Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Por qué elegirnos', href: '#benefits', key: 'why', wide: true },
+        { label: 'Galería', href: '#gallery', key: 'gallery' },
         { label: 'Reseñas', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
         nav: 'Consultar fechas',
         hero: 'Consultar fechas en WhatsApp',
-        offer: 'Consultar fechas de este tour',
+        offer: 'Consultar fechas en WhatsApp',
         final: 'Consultar fechas en WhatsApp',
-        about: 'Escribir a Rita por WhatsApp',
         navAria: 'Reservar por WhatsApp',
-        fabAria: 'Escribir a Rita por WhatsApp',
-        fabTooltip: 'Escribir a Rita por WhatsApp'
+        fabAria: 'Consultar fechas en WhatsApp',
+        fabTooltip: 'Consultar fechas en WhatsApp'
       },
       hero: {
         kicker: 'Tours Privados en Sintra',
-        title: 'Tours privados en Sintra con guía local',
-        subtitle: 'Tours privados desde €275 por grupo, con recogida en Lisboa, ritmo flexible y Rita Almeida como guía local.',
+        title: 'Tours Privados en Sintra con Expertos Locales',
+        subtitle: 'Tours privados desde Lisboa con ritmo flexible, lugares icónicos, miradores escondidos y experiencias personalizadas para tu grupo.',
         secondaryCta: 'Ver tours',
-        trust: '5.0 ★ TripAdvisor',
+        trust: '★★★★★ Valoración 5.0',
         trustAria: 'Ver reseñas de clientes',
-        highlights: 'Grupos privados hasta 4 · Recogida en Lisboa · Reagenda gratis',
+        highlights: 'Grupos privados hasta 4 personas · Recogida en Lisboa incluida',
         guide: 'Con Rita Almeida, guía nacida en Sintra',
         price: 'Desde €275 por grupo privado (hasta 4)',
         priceLink: 'Ver ambos tours ↓',
@@ -295,21 +306,21 @@ const SITE_CONTENT = {
       },
       benefits: {
         kicker: 'Por qué elegirnos',
-        title: 'Un tour privado diseñado a tu ritmo',
-        description: 'Evita el circuito de autobús compartido y descubre Sintra con una guía local, planificación simple y tiempo para disfrutar.',
+        title: 'Por Qué Los Viajeros Eligen Nuestros Tours Privados En Sintra',
+        description: '',
         aria: 'Por qué elegir About Culture Things',
         items: [
-          { title: 'Tu ritmo, no el horario de un grupo', text: 'Rutas privadas para hasta 4 personas, con tiempo para miradores, fotos y paradas tranquilas.', icon: 'plus' },
-          { title: 'Mirada local más allá del checklist', text: 'Rita combina lugares famosos con historias, vistas costeras y rincones que muchos visitantes se pierden.', icon: 'pin' },
-          { title: 'Fácil desde el primer mensaje', text: 'Consulta fechas por WhatsApp, confirma la ruta y empieza con recogida en Lisboa incluida.', icon: 'bag' }
+          { title: 'Experiencia Privada', text: 'Explora a tu ritmo sin grandes grupos turísticos.', icon: 'plus' },
+          { title: 'Experiencia Local', text: 'Descubre lugares icónicos y ubicaciones menos conocidas.', icon: 'pin' },
+          { title: 'Planificación Fácil', text: 'Reserva simple y comunicación directa por WhatsApp.', icon: 'bag' }
         ]
       },
       offers: {
-        kicker: 'Oferta',
-        title: 'Elige tu experiencia privada en Sintra',
-        description: 'Dos rutas listas para reservar, con precio claro, transporte privado y ritmo flexible.',
+        kicker: 'Tours y precios',
+        title: 'Elige Tu Tour Privado En Sintra',
+        description: '',
         trustAria: 'Garantías del tour',
-        trust: ['Tours siempre privados', 'Recogida en Lisboa incluida', 'Reagenda gratis con 24 h de antelación'],
+        trust: ['Grupos privados hasta 4 personas', 'Recogida en Lisboa incluida', 'Ritmo flexible'],
         perGroup: 'por grupo privado',
         ticketNote: 'Entradas a palacios no incluidas (~€20/persona extra)',
         detailsLabel: 'Qué incluye e itinerario completo',
@@ -347,13 +358,25 @@ const SITE_CONTENT = {
           }
         ]
       },
+      gallery: {
+        kicker: 'Galería',
+        title: 'Mira Cómo Podría Ser Tu Día En Sintra',
+        items: [
+          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Palacio da Pena exterior con luz dramática' },
+          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
+          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre la costa atlántica' },
+          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajeros privados disfrutando de un mirador escénico' },
+          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Playa escondida en la costa de Sintra' },
+          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiencia premium con vehículo privado en Portugal' }
+        ]
+      },
       reviews: {
         kicker: 'Prueba social',
-        title: 'Lo que dicen los huéspedes después del tour',
+        title: 'Lo Que Dicen Los Huéspedes Sobre Su Experiencia',
         trustAria: 'Resumen de valoración en TripAdvisor',
         averageLabel: 'valoración media',
         trustNote: '5.0 de 6 reseñas en TripAdvisor',
-        carouselAria: 'Navegar reseñas de clientes',
+        gridAria: 'Reseñas de clientes',
         dotsAria: 'Paginación de reseñas',
         previousAria: 'Mostrar reseñas anteriores',
         nextAria: 'Mostrar reseñas siguientes',
@@ -363,12 +386,12 @@ const SITE_CONTENT = {
         ratingValue: '5.0',
         ratingLabel: '5.0 de 5 valoración media',
         items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Cálida, cercana y con mucho conocimiento local. Rita hizo que Sintra se sintiera especial."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Muy clara, amable y bien organizada. Rita supo exactamente a dónde ir y cómo hacerlo fácil."' },
+          { initials: 'RB', name: 'Roman B.', text: '"Cálida, cercana y con mucho conocimiento local. Nuestra guía hizo que Sintra se sintiera especial."' },
+          { initials: 'MM', name: 'Monica M.', text: '"Muy clara, amable y bien organizada. Nuestra guía supo exactamente a dónde ir y cómo hacerlo fácil."' },
           { initials: 'FG', name: 'Fernando G.', text: '"Su conocimiento local marcó la diferencia. Vimos lugares que nunca habríamos encontrado solos."' },
           { initials: 'AT', name: 'Amanda T.', text: '"Un tour privado relajado, con buenas historias, buen ritmo y recomendaciones locales útiles."' },
           { initials: 'LS', name: 'Laura S.', text: '"Profesional, cálida y muy preparada. Todo el día se sintió fácil y bien cuidado."' },
-          { initials: 'JW', name: 'James W.', text: '"Inolvidable desde la primera parada. Rita mostró miradores y rincones escondidos con cuidado."' }
+          { initials: 'JW', name: 'James W.', text: '"Inolvidable desde la primera parada. Nuestro equipo local mostró miradores y rincones escondidos con cuidado."' }
         ]
       },
       founder: {
@@ -383,19 +406,19 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'FAQ',
-        title: 'Preguntas frecuentes antes de reservar',
+        title: 'Preguntas Frecuentes',
         items: [
-          { question: '¿Qué incluyen los tours de Sintra?', answer: 'Recogida en Lisboa, guía privada (Rita Almeida) y transporte. Máx. 4 personas. Entradas a palacios no incluidas.' },
-          { question: '¿Cómo reservo?', answer: 'Escríbele a Rita por WhatsApp para consultar fechas, opciones de pago y detalles de reserva. También puedes reservar en Viator cuando esté disponible.' },
-          { question: '¿Puedo cancelar o reprogramar?', answer: 'Sí, con 24 horas de antelación y sin coste.' },
-          { question: '¿Dónde es la recogida?', answer: 'En tu hotel o alojamiento en Lisboa. Rita confirma los detalles al reservar.' },
-          { question: '¿Se puede personalizar el tour?', answer: 'Sí. Rita adapta paradas, ritmo y ruta a tu grupo, al clima y a tus intereses.' }
+          { question: '¿Qué incluyen los tours de Sintra?', answer: 'Recogida en Lisboa, guía privada y transporte. Máx. 4 personas. Entradas a palacios no incluidas.' },
+          { question: '¿Cómo reservo?', answer: 'Escríbenos por WhatsApp para consultar fechas, opciones de pago y detalles de reserva. También puedes reservar en Viator cuando esté disponible.' },
+          { question: '¿Puedo cancelar?', answer: 'Sí, con 24 horas de antelación y sin coste.' },
+          { question: '¿Dónde es la recogida?', answer: 'En tu hotel o alojamiento en Lisboa. Los detalles se confirman al reservar.' },
+          { question: '¿Se puede personalizar el tour?', answer: 'Sí. Las paradas, el ritmo y la ruta pueden adaptarse a tu grupo, al clima y a tus intereses.' }
         ]
       },
       finalCta: {
-        title: '¿Listo para planificar tu tour privado en Sintra?',
-        text: 'Envía tu fecha preferida y Rita te ayudará a elegir la mejor ruta.',
-        trust: '✓&nbsp;Tours privados • Recogida en Lisboa • Reagenda gratis con 24 h de antelación'
+        title: '¿Listo Para Explorar Sintra A Tu Manera?',
+        text: 'Envía tu fecha preferida y nuestro equipo local te ayudará a elegir la mejor ruta.',
+        trust: '★★★★★ Valoración 5.0 · Grupos privados · Recogida en Lisboa incluida'
       },
       footer: {
         note: 'Tours privados en Sintra — guía local, tu ritmo.',
@@ -430,28 +453,28 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Sobre a Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Porquê escolher-nos', href: '#benefits', key: 'why', wide: true },
+        { label: 'Galeria', href: '#gallery', key: 'gallery' },
         { label: 'Avaliações', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
         nav: 'Ver datas',
         hero: 'Verificar datas no WhatsApp',
-        offer: 'Ver datas para este tour',
+        offer: 'Ver datas no WhatsApp',
         final: 'Ver datas no WhatsApp',
-        about: 'Enviar mensagem à Rita no WhatsApp',
         navAria: 'Reservar no WhatsApp',
-        fabAria: 'Mensagem à Rita no WhatsApp',
-        fabTooltip: 'Mensagem à Rita no WhatsApp'
+        fabAria: 'Ver datas no WhatsApp',
+        fabTooltip: 'Ver datas no WhatsApp'
       },
       hero: {
         kicker: 'Tours Privados em Sintra',
-        title: 'Tours privados em Sintra com guia local',
-        subtitle: 'Tours privados desde €275 por grupo, com recolha em Lisboa, ritmo flexível e a Rita Almeida como guia local.',
+        title: 'Tours Privados em Sintra com Especialistas Locais',
+        subtitle: 'Tours privados desde Lisboa com ritmo flexível, marcos icónicos, miradouros escondidos e experiências personalizadas para o teu grupo.',
         secondaryCta: 'Ver tours',
-        trust: '5.0 ★ TripAdvisor',
+        trust: '★★★★★ Classificação 5.0',
         trustAria: 'Ver avaliações de clientes',
-        highlights: 'Grupos privados até 4 · Recolha em Lisboa · Reagendamento grátis',
+        highlights: 'Grupos privados até 4 pessoas · Recolha em Lisboa incluída',
         guide: 'Com a Rita Almeida, guia nascida em Sintra',
         price: 'Desde €275 por grupo privado (até 4)',
         priceLink: 'Ver ambos os tours ↓',
@@ -459,21 +482,21 @@ const SITE_CONTENT = {
       },
       benefits: {
         kicker: 'Porquê escolher-nos',
-        title: 'Um tour privado pensado ao teu ritmo',
-        description: 'Evita o circuito de autocarro partilhado e descobre Sintra com uma guia local, planeamento simples e tempo para aproveitar.',
+        title: 'Porque Os Viajantes Escolhem Os Nossos Tours Privados Em Sintra',
+        description: '',
         aria: 'Porquê escolher About Culture Things',
         items: [
-          { title: 'O teu ritmo, não o horário de um grupo', text: 'Rotas privadas para até 4 pessoas, com tempo para miradouros, fotografias e paragens calmas.', icon: 'plus' },
-          { title: 'Olhar local além da lista turística', text: 'A Rita combina lugares famosos com histórias, vistas costeiras e recantos que muitos visitantes não encontram.', icon: 'pin' },
-          { title: 'Fácil desde a primeira mensagem', text: 'Verifica datas no WhatsApp, confirma a rota e começa com recolha em Lisboa incluída.', icon: 'bag' }
+          { title: 'Experiência Privada', text: 'Explora ao teu ritmo, sem grandes grupos turísticos.', icon: 'plus' },
+          { title: 'Conhecimento Local', text: 'Descobre marcos icónicos e locais menos conhecidos.', icon: 'pin' },
+          { title: 'Planeamento Fácil', text: 'Reserva simples e comunicação direta pelo WhatsApp.', icon: 'bag' }
         ]
       },
       offers: {
-        kicker: 'Oferta',
-        title: 'Escolhe a tua experiência privada em Sintra',
-        description: 'Duas rotas prontas a reservar, com preço claro, transporte privado e ritmo flexível.',
+        kicker: 'Tours e preços',
+        title: 'Escolhe O Teu Tour Privado Em Sintra',
+        description: '',
         trustAria: 'Garantias do tour',
-        trust: ['Tours sempre privados', 'Recolha em Lisboa incluída', 'Reagenda grátis com 24 h de antecedência'],
+        trust: ['Grupos privados até 4 pessoas', 'Recolha em Lisboa incluída', 'Ritmo flexível'],
         perGroup: 'por grupo privado',
         ticketNote: 'Bilhetes para palácios não incluídos (~€20/pessoa extra)',
         detailsLabel: 'O que inclui e itinerário completo',
@@ -511,13 +534,25 @@ const SITE_CONTENT = {
           }
         ]
       },
+      gallery: {
+        kicker: 'Galeria',
+        title: 'Vê Como Pode Ser O Teu Dia Em Sintra',
+        items: [
+          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Palácio da Pena exterior com luz dramática' },
+          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
+          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre a costa atlântica' },
+          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajantes privados num miradouro panorâmico' },
+          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Praia escondida na costa de Sintra' },
+          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiência premium com veículo privado em Portugal' }
+        ]
+      },
       reviews: {
         kicker: 'Prova social',
-        title: 'O que dizem os hóspedes depois do tour',
+        title: 'O Que Os Hóspedes Dizem Sobre A Experiência',
         trustAria: 'Resumo da classificação no TripAdvisor',
         averageLabel: 'classificação média',
         trustNote: '5.0 de 6 avaliações no TripAdvisor',
-        carouselAria: 'Navegar nas avaliações de clientes',
+        gridAria: 'Avaliações de clientes',
         dotsAria: 'Paginação das avaliações',
         previousAria: 'Mostrar avaliações anteriores',
         nextAria: 'Mostrar avaliações seguintes',
@@ -527,12 +562,12 @@ const SITE_CONTENT = {
         ratingValue: '5.0',
         ratingLabel: '5.0 de 5 classificação média',
         items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Quente, próxima e cheia de conhecimento local. A Rita tornou Sintra especial do início ao fim."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Muito clara, simpática e bem organizada. A Rita soube exatamente para onde ir e como facilitar."' },
+          { initials: 'RB', name: 'Roman B.', text: '"Próxima e cheia de conhecimento local. A nossa guia tornou Sintra especial do início ao fim."' },
+          { initials: 'MM', name: 'Monica M.', text: '"Muito clara, simpática e bem organizada. A nossa guia soube exatamente para onde ir e como facilitar."' },
           { initials: 'FG', name: 'Fernando G.', text: '"O conhecimento local fez toda a diferença. Vimos lugares que nunca encontraríamos sozinhos."' },
           { initials: 'AT', name: 'Amanda T.', text: '"Um tour privado descontraído, com boas histórias, bom ritmo e sugestões locais úteis."' },
           { initials: 'LS', name: 'Laura S.', text: '"Profissional, calorosa e muito preparada. O dia todo foi fácil e bem cuidado."' },
-          { initials: 'JW', name: 'James W.', text: '"Inesquecível desde a primeira paragem. A Rita mostrou miradouros e recantos escondidos com cuidado."' }
+          { initials: 'JW', name: 'James W.', text: '"Inesquecível desde a primeira paragem. A nossa equipa local mostrou miradouros e recantos escondidos com cuidado."' }
         ]
       },
       founder: {
@@ -547,19 +582,19 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'FAQ',
-        title: 'Perguntas frequentes antes de reservar',
+        title: 'Perguntas Frequentes',
         items: [
-          { question: 'O que incluem os tours de Sintra?', answer: 'Recolha em Lisboa, guia privada (Rita Almeida) e transporte. Máx. 4 pessoas. Bilhetes de palácios não incluídos.' },
-          { question: 'Como reservo?', answer: 'Envia mensagem à Rita no WhatsApp para verificar datas, opções de pagamento e detalhes de reserva. Também podes reservar na Viator quando disponível.' },
-          { question: 'Posso cancelar ou reagendar?', answer: 'Sim — com 24 horas de antecedência sem custo.' },
-          { question: 'Onde é a recolha?', answer: 'No teu hotel ou alojamento em Lisboa. A Rita confirma os detalhes quando reservas.' },
-          { question: 'O tour pode ser personalizado?', answer: 'Sim. A Rita adapta paragens, ritmo e rota ao teu grupo, ao tempo e aos teus interesses.' }
+          { question: 'O que incluem os tours de Sintra?', answer: 'Recolha em Lisboa, guia privada e transporte. Máx. 4 pessoas. Bilhetes de palácios não incluídos.' },
+          { question: 'Como reservo?', answer: 'Envia-nos mensagem no WhatsApp para verificar datas, opções de pagamento e detalhes de reserva. Também podes reservar na Viator quando disponível.' },
+          { question: 'Posso cancelar?', answer: 'Sim, com 24 horas de antecedência sem custo.' },
+          { question: 'Onde é a recolha?', answer: 'No teu hotel ou alojamento em Lisboa. Os detalhes são confirmados quando reservas.' },
+          { question: 'O tour pode ser personalizado?', answer: 'Sim. As paragens, ritmo e rota podem ser adaptados ao teu grupo, ao tempo e aos teus interesses.' }
         ]
       },
       finalCta: {
-        title: 'Pronto para planear o teu tour privado em Sintra?',
-        text: 'Envia a tua data preferida e a Rita ajuda-te a escolher a melhor rota.',
-        trust: '✓&nbsp;Tours privados • Recolha em Lisboa • Reagenda grátis com 24 h de antecedência'
+        title: 'Pronto Para Explorar Sintra À Tua Maneira?',
+        text: 'Envia a tua data preferida e a nossa equipa local ajuda-te a escolher a melhor rota.',
+        trust: '★★★★★ Classificação 5.0 · Grupos privados · Recolha em Lisboa incluída'
       },
       footer: {
         note: 'Tours privados em Sintra — guia local, ao teu ritmo.',

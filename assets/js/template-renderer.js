@@ -143,7 +143,7 @@
     const viewport = document.getElementById('reviews-viewport');
     const trustValue = document.querySelector('.reviews-trust-value');
     const source = esc(reviews.source || '');
-    if (viewport) viewport.setAttribute('aria-label', reviews.carouselAria || '');
+    if (viewport) viewport.setAttribute('aria-label', reviews.gridAria || '');
     if (trustValue) {
       trustValue.textContent = (reviews.ratingValue || '5.0') + '/5';
       trustValue.setAttribute('aria-label', reviews.ratingLabel || '');
@@ -154,26 +154,14 @@
     }).join('');
   }
 
-  function renderFounder(lang) {
+  function renderGallery(lang) {
     const c = getContent(lang);
-    const founder = c.founder || {};
-    const img = document.querySelector('.founder-photo img');
-    const source = document.querySelector('.founder-photo source');
-    const trust = document.querySelector('.founder-trust');
-    const asset = cfg.assets && cfg.assets.founder;
-    if (img && asset) {
-      img.src = asset.src;
-      img.alt = founder.imageAlt || founder.name || '';
-      if (asset.width) img.width = asset.width;
-      if (asset.height) img.height = asset.height;
-    }
-    if (source && asset) source.srcset = asset.src;
-    if (trust) {
-      trust.setAttribute('aria-label', founder.trustAria || '');
-      trust.innerHTML = (founder.trust || []).map(function (item, index) {
-        return '<li class="reveal d' + ((index % 3) + 1) + '">' + esc(item) + '</li>';
-      }).join('');
-    }
+    const gallery = c.gallery || {};
+    const grid = document.querySelector('.gallery-grid');
+    if (!grid) return;
+    grid.innerHTML = (gallery.items || []).slice(0, 6).map(function (item, index) {
+      return '<figure class="gallery-item reveal d' + ((index % 3) + 1) + '"><img src="' + esc(item.src) + '" alt="' + esc(item.alt) + '" loading="lazy" decoding="async" width="720" height="560"></figure>';
+    }).join('');
   }
 
   function renderFaq(lang) {
@@ -202,8 +190,8 @@
     renderHero(lang);
     renderBenefits(lang);
     renderOffers(lang);
+    renderGallery(lang);
     renderReviews(lang);
-    renderFounder(lang);
     renderFaq(lang);
     renderContact(lang);
     if (typeof window.applySiteConfig === 'function') window.applySiteConfig();

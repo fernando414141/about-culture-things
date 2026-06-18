@@ -42,7 +42,7 @@
 
   /* ── Radius system ── */
   --radius-btn:   999px;
-  --radius-card:  1.25rem;
+  --radius-card:  0.5rem;
   --radius-img:   1rem;
   --radius-input: 0.75rem;
 
@@ -1190,181 +1190,61 @@ body.nav-open .nav-overlay {
   }
 }
 
-/* ─── ABOUT RITA ─── */
-#differentiators {
+/* ─── EXPERIENCE GALLERY ─── */
+#gallery {
   padding: 64px 20px;
-}
-
-.founder-layout {
-  display: grid;
-  grid-template-areas:
-    "intro"
-    "photo"
-    "copy";
-  gap: 1.5rem;
-  max-width: var(--content-w);
-  margin: 0 auto;
-}
-
-.founder-intro {
-  grid-area: intro;
-  max-width: 42rem;
-}
-
-.founder-intro .sec-eyebrow {
-  justify-content: flex-start;
-  margin-bottom: 0.75rem;
-}
-
-.founder-intro h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: var(--accent);
-  max-width: 14ch;
-  margin: 0;
-}
-
-.founder-photo,
-.about-photo {
-  grid-area: photo;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-card);
-  overflow: hidden;
   background: var(--bg-alt);
 }
 
-.founder-photo picture,
-.about-photo picture {
-  display: block;
-  width: 100%;
-  height: 100%;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
 }
 
-.founder-photo img,
-.about-photo img {
+.gallery-item {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--bg-alt);
+  box-shadow: var(--shadow-1);
+}
+
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 34%;
+  object-position: center;
+  filter: saturate(0.92) contrast(1.02);
+  transition: transform 0.65s var(--ease), filter 0.35s var(--ease);
 }
 
-.founder-copy {
-  grid-area: copy;
-  display: grid;
-  gap: 1.25rem;
-  align-content: start;
-}
-
-.founder-bio,
-.about-bio {
-  max-width: 68ch;
-  font-size: clamp(1rem, 3.8vw, 1.0625rem);
-  color: var(--text-2);
-  line-height: 1.62;
-  margin: 0;
-}
-
-.founder-trust,
-.diff-points {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.625rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.founder-trust li {
-  min-height: 2.75rem;
-  display: flex;
-  align-items: center;
-  padding: 0.65rem 0.85rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-input);
-  background: rgba(255, 255, 255, 0.62);
-  color: var(--text);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  line-height: 1.25;
-  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-}
-
-.founder-trust li:hover {
-  border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.86);
-}
-
-.founder-cta {
-  width: 100%;
-  justify-content: center;
-}
-
-@media (min-width: 36rem) {
-  .founder-trust {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.gallery-item:hover img {
+  transform: scale(1.035);
+  filter: saturate(1) contrast(1.04);
 }
 
 @media (min-width: 48rem) {
-  #differentiators {
+  #gallery {
     padding: 88px 24px;
   }
 
-  .founder-layout {
-    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
-    grid-template-areas:
-      "photo intro"
-      "photo copy";
-    gap: 0 40px;
-    align-items: center;
-  }
-
-  .founder-photo,
-  .about-photo {
-    min-height: 420px;
-    max-height: 500px;
-  }
-
-  .founder-intro h2 {
-    max-width: 14ch;
-  }
-
-  .founder-copy {
-    margin-top: 1.25rem;
-  }
-
-  .founder-bio,
-  .about-bio {
-    font-size: 1.0625rem;
-    max-width: 62ch;
-  }
-
-  .founder-cta {
-    width: max-content;
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 }
 
 @media (min-width: 64rem) {
-  #differentiators {
+  #gallery {
     padding: 104px 24px;
   }
 
-  .founder-layout {
-    grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
-    gap: 0 64px;
-  }
-
-  .founder-bio,
-  .about-bio {
-    font-size: 1.125rem;
-    max-width: 66ch;
-  }
-
-  .founder-trust {
+  .gallery-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 }
 

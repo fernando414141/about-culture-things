@@ -49,7 +49,6 @@
     const benefit1 = benefitByIndex(c, 0);
     const benefit2 = benefitByIndex(c, 1);
     const benefit3 = benefitByIndex(c, 2);
-    const founderTrust = (c.founder && c.founder.trust) || [];
 
     return {
       'skip-link': c.ui && c.ui.skipLink,
@@ -63,8 +62,9 @@
       'tours-trust-aria': c.offers && c.offers.trustAria,
       'nav-tours': c.nav && c.nav[0] && c.nav[0].label,
       'nav-why': c.nav && c.nav[1] && c.nav[1].label,
-      'nav-reviews': c.nav && c.nav[2] && c.nav[2].label,
-      'nav-faq': c.nav && c.nav[3] && c.nav[3].label,
+      'nav-gallery': c.nav && c.nav[2] && c.nav[2].label,
+      'nav-reviews': c.nav && c.nav[3] && c.nav[3].label,
+      'nav-faq': c.nav && c.nav[4] && c.nav[4].label,
       'nav-book': c.ctas && c.ctas.nav,
       'nav-book-aria': c.ctas && c.ctas.navAria,
       'fab-aria': c.ctas && c.ctas.fabAria,
@@ -122,14 +122,8 @@
       'tour-per-group': c.offers && c.offers.perGroup,
       'tour-tickets-note': c.offers && c.offers.ticketNote,
       'tour-details-more': c.offers && c.offers.detailsLabel,
-      'diff-kicker': c.founder && c.founder.kicker,
-      'diff-h2': c.founder && c.founder.title,
-      'about-trust-aria': c.founder && c.founder.trustAria,
-      'diff1-h3': founderTrust[0],
-      'diff2-h3': founderTrust[1],
-      'diff3-h3': founderTrust[2],
-      'about-bio': c.founder && c.founder.bio,
-      'about-cta': c.ctas && c.ctas.about,
+      'gallery-kicker': c.gallery && c.gallery.kicker,
+      'gallery-h2': c.gallery && c.gallery.title,
       'reviews-kicker': c.reviews && c.reviews.kicker,
       'reviews-h2': c.reviews && c.reviews.title,
       'reviews-trust-aria': c.reviews && c.reviews.trustAria,
