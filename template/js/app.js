@@ -1,6 +1,5 @@
 // ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
 const mqDesktop = window.matchMedia('(min-width: 64rem)');
-const mqTablet = window.matchMedia('(min-width: 48rem)');
 
 // ─── BACK TO TOP ─────────────────────────────────────
 (function(){
@@ -33,27 +32,6 @@ function updateDocumentMeta(lang) {
   if (twTitle && t['meta-title']) twTitle.setAttribute('content', t['meta-title']);
   const twDesc = document.querySelector('meta[name="twitter:description"]');
   if (twDesc && t['meta-description']) twDesc.setAttribute('content', t['meta-description']);
-}
-
-function updateStructuredData(lang) {
-  const t = i18n[lang];
-  const c = window.SITE_CONTENT && window.SITE_CONTENT.content && window.SITE_CONTENT.content[lang];
-  const node = document.getElementById('structured-data');
-  if (!t || !node) return;
-  let data;
-  try { data = JSON.parse(node.textContent); } catch (e) { return; }
-  const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
-  if (!faq) return;
-  const faqItems = c && c.faq && c.faq.items ? c.faq.items : [1, 2, 3, 4, 5].map(n => ({
-    question: t['faq' + n + '-q'],
-    answer: t['faq' + n + '-a']
-  }));
-  faq.mainEntity = faqItems.map(item => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer }
-  }));
-  node.textContent = JSON.stringify(data);
 }
 
 function applyLang(lang, options) {
@@ -109,7 +87,7 @@ function applyLang(lang, options) {
 
   document.documentElement.lang = (window.htmlLocales && window.htmlLocales[lang]) || lang;
   updateDocumentMeta(lang);
-  updateStructuredData(lang);
+  if (typeof window.updateStructuredData === 'function') window.updateStructuredData(lang);
   closeLangDropdown();
 
   var burger = document.getElementById('burger');
@@ -187,24 +165,7 @@ document.querySelectorAll('.lang-option').forEach(btn => {
 if (langDropdown) {
   langDropdown.addEventListener('click', e => {
     const btn = e.target.closest('.lang-option');
-    if (btn) applyLang(btn.dataset.lang, { skipRender: true });
-  });
-  langDropdown.addEventListener('keydown', e => {
-    const btn = e.target.closest('.lang-option');
-    if (!btn) return;
-    const options = Array.from(document.querySelectorAll('.lang-option'));
-    const index = options.indexOf(btn);
-    if (index === -1) return;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-      e.preventDefault();
-      options[(index + 1) % options.length].focus();
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      options[(index - 1 + options.length) % options.length].focus();
-    } else if (e.key === 'Escape') {
-      closeLangDropdown();
-      langTrigger?.focus();
-    }
+    if (btn) applyLang(btn.dataset.lang);
   });
 }
 
@@ -216,18 +177,13 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeLangDropdown(); navClose(); }
 });
 
-(function(){
+document.addEventListener('DOMContentLoaded', function () {
   const params = new URLSearchParams(location.search);
   const urlLang = params.get('lang');
   const supported = Object.keys(i18n);
   const lang = (urlLang && supported.includes(urlLang)) ? urlLang : 'en';
-  const run = function () { applyLang(lang, { skipRender: true }); };
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(run, { timeout: 1200 });
-  } else {
-    requestAnimationFrame(run);
-  }
-})();
+  applyLang(lang);
+});
 
 // ─── NAV BEHAVIOUR ───────────────────────────────────
 const nav    = document.getElementById('nav');
@@ -335,7 +291,7 @@ mobNav.addEventListener('click', function (e) {
 });
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.mob-lang-btn');
-  if (btn) applyLang(btn.dataset.lang, { skipRender: true });
+  if (btn) applyLang(btn.dataset.lang);
 });
 
 mqDesktop.addEventListener('change', () => {
@@ -384,15 +340,6 @@ window.refreshTemplateInteractions = function () {
 };
 
 // ─── FAQ ACCORDION (one open at a time) ──────────────
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('toggle', () => {
-    if (!item.open) return;
-    document.querySelectorAll('.faq-item[open]').forEach(other => {
-      if (other !== item) other.open = false;
-    });
-  });
-});
-
 document.addEventListener('toggle', e => {
   const item = e.target;
   if (!item.classList || !item.classList.contains('faq-item') || !item.open) return;

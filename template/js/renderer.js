@@ -142,18 +142,13 @@
     const c = getContent(lang);
     const reviews = c.reviews || {};
     const grid = document.getElementById('reviews-grid');
-    const viewport = document.getElementById('reviews-viewport');
-    const trustValue = document.querySelector('.reviews-trust-value');
     const source = esc(reviews.source || '');
-    if (viewport) viewport.setAttribute('aria-label', reviews.gridAria || '');
-    if (trustValue) {
-      trustValue.textContent = (reviews.ratingValue || '5.0') + '/5';
-      trustValue.setAttribute('aria-label', reviews.ratingLabel || '');
+    if (grid) {
+      grid.setAttribute('aria-label', reviews.gridAria || '');
+      grid.innerHTML = (reviews.items || []).map(function (item, index) {
+        return '<article class="review-card reveal d' + (index % 3) + '"><header class="rv-header"><div class="rv-avatar" aria-hidden="true">' + esc(item.initials) + '</div><div class="rv-identity"><cite class="rv-name">' + esc(item.name) + '</cite></div></header><div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div><blockquote class="rv-text">' + esc(item.text) + '</blockquote><p class="rv-source">' + source + '</p></article>';
+      }).join('');
     }
-    if (!grid) return;
-    grid.innerHTML = (reviews.items || []).map(function (item, index) {
-      return '<article class="review-card reveal d' + (index % 3) + '"><header class="rv-header"><div class="rv-avatar" aria-hidden="true">' + esc(item.initials) + '</div><div class="rv-identity"><cite class="rv-name">' + esc(item.name) + '</cite></div></header><div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div><blockquote class="rv-text">' + esc(item.text) + '</blockquote><p class="rv-source">' + source + '</p></article>';
-    }).join('');
   }
 
   function renderGallery(lang) {
@@ -161,12 +156,20 @@
     const gallery = c.gallery || {};
     const grid = document.querySelector('.gallery-grid');
     if (!grid) return;
-    grid.innerHTML = (gallery.items || []).slice(0, 6).map(function (item, index) {
-      const srcset = item.srcset ? ' srcset="' + esc(item.srcset) + '"' : '';
-      const sizes = item.sizes ? ' sizes="' + esc(item.sizes) + '"' : '';
-      const width = item.width || 720;
-      const height = item.height || 560;
-      return '<figure class="gallery-item reveal d' + ((index % 3) + 1) + '"><img src="' + esc(item.src) + '"' + srcset + sizes + ' alt="' + esc(item.alt) + '" loading="lazy" decoding="async" width="' + esc(width) + '" height="' + esc(height) + '"></figure>';
+    const shared = cfg.galleryItems || [];
+    const items = (gallery.items && gallery.items.length) ? gallery.items : shared.map(function (item) {
+      const altMap = item.alt || {};
+      return {
+        src: item.src,
+        width: item.width,
+        height: item.height,
+        alt: altMap[lang] || altMap.en || ''
+      };
+    });
+    grid.innerHTML = items.slice(0, 6).map(function (item, index) {
+      const width = item.width || 640;
+      const height = item.height || 480;
+      return '<figure class="gallery-item reveal d' + ((index % 3) + 1) + '"><img src="' + esc(item.src) + '" alt="' + esc(item.alt) + '" loading="lazy" decoding="async" width="' + esc(width) + '" height="' + esc(height) + '"></figure>';
     }).join('');
   }
 

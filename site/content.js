@@ -41,11 +41,6 @@ const SITE_CONTENT = {
       width: 960,
       height: 640
     },
-    founder: {
-      src: 'site/images/logo-512.webp',
-      width: 512,
-      height: 512
-    },
     ogImage: 'https://aboutculturethings.com/site/images/hero-960.webp'
   },
   links: {
@@ -73,13 +68,20 @@ const SITE_CONTENT = {
   },
   schema: {
     types: ['LocalBusiness', 'TouristAttraction', 'TravelAgency'],
-    founderId: 'rita',
     priceRange: '€199–€299',
     areaServed: ['Sintra', 'Lisbon', 'Cascais'],
     knowsAbout: ['Sintra tours', 'Pena Palace', 'private tours Portugal', 'Atlantic coast tours', 'hidden beaches Portugal'],
     availableLanguage: ['English', 'Spanish', 'Portuguese'],
     twitter: '@aboutculturethings'
   },
+  galleryItems: [
+    { src: 'site/images/pena-640.webp', width: 640, height: 893, alt: { en: 'Pena Palace rising above the forest in Sintra', es: 'Palacio da Pena sobre el bosque de Sintra', pt: 'Palácio da Pena sobre a floresta de Sintra' } },
+    { src: 'site/images/Cabo%20da%20Roca-640.webp', width: 640, height: 958, alt: { en: 'Cabo da Roca cliffs overlooking the Atlantic Ocean', es: 'Acantilados de Cabo da Roca frente al océano Atlántico', pt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' } },
+    { src: 'site/images/Azenhas%20do%20Mar-640.webp', width: 640, height: 853, alt: { en: 'Azenhas do Mar coastal village above the Atlantic', es: 'Azenhas do Mar sobre la costa atlántica', pt: 'Azenhas do Mar sobre a costa atlântica' } },
+    { src: 'site/images/cascais-640.webp', width: 640, height: 427, alt: { en: 'Cascais coastline on a private Sintra day tour', es: 'Costa de Cascais durante un tour privado por Sintra', pt: 'Costa de Cascais num tour privado por Sintra' } },
+    { src: 'site/images/castelo-640.webp', width: 640, height: 958, alt: { en: 'Castelo dos Mouros stone walls in Sintra', es: 'Murallas del Castelo dos Mouros en Sintra', pt: 'Muralhas do Castelo dos Mouros em Sintra' } },
+    { src: 'site/images/regaleira-640.webp', width: 640, height: 853, alt: { en: 'Quinta da Regaleira architecture surrounded by Sintra gardens', es: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra', pt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' } }
+  ],
   content: {
     en: {
       seo: {
@@ -186,15 +188,7 @@ const SITE_CONTENT = {
       },
       gallery: {
         kicker: 'Gallery',
-        title: 'Your Sintra day, in pictures',
-        items: [
-          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Pena Palace rising above the forest in Sintra' },
-          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
-          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar coastal village above the Atlantic' },
-          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Cascais coastline on a private Sintra day tour' },
-          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Castelo dos Mouros stone walls in Sintra' },
-          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Quinta da Regaleira architecture surrounded by Sintra gardens' }
-        ]
+        title: 'Your Sintra day, in pictures'
       },
       reviews: {
         kicker: 'Reviews',
@@ -219,16 +213,6 @@ const SITE_CONTENT = {
           { initials: 'LS', name: 'Laura S.', text: '"Professional and warm. The whole day felt easy and well looked after."' },
           { initials: 'JW', name: 'James W.', text: '"Memorable viewpoints and hidden spots, shown with real care."' }
         ]
-      },
-      founder: {
-        kicker: 'Local team',
-        title: 'Local expertise behind your tour',
-        trustAria: 'Local team trust points',
-        name: 'About Culture Things',
-        role: 'Private Tour Company',
-        bio: 'Our Sintra-born team designs calm, personal tours for travelers who want more than a standard route — local context, flexible pacing, and carefully chosen stops.',
-        imageAlt: 'About Culture Things local Sintra tour team',
-        trust: ['Sintra local expertise', 'Small private tours', 'English / Portuguese / Spanish']
       },
       faq: {
         kicker: 'FAQ',
@@ -356,15 +340,7 @@ const SITE_CONTENT = {
       },
       gallery: {
         kicker: 'Galería',
-        title: 'Tu día en Sintra, en imágenes',
-        items: [
-          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palacio da Pena sobre el bosque de Sintra' },
-          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
-          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre la costa atlántica' },
-          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais durante un tour privado por Sintra' },
-          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Murallas del Castelo dos Mouros en Sintra' },
-          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra' }
-        ]
+        title: 'Tu día en Sintra, en imágenes'
       },
       reviews: {
         kicker: 'Reseñas',
@@ -389,16 +365,6 @@ const SITE_CONTENT = {
           { initials: 'LS', name: 'Laura S.', text: '"Profesional y cálida. Todo el día fue fácil y muy bien cuidado."' },
           { initials: 'JW', name: 'James W.', text: '"Miradores inolvidables y rincones escondidos, mostrados con mucho cuidado."' }
         ]
-      },
-      founder: {
-        kicker: 'Equipo local',
-        title: 'Experiencia local detrás del tour',
-        trustAria: 'Datos de confianza del equipo local',
-        name: 'About Culture Things',
-        role: 'Empresa de tours privados',
-        bio: 'Nuestro equipo de Sintra diseña tours tranquilos y personales para viajeros que buscan algo más que una ruta turística — contexto local, ritmo flexible y paradas bien elegidas.',
-        imageAlt: 'Equipo local de tours en Sintra',
-        trust: ['Experiencia local en Sintra', 'Tours privados pequeños', 'Inglés / portugués / español']
       },
       faq: {
         kicker: 'FAQ',
@@ -526,15 +492,7 @@ const SITE_CONTENT = {
       },
       gallery: {
         kicker: 'Galeria',
-        title: 'O teu dia em Sintra, em imagens',
-        items: [
-          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palácio da Pena sobre a floresta de Sintra' },
-          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
-          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre a costa atlântica' },
-          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais num tour privado por Sintra' },
-          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Muralhas do Castelo dos Mouros em Sintra' },
-          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' }
-        ]
+        title: 'O teu dia em Sintra, em imagens'
       },
       reviews: {
         kicker: 'Avaliações',
@@ -559,16 +517,6 @@ const SITE_CONTENT = {
           { initials: 'LS', name: 'Laura S.', text: '"Profissional e calorosa. O dia todo foi fácil e muito bem cuidado."' },
           { initials: 'JW', name: 'James W.', text: '"Miradouros inesquecíveis e recantos escondidos, mostrados com muito cuidado."' }
         ]
-      },
-      founder: {
-        kicker: 'Equipa local',
-        title: 'Experiência local por trás do tour',
-        trustAria: 'Pontos de confiança da equipa local',
-        name: 'About Culture Things',
-        role: 'Empresa de tours privados',
-        bio: 'A nossa equipa de Sintra desenha tours calmos e pessoais para viajantes que querem mais do que uma rota turística — contexto local, ritmo flexível e paragens bem escolhidas.',
-        imageAlt: 'Equipa local de tours em Sintra',
-        trust: ['Experiência local em Sintra', 'Tours privados pequenos', 'Inglês / português / espanhol']
       },
       faq: {
         kicker: 'FAQ',

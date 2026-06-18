@@ -26,6 +26,7 @@ Plantilla reutilizable para webs de una sola página con i18n, secciones data-dr
         ├── i18n.js         # Adaptador: content.js → claves data-i18n
         ├── renderer.js     # Render dinámico de secciones desde SITE_CONTENT
         ├── links.js        # WhatsApp, email, redes, analytics config
+        ├── schema.js       # JSON-LD generado desde content.js
         └── analytics.js    # Eventos de conversión (GTM / GA4)
 ```
 
@@ -59,11 +60,12 @@ No hace falta renombrar archivos dentro de `template/` — esa carpeta es el mot
 
 ```html
 <script src="site/content.js" defer></script>
+<script src="template/js/i18n.js" defer></script>
 <script src="template/js/links.js" defer></script>
 <script src="template/js/renderer.js" defer></script>
-<script src="template/js/analytics.js" defer></script>
-<script src="template/js/i18n.js" defer></script>
+<script src="template/js/schema.js" defer></script>
 <script src="template/js/app.js" defer></script>
+<script src="template/js/analytics.js" defer></script>
 ```
 
 ## Rutas de imágenes en content.js
@@ -80,6 +82,25 @@ Para Open Graph absoluto:
 ```js
 ogImage: 'https://tudominio.com/site/images/hero-960.webp'
 ```
+
+## Galería compartida (`galleryItems`)
+
+Las imágenes de galería viven una sola vez en `site/content.js` (raíz del objeto), con alt por idioma:
+
+```js
+galleryItems: [
+  { src: 'site/images/pena-640.webp', width: 640, height: 893, alt: { en: '...', es: '...', pt: '...' } }
+]
+```
+
+Usa siempre variantes `-640.webp` en galería; no hace falta duplicar por idioma.
+
+## Optimización
+
+- **HTML mínimo** — tours, reseñas, galería y FAQ se renderizan desde JS; el hero queda en HTML para LCP.
+- **JSON-LD dinámico** — `template/js/schema.js` genera structured data desde `content.js`.
+- **Imágenes** — solo variantes necesarias en `site/images/` (hero 640+960, tours 640, galería 640).
+- **Analytics** — carga al final; sin GTM/GA4 configurado no añade peso de red.
 
 ## Secciones soportadas
 

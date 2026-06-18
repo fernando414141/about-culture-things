@@ -1302,10 +1302,6 @@ body.nav-open .nav-overlay {
   white-space: nowrap;
 }
 
-.reviews-trust-value {
-  font-variant-numeric: tabular-nums;
-}
-
 .reviews-trust-note {
   margin: 0;
   color: var(--text-3);
