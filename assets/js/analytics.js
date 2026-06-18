@@ -55,7 +55,7 @@
 
   function bindTracking() {
     document.addEventListener('click', function (e) {
-      var el = e.target.closest('[data-site-wa], [data-site-email], .btn-filled, .btn-massive, .fab-wa, .nav-book');
+      var el = e.target.closest('[data-site-wa], [data-site-email], [data-site-instagram], .btn-filled, .btn-massive, .fab-wa, .nav-book');
       if (!el || !el.href) return;
       trackCtaClick(el);
     }, { passive: true });
