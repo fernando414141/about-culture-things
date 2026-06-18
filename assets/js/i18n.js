@@ -129,7 +129,7 @@
       'reviews-trust-aria': c.reviews && c.reviews.trustAria,
       'reviews-average': c.reviews && c.reviews.averageLabel,
       'reviews-trust-note': c.reviews && c.reviews.trustNote,
-      'reviews-carousel-aria': c.reviews && c.reviews.carouselAria,
+      'reviews-grid-aria': c.reviews && c.reviews.gridAria,
       'reviews-dots-aria': c.reviews && c.reviews.dotsAria,
       'reviews-prev-aria': c.reviews && c.reviews.previousAria,
       'reviews-next-aria': c.reviews && c.reviews.nextAria,
