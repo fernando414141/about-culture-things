@@ -124,7 +124,7 @@ function applyLang(lang, options) {
   }
   var mobClose = document.querySelector('.mob-nav-close');
   if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
-  if (typeof window.refreshReviewsCarousel === 'function') window.refreshReviewsCarousel();
+  if (typeof window.refreshReviewsGrid === 'function') window.refreshReviewsGrid();
   if (typeof window.refreshTemplateInteractions === 'function') window.refreshTemplateInteractions();
   if (location.hash) {
     requestAnimationFrame(() => {
