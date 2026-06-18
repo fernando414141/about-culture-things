@@ -1,8 +1,9 @@
 /**
- * Reusable one-page site content.
+ * Project content — edit this file when customizing a new site.
  *
- * To create another industry variant, copy this file and change the data below.
- * The HTML, CSS, and section renderers consume this configuration directly.
+ * Copy the whole project folder, then update business data, copy, images
+ * in site/images/, and root files (sitemap.xml, llms.txt, site.webmanifest).
+ * Leave template/ unchanged unless you are improving the shared engine.
  */
 const SITE_CONTENT = {
   business: {
@@ -32,20 +33,20 @@ const SITE_CONTENT = {
     { code: 'pt', label: 'Português', short: 'PT', htmlLang: 'pt-PT', ogLocale: 'pt_PT', href: 'https://aboutculturethings.com/?lang=pt' }
   ],
   assets: {
-    logo: 'assets/images/logo-512.webp',
+    logo: 'site/images/logo-512.webp',
     hero: {
-      src: 'assets/images/hero-640.webp',
-      srcset: 'assets/images/hero-640.webp 640w, assets/images/hero-960.webp 960w',
-      full: 'assets/images/hero-960.webp',
+      src: 'site/images/hero-640.webp',
+      srcset: 'site/images/hero-640.webp 640w, site/images/hero-960.webp 960w',
+      full: 'site/images/hero-960.webp',
       width: 960,
       height: 640
     },
     founder: {
-      src: 'assets/images/logo-512.webp',
+      src: 'site/images/logo-512.webp',
       width: 512,
       height: 512
     },
-    ogImage: 'https://aboutculturethings.com/assets/images/hero-960.webp'
+    ogImage: 'https://aboutculturethings.com/site/images/hero-960.webp'
   },
   links: {
     instagram: 'https://www.instagram.com/aboutculturethings/',
@@ -163,7 +164,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast-640.webp',
+            image: 'site/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Sintra Complete & Atlantic Coast private tour',
             featured: true
           },
@@ -178,7 +179,7 @@ const SITE_CONTENT = {
             priceValue: '199',
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches-640.webp',
+            image: 'site/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Sintra & Hidden Beaches private tour'
           }
         ]
@@ -187,12 +188,12 @@ const SITE_CONTENT = {
         kicker: 'Gallery',
         title: 'Your Sintra day, in pictures',
         items: [
-          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Pena Palace rising above the forest in Sintra' },
-          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
-          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar coastal village above the Atlantic' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Cascais coastline on a private Sintra day tour' },
-          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Castelo dos Mouros stone walls in Sintra' },
-          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Quinta da Regaleira architecture surrounded by Sintra gardens' }
+          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Pena Palace rising above the forest in Sintra' },
+          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
+          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar coastal village above the Atlantic' },
+          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Cascais coastline on a private Sintra day tour' },
+          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Castelo dos Mouros stone walls in Sintra' },
+          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Quinta da Regaleira architecture surrounded by Sintra gardens' }
         ]
       },
       reviews: {
@@ -333,7 +334,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast-640.webp',
+            image: 'site/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Tour privado Sintra Completa & Costa Atlántica',
             featured: true
           },
@@ -348,7 +349,7 @@ const SITE_CONTENT = {
             priceValue: '199',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches-640.webp',
+            image: 'site/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Tour privado Sintra & Playas Escondidas'
           }
         ]
@@ -357,12 +358,12 @@ const SITE_CONTENT = {
         kicker: 'Galería',
         title: 'Tu día en Sintra, en imágenes',
         items: [
-          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palacio da Pena sobre el bosque de Sintra' },
-          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
-          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre la costa atlántica' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais durante un tour privado por Sintra' },
-          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Murallas del Castelo dos Mouros en Sintra' },
-          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra' }
+          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palacio da Pena sobre el bosque de Sintra' },
+          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
+          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre la costa atlántica' },
+          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais durante un tour privado por Sintra' },
+          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Murallas del Castelo dos Mouros en Sintra' },
+          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra' }
         ]
       },
       reviews: {
@@ -503,7 +504,7 @@ const SITE_CONTENT = {
             priceValue: '299',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Cabo da Roca · Cascais',
-            image: 'assets/images/tour-full-sintra-coast-640.webp',
+            image: 'site/images/tour-full-sintra-coast-640.webp',
             imageAlt: 'Tour privado Sintra Completa & Costa Atlântica',
             featured: true
           },
@@ -518,7 +519,7 @@ const SITE_CONTENT = {
             priceValue: '199',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
-            image: 'assets/images/tour-hidden-beaches-640.webp',
+            image: 'site/images/tour-hidden-beaches-640.webp',
             imageAlt: 'Tour privado Sintra & Praias Escondidas'
           }
         ]
@@ -527,12 +528,12 @@ const SITE_CONTENT = {
         kicker: 'Galeria',
         title: 'O teu dia em Sintra, em imagens',
         items: [
-          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palácio da Pena sobre a floresta de Sintra' },
-          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
-          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre a costa atlântica' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais num tour privado por Sintra' },
-          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Muralhas do Castelo dos Mouros em Sintra' },
-          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' }
+          { src: 'site/images/pena.webp', srcset: 'site/images/pena-640.webp 640w, site/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palácio da Pena sobre a floresta de Sintra' },
+          { src: 'site/images/Cabo%20da%20Roca.webp', srcset: 'site/images/Cabo%20da%20Roca-640.webp 640w, site/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
+          { src: 'site/images/Azenhas%20do%20Mar.webp', srcset: 'site/images/Azenhas%20do%20Mar-640.webp 640w, site/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre a costa atlântica' },
+          { src: 'site/images/cascais.webp', srcset: 'site/images/cascais-640.webp 640w, site/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais num tour privado por Sintra' },
+          { src: 'site/images/castelo.webp', srcset: 'site/images/castelo-640.webp 640w, site/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Muralhas do Castelo dos Mouros em Sintra' },
+          { src: 'site/images/regaleira.webp', srcset: 'site/images/regaleira-640.webp 640w, site/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' }
         ]
       },
       reviews: {

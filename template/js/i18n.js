@@ -1,8 +1,8 @@
 /**
  * i18n adapter.
  *
- * The editable content lives in content/site.js. This file only flattens that
- * data into legacy data-i18n keys used by the static markup and scripts.
+ * Project copy lives in site/content.js. This file flattens that data into
+ * data-i18n keys used by the static markup and scripts.
  */
 (function () {
   const cfg = window.SITE_CONTENT || SITE_CONTENT;

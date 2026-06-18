@@ -1,6 +1,6 @@
 /**
  * Analytics readiness layer — GTM / GA4 stub with conversion event tracking.
- * Set SITE.analytics.gtmId or SITE.analytics.ga4Id in site-config.js.
+ * Set SITE.analytics.gtmId or SITE.analytics.ga4Id in template/js/links.js.
  */
 (function () {
   window.dataLayer = window.dataLayer || [];

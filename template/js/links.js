@@ -1,4 +1,4 @@
-/** Link/contact adapter derived from content/site.js. */
+/** Link/contact adapter derived from site/content.js. */
 (function () {
   const cfg = window.SITE_CONTENT || SITE_CONTENT;
   const business = cfg.business || {};
