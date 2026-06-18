@@ -41,9 +41,9 @@ const SITE_CONTENT = {
       height: 640
     },
     founder: {
-      src: 'assets/images/rita-640.webp',
-      width: 640,
-      height: 800
+      src: 'assets/images/logo-512.webp',
+      width: 512,
+      height: 512
     },
     ogImage: 'https://aboutculturethings.com/assets/images/hero-960.webp'
   },
@@ -84,12 +84,12 @@ const SITE_CONTENT = {
       seo: {
         title: 'About Culture Things — Private Sintra Tours',
         description: 'Private Sintra tours from Lisbon with local experts, iconic landmarks, hidden viewpoints, flexible pacing, and Lisbon pickup. 5.0★ TripAdvisor.',
-        author: 'Rita Almeida — About Culture Things',
+        author: 'About Culture Things',
         ogTitle: 'About Culture Things — Private Sintra Tours',
         ogDescription: 'Private Sintra tours from Lisbon with local experts, iconic landmarks, hidden viewpoints, flexible pacing, and Lisbon pickup.',
         twitterTitle: 'About Culture Things — Sintra Tours',
         twitterDescription: 'Private Sintra tours from Lisbon with local experts. 5.0★ TripAdvisor. Pena Palace, hidden beaches, Cascais.',
-        imageAlt: "Rita Almeida with private tour guests on Portugal's Atlantic coast — About Culture Things Sintra tours"
+        imageAlt: "Private tour guests on Portugal's Atlantic coast — About Culture Things Sintra tours"
       },
       ui: {
         skipLink: 'Skip to main content',
@@ -126,7 +126,7 @@ const SITE_CONTENT = {
         guide: 'Sintra-born local expertise with English, Portuguese, and Spanish support',
         price: 'From €275 per private group (up to 4)',
         priceLink: 'See both tours ↓',
-        imageAlt: "Rita Almeida with private tour guests on Portugal's Atlantic coast"
+        imageAlt: "Private tour guests on Portugal's Atlantic coast"
       },
       benefits: {
         kicker: 'Why choose us',
@@ -186,9 +186,9 @@ const SITE_CONTENT = {
         kicker: 'Experience gallery',
         title: 'See What Your Day In Sintra Could Look Like',
         items: [
-          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Pena Palace exterior with dramatic evening light' },
+          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Pena Palace exterior with dramatic evening light' },
           { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
-          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar coastal village above the Atlantic' },
+          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar coastal village above the Atlantic' },
           { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Private travelers enjoying a scenic viewpoint' },
           { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Hidden beach on the Sintra coastline' },
           { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Premium private vehicle experience in Portugal' }
@@ -260,7 +260,7 @@ const SITE_CONTENT = {
       seo: {
         title: 'About Culture Things — Tours Privados en Sintra',
         description: 'Tours privados en Sintra con expertos locales — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
-        author: 'Rita Almeida — About Culture Things',
+        author: 'About Culture Things',
         ogTitle: 'About Culture Things — Tours Privados en Sintra',
         ogDescription: 'Tours privados en Sintra con expertos locales — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
         twitterTitle: 'About Culture Things — Tours en Sintra',
@@ -362,9 +362,9 @@ const SITE_CONTENT = {
         kicker: 'Galería',
         title: 'Mira Cómo Podría Ser Tu Día En Sintra',
         items: [
-          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Palacio da Pena exterior con luz dramática' },
+          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Palacio da Pena exterior con luz dramática' },
           { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
-          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre la costa atlántica' },
+          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre la costa atlántica' },
           { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajeros privados disfrutando de un mirador escénico' },
           { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Playa escondida en la costa de Sintra' },
           { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiencia premium con vehículo privado en Portugal' }
@@ -436,7 +436,7 @@ const SITE_CONTENT = {
       seo: {
         title: 'About Culture Things — Tours Privados em Sintra',
         description: 'Tours privados em Sintra com especialistas locais — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
-        author: 'Rita Almeida — About Culture Things',
+        author: 'About Culture Things',
         ogTitle: 'About Culture Things — Tours Privados em Sintra',
         ogDescription: 'Tours privados em Sintra com especialistas locais — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
         twitterTitle: 'About Culture Things — Tours em Sintra',
@@ -538,9 +538,9 @@ const SITE_CONTENT = {
         kicker: 'Galeria',
         title: 'Vê Como Pode Ser O Teu Dia Em Sintra',
         items: [
-          { src: 'https://images.unsplash.com/photo-1620832024623-9d0179fb0b8d?auto=format&fit=crop&w=1400&q=82', alt: 'Palácio da Pena exterior com luz dramática' },
+          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Palácio da Pena exterior com luz dramática' },
           { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
-          { src: 'https://images.unsplash.com/photo-1603570419989-4e917a47f232?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre a costa atlântica' },
+          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre a costa atlântica' },
           { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajantes privados num miradouro panorâmico' },
           { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Praia escondida na costa de Sintra' },
           { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiência premium com veículo privado em Portugal' }
