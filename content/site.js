@@ -32,13 +32,13 @@ const SITE_CONTENT = {
     { code: 'pt', label: 'Português', short: 'PT', htmlLang: 'pt-PT', ogLocale: 'pt_PT', href: 'https://aboutculturethings.com/?lang=pt' }
   ],
   assets: {
-    logo: 'assets/images/logo.png',
+    logo: 'assets/images/logo-512.webp',
     hero: {
       src: 'assets/images/hero-640.webp',
       srcset: 'assets/images/hero-640.webp 640w, assets/images/hero-960.webp 960w',
       full: 'assets/images/hero-960.webp',
       width: 960,
-      height: 638
+      height: 640
     },
     founder: {
       src: 'assets/images/rita-640.webp',
