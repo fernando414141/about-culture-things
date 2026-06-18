@@ -2101,12 +2101,6 @@ details[open] .faq-a {
     line-height: 1.5;
   }
 
-  .reviews-carousel {
-    gap: 0.75rem;
-  }
-  .reviews-actions {
-    margin-top: 1.5rem;
-  }
   .hero-ctas .btn-filled,
   .hero-ctas .btn-outlined,
   .pc-cta .btn-filled,
@@ -2120,10 +2114,6 @@ details[open] .faq-a {
   .burger,
   .mob-lang-btn,
   .footer-lang-btn {
-    min-width: var(--touch);
-    min-height: var(--touch);
-  }
-  .reviews-nav {
     min-width: var(--touch);
     min-height: var(--touch);
   }
@@ -2198,8 +2188,8 @@ main section[id] {
 
 @media (prefers-reduced-motion: no-preference) {
   #tours,
+  #gallery,
   #reviews,
-  #differentiators,
   #faq {
     content-visibility: auto;
     contain-intrinsic-size: auto 40rem;
