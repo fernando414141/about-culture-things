@@ -101,7 +101,6 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Why Choose Us', href: '#benefits', key: 'why', wide: true },
         { label: 'Gallery', href: '#gallery', key: 'gallery' },
         { label: 'Reviews', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
@@ -120,7 +119,7 @@ const SITE_CONTENT = {
         title: 'Private Sintra Tours With Local Experts',
         subtitle: 'Private tours from Lisbon with flexible pacing, iconic landmarks, hidden viewpoints, and personalized experiences for your group.',
         secondaryCta: 'See tours',
-        trust: '★★★★★ 5.0 Rating',
+        trust: '5.0 on TripAdvisor',
         trustAria: 'View customer reviews',
         highlights: 'Private Groups Up To 4 Guests · Lisbon Pickup Included',
         guide: 'Sintra-born local expertise with English, Portuguese, and Spanish support',
@@ -245,15 +244,8 @@ const SITE_CONTENT = {
         trust: '★★★★★ 5.0 Rating · Private Groups · Lisbon Pickup Included'
       },
       footer: {
-        note: 'Private Sintra tours — local guide, your pace.',
-        navAria: 'Site sections',
-        socialAria: 'Social media',
-        contactHeading: 'Contact',
-        privacy: 'Privacy',
-        terms: 'Terms',
-        cookies: 'Cookies',
-        languageAria: 'Language',
-        socialLabels: { instagram: 'Instagram', whatsapp: 'WhatsApp', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
+        contactAria: 'Contact',
+        socialLabels: { whatsapp: 'WhatsApp', email: 'Email', tripadvisor: 'TripAdvisor', instagram: 'Instagram', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
       }
     },
     es: {
@@ -277,7 +269,6 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Por qué elegirnos', href: '#benefits', key: 'why', wide: true },
         { label: 'Galería', href: '#gallery', key: 'gallery' },
         { label: 'Reseñas', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
@@ -296,7 +287,7 @@ const SITE_CONTENT = {
         title: 'Tours Privados en Sintra con Expertos Locales',
         subtitle: 'Tours privados desde Lisboa con ritmo flexible, lugares icónicos, miradores escondidos y experiencias personalizadas para tu grupo.',
         secondaryCta: 'Ver tours',
-        trust: '★★★★★ Valoración 5.0',
+        trust: '5.0 en TripAdvisor',
         trustAria: 'Ver reseñas de clientes',
         highlights: 'Grupos privados hasta 4 personas · Recogida en Lisboa incluida',
         guide: 'Con experiencia local de Sintra',
@@ -421,15 +412,8 @@ const SITE_CONTENT = {
         trust: '★★★★★ Valoración 5.0 · Grupos privados · Recogida en Lisboa incluida'
       },
       footer: {
-        note: 'Tours privados en Sintra — guía local, tu ritmo.',
-        navAria: 'Secciones del sitio',
-        socialAria: 'Redes sociales',
-        contactHeading: 'Contacto',
-        privacy: 'Privacidad',
-        terms: 'Términos',
-        cookies: 'Cookies',
-        languageAria: 'Idioma',
-        socialLabels: { instagram: 'Instagram', whatsapp: 'WhatsApp', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
+        contactAria: 'Contacto',
+        socialLabels: { whatsapp: 'WhatsApp', email: 'Email', tripadvisor: 'TripAdvisor', instagram: 'Instagram', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
       }
     },
     pt: {
@@ -453,7 +437,6 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Porquê escolher-nos', href: '#benefits', key: 'why', wide: true },
         { label: 'Galeria', href: '#gallery', key: 'gallery' },
         { label: 'Avaliações', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
@@ -472,7 +455,7 @@ const SITE_CONTENT = {
         title: 'Tours Privados em Sintra com Especialistas Locais',
         subtitle: 'Tours privados desde Lisboa com ritmo flexível, marcos icónicos, miradouros escondidos e experiências personalizadas para o teu grupo.',
         secondaryCta: 'Ver tours',
-        trust: '★★★★★ Classificação 5.0',
+        trust: '5.0 no TripAdvisor',
         trustAria: 'Ver avaliações de clientes',
         highlights: 'Grupos privados até 4 pessoas · Recolha em Lisboa incluída',
         guide: 'Com experiência local de Sintra',
@@ -597,15 +580,8 @@ const SITE_CONTENT = {
         trust: '★★★★★ Classificação 5.0 · Grupos privados · Recolha em Lisboa incluída'
       },
       footer: {
-        note: 'Tours privados em Sintra — guia local, ao teu ritmo.',
-        navAria: 'Secções do site',
-        socialAria: 'Redes sociais',
-        contactHeading: 'Contacto',
-        privacy: 'Privacidade',
-        terms: 'Termos',
-        cookies: 'Cookies',
-        languageAria: 'Idioma',
-        socialLabels: { instagram: 'Instagram', whatsapp: 'WhatsApp', email: 'Email', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
+        contactAria: 'Contacto',
+        socialLabels: { whatsapp: 'WhatsApp', email: 'Email', tripadvisor: 'TripAdvisor', instagram: 'Instagram', linkedin: 'LinkedIn', facebook: 'Facebook', tiktok: 'TikTok' }
       }
     }
   }

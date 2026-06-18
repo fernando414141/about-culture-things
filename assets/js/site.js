@@ -100,11 +100,6 @@ function applyLang(lang, options) {
     btn.classList.toggle('active', active);
     btn.setAttribute('aria-pressed', String(active));
   });
-  document.querySelectorAll('.footer-lang-btn').forEach(btn => {
-    const active = btn.dataset.lang === lang;
-    btn.classList.toggle('active', active);
-    btn.setAttribute('aria-pressed', String(active));
-  });
 
   const triggerLabel = document.getElementById('lang-trigger-label');
   if (triggerLabel) triggerLabel.textContent = langCodes[lang] || lang.toUpperCase();
@@ -124,7 +119,6 @@ function applyLang(lang, options) {
   }
   var mobClose = document.querySelector('.mob-nav-close');
   if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
-  if (typeof window.refreshReviewsGrid === 'function') window.refreshReviewsGrid();
   if (typeof window.refreshTemplateInteractions === 'function') window.refreshTemplateInteractions();
   if (location.hash) {
     requestAnimationFrame(() => {
@@ -340,7 +334,7 @@ mobNav.addEventListener('click', function (e) {
   if (e.target.closest('a')) navClose();
 });
 document.addEventListener('click', function (e) {
-  const btn = e.target.closest('.mob-lang-btn, .footer-lang-btn');
+  const btn = e.target.closest('.mob-lang-btn');
   if (btn) applyLang(btn.dataset.lang, { skipRender: true });
 });
 
@@ -361,9 +355,6 @@ document.addEventListener('keydown', e => {
     navClose();
   }
 });
-
-// ─── REVIEWS GRID ───────────────────────────────────
-window.refreshReviewsGrid = function () {};
 
 // ─── INTERSECTION OBSERVER — REVEAL ──────────────────
 const revealObs = new IntersectionObserver(entries => {
