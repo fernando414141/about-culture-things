@@ -110,7 +110,7 @@ const SITE_CONTENT = {
         hero: 'Check dates on WhatsApp',
         offer: 'Check dates on WhatsApp',
         final: 'Check dates on WhatsApp',
-        navAria: 'Book on WhatsApp',
+        navAria: 'WhatsApp',
         fabAria: 'Check dates on WhatsApp',
         fabTooltip: 'Check dates on WhatsApp'
       },
@@ -188,7 +188,7 @@ const SITE_CONTENT = {
           { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Pena Palace rising above the forest in Sintra' },
           { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
           { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar coastal village above the Atlantic' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Cascais coastline on a private Sintra day tour' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Cascais coastline on a private Sintra day tour' },
           { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Castelo dos Mouros stone walls in Sintra' },
           { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Quinta da Regaleira architecture surrounded by Sintra gardens' }
         ]
@@ -278,7 +278,7 @@ const SITE_CONTENT = {
         hero: 'Consultar fechas en WhatsApp',
         offer: 'Consultar fechas en WhatsApp',
         final: 'Consultar fechas en WhatsApp',
-        navAria: 'Reservar por WhatsApp',
+        navAria: 'WhatsApp',
         fabAria: 'Consultar fechas en WhatsApp',
         fabTooltip: 'Consultar fechas en WhatsApp'
       },
@@ -356,7 +356,7 @@ const SITE_CONTENT = {
           { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palacio da Pena sobre el bosque de Sintra' },
           { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
           { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre la costa atlántica' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Costa de Cascais durante un tour privado por Sintra' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais durante un tour privado por Sintra' },
           { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Murallas del Castelo dos Mouros en Sintra' },
           { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra' }
         ]
@@ -446,7 +446,7 @@ const SITE_CONTENT = {
         hero: 'Verificar datas no WhatsApp',
         offer: 'Ver datas no WhatsApp',
         final: 'Ver datas no WhatsApp',
-        navAria: 'Reservar no WhatsApp',
+        navAria: 'WhatsApp',
         fabAria: 'Ver datas no WhatsApp',
         fabTooltip: 'Ver datas no WhatsApp'
       },
@@ -524,7 +524,7 @@ const SITE_CONTENT = {
           { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palácio da Pena sobre a floresta de Sintra' },
           { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
           { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre a costa atlântica' },
-          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Costa de Cascais num tour privado por Sintra' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1200w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1200, height: 800, alt: 'Costa de Cascais num tour privado por Sintra' },
           { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Muralhas do Castelo dos Mouros em Sintra' },
           { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' }
         ]
