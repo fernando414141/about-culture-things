@@ -186,12 +186,12 @@ const SITE_CONTENT = {
         kicker: 'Experience gallery',
         title: 'See What Your Day In Sintra Could Look Like',
         items: [
-          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Pena Palace exterior with dramatic evening light' },
-          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
-          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar coastal village above the Atlantic' },
-          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Private travelers enjoying a scenic viewpoint' },
-          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Hidden beach on the Sintra coastline' },
-          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Premium private vehicle experience in Portugal' }
+          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Pena Palace rising above the forest in Sintra' },
+          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Cabo da Roca cliffs overlooking the Atlantic Ocean' },
+          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar coastal village above the Atlantic' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Cascais coastline on a private Sintra day tour' },
+          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Castelo dos Mouros stone walls in Sintra' },
+          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Quinta da Regaleira architecture surrounded by Sintra gardens' }
         ]
       },
       reviews: {
@@ -362,12 +362,12 @@ const SITE_CONTENT = {
         kicker: 'Galería',
         title: 'Mira Cómo Podría Ser Tu Día En Sintra',
         items: [
-          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Palacio da Pena exterior con luz dramática' },
-          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
-          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre la costa atlántica' },
-          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajeros privados disfrutando de un mirador escénico' },
-          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Playa escondida en la costa de Sintra' },
-          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiencia premium con vehículo privado en Portugal' }
+          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palacio da Pena sobre el bosque de Sintra' },
+          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Acantilados de Cabo da Roca frente al océano Atlántico' },
+          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre la costa atlántica' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Costa de Cascais durante un tour privado por Sintra' },
+          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Murallas del Castelo dos Mouros en Sintra' },
+          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra' }
         ]
       },
       reviews: {
@@ -538,12 +538,12 @@ const SITE_CONTENT = {
         kicker: 'Galeria',
         title: 'Vê Como Pode Ser O Teu Dia Em Sintra',
         items: [
-          { src: 'https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=1400&q=82', alt: 'Palácio da Pena exterior com luz dramática' },
-          { src: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=82', alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
-          { src: 'https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=1400&q=82', alt: 'Azenhas do Mar sobre a costa atlântica' },
-          { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82', alt: 'Viajantes privados num miradouro panorâmico' },
-          { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82', alt: 'Praia escondida na costa de Sintra' },
-          { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=82', alt: 'Experiência premium com veículo privado em Portugal' }
+          { src: 'assets/images/pena.webp', srcset: 'assets/images/pena-640.webp 640w, assets/images/pena.webp 1003w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1003, height: 1400, alt: 'Palácio da Pena sobre a floresta de Sintra' },
+          { src: 'assets/images/Cabo%20da%20Roca.webp', srcset: 'assets/images/Cabo%20da%20Roca-640.webp 640w, assets/images/Cabo%20da%20Roca.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Falésias do Cabo da Roca sobre o oceano Atlântico' },
+          { src: 'assets/images/Azenhas%20do%20Mar.webp', srcset: 'assets/images/Azenhas%20do%20Mar-640.webp 640w, assets/images/Azenhas%20do%20Mar.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Azenhas do Mar sobre a costa atlântica' },
+          { src: 'assets/images/cascais.webp', srcset: 'assets/images/cascais-640.webp 640w, assets/images/cascais.webp 1400w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1400, height: 933, alt: 'Costa de Cascais num tour privado por Sintra' },
+          { src: 'assets/images/castelo.webp', srcset: 'assets/images/castelo-640.webp 640w, assets/images/castelo.webp 933w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 933, height: 1400, alt: 'Muralhas do Castelo dos Mouros em Sintra' },
+          { src: 'assets/images/regaleira.webp', srcset: 'assets/images/regaleira-640.webp 640w, assets/images/regaleira.webp 1050w', sizes: '(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw', width: 1050, height: 1400, alt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' }
         ]
       },
       reviews: {

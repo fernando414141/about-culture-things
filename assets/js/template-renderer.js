@@ -160,7 +160,11 @@
     const grid = document.querySelector('.gallery-grid');
     if (!grid) return;
     grid.innerHTML = (gallery.items || []).slice(0, 6).map(function (item, index) {
-      return '<figure class="gallery-item reveal d' + ((index % 3) + 1) + '"><img src="' + esc(item.src) + '" alt="' + esc(item.alt) + '" loading="lazy" decoding="async" width="720" height="560"></figure>';
+      const srcset = item.srcset ? ' srcset="' + esc(item.srcset) + '"' : '';
+      const sizes = item.sizes ? ' sizes="' + esc(item.sizes) + '"' : '';
+      const width = item.width || 720;
+      const height = item.height || 560;
+      return '<figure class="gallery-item reveal d' + ((index % 3) + 1) + '"><img src="' + esc(item.src) + '"' + srcset + sizes + ' alt="' + esc(item.alt) + '" loading="lazy" decoding="async" width="' + esc(width) + '" height="' + esc(height) + '"></figure>';
     }).join('');
   }
 

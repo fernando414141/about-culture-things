@@ -106,6 +106,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 button { font: inherit; cursor: pointer; border: none; background: none; }
 [hidden] { display: none !important; }
 
+main,
+section,
+article,
+aside,
+div,
+figure {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+a,
+span {
+  overflow-wrap: break-word;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2070,6 +2089,22 @@ details[open] .faq-a {
 }
 
 @media (max-width: 47.99rem) {
+  h1,
+  h2 {
+    max-width: 100%;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 12vw, 2.85rem);
+  }
+
+  .sec-head h2,
+  .reviews-head h2 {
+    font-size: clamp(1.8rem, 9.5vw, 2.35rem);
+  }
+
   #benefits {
     padding: 3rem 1.25rem;
   }
@@ -2119,6 +2154,8 @@ details[open] .faq-a {
     min-height: var(--touch-lg);
     font-size: var(--text-base);
     padding-inline: 1.125rem;
+    white-space: normal;
+    text-align: center;
   }
   .lang-trigger,
   .burger,
