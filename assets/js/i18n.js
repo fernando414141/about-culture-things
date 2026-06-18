@@ -46,7 +46,6 @@
     const faq3 = faqByIndex(c, 2);
     const faq4 = faqByIndex(c, 3);
     const faq5 = faqByIndex(c, 4);
-    const faq6 = faqByIndex(c, 5);
     const benefit1 = benefitByIndex(c, 0);
     const benefit2 = benefitByIndex(c, 1);
     const benefit3 = benefitByIndex(c, 2);
@@ -160,8 +159,6 @@
       'faq4-a': faq4.answer,
       'faq5-q': faq5.question,
       'faq5-a': faq5.answer,
-      'faq6-q': faq6.question,
-      'faq6-a': faq6.answer,
       'footer-note': footer.note,
       'footer-nav-aria': footer.navAria,
       'footer-social-aria': footer.socialAria,

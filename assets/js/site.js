@@ -44,7 +44,7 @@ function updateStructuredData(lang) {
   try { data = JSON.parse(node.textContent); } catch (e) { return; }
   const faq = data['@graph']?.find(item => item['@type'] === 'FAQPage' || item['@id']?.includes('#faq'));
   if (!faq) return;
-  const faqItems = c && c.faq && c.faq.items ? c.faq.items : [1, 2, 3, 4, 5, 6].map(n => ({
+  const faqItems = c && c.faq && c.faq.items ? c.faq.items : [1, 2, 3, 4, 5].map(n => ({
     question: t['faq' + n + '-q'],
     answer: t['faq' + n + '-a']
   }));

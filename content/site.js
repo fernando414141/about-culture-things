@@ -225,8 +225,7 @@ const SITE_CONTENT = {
           { question: 'How do I book?', answer: 'Message Rita on WhatsApp to check dates, payment options, and booking details. You can also book through Viator when available.' },
           { question: 'Can I cancel or reschedule?', answer: "Yes — with 24 hours' notice at no cost." },
           { question: 'Where does pickup happen?', answer: 'From your hotel or accommodation in Lisbon. Rita confirms details when you book.' },
-          { question: 'Can the tour be customized?', answer: 'Yes. Rita adapts stops, pace, and route for your group, weather, and interests.' },
-          { question: 'What languages can the tour be done in?', answer: 'Rita offers tours in English, Portuguese, and Spanish, so guests can relax and follow along easily.' }
+          { question: 'Can the tour be customized?', answer: 'Yes. Rita adapts stops, pace, and route for your group, weather, and interests.' }
         ]
       },
       finalCta: {
@@ -388,10 +387,9 @@ const SITE_CONTENT = {
         items: [
           { question: '¿Qué incluyen los tours de Sintra?', answer: 'Recogida en Lisboa, guía privada (Rita Almeida) y transporte. Máx. 4 personas. Entradas a palacios no incluidas.' },
           { question: '¿Cómo reservo?', answer: 'Escríbele a Rita por WhatsApp para consultar fechas, opciones de pago y detalles de reserva. También puedes reservar en Viator cuando esté disponible.' },
-          { question: '¿Puedo cancelar o reagendar?', answer: 'Sí — con 24 horas de antelación sin coste.' },
+          { question: '¿Puedo cancelar o reprogramar?', answer: 'Sí, con 24 horas de antelación y sin coste.' },
           { question: '¿Dónde es la recogida?', answer: 'En tu hotel o alojamiento en Lisboa. Rita confirma los detalles al reservar.' },
-          { question: '¿Se puede personalizar el tour?', answer: 'Sí. Rita adapta paradas, ritmo y ruta a tu grupo, el clima y tus intereses.' },
-          { question: '¿En qué idiomas se puede hacer el tour?', answer: 'Rita ofrece tours en inglés, portugués y español, para que puedas relajarte y seguirlo con facilidad.' }
+          { question: '¿Se puede personalizar el tour?', answer: 'Sí. Rita adapta paradas, ritmo y ruta a tu grupo, al clima y a tus intereses.' }
         ]
       },
       finalCta: {
@@ -555,8 +553,7 @@ const SITE_CONTENT = {
           { question: 'Como reservo?', answer: 'Envia mensagem à Rita no WhatsApp para verificar datas, opções de pagamento e detalhes de reserva. Também podes reservar na Viator quando disponível.' },
           { question: 'Posso cancelar ou reagendar?', answer: 'Sim — com 24 horas de antecedência sem custo.' },
           { question: 'Onde é a recolha?', answer: 'No teu hotel ou alojamento em Lisboa. A Rita confirma os detalhes quando reservas.' },
-          { question: 'O tour pode ser personalizado?', answer: 'Sim. A Rita adapta paragens, ritmo e rota ao teu grupo, ao tempo e aos teus interesses.' },
-          { question: 'Em que idiomas o tour pode ser feito?', answer: 'A Rita oferece tours em inglês, português e espanhol, para que os hóspedes possam relaxar e acompanhar facilmente.' }
+          { question: 'O tour pode ser personalizado?', answer: 'Sim. A Rita adapta paragens, ritmo e rota ao teu grupo, ao tempo e aos teus interesses.' }
         ]
       },
       finalCta: {
