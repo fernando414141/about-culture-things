@@ -73,7 +73,7 @@ const SITE_CONTENT = {
   schema: {
     types: ['LocalBusiness', 'TouristAttraction', 'TravelAgency'],
     founderId: 'rita',
-    priceRange: '€275–€299',
+    priceRange: '€199–€299',
     areaServed: ['Sintra', 'Lisbon', 'Cascais'],
     knowsAbout: ['Sintra tours', 'Pena Palace', 'private tours Portugal', 'Atlantic coast tours', 'hidden beaches Portugal'],
     availableLanguage: ['English', 'Spanish', 'Portuguese'],
@@ -106,7 +106,7 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'Check dates',
+        nav: 'WhatsApp',
         hero: 'Check dates on WhatsApp',
         offer: 'Check dates on WhatsApp',
         final: 'Check dates on WhatsApp',
@@ -123,7 +123,7 @@ const SITE_CONTENT = {
         trustAria: 'View customer reviews',
         highlights: 'Private Groups Up To 4 Guests · Lisbon Pickup Included',
         guide: 'Sintra-born local expertise with English, Portuguese, and Spanish support',
-        price: 'From €275 per private group (up to 4)',
+        price: 'From €199 per private group (up to 4)',
         priceLink: 'See both tours ↓',
         imageAlt: "Private tour guests on Portugal's Atlantic coast"
       },
@@ -172,8 +172,8 @@ const SITE_CONTENT = {
             tag: '5 hours · Max 4 guests',
             stops: 'Sintra hills · Hidden coves · Azenhas do Mar',
             fit: 'Best for a slower coastal route, quiet viewpoints, and families who prefer a shorter private tour.',
-            price: '€275',
-            priceValue: '275',
+            price: '€199',
+            priceValue: '199',
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'assets/images/tour-hidden-beaches-640.webp',
@@ -274,7 +274,7 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'Consultar fechas',
+        nav: 'WhatsApp',
         hero: 'Consultar fechas en WhatsApp',
         offer: 'Consultar fechas en WhatsApp',
         final: 'Consultar fechas en WhatsApp',
@@ -291,7 +291,7 @@ const SITE_CONTENT = {
         trustAria: 'Ver reseñas de clientes',
         highlights: 'Grupos privados hasta 4 personas · Recogida en Lisboa incluida',
         guide: 'Con experiencia local de Sintra',
-        price: 'Desde €275 por grupo privado (hasta 4)',
+        price: 'Desde €199 por grupo privado (hasta 4)',
         priceLink: 'Ver ambos tours ↓',
         imageAlt: 'Huéspedes de un tour privado en la costa atlántica de Portugal'
       },
@@ -340,8 +340,8 @@ const SITE_CONTENT = {
             tag: '5 horas · Máx. 4 personas',
             stops: 'Colinas de Sintra · Calas ocultas · Azenhas do Mar',
             fit: 'Ideal para una ruta costera más tranquila, miradores silenciosos y familias que prefieren un tour privado más corto.',
-            price: '€275',
-            priceValue: '275',
+            price: '€199',
+            priceValue: '199',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'assets/images/tour-hidden-beaches-640.webp',
@@ -442,7 +442,7 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'Ver datas',
+        nav: 'WhatsApp',
         hero: 'Verificar datas no WhatsApp',
         offer: 'Ver datas no WhatsApp',
         final: 'Ver datas no WhatsApp',
@@ -459,7 +459,7 @@ const SITE_CONTENT = {
         trustAria: 'Ver avaliações de clientes',
         highlights: 'Grupos privados até 4 pessoas · Recolha em Lisboa incluída',
         guide: 'Com experiência local de Sintra',
-        price: 'Desde €275 por grupo privado (até 4)',
+        price: 'Desde €199 por grupo privado (até 4)',
         priceLink: 'Ver ambos os tours ↓',
         imageAlt: 'Hóspedes de um tour privado na costa atlântica de Portugal'
       },
@@ -508,8 +508,8 @@ const SITE_CONTENT = {
             tag: '5 horas · Máx. 4 pessoas',
             stops: 'Colinas de Sintra · Enseadas escondidas · Azenhas do Mar',
             fit: 'Ideal para uma rota costeira mais tranquila, miradouros calmos e famílias que preferem um tour privado mais curto.',
-            price: '€275',
-            priceValue: '275',
+            price: '€199',
+            priceValue: '199',
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'assets/images/tour-hidden-beaches-640.webp',
