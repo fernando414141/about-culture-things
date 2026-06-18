@@ -67,8 +67,8 @@ const SITE_CONTENT = {
     book: "Hi, I'd like to check dates for a private Sintra tour.",
     tour1: "Hi, I'd like to check dates for the Sintra Complete Experience.",
     tour2: "Hi, I'd like to check dates for the Sintra & Hidden Beaches Experience.",
-    final: "Hi Rita, I'd like to check dates for a private Sintra tour.",
-    faq: 'Hi Rita, I have a question.'
+    final: "Hi, I'd like to check dates for a private Sintra tour.",
+    faq: 'Hi, I have a question.'
   },
   schema: {
     types: ['LocalBusiness', 'TouristAttraction', 'TravelAgency'],
@@ -219,14 +219,14 @@ const SITE_CONTENT = {
         ]
       },
       founder: {
-        kicker: 'About Rita',
-        title: 'Meet the local guide behind your tour',
-        trustAria: 'Rita trust points',
-        name: 'Rita Almeida',
-        role: 'Private Tour Guide',
-        bio: 'Rita is a Sintra-born private guide who designs calm, personal tours for travelers who want more than a standard sightseeing route. She brings local context, flexible pacing, and carefully chosen stops so your day feels easy, personal, and well looked after.',
-        imageAlt: 'Rita Almeida, Sintra tour guide based in Portugal',
-        trust: ['Sintra-born local guide', 'Small private tours', 'English / Portuguese / Spanish']
+        kicker: 'Local team',
+        title: 'Local expertise behind your tour',
+        trustAria: 'Local team trust points',
+        name: 'About Culture Things',
+        role: 'Private Tour Company',
+        bio: 'Our local team designs calm, personal tours for travelers who want more than a standard sightseeing route, with local context, flexible pacing, and carefully chosen stops.',
+        imageAlt: 'About Culture Things local Sintra tour team',
+        trust: ['Sintra local expertise', 'Small private tours', 'English / Portuguese / Spanish']
       },
       faq: {
         kicker: 'FAQ',
@@ -258,14 +258,14 @@ const SITE_CONTENT = {
     },
     es: {
       seo: {
-        title: 'About Culture Things — Tours Privados en Sintra | Rita Almeida',
-        description: 'Tours privados en Sintra con Rita Almeida — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
+        title: 'About Culture Things — Tours Privados en Sintra',
+        description: 'Tours privados en Sintra con expertos locales — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
         author: 'Rita Almeida — About Culture Things',
-        ogTitle: 'About Culture Things — Tours Privados en Sintra | Rita Almeida',
-        ogDescription: 'Tours privados en Sintra con Rita Almeida — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
+        ogTitle: 'About Culture Things — Tours Privados en Sintra',
+        ogDescription: 'Tours privados en Sintra con expertos locales — Palacio da Pena, playas secretas, costa de Cascais. 5.0★ TripAdvisor. Recogida en Lisboa, máx. 4 personas.',
         twitterTitle: 'About Culture Things — Tours en Sintra',
-        twitterDescription: 'Tours privados en Sintra con Rita Almeida. 5.0★ TripAdvisor. Palacio da Pena, playas secretas, Cascais. Máx. 4 personas.',
-        imageAlt: 'Rita Almeida con huéspedes de un tour privado en la costa atlántica de Portugal'
+        twitterDescription: 'Tours privados en Sintra con expertos locales. 5.0★ TripAdvisor. Palacio da Pena, playas secretas, Cascais. Máx. 4 personas.',
+        imageAlt: 'Huéspedes de un tour privado en la costa atlántica de Portugal'
       },
       ui: {
         skipLink: 'Saltar al contenido principal',
@@ -299,10 +299,10 @@ const SITE_CONTENT = {
         trust: '★★★★★ Valoración 5.0',
         trustAria: 'Ver reseñas de clientes',
         highlights: 'Grupos privados hasta 4 personas · Recogida en Lisboa incluida',
-        guide: 'Con Rita Almeida, guía nacida en Sintra',
+        guide: 'Con experiencia local de Sintra',
         price: 'Desde €275 por grupo privado (hasta 4)',
         priceLink: 'Ver ambos tours ↓',
-        imageAlt: 'Rita Almeida con huéspedes de un tour privado en la costa atlántica de Portugal'
+        imageAlt: 'Huéspedes de un tour privado en la costa atlántica de Portugal'
       },
       benefits: {
         kicker: 'Por qué elegirnos',
@@ -395,14 +395,14 @@ const SITE_CONTENT = {
         ]
       },
       founder: {
-        kicker: 'Sobre Rita',
-        title: 'Conoce a la guía local detrás del tour',
-        trustAria: 'Datos de confianza de Rita',
-        name: 'Rita Almeida',
-        role: 'Guía privada',
-        bio: 'Rita es una guía privada nacida en Sintra que diseña tours tranquilos y personales para viajeros que quieren algo más que una ruta turística estándar. Aporta contexto local, ritmo flexible y paradas bien elegidas para que el día se sienta fácil, cercano y bien cuidado.',
-        imageAlt: 'Rita Almeida, guía de tours en Sintra, Portugal',
-        trust: ['Guía local nacida en Sintra', 'Tours privados pequeños', 'Inglés / portugués / español']
+        kicker: 'Equipo local',
+        title: 'Experiencia local detrás del tour',
+        trustAria: 'Datos de confianza del equipo local',
+        name: 'About Culture Things',
+        role: 'Empresa de tours privados',
+        bio: 'Nuestro equipo local diseña tours tranquilos y personales para viajeros que quieren algo más que una ruta turística estándar, con contexto local, ritmo flexible y paradas bien elegidas.',
+        imageAlt: 'Equipo local de tours en Sintra',
+        trust: ['Experiencia local en Sintra', 'Tours privados pequeños', 'Inglés / portugués / español']
       },
       faq: {
         kicker: 'FAQ',
@@ -434,14 +434,14 @@ const SITE_CONTENT = {
     },
     pt: {
       seo: {
-        title: 'About Culture Things — Tours Privados em Sintra | Rita Almeida',
-        description: 'Tours privados em Sintra com a Rita Almeida — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
+        title: 'About Culture Things — Tours Privados em Sintra',
+        description: 'Tours privados em Sintra com especialistas locais — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
         author: 'Rita Almeida — About Culture Things',
-        ogTitle: 'About Culture Things — Tours Privados em Sintra | Rita Almeida',
-        ogDescription: 'Tours privados em Sintra com a Rita Almeida — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
+        ogTitle: 'About Culture Things — Tours Privados em Sintra',
+        ogDescription: 'Tours privados em Sintra com especialistas locais — Palácio da Pena, praias escondidas, costa de Cascais. 5.0★ TripAdvisor. Recolha em Lisboa, máx. 4 pessoas.',
         twitterTitle: 'About Culture Things — Tours em Sintra',
-        twitterDescription: 'Tours privados em Sintra com a Rita Almeida. 5.0★ TripAdvisor. Palácio da Pena, praias escondidas, Cascais. Máx. 4 pessoas.',
-        imageAlt: 'Rita Almeida com hóspedes de um tour privado na costa atlântica de Portugal'
+        twitterDescription: 'Tours privados em Sintra com especialistas locais. 5.0★ TripAdvisor. Palácio da Pena, praias escondidas, Cascais. Máx. 4 pessoas.',
+        imageAlt: 'Hóspedes de um tour privado na costa atlântica de Portugal'
       },
       ui: {
         skipLink: 'Saltar para o conteúdo principal',
@@ -475,10 +475,10 @@ const SITE_CONTENT = {
         trust: '★★★★★ Classificação 5.0',
         trustAria: 'Ver avaliações de clientes',
         highlights: 'Grupos privados até 4 pessoas · Recolha em Lisboa incluída',
-        guide: 'Com a Rita Almeida, guia nascida em Sintra',
+        guide: 'Com experiência local de Sintra',
         price: 'Desde €275 por grupo privado (até 4)',
         priceLink: 'Ver ambos os tours ↓',
-        imageAlt: 'Rita Almeida com hóspedes de um tour privado na costa atlântica de Portugal'
+        imageAlt: 'Hóspedes de um tour privado na costa atlântica de Portugal'
       },
       benefits: {
         kicker: 'Porquê escolher-nos',
@@ -571,14 +571,14 @@ const SITE_CONTENT = {
         ]
       },
       founder: {
-        kicker: 'Sobre a Rita',
-        title: 'Conhece a guia local por trás do tour',
-        trustAria: 'Pontos de confiança da Rita',
-        name: 'Rita Almeida',
-        role: 'Guia privada',
-        bio: 'A Rita é uma guia privada nascida em Sintra que desenha tours calmos e pessoais para viajantes que querem mais do que uma rota turística padrão. Traz contexto local, ritmo flexível e paragens bem escolhidas para que o dia seja fácil, próximo e bem cuidado.',
-        imageAlt: 'Rita Almeida, guia de tours em Sintra, Portugal',
-        trust: ['Guia local nascida em Sintra', 'Tours privados pequenos', 'Inglês / português / espanhol']
+        kicker: 'Equipa local',
+        title: 'Experiência local por trás do tour',
+        trustAria: 'Pontos de confiança da equipa local',
+        name: 'About Culture Things',
+        role: 'Empresa de tours privados',
+        bio: 'A nossa equipa local desenha tours calmos e pessoais para viajantes que querem mais do que uma rota turística padrão, com contexto local, ritmo flexível e paragens bem escolhidas.',
+        imageAlt: 'Equipa local de tours em Sintra',
+        trust: ['Experiência local em Sintra', 'Tours privados pequenos', 'Inglês / português / espanhol']
       },
       faq: {
         kicker: 'FAQ',
