@@ -102,8 +102,8 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Reviews', href: '#reviews', key: 'reviews' },
         { label: 'About Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Reviews', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
@@ -266,8 +266,8 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Reseñas', href: '#reviews', key: 'reviews' },
         { label: 'Sobre Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Reseñas', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
@@ -430,8 +430,8 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
-        { label: 'Avaliações', href: '#reviews', key: 'reviews' },
         { label: 'Sobre a Rita', href: '#differentiators', key: 'about', wide: true },
+        { label: 'Avaliações', href: '#reviews', key: 'reviews' },
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
