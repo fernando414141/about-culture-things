@@ -1,19 +1,6 @@
 // ─── BREAKPOINTS (match CSS --bp-md: 48rem) ─────────
 const mqDesktop = window.matchMedia('(min-width: 64rem)');
 
-// ─── BACK TO TOP ─────────────────────────────────────
-(function(){
-  var btn = document.getElementById('back-to-top');
-  if (!btn) return;
-  function toggle() {
-    var show = window.scrollY > 600;
-    btn.classList.toggle('visible', show);
-  }
-  window.addEventListener('scroll', toggle, { passive: true });
-  toggle();
-  btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-})();
-
 let currentLang  = 'en';
 
 function updateDocumentMeta(lang) {
