@@ -174,24 +174,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ─── NAV BEHAVIOUR ───────────────────────────────────
 const nav    = document.getElementById('nav');
+const hero   = document.querySelector('.hero');
 const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
 const navOverlay = document.getElementById('nav-overlay');
 const fabWa  = document.getElementById('fab-wa');
 let menuFocusReturn = null;
 
+function updateNavState() {
+  const sy = window.scrollY;
+  const compactViewport = !mqDesktop.matches;
+  const heroEnd = hero ? hero.offsetHeight - (nav ? nav.offsetHeight : 0) : 0;
+  nav.classList.toggle('elevated', sy > 10);
+  nav.classList.toggle('nav-on-hero', heroEnd > 0 && sy < heroEnd * 0.92);
+  if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
+}
+
 let ticking = false;
 window.addEventListener('scroll', () => {
   if (ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
-    const sy = window.scrollY;
-    const compactViewport = !mqDesktop.matches;
-    nav.classList.toggle('elevated', sy > 10);
-    if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
+    updateNavState();
     ticking = false;
   });
 }, { passive: true });
+
+updateNavState();
+window.addEventListener('resize', updateNavState, { passive: true });
+
+// Hero video — ensure autoplay on supported browsers
+(function () {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  const play = () => {
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+  };
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+    video.removeAttribute('autoplay');
+    return;
+  }
+  if (video.readyState >= 2) play();
+  else video.addEventListener('canplay', play, { once: true });
+})();
 
 // Active nav link — Intersection Observer (more reliable than offsetTop)
 (function(){

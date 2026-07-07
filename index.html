@@ -69,12 +69,12 @@
 <!-- Fonts (non-blocking) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="template/css/main.css?v=20260707-01" as="style">
-<link rel="preload" href="site/images/hero-640.webp" as="image" type="image/webp" fetchpriority="high" media="(max-width: 63.99rem)">
-<link rel="preload" href="site/images/hero-960.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 64rem)">
+<link rel="preload" href="template/css/main.css?v=20260707-02" as="style">
+<link rel="preload" href="site/images/hero-960.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="preload" href="site/hero.mp4" as="video" type="video/mp4">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"></noscript>
-<link rel="stylesheet" href="template/css/main.css?v=20260707-01">
+<link rel="stylesheet" href="template/css/main.css?v=20260707-02">
 <link rel="author" href="https://aboutculturethings.com/">
 </head>
 <body>
@@ -110,7 +110,7 @@
 </svg>
 
 <!-- ── NAV ── -->
-<header class="nav" id="nav" role="banner">
+<header class="nav nav-on-hero" id="nav" role="banner">
   <div class="nav-inner">
     <a href="#top" class="logo" aria-label="About Culture Things — home">
       <span class="logo-name">About Culture Things</span>
@@ -200,6 +200,21 @@
 
 <!-- ── HERO ── -->
 <section class="hero" id="top" aria-label="Private Sintra tours with local guides">
+  <div class="hero-bg" aria-hidden="true">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="site/images/hero-960.webp"
+      width="1920"
+      height="1080">
+      <source src="site/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="hero-kicker" data-i18n="hero-kicker">Sintra & Lisbon</p>
@@ -223,18 +238,6 @@
         <span data-i18n="hero-scroll">Scroll to explore</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-    </div>
-    <div class="hero-media">
-      <img
-        class="hero-poster"
-        src="site/images/hero-640.webp"
-        srcset="site/images/hero-640.webp 640w, site/images/hero-960.webp 960w"
-        sizes="(max-width: 64rem) 100vw, 960px"
-        alt="Travelers on a private Sintra tour along the Atlantic coast"
-        width="960"
-        height="640"
-        decoding="async"
-        fetchpriority="high">
     </div>
   </div>
 </section>
@@ -357,7 +360,7 @@
 <script src="template/js/links.js" defer></script>
 <script src="template/js/renderer.js" defer></script>
 <script src="template/js/schema.js" defer></script>
-<script src="template/js/app.js?v=20260618-05" defer></script>
+<script src="template/js/app.js?v=20260707-02" defer></script>
 <script src="template/js/analytics.js?v=20260618-05" defer></script>
 </body>
 </html>
