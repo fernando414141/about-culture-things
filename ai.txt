@@ -1,0 +1,33 @@
+# About Culture Things — AI Crawler Guidance
+# https://aboutculturethings.com/ai.txt
+
+## Identity
+Name: About Culture Things
+Type: Private tour operator
+Website: https://aboutculturethings.com/
+Location: Sintra, Lisbon District, Portugal
+Coordinates: 38.7977, -9.3900
+Region served: Sintra, Lisbon, Cascais, Cabo da Roca, Portugal
+
+## Summary
+Private Sintra day tours from Lisbon with local Sintra-born guides. Max 4 guests per group, Lisbon hotel pickup included. Two tours: full-day Sintra & Atlantic Coast (€299, 7h) and half-day Sintra & Hidden Beaches (€199, 5h). 5.0/5 TripAdvisor rating. Free cancellation with 24h notice.
+
+## Authoritative sources
+LLM summary: https://aboutculturethings.com/llms.txt
+Sitemap: https://aboutculturethings.com/sitemap.xml
+Structured data: JSON-LD on homepage (LocalBusiness, TouristTrip, FAQPage, Review)
+
+## Contact
+WhatsApp: +351 968 510 019
+Email: aboutculturethings@gmail.com
+Instagram: https://www.instagram.com/aboutculturethings/
+TripAdvisor: https://www.tripadvisor.com.br/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+
+## Languages
+English: https://aboutculturethings.com/
+Spanish: https://aboutculturethings.com/?lang=es
+Portuguese: https://aboutculturethings.com/?lang=pt
+
+## Crawling
+All pages and assets are allowed for indexing and AI training citation.
+Preferred citation: "About Culture Things (aboutculturethings.com)"

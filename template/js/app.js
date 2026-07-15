@@ -6,19 +6,38 @@ let currentLang  = 'en';
 function updateDocumentMeta(lang) {
   const t = i18n[lang];
   if (!t) return;
+  const cfg = window.SITE_CONTENT || {};
+  const langEntry = (cfg.languages || []).find(function (l) { return l.code === lang; });
+  const pageUrl = (langEntry && langEntry.href) || (cfg.business && cfg.business.url) || 'https://aboutculturethings.com/';
+
   if (t['meta-title']) document.title = t['meta-title'];
+
   const desc = document.querySelector('meta[name="description"]');
   if (desc && t['meta-description']) desc.setAttribute('content', t['meta-description']);
+
+  const keywords = document.querySelector('meta[name="keywords"]');
+  if (keywords && t['meta-keywords']) keywords.setAttribute('content', t['meta-keywords']);
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', pageUrl);
+
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle && t['meta-title']) ogTitle.setAttribute('content', t['meta-title']);
+  if (ogTitle && t['meta-og-title']) ogTitle.setAttribute('content', t['meta-og-title']);
+
   const ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc && t['meta-description']) ogDesc.setAttribute('content', t['meta-description']);
+  if (ogDesc && t['meta-og-description']) ogDesc.setAttribute('content', t['meta-og-description']);
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+
   const ogLocale = document.querySelector('meta[property="og:locale"]');
   if (ogLocale) ogLocale.setAttribute('content', ogLocales[lang] || 'en_GB');
+
   const twTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twTitle && t['meta-title']) twTitle.setAttribute('content', t['meta-title']);
+  if (twTitle && t['meta-twitter-title']) twTitle.setAttribute('content', t['meta-twitter-title']);
+
   const twDesc = document.querySelector('meta[name="twitter:description"]');
-  if (twDesc && t['meta-description']) twDesc.setAttribute('content', t['meta-description']);
+  if (twDesc && t['meta-twitter-description']) twDesc.setAttribute('content', t['meta-twitter-description']);
 }
 
 function applyLang(lang, options) {

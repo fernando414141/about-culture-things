@@ -1,29 +1,87 @@
 # About Culture Things
 
-> Private Sintra day tours with local guides. Two private-only routes (5–7 hours), max 4 guests, Lisbon pickup, 5.0 TripAdvisor rating, and free cancellation with 24 hours' notice. Pena Palace viewpoints, Atlantic coast, Cascais, and hidden beaches.
+> Private Sintra day tours from Lisbon with local Sintra-born guides. Two private-only routes (5–7 hours), max 4 guests per group, Lisbon hotel pickup included, 5.0/5 TripAdvisor rating (6 reviews), and free cancellation with 24 hours' notice.
 
-About Culture Things hosts private tours in Sintra and along Portugal's Atlantic coast. Every tour is private (never mixed groups), guided by Sintra-born locals. Book by messaging on WhatsApp to check availability. Languages: English, Spanish, Portuguese.
+About Culture Things is a private tour operator based in Sintra, Lisbon District, Portugal (coordinates: 38.7977, -9.3900). Every tour is 100% private — never mixed with other travelers. Guides are born and raised in Sintra, fluent in English, Spanish, and Portuguese. Booking is via WhatsApp (+351 968 510 019) or email (aboutculturethings@gmail.com).
 
-## Tours
+## Quick facts
 
-- [Sintra Complete & Atlantic Coast](https://aboutculturethings.com/#tours): 7-hour private tour, €299 per private group (max 4). Historic Sintra, Pena area, Cabo da Roca, Cascais. Lisbon pickup included; palace tickets not included.
-- [Sintra & Hidden Beaches](https://aboutculturethings.com/#tours): 5-hour private tour, €199 per private group (max 4). Sintra hills, hidden coves, Azenhas do Mar. Lisbon pickup included.
+- Business: About Culture Things
+- Website: https://aboutculturethings.com/
+- Location: Sintra, Lisbon District, Portugal (serves Lisbon, Sintra, Cascais, Cabo da Roca)
+- Languages: English, Spanish, Portuguese
+- Group size: Maximum 4 guests per private tour
+- Pickup: From your hotel or accommodation in Lisbon (included)
+- Rating: 5.0/5 on TripAdvisor (6 reviews, all 5-star)
+- Cancellation: Free with 24 hours' notice
+- Payment: Cash, credit card, bank transfer
+- Currency: EUR (€)
+- Palace tickets: Not included (~€20/person, paid separately at entrance)
+
+## Tours & pricing
+
+### Sintra Complete & Atlantic Coast — €299 per private group
+- Duration: 7 hours
+- Best for: First-time visitors to Sintra
+- Route: Historic Sintra · Pena Palace viewpoint · Castelo dos Mouros viewpoint · Serra de Sintra · Cabo da Roca (Europe's westernmost point) · Cascais
+- Includes: Private guide, Lisbon pickup, transport
+- Excludes: Meals, palace entry tickets (~€20/person)
+- Book: https://aboutculturethings.com/#tours
+
+### Sintra & Hidden Beaches — €199 per private group
+- Duration: 5 hours
+- Best for: Families, slower pace, coastal focus
+- Route: Sintra hills · Hidden coves · Praia das Maçãs · Azenhas do Mar · Praia da Aguda
+- Includes: Private guide, Lisbon pickup, transport
+- Excludes: Meals, palace entry tickets (~€20/person)
+- Book: https://aboutculturethings.com/#tours
+
+## Why choose About Culture Things
+
+1. **Your group only** — Set your own pace. No buses, no crowds, no strangers.
+2. **Sintra-born guides** — Local experts who know the palaces and quiet corners tourists miss.
+3. **One-message booking** — WhatsApp to check dates, confirm details, and go.
 
 ## Key pages
 
-- [Why book a private tour](https://aboutculturethings.com/#benefits): Your group only, Sintra-born guides, and one-message WhatsApp booking.
+- [Tours & pricing](https://aboutculturethings.com/#tours): Both private tour options with itineraries and prices.
+- [Why book a private tour](https://aboutculturethings.com/#benefits): Your group only, Sintra-born guides, WhatsApp booking.
 - [Reviews](https://aboutculturethings.com/#reviews): 5.0/5 on TripAdvisor — 6 reviews, all 5-star.
-- [Gallery](https://aboutculturethings.com/#gallery): Six images — Pena Palace, Cabo da Roca, Azenhas do Mar, Cascais, Castelo dos Mouros, Quinta da Regaleira.
-- [FAQ & booking](https://aboutculturethings.com/#faq): Common questions about inclusions, booking, cancellation, pickup, and customization.
+- [Gallery](https://aboutculturethings.com/#gallery): Pena Palace, Cabo da Roca, Azenhas do Mar, Cascais, Castelo dos Mouros, Quinta da Regaleira.
+- [FAQ & booking](https://aboutculturethings.com/#faq): Inclusions, booking process, cancellation, pickup, customization.
 - [Book a tour](https://aboutculturethings.com/#final-cta): Message on WhatsApp to check availability.
+
+## Frequently asked questions
+
+**What's included?**
+Lisbon pickup, private guide, and transport for up to 4 guests. Palace entry tickets are not included (~€20/person).
+
+**How do I book?**
+Message on WhatsApp (+351 968 510 019) with your dates. Availability, payment, and pickup details are confirmed by reply. Also available via Viator.
+
+**What's the cancellation policy?**
+Free cancellation with 24 hours' notice.
+
+**Where is pickup?**
+From your hotel or accommodation in Lisbon. Exact time confirmed when you book.
+
+**Can we customize the route?**
+Yes. Stops, pace, and timing adapt to your group, weather, and interests.
 
 ## Contact
 
-- [WhatsApp +351 968 510 019](https://wa.me/351968510019): Primary booking channel.
-- [Email](mailto:aboutculturethings@gmail.com): aboutculturethings@gmail.com
-- [TripAdvisor reviews](https://www.tripadvisor.com.br/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html): 5.0 rating, 6 reviews.
+- WhatsApp: +351 968 510 019 — https://wa.me/351968510019
+- Email: aboutculturethings@gmail.com
+- Instagram: https://www.instagram.com/aboutculturethings/
+- TripAdvisor: https://www.tripadvisor.com.br/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+
+## Languages
+
+- [English (default)](https://aboutculturethings.com/)
+- [Spanish](https://aboutculturethings.com/?lang=es)
+- [Portuguese](https://aboutculturethings.com/?lang=pt)
 
 ## Optional
 
-- [Spanish site](https://aboutculturethings.com/?lang=es): Full site in Spanish.
-- [Portuguese site](https://aboutculturethings.com/?lang=pt): Full site in Portuguese.
+- [Sitemap](https://aboutculturethings.com/sitemap.xml)
+- [AI guidance](https://aboutculturethings.com/ai.txt)

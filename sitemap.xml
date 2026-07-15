@@ -7,8 +7,52 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://aboutculturethings.com/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://aboutculturethings.com/?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aboutculturethings.com/"/>
-    <changefreq>monthly</changefreq>
-    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-07-15</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aboutculturethings.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aboutculturethings.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://aboutculturethings.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aboutculturethings.com/"/>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/?lang=pt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aboutculturethings.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aboutculturethings.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://aboutculturethings.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aboutculturethings.com/"/>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/#tours</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/#reviews</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/#faq</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aboutculturethings.com/llms.txt</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

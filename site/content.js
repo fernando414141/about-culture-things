@@ -69,8 +69,19 @@ const SITE_CONTENT = {
   schema: {
     types: ['LocalBusiness', 'TouristAttraction', 'TravelAgency'],
     priceRange: '€199–€299',
-    areaServed: ['Sintra', 'Lisbon', 'Cascais'],
-    knowsAbout: ['Sintra tours', 'Pena Palace', 'private tours Portugal', 'Atlantic coast tours', 'hidden beaches Portugal'],
+    areaServed: ['Sintra', 'Lisbon', 'Cascais', 'Cabo da Roca', 'Lisbon District', 'Portugal'],
+    knowsAbout: [
+      'Private Sintra tours',
+      'Sintra day trip from Lisbon',
+      'Pena Palace tours',
+      'Cabo da Roca tours',
+      'Atlantic coast Portugal',
+      'Hidden beaches Sintra',
+      'Quinta da Regaleira',
+      'Castelo dos Mouros',
+      'Private tour guide Portugal',
+      'Lisbon hotel pickup tours'
+    ],
     availableLanguage: ['English', 'Spanish', 'Portuguese'],
     twitter: '@aboutculturethings'
   },
@@ -85,13 +96,14 @@ const SITE_CONTENT = {
   content: {
     en: {
       seo: {
-        title: 'About Culture Things — Private Sintra Tours',
-        description: 'Private Sintra day tours from Lisbon. Local guides, flexible pacing, Lisbon pickup, max 4 guests. 5.0★ TripAdvisor. From €199.',
+        title: 'Private Sintra Tours from Lisbon | About Culture Things',
+        description: 'Book a private Sintra day tour from Lisbon with Sintra-born local guides. Pena Palace, Cabo da Roca, Cascais & hidden beaches. Max 4 guests, hotel pickup, 5.0★ TripAdvisor. From €199.',
+        keywords: 'private Sintra tour, Sintra day trip from Lisbon, Pena Palace tour, private tours Portugal, Sintra tour guide, Lisbon to Sintra tour, Cabo da Roca tour, hidden beaches Sintra, Cascais day trip',
         author: 'About Culture Things',
-        ogTitle: 'About Culture Things — Private Sintra Tours',
-        ogDescription: 'Private Sintra day tours from Lisbon with local guides. Pena Palace, Atlantic coast, hidden beaches. Max 4 guests, Lisbon pickup.',
-        twitterTitle: 'About Culture Things — Sintra Tours',
-        twitterDescription: 'Private Sintra tours from Lisbon. 5.0★ TripAdvisor. Pena Palace, coast & hidden beaches. From €199.',
+        ogTitle: 'Private Sintra Tours from Lisbon | About Culture Things',
+        ogDescription: 'Private Sintra day tours from Lisbon with local guides. Pena Palace, Cabo da Roca, Cascais coast & hidden beaches. Max 4 guests, Lisbon hotel pickup included.',
+        twitterTitle: 'Private Sintra Tours from Lisbon | About Culture Things',
+        twitterDescription: 'Private Sintra tours from Lisbon with local guides. 5.0★ TripAdvisor. Pena Palace, coast & hidden beaches. From €199 per group.',
         imageAlt: 'Travelers on a private Sintra tour along Portugal\'s Atlantic coast'
       },
       ui: {
@@ -237,13 +249,14 @@ const SITE_CONTENT = {
     },
     es: {
       seo: {
-        title: 'About Culture Things — Tours Privados en Sintra',
-        description: 'Tours privados en Sintra desde Lisboa. Guías locales, ritmo flexible, recogida incluida, máx. 4 personas. 5.0★ TripAdvisor. Desde €199.',
+        title: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
+        description: 'Reserva un tour privado en Sintra desde Lisboa con guías locales nacidos en Sintra. Palacio da Pena, Cabo da Roca, Cascais y playas escondidas. Máx. 4 personas, recogida en hotel, 5.0★ TripAdvisor. Desde €199.',
+        keywords: 'tour privado Sintra, excursión Sintra desde Lisboa, tour Palacio da Pena, tours privados Portugal, guía Sintra, tour Cabo da Roca, playas escondidas Sintra, tour Cascais',
         author: 'About Culture Things',
-        ogTitle: 'About Culture Things — Tours Privados en Sintra',
-        ogDescription: 'Tours privados en Sintra desde Lisboa. Palacio da Pena, costa atlántica y playas escondidas. Máx. 4 personas, recogida en Lisboa.',
-        twitterTitle: 'About Culture Things — Tours en Sintra',
-        twitterDescription: 'Tours privados en Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa y playas escondidas. Desde €199.',
+        ogTitle: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
+        ogDescription: 'Tours privados en Sintra desde Lisboa con guías locales. Palacio da Pena, Cabo da Roca, costa de Cascais y playas escondidas. Máx. 4 personas, recogida en Lisboa incluida.',
+        twitterTitle: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
+        twitterDescription: 'Tours privados en Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa y playas escondidas. Desde €199 por grupo.',
         imageAlt: 'Viajeros en un tour privado por la costa atlántica de Portugal'
       },
       ui: {
@@ -389,13 +402,14 @@ const SITE_CONTENT = {
     },
     pt: {
       seo: {
-        title: 'About Culture Things — Tours Privados em Sintra',
-        description: 'Tours privados em Sintra desde Lisboa. Guias locais, ritmo flexível, recolha incluída, máx. 4 pessoas. 5.0★ TripAdvisor. Desde €199.',
+        title: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
+        description: 'Reserva um tour privado em Sintra desde Lisboa com guias locais nascidos em Sintra. Palácio da Pena, Cabo da Roca, Cascais e praias escondidas. Máx. 4 pessoas, recolha no hotel, 5.0★ TripAdvisor. Desde €199.',
+        keywords: 'tour privado Sintra, excursão Sintra desde Lisboa, tour Palácio da Pena, tours privados Portugal, guia Sintra, tour Cabo da Roca, praias escondidas Sintra, tour Cascais',
         author: 'About Culture Things',
-        ogTitle: 'About Culture Things — Tours Privados em Sintra',
-        ogDescription: 'Tours privados em Sintra desde Lisboa. Palácio da Pena, costa atlântica e praias escondidas. Máx. 4 pessoas, recolha em Lisboa.',
-        twitterTitle: 'About Culture Things — Tours em Sintra',
-        twitterDescription: 'Tours privados em Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa e praias escondidas. Desde €199.',
+        ogTitle: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
+        ogDescription: 'Tours privados em Sintra desde Lisboa com guias locais. Palácio da Pena, Cabo da Roca, costa de Cascais e praias escondidas. Máx. 4 pessoas, recolha em Lisboa incluída.',
+        twitterTitle: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
+        twitterDescription: 'Tours privados em Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa e praias escondidas. Desde €199 por grupo.',
         imageAlt: 'Viajantes num tour privado na costa atlântica de Portugal'
       },
       ui: {
