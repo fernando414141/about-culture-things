@@ -87,7 +87,7 @@
     if (offers.length) {
       business.hasOfferCatalog = {
         '@type': 'OfferCatalog',
-        name: 'Private Sintra Tours',
+        name: (c.offers && c.offers.title) || 'Private tours from Lisbon',
         itemListElement: offers.map(function (offer, index) {
           return {
             '@type': 'Offer',
@@ -97,7 +97,7 @@
             price: offer.priceValue,
             priceCurrency: offer.currency || 'EUR',
             availability: 'https://schema.org/InStock',
-            url: pageUrl + '#tours',
+            url: pageUrl + '#tour-' + offer.id,
             itemOffered: { '@id': base + '#tour-' + offer.id }
           };
         })
@@ -133,7 +133,7 @@
           '@type': 'SpeakableSpecification',
           cssSelector: ['.hero-desc', '.faq-list', '.benefits-grid']
         },
-        dateModified: '2026-07-15'
+        dateModified: '2026-08-22'
       },
       {
         '@type': 'BreadcrumbList',
@@ -163,6 +163,7 @@
         '@id': base + '#tour-' + offer.id,
         name: offer.name,
         description: offer.fit,
+        image: base + '/' + offer.image,
         touristType: 'Private group (max 4 guests)',
         itinerary: {
           '@type': 'ItemList',
@@ -176,7 +177,7 @@
           price: offer.priceValue,
           priceCurrency: offer.currency || 'EUR',
           availability: 'https://schema.org/InStock',
-          url: pageUrl + '#tours',
+          url: pageUrl + '#tour-' + offer.id,
           validFrom: '2026-01-01'
         },
         provider: { '@id': base + '#business' }

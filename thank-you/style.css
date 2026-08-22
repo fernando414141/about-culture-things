@@ -452,6 +452,7 @@ html:not(.js) .language-switch { display: none; }
   .farewell-media img { object-position: center 44%; }
   .farewell-copy { padding-bottom: 8rem; }
   .referral-copy .button { max-width: 25rem; }
+  .experience-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

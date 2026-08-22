@@ -1,12 +1,12 @@
 {
   "name": "About Culture Things",
   "short_name": "Culture Things",
-  "description": "Private Sintra day tours from Lisbon with local guides. Pena Palace, Cabo da Roca, Cascais coast & hidden beaches. Max 4 guests.",
+  "description": "Private tours from Lisbon with Rita. Sintra, Atlantic coast, Fátima and Óbidos for up to 4 guests, with private transport.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#F7F4EB",
+  "background_color": "#F3ECDB",
   "theme_color": "#3D5A47",
   "lang": "en-GB",
   "icons": [

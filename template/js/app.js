@@ -45,10 +45,16 @@ function applyLang(lang, options) {
   const t = i18n[lang];
   if (!t) return;
   currentLang = lang;
+  if (typeof SITE !== 'undefined') SITE.currentLang = lang;
 
-  var url = new URL(location.href);
-  if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
-  history.replaceState({}, '', url);
+  if (options.updateUrl !== false) {
+    var url = new URL(location.href);
+    if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+  if (options.persist !== false) {
+    try { localStorage.setItem('act_preferred_language', lang); } catch (error) { /* Storage may be unavailable. */ }
+  }
 
   if (!options.skipRender && typeof window.renderSiteContent === 'function') {
     window.renderSiteContent(lang);
@@ -88,7 +94,8 @@ function applyLang(lang, options) {
   const triggerLabel = document.getElementById('lang-trigger-label');
   if (triggerLabel) triggerLabel.textContent = langCodes[lang] || lang.toUpperCase();
   if (langTrigger) {
-    langTrigger.setAttribute('aria-label', `Select language. Current language: ${langNames[lang] || lang}.`);
+    var selectorLabel = t['language-selector'] || 'Select language. Current language: {language}.';
+    langTrigger.setAttribute('aria-label', selectorLabel.replace('{language}', langNames[lang] || lang));
   }
 
   document.documentElement.lang = (window.htmlLocales && window.htmlLocales[lang]) || lang;
@@ -187,8 +194,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const params = new URLSearchParams(location.search);
   const urlLang = params.get('lang');
   const supported = Object.keys(i18n);
-  const lang = (urlLang && supported.includes(urlLang)) ? urlLang : 'en';
-  applyLang(lang);
+  var savedLang = '';
+  try { savedLang = localStorage.getItem('act_preferred_language') || ''; } catch (error) { /* Storage may be unavailable. */ }
+  var browserLang = '';
+  var preferences = navigator.languages || [navigator.language || ''];
+  for (var i = 0; i < preferences.length; i += 1) {
+    var candidate = String(preferences[i]).toLowerCase().split('-')[0];
+    if (supported.includes(candidate)) { browserLang = candidate; break; }
+  }
+  const lang = (urlLang && supported.includes(urlLang)) ? urlLang : (supported.includes(savedLang) ? savedLang : (browserLang || 'en'));
+  applyLang(lang, { updateUrl: Boolean(urlLang && supported.includes(urlLang)), persist: Boolean(urlLang || savedLang) });
 });
 
 // ─── NAV BEHAVIOUR ───────────────────────────────────
@@ -206,7 +221,14 @@ function updateNavState() {
   const heroEnd = hero ? hero.offsetHeight - (nav ? nav.offsetHeight : 0) : 0;
   nav.classList.toggle('elevated', sy > 10);
   nav.classList.toggle('nav-on-hero', heroEnd > 0 && sy < heroEnd * 0.92);
-  if (fabWa) fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
+  if (fabWa) {
+    fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
+    var hasVisibleWhatsAppCta = Array.from(document.querySelectorAll('main [data-site-wa]')).some(function (cta) {
+      var rect = cta.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < window.innerHeight;
+    });
+    fabWa.classList.toggle('context-hidden', hasVisibleWhatsAppCta);
+  }
 }
 
 let ticking = false;

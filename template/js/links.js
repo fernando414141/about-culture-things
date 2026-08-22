@@ -34,11 +34,21 @@
       ga4Id: '',
       enabled: true
     },
+    currentLang: 'en',
     waMessages: cfg.whatsappMessages || {}
   };
 
+  function messagesForLanguage(lang) {
+    var messages = SITE.waMessages || {};
+    if (messages.en || messages.es || messages.pt) {
+      return messages[lang] || messages.en || {};
+    }
+    return messages;
+  }
+
   function siteWhatsAppUrl(message) {
-    const text = message || SITE.waMessages.default;
+    const currentMessages = messagesForLanguage(SITE.currentLang || 'en');
+    const text = message || currentMessages.default || '';
     return 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(text);
   }
 
@@ -46,10 +56,13 @@
     return 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject || 'Tour enquiry');
   }
 
-  function applySiteConfig() {
+  function applySiteConfig(lang) {
+    lang = lang || SITE.currentLang || 'en';
+    SITE.currentLang = lang;
+    var messages = messagesForLanguage(lang);
     document.querySelectorAll('[data-site-wa]').forEach(function (el) {
       var key = el.getAttribute('data-site-wa');
-      var msg = SITE.waMessages[key] || SITE.waMessages.default;
+      var msg = messages[key] || messages.default;
       el.href = siteWhatsAppUrl(msg);
       if (el.getAttribute('target') === '_blank') {
         el.rel = 'noopener noreferrer';

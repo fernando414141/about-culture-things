@@ -62,17 +62,38 @@ const SITE_CONTENT = {
     }
   },
   whatsappMessages: {
-    default: "Hi! I'd like to check availability for a private Sintra tour.",
-    book: "Hi! I'd like to check availability for a private Sintra tour.",
-    tour1: "Hi! I'd like to book the Sintra Complete Experience (full day).",
-    tour2: "Hi! I'd like to book the Sintra & Hidden Beaches tour.",
-    final: "Hi! I'd like to check availability for a private Sintra tour.",
-    faq: 'Hi! I have a question about your tours.'
+    en: {
+      default: "Hi Rita! I'd like to check availability for a private tour from Lisbon.",
+      book: "Hi Rita! I'd like to check availability for a private tour from Lisbon.",
+      tour1: "Hi Rita! I'm interested in the Sintra Complete & Atlantic Coast private tour. Could you check my dates?",
+      tour2: "Hi Rita! I'm interested in the Sintra & Hidden Beaches private tour. Could you check my dates?",
+      'fatima-obidos': "Hi Rita! I'm interested in the Fátima & Óbidos private day tour. Could you check my dates?",
+      final: "Hi Rita! I'd like some help choosing the right private tour.",
+      faq: 'Hi Rita! I have a question about your private tours.'
+    },
+    es: {
+      default: '¡Hola, Rita! Quisiera consultar disponibilidad para un tour privado desde Lisboa.',
+      book: '¡Hola, Rita! Quisiera consultar disponibilidad para un tour privado desde Lisboa.',
+      tour1: '¡Hola, Rita! Me interesa el tour privado Sintra Completa y Costa Atlántica. ¿Podrías consultar mis fechas?',
+      tour2: '¡Hola, Rita! Me interesa el tour privado Sintra y Playas Escondidas. ¿Podrías consultar mis fechas?',
+      'fatima-obidos': '¡Hola, Rita! Me interesa el tour privado de día completo a Fátima y Óbidos. ¿Podrías consultar mis fechas?',
+      final: '¡Hola, Rita! Quisiera ayuda para elegir el tour privado más adecuado.',
+      faq: '¡Hola, Rita! Tengo una pregunta sobre los tours privados.'
+    },
+    pt: {
+      default: 'Olá, Rita! Gostaria de verificar a disponibilidade para um tour privado a partir de Lisboa.',
+      book: 'Olá, Rita! Gostaria de verificar a disponibilidade para um tour privado a partir de Lisboa.',
+      tour1: 'Olá, Rita! Tenho interesse no tour privado Sintra Completa e Costa Atlântica. Podes verificar as minhas datas?',
+      tour2: 'Olá, Rita! Tenho interesse no tour privado Sintra e Praias Escondidas. Podes verificar as minhas datas?',
+      'fatima-obidos': 'Olá, Rita! Tenho interesse no tour privado de dia inteiro a Fátima e Óbidos. Podes verificar as minhas datas?',
+      final: 'Olá, Rita! Gostaria de ajuda para escolher o tour privado mais indicado.',
+      faq: 'Olá, Rita! Tenho uma pergunta sobre os tours privados.'
+    }
   },
   schema: {
     types: ['LocalBusiness', 'TouristAttraction', 'TravelAgency'],
-    priceRange: '€199–€299',
-    areaServed: ['Sintra', 'Lisbon', 'Cascais', 'Cabo da Roca', 'Lisbon District', 'Portugal'],
+    priceRange: '€199–€500',
+    areaServed: ['Sintra', 'Lisbon', 'Cascais', 'Cabo da Roca', 'Óbidos', 'Fátima', 'Lisbon District', 'Portugal'],
     knowsAbout: [
       'Private Sintra tours',
       'Sintra day trip from Lisbon',
@@ -83,7 +104,9 @@ const SITE_CONTENT = {
       'Quinta da Regaleira',
       'Castelo dos Mouros',
       'Private tour guide Portugal',
-      'Lisbon hotel pickup tours'
+      'Lisbon hotel pickup tours',
+      'Fátima private tours from Lisbon',
+      'Óbidos private day tours'
     ],
     availableLanguage: ['English', 'Spanish', 'Portuguese'],
     twitter: '@aboutculturethings'
@@ -99,14 +122,14 @@ const SITE_CONTENT = {
   content: {
     en: {
       seo: {
-        title: 'Private Sintra Tours from Lisbon | About Culture Things',
-        description: 'Book a private Sintra day tour from Lisbon with Sintra-born local guides. Pena Palace, Cabo da Roca, Cascais & hidden beaches. Max 4 guests, hotel pickup, 5.0★ TripAdvisor. From €199.',
-        keywords: 'private Sintra tour, Sintra day trip from Lisbon, Pena Palace tour, private tours Portugal, Sintra tour guide, Lisbon to Sintra tour, Cabo da Roca tour, hidden beaches Sintra, Cascais day trip',
+        title: 'Private Tours from Lisbon | Sintra, Fátima & Óbidos',
+        description: 'Private tours from Lisbon with Rita for up to 4 guests. Explore Sintra, the Atlantic coast, Fátima and Óbidos with hotel pickup and private transport. From €199 per group.',
+        keywords: 'private tours from Lisbon, private Sintra tour, Fátima Óbidos private tour, Sintra day trip from Lisbon, Cabo da Roca tour, private tours Portugal',
         author: 'About Culture Things',
-        ogTitle: 'Private Sintra Tours from Lisbon | About Culture Things',
-        ogDescription: 'Private Sintra day tours from Lisbon with local guides. Pena Palace, Cabo da Roca, Cascais coast & hidden beaches. Max 4 guests, Lisbon hotel pickup included.',
-        twitterTitle: 'Private Sintra Tours from Lisbon | About Culture Things',
-        twitterDescription: 'Private Sintra tours from Lisbon with local guides. 5.0★ TripAdvisor. Pena Palace, coast & hidden beaches. From €199 per group.',
+        ogTitle: 'Private Tours from Lisbon | About Culture Things',
+        ogDescription: 'Explore Sintra, the Atlantic coast, Fátima and Óbidos with Rita. Private transport, Lisbon pickup and up to 4 guests.',
+        twitterTitle: 'Private Tours from Lisbon | About Culture Things',
+        twitterDescription: 'Private days from Lisbon with Rita. Sintra, coast, Fátima and Óbidos. Up to 4 guests, from €199 per group.',
         imageAlt: 'Travelers on a private Sintra tour along Portugal\'s Atlantic coast'
       },
       ui: {
@@ -115,7 +138,8 @@ const SITE_CONTENT = {
         closeMenu: 'Close menu',
         backToTop: 'Back to top',
         scrollToExplore: 'Scroll to explore',
-        includedAria: "What's included and excluded"
+        includedAria: "What's included and excluded",
+        languageSelector: 'Select language. Current language: {language}.'
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
@@ -124,48 +148,57 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'WhatsApp',
+        nav: 'Check availability',
         hero: 'Check availability',
-        offer: 'Book this tour',
-        tour1: 'Book full-day tour',
-        tour2: 'Book coastal tour',
+        offer: 'Check availability',
+        tour1: 'Check Sintra dates',
+        tour2: 'Check coastal dates',
+        'fatima-obidos': 'Check Fátima & Óbidos dates',
         final: 'Message on WhatsApp',
         navAria: 'Contact us on WhatsApp',
         fabAria: 'Check tour availability on WhatsApp',
         fabTooltip: 'Check availability'
       },
       hero: {
-        kicker: 'Sintra & Lisbon',
-        title: 'Your Private Day in Sintra',
-        subtitle: 'Local guides, your pace, Lisbon pickup. Pena Palace, the coast, and spots most tourists miss — up to 4 guests.',
+        kicker: 'Sintra · Coast · Central Portugal',
+        title: 'Private Tours from Lisbon, Made Personal',
+        subtitle: 'Explore Sintra, the Atlantic coast, Fátima and Óbidos with Rita — private transport, Lisbon pickup and your own pace.',
         secondaryCta: 'See tours',
         trust: '5.0 on TripAdvisor',
         trustAria: 'Read traveler reviews on TripAdvisor',
-        highlights: 'Up to 4 guests · Lisbon pickup included',
-        guide: 'Sintra-born guides · English, Portuguese & Spanish',
+        highlights: 'Private transport · Up to 4 guests · Lisbon pickup',
+        guide: 'Personally hosted by Rita · English, Portuguese & Spanish',
         price: 'From €199 per private group (up to 4)',
-        priceLink: 'See both tours ↓',
+        priceLink: 'See all three tours ↓',
         imageAlt: 'Travelers on a private Sintra tour along the Atlantic coast'
       },
       benefits: {
         kicker: 'Why us',
-        title: 'Why book a private tour?',
+        title: 'A private day, hosted by someone local',
         description: '',
         aria: 'Why book About Culture Things',
         items: [
-          { title: 'Your group only', text: 'Set the pace — no buses, no crowds, no strangers.', icon: 'plus' },
-          { title: 'Sintra-born guides', text: 'Local experts who know the palaces and the quiet corners.', icon: 'pin' },
-          { title: 'Book in one message', text: 'WhatsApp to check dates, confirm details, and go.', icon: 'bag' }
+          { title: 'Only your group', text: 'Up to four guests, with space to slow down or change the pace.', icon: 'plus' },
+          { title: 'Rita, your local host', text: 'A real person who knows the stories, roads and quieter corners.', icon: 'pin' },
+          { title: 'Plan it directly', text: 'Ask questions and confirm your day with Rita on WhatsApp.', icon: 'bag' }
         ]
+      },
+      story: {
+        kicker: 'Meet your host',
+        title: 'Portugal feels different with someone local beside you',
+        text: 'Rita creates relaxed private days around the people in front of her — sharing the places she knows with warmth, context and room to enjoy them.',
+        signature: 'Rita · Founder & local host',
+        imageAlt: 'Rita with a guest overlooking the Atlantic coast near Sintra'
       },
       offers: {
         kicker: 'Tours',
-        title: 'Pick your Sintra day',
-        description: '',
+        title: 'Choose your private day from Lisbon',
+        description: 'Three distinct routes, always private and designed for up to four guests.',
         trustAria: 'What every tour includes',
         trust: ['Up to 4 guests', 'Lisbon pickup included', 'Flexible pacing'],
+        currencyNote: 'All prices are per private group and charged in EUR.',
         perGroup: 'per private group',
-        ticketNote: 'Palace tickets extra (~€20/person)',
+        ticketNote: 'Attraction tickets and meals are not included',
         detailsLabel: 'Itinerary & details',
         included: ['Private guide', 'Lisbon pickup', 'Transport'],
         excluded: ['Meals'],
@@ -174,7 +207,7 @@ const SITE_CONTENT = {
             id: 'tour1',
             badge: 'Full day · First visit',
             name: 'Sintra Complete & Atlantic Coast',
-            tag: '7 hours · Max 4 guests',
+            tag: 'Private · 7 hours · Max 4 guests',
             stops: 'Historic Sintra · Pena · Cabo da Roca',
             fit: 'First visit? Sintra, Europe\'s western edge, and Cascais in one relaxed private day.',
             price: '€299',
@@ -182,14 +215,15 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp',
-            imageAlt: 'Sintra Complete & Atlantic Coast private tour',
+            imageAlt: 'Cabo da Roca on the Sintra Complete and Atlantic Coast private tour',
+            ticketNote: 'Palace tickets extra (~€20/person)',
             featured: true
           },
           {
             id: 'tour2',
             badge: 'Half day · Coast & beaches',
             name: 'Sintra & Hidden Beaches',
-            tag: '5 hours · Max 4 guests',
+            tag: 'Private · 5 hours · Max 4 guests',
             stops: 'Sintra hills · Hidden coves · Azenhas do Mar',
             fit: 'A shorter coastal route with quiet viewpoints — ideal for families or a slower pace.',
             price: '€199',
@@ -197,13 +231,30 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Sintra Historic Center · National Palace Area · Castelo dos Mouros Viewpoint · Serra de Sintra · Pena Palace Viewpoint · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'site/images/tour-hidden-beaches-640.webp',
-            imageAlt: 'Sintra & Hidden Beaches private tour'
+            imageAlt: 'Azenhas do Mar on the Sintra and Hidden Beaches private tour',
+            ticketNote: 'Palace tickets extra (~€20/person)'
+          },
+          {
+            id: 'fatima-obidos',
+            badge: 'Full day · Heritage & reflection',
+            name: 'Fátima & Óbidos Private Day Tour',
+            tag: 'Private · Full day · Max 4 guests',
+            stops: 'Lisbon · Óbidos · Fátima · Lisbon',
+            fit: 'Walk Óbidos’ medieval lanes, then experience the calm and significance of Fátima in one unhurried private day.',
+            price: '€500',
+            priceValue: '500',
+            currency: 'EUR',
+            places: 'Lisbon pickup · Óbidos medieval village · Fátima Sanctuary · Lisbon drop-off',
+            image: 'site/images/tour-fatima-obidos-736.webp',
+            imageAlt: 'Visitor looking towards the Basilica of Our Lady of the Rosary in Fátima',
+            imagePosition: 'center 38%',
+            ticketNote: 'Meals are not included'
           }
         ]
       },
       gallery: {
         kicker: 'Gallery',
-        title: 'Your Sintra day, in pictures'
+        title: 'Portugal, through days shared with Rita'
       },
       reviews: {
         kicker: 'Reviews',
@@ -233,7 +284,7 @@ const SITE_CONTENT = {
         kicker: 'FAQ',
         title: 'Common questions before you book',
         items: [
-          { question: 'What\'s included?', answer: 'Lisbon pickup, private guide, and transport for up to 4 guests. Palace entry tickets are not included (~€20/person).' },
+          { question: 'What\'s included?', answer: 'Lisbon pickup and drop-off, private guide, and private transport for up to 4 guests. For Sintra routes, palace tickets are not included (~€20/person). Meals are not included.' },
           { question: 'How do I book?', answer: 'Message us on WhatsApp with your dates. We\'ll confirm availability, payment, and pickup details. Viator booking also available.' },
           { question: 'What\'s the cancellation policy?', answer: 'Free cancellation with 24 hours\' notice.' },
           { question: 'Where is pickup?', answer: 'From your hotel or accommodation in Lisbon. We confirm the exact time when you book.' },
@@ -241,8 +292,8 @@ const SITE_CONTENT = {
         ]
       },
       finalCta: {
-        title: 'Ready to explore Sintra your way?',
-        text: 'Send your dates on WhatsApp. We\'ll help you pick the right tour.',
+        title: 'Ready to see Portugal your way?',
+        text: 'Send your dates to Rita. She’ll help you choose a route or shape a private day around you.',
         trust: 'Free cancellation · 24h notice · 5.0 TripAdvisor'
       },
       footer: {
@@ -252,14 +303,14 @@ const SITE_CONTENT = {
     },
     es: {
       seo: {
-        title: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
-        description: 'Reserva un tour privado en Sintra desde Lisboa con guías locales nacidos en Sintra. Palacio da Pena, Cabo da Roca, Cascais y playas escondidas. Máx. 4 personas, recogida en hotel, 5.0★ TripAdvisor. Desde €199.',
-        keywords: 'tour privado Sintra, excursión Sintra desde Lisboa, tour Palacio da Pena, tours privados Portugal, guía Sintra, tour Cabo da Roca, playas escondidas Sintra, tour Cascais',
+        title: 'Tours Privados desde Lisboa | Sintra, Fátima y Óbidos',
+        description: 'Tours privados desde Lisboa con Rita para hasta 4 personas. Descubre Sintra, la costa atlántica, Fátima y Óbidos con recogida y transporte privado. Desde €199 por grupo.',
+        keywords: 'tours privados desde Lisboa, tour privado Sintra, tour privado Fátima Óbidos, excursión Sintra desde Lisboa, tours privados Portugal',
         author: 'About Culture Things',
-        ogTitle: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
-        ogDescription: 'Tours privados en Sintra desde Lisboa con guías locales. Palacio da Pena, Cabo da Roca, costa de Cascais y playas escondidas. Máx. 4 personas, recogida en Lisboa incluida.',
-        twitterTitle: 'Tours Privados en Sintra desde Lisboa | About Culture Things',
-        twitterDescription: 'Tours privados en Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa y playas escondidas. Desde €199 por grupo.',
+        ogTitle: 'Tours Privados desde Lisboa | About Culture Things',
+        ogDescription: 'Descubre Sintra, la costa atlántica, Fátima y Óbidos con Rita. Transporte privado, recogida en Lisboa y hasta 4 personas.',
+        twitterTitle: 'Tours Privados desde Lisboa | About Culture Things',
+        twitterDescription: 'Días privados desde Lisboa con Rita. Sintra, costa, Fátima y Óbidos. Hasta 4 personas, desde €199 por grupo.',
         imageAlt: 'Viajeros en un tour privado por la costa atlántica de Portugal'
       },
       ui: {
@@ -268,7 +319,8 @@ const SITE_CONTENT = {
         closeMenu: 'Cerrar menú',
         backToTop: 'Volver arriba',
         scrollToExplore: 'Desplázate para explorar',
-        includedAria: 'Qué incluye y qué no'
+        includedAria: 'Qué incluye y qué no',
+        languageSelector: 'Seleccionar idioma. Idioma actual: {language}.'
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
@@ -277,48 +329,57 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'WhatsApp',
+        nav: 'Consultar disponibilidad',
         hero: 'Consultar disponibilidad',
-        offer: 'Reservar este tour',
-        tour1: 'Reservar día completo',
-        tour2: 'Reservar ruta costera',
+        offer: 'Consultar disponibilidad',
+        tour1: 'Consultar fechas para Sintra',
+        tour2: 'Consultar fechas para la costa',
+        'fatima-obidos': 'Consultar fechas para Fátima y Óbidos',
         final: 'Escribir por WhatsApp',
         navAria: 'Contactar por WhatsApp',
         fabAria: 'Consultar disponibilidad por WhatsApp',
         fabTooltip: 'Consultar disponibilidad'
       },
       hero: {
-        kicker: 'Sintra y Lisboa',
-        title: 'Tu día privado en Sintra',
-        subtitle: 'Guías locales, tu ritmo y recogida en Lisboa. Palacio da Pena, la costa y rincones que pocos turistas ven — máx. 4 personas.',
+        kicker: 'Sintra · Costa · Portugal central',
+        title: 'Tours privados desde Lisboa, hechos a tu medida',
+        subtitle: 'Descubre Sintra, la costa atlántica, Fátima y Óbidos con Rita — transporte privado, recogida en Lisboa y tu propio ritmo.',
         secondaryCta: 'Ver tours',
         trust: '5.0 en TripAdvisor',
         trustAria: 'Leer reseñas en TripAdvisor',
-        highlights: 'Hasta 4 personas · Recogida en Lisboa incluida',
-        guide: 'Guías de Sintra · Inglés, portugués y español',
+        highlights: 'Transporte privado · Hasta 4 personas · Recogida en Lisboa',
+        guide: 'Rita te acompaña personalmente · Inglés, portugués y español',
         price: 'Desde €199 por grupo privado (hasta 4)',
-        priceLink: 'Ver ambos tours ↓',
+        priceLink: 'Ver los tres tours ↓',
         imageAlt: 'Viajeros en un tour privado por la costa atlántica'
       },
       benefits: {
         kicker: 'Por qué nosotros',
-        title: '¿Por qué un tour privado?',
+        title: 'Un día privado con alguien local a tu lado',
         description: '',
         aria: 'Por qué reservar con About Culture Things',
         items: [
-          { title: 'Solo tu grupo', text: 'Marca el ritmo — sin autobuses, sin aglomeraciones.', icon: 'plus' },
-          { title: 'Guías de Sintra', text: 'Expertos locales que conocen los palacios y los rincones tranquilos.', icon: 'pin' },
-          { title: 'Reserva en un mensaje', text: 'WhatsApp para consultar fechas, confirmar y listo.', icon: 'bag' }
+          { title: 'Solo tu grupo', text: 'Hasta cuatro personas, con libertad para parar o cambiar el ritmo.', icon: 'plus' },
+          { title: 'Rita, tu anfitriona local', text: 'Una persona real que conoce las historias, los caminos y los rincones tranquilos.', icon: 'pin' },
+          { title: 'Organízalo directamente', text: 'Pregunta y confirma el día con Rita por WhatsApp.', icon: 'bag' }
         ]
+      },
+      story: {
+        kicker: 'Conoce a tu anfitriona',
+        title: 'Portugal se vive diferente con alguien local a tu lado',
+        text: 'Rita crea días privados y relajados pensando en las personas que tiene delante, compartiendo los lugares que conoce con cercanía, contexto y tiempo para disfrutarlos.',
+        signature: 'Rita · Fundadora y anfitriona local',
+        imageAlt: 'Rita con una viajera frente a la costa atlántica cerca de Sintra'
       },
       offers: {
         kicker: 'Tours',
-        title: 'Elige tu día en Sintra',
-        description: '',
+        title: 'Elige tu día privado desde Lisboa',
+        description: 'Tres rutas diferentes, siempre privadas y pensadas para hasta cuatro personas.',
         trustAria: 'Qué incluye cada tour',
         trust: ['Hasta 4 personas', 'Recogida en Lisboa incluida', 'Ritmo flexible'],
+        currencyNote: 'Todos los precios son por grupo privado y se cobran en EUR.',
         perGroup: 'por grupo privado',
-        ticketNote: 'Entradas a palacios aparte (~€20/persona)',
+        ticketNote: 'Entradas y comidas no incluidas',
         detailsLabel: 'Itinerario y detalles',
         included: ['Guía privada', 'Recogida en Lisboa', 'Transporte'],
         excluded: ['Comidas'],
@@ -327,7 +388,7 @@ const SITE_CONTENT = {
             id: 'tour1',
             badge: 'Día completo · Primera visita',
             name: 'Sintra Completa & Costa Atlántica',
-            tag: '7 horas · Máx. 4 personas',
+            tag: 'Privado · 7 horas · Máx. 4 personas',
             stops: 'Sintra histórica · Pena · Cabo da Roca',
             fit: '¿Primera visita? Sintra, el extremo occidental de Europa y Cascais en un día privado y relajado.',
             price: '€299',
@@ -335,14 +396,15 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp',
-            imageAlt: 'Tour privado Sintra Completa & Costa Atlántica',
+            imageAlt: 'Cabo da Roca en el tour privado Sintra Completa y Costa Atlántica',
+            ticketNote: 'Entradas a palacios aparte (~€20/persona)',
             featured: true
           },
           {
             id: 'tour2',
             badge: 'Medio día · Costa y playas',
             name: 'Sintra & Playas Escondidas',
-            tag: '5 horas · Máx. 4 personas',
+            tag: 'Privado · 5 horas · Máx. 4 personas',
             stops: 'Colinas de Sintra · Calas ocultas · Azenhas do Mar',
             fit: 'Ruta costera más tranquila con miradores — ideal para familias o un ritmo más pausado.',
             price: '€199',
@@ -350,13 +412,30 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona del Palacio Nacional · Mirador Castelo dos Mouros · Serra de Sintra · Mirador Palacio de la Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'site/images/tour-hidden-beaches-640.webp',
-            imageAlt: 'Tour privado Sintra & Playas Escondidas'
+            imageAlt: 'Azenhas do Mar en el tour privado Sintra y Playas Escondidas',
+            ticketNote: 'Entradas a palacios aparte (~€20/persona)'
+          },
+          {
+            id: 'fatima-obidos',
+            badge: 'Día completo · Patrimonio y reflexión',
+            name: 'Tour Privado Fátima & Óbidos',
+            tag: 'Privado · Día completo · Máx. 4 personas',
+            stops: 'Lisboa · Óbidos · Fátima · Lisboa',
+            fit: 'Recorre las calles medievales de Óbidos y descubre después la calma y el significado de Fátima en un día privado y sin prisas.',
+            price: '€500',
+            priceValue: '500',
+            currency: 'EUR',
+            places: 'Recogida en Lisboa · Villa medieval de Óbidos · Santuario de Fátima · Regreso a Lisboa',
+            image: 'site/images/tour-fatima-obidos-736.webp',
+            imageAlt: 'Visitante contemplando la Basílica de Nuestra Señora del Rosario en Fátima',
+            imagePosition: 'center 38%',
+            ticketNote: 'Comidas no incluidas'
           }
         ]
       },
       gallery: {
         kicker: 'Galería',
-        title: 'Tu día en Sintra, en imágenes'
+        title: 'Portugal, a través de los días compartidos con Rita'
       },
       reviews: {
         kicker: 'Reseñas',
@@ -386,7 +465,7 @@ const SITE_CONTENT = {
         kicker: 'FAQ',
         title: 'Preguntas frecuentes antes de reservar',
         items: [
-          { question: '¿Qué incluye?', answer: 'Recogida en Lisboa, guía privada y transporte para hasta 4 personas. Entradas a palacios no incluidas (~€20/persona).' },
+          { question: '¿Qué incluye?', answer: 'Recogida y regreso a Lisboa, guía privada y transporte privado para hasta 4 personas. En las rutas de Sintra, las entradas a palacios no están incluidas (~€20/persona). Las comidas no están incluidas.' },
           { question: '¿Cómo reservo?', answer: 'Escríbenos por WhatsApp con tus fechas. Confirmamos disponibilidad, pago y recogida. También disponible en Viator.' },
           { question: '¿Cuál es la política de cancelación?', answer: 'Cancelación gratuita con 24 horas de antelación.' },
           { question: '¿Dónde es la recogida?', answer: 'En tu hotel o alojamiento en Lisboa. Confirmamos la hora exacta al reservar.' },
@@ -394,8 +473,8 @@ const SITE_CONTENT = {
         ]
       },
       finalCta: {
-        title: '¿Listo para explorar Sintra a tu manera?',
-        text: 'Envía tus fechas por WhatsApp. Te ayudamos a elegir el tour ideal.',
+        title: '¿Listo para conocer Portugal a tu manera?',
+        text: 'Envía tus fechas a Rita. Te ayudará a elegir una ruta o a crear un día privado a tu medida.',
         trust: 'Cancelación gratuita · 24h de antelación · 5.0 TripAdvisor'
       },
       footer: {
@@ -405,14 +484,14 @@ const SITE_CONTENT = {
     },
     pt: {
       seo: {
-        title: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
-        description: 'Reserva um tour privado em Sintra desde Lisboa com guias locais nascidos em Sintra. Palácio da Pena, Cabo da Roca, Cascais e praias escondidas. Máx. 4 pessoas, recolha no hotel, 5.0★ TripAdvisor. Desde €199.',
-        keywords: 'tour privado Sintra, excursão Sintra desde Lisboa, tour Palácio da Pena, tours privados Portugal, guia Sintra, tour Cabo da Roca, praias escondidas Sintra, tour Cascais',
+        title: 'Tours Privados desde Lisboa | Sintra, Fátima e Óbidos',
+        description: 'Tours privados desde Lisboa com a Rita para até 4 pessoas. Descobre Sintra, a costa atlântica, Fátima e Óbidos com recolha e transporte privado. Desde €199 por grupo.',
+        keywords: 'tours privados desde Lisboa, tour privado Sintra, tour privado Fátima Óbidos, excursão Sintra desde Lisboa, tours privados Portugal',
         author: 'About Culture Things',
-        ogTitle: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
-        ogDescription: 'Tours privados em Sintra desde Lisboa com guias locais. Palácio da Pena, Cabo da Roca, costa de Cascais e praias escondidas. Máx. 4 pessoas, recolha em Lisboa incluída.',
-        twitterTitle: 'Tours Privados em Sintra desde Lisboa | About Culture Things',
-        twitterDescription: 'Tours privados em Sintra desde Lisboa. 5.0★ TripAdvisor. Pena, costa e praias escondidas. Desde €199 por grupo.',
+        ogTitle: 'Tours Privados desde Lisboa | About Culture Things',
+        ogDescription: 'Descobre Sintra, a costa atlântica, Fátima e Óbidos com a Rita. Transporte privado, recolha em Lisboa e até 4 pessoas.',
+        twitterTitle: 'Tours Privados desde Lisboa | About Culture Things',
+        twitterDescription: 'Dias privados desde Lisboa com a Rita. Sintra, costa, Fátima e Óbidos. Até 4 pessoas, desde €199 por grupo.',
         imageAlt: 'Viajantes num tour privado na costa atlântica de Portugal'
       },
       ui: {
@@ -421,7 +500,8 @@ const SITE_CONTENT = {
         closeMenu: 'Fechar menu',
         backToTop: 'Voltar ao topo',
         scrollToExplore: 'Desliza para explorar',
-        includedAria: 'O que inclui e o que não inclui'
+        includedAria: 'O que inclui e o que não inclui',
+        languageSelector: 'Selecionar idioma. Idioma atual: {language}.'
       },
       nav: [
         { label: 'Tours', href: '#tours', key: 'tours' },
@@ -430,48 +510,57 @@ const SITE_CONTENT = {
         { label: 'FAQ', href: '#faq', key: 'faq' }
       ],
       ctas: {
-        nav: 'WhatsApp',
+        nav: 'Verificar disponibilidade',
         hero: 'Verificar disponibilidade',
-        offer: 'Reservar este tour',
-        tour1: 'Reservar dia inteiro',
-        tour2: 'Reservar rota costeira',
+        offer: 'Verificar disponibilidade',
+        tour1: 'Verificar datas para Sintra',
+        tour2: 'Verificar datas para a costa',
+        'fatima-obidos': 'Verificar datas para Fátima e Óbidos',
         final: 'Enviar mensagem no WhatsApp',
         navAria: 'Contactar por WhatsApp',
         fabAria: 'Verificar disponibilidade no WhatsApp',
         fabTooltip: 'Verificar disponibilidade'
       },
       hero: {
-        kicker: 'Sintra e Lisboa',
-        title: 'O teu dia privado em Sintra',
-        subtitle: 'Guias locais, o teu ritmo e recolha em Lisboa. Palácio da Pena, a costa e sítios que a maioria dos turistas não vê — máx. 4 pessoas.',
+        kicker: 'Sintra · Costa · Portugal central',
+        title: 'Tours privados desde Lisboa, feitos à tua medida',
+        subtitle: 'Descobre Sintra, a costa atlântica, Fátima e Óbidos com a Rita — transporte privado, recolha em Lisboa e o teu próprio ritmo.',
         secondaryCta: 'Ver tours',
         trust: '5.0 no TripAdvisor',
         trustAria: 'Ler avaliações no TripAdvisor',
-        highlights: 'Até 4 pessoas · Recolha em Lisboa incluída',
-        guide: 'Guias de Sintra · Inglês, português e espanhol',
+        highlights: 'Transporte privado · Até 4 pessoas · Recolha em Lisboa',
+        guide: 'Acompanhamento pessoal da Rita · Inglês, português e espanhol',
         price: 'Desde €199 por grupo privado (até 4)',
-        priceLink: 'Ver ambos os tours ↓',
+        priceLink: 'Ver os três tours ↓',
         imageAlt: 'Viajantes num tour privado na costa atlântica'
       },
       benefits: {
         kicker: 'Porquê nós',
-        title: 'Porquê um tour privado?',
+        title: 'Um dia privado com alguém local ao teu lado',
         description: '',
         aria: 'Porquê reservar com About Culture Things',
         items: [
-          { title: 'Só o teu grupo', text: 'Define o ritmo — sem autocarros nem multidões.', icon: 'plus' },
-          { title: 'Guias de Sintra', text: 'Especialistas locais que conhecem os palácios e os recantos tranquilos.', icon: 'pin' },
-          { title: 'Reserva numa mensagem', text: 'WhatsApp para verificar datas, confirmar e pronto.', icon: 'bag' }
+          { title: 'Só o teu grupo', text: 'Até quatro pessoas, com liberdade para parar ou mudar o ritmo.', icon: 'plus' },
+          { title: 'A Rita, a tua anfitriã local', text: 'Uma pessoa real que conhece as histórias, as estradas e os recantos tranquilos.', icon: 'pin' },
+          { title: 'Combina tudo diretamente', text: 'Faz perguntas e confirma o dia com a Rita pelo WhatsApp.', icon: 'bag' }
         ]
+      },
+      story: {
+        kicker: 'Conhece a tua anfitriã',
+        title: 'Portugal sente-se diferente com alguém local ao teu lado',
+        text: 'A Rita cria dias privados e descontraídos a pensar nas pessoas que tem à frente, partilhando os lugares que conhece com proximidade, contexto e tempo para os saborear.',
+        signature: 'Rita · Fundadora e anfitriã local',
+        imageAlt: 'A Rita com uma viajante junto à costa atlântica perto de Sintra'
       },
       offers: {
         kicker: 'Tours',
-        title: 'Escolhe o teu dia em Sintra',
-        description: '',
+        title: 'Escolhe o teu dia privado desde Lisboa',
+        description: 'Três rotas diferentes, sempre privadas e pensadas para até quatro pessoas.',
         trustAria: 'O que cada tour inclui',
         trust: ['Até 4 pessoas', 'Recolha em Lisboa incluída', 'Ritmo flexível'],
+        currencyNote: 'Todos os preços são por grupo privado e cobrados em EUR.',
         perGroup: 'por grupo privado',
-        ticketNote: 'Bilhetes para palácios à parte (~€20/pessoa)',
+        ticketNote: 'Bilhetes e refeições não incluídos',
         detailsLabel: 'Itinerário e detalhes',
         included: ['Guia privada', 'Recolha em Lisboa', 'Transporte'],
         excluded: ['Refeições'],
@@ -480,7 +569,7 @@ const SITE_CONTENT = {
             id: 'tour1',
             badge: 'Dia inteiro · Primeira visita',
             name: 'Sintra Completa & Costa Atlântica',
-            tag: '7 horas · Máx. 4 pessoas',
+            tag: 'Privado · 7 horas · Máx. 4 pessoas',
             stops: 'Sintra histórica · Pena · Cabo da Roca',
             fit: 'Primeira visita? Sintra, o ponto mais ocidental da Europa e Cascais num dia privado e descontraído.',
             price: '€299',
@@ -488,14 +577,15 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp',
-            imageAlt: 'Tour privado Sintra Completa & Costa Atlântica',
+            imageAlt: 'Cabo da Roca no tour privado Sintra Completa e Costa Atlântica',
+            ticketNote: 'Bilhetes para palácios à parte (~€20/pessoa)',
             featured: true
           },
           {
             id: 'tour2',
             badge: 'Meio dia · Costa e praias',
             name: 'Sintra & Praias Escondidas',
-            tag: '5 horas · Máx. 4 pessoas',
+            tag: 'Privado · 5 horas · Máx. 4 pessoas',
             stops: 'Colinas de Sintra · Enseadas escondidas · Azenhas do Mar',
             fit: 'Rota costeira mais tranquila com miradouros — ideal para famílias ou um ritmo mais calmo.',
             price: '€199',
@@ -503,13 +593,30 @@ const SITE_CONTENT = {
             currency: 'EUR',
             places: 'Centro Histórico de Sintra · Zona do Palácio Nacional · Miradouro Castelo dos Mouros · Serra de Sintra · Miradouro Palácio da Pena · Praia das Maçãs · Azenhas do Mar · Praia da Aguda',
             image: 'site/images/tour-hidden-beaches-640.webp',
-            imageAlt: 'Tour privado Sintra & Praias Escondidas'
+            imageAlt: 'Azenhas do Mar no tour privado Sintra e Praias Escondidas',
+            ticketNote: 'Bilhetes para palácios à parte (~€20/pessoa)'
+          },
+          {
+            id: 'fatima-obidos',
+            badge: 'Dia inteiro · Património e reflexão',
+            name: 'Tour Privado Fátima & Óbidos',
+            tag: 'Privado · Dia inteiro · Máx. 4 pessoas',
+            stops: 'Lisboa · Óbidos · Fátima · Lisboa',
+            fit: 'Percorre as ruas medievais de Óbidos e vive depois a serenidade e o significado de Fátima num dia privado e sem pressas.',
+            price: '€500',
+            priceValue: '500',
+            currency: 'EUR',
+            places: 'Recolha em Lisboa · Vila medieval de Óbidos · Santuário de Fátima · Regresso a Lisboa',
+            image: 'site/images/tour-fatima-obidos-736.webp',
+            imageAlt: 'Visitante a observar a Basílica de Nossa Senhora do Rosário em Fátima',
+            imagePosition: 'center 38%',
+            ticketNote: 'Refeições não incluídas'
           }
         ]
       },
       gallery: {
         kicker: 'Galeria',
-        title: 'O teu dia em Sintra, em imagens'
+        title: 'Portugal, através dos dias partilhados com a Rita'
       },
       reviews: {
         kicker: 'Avaliações',
@@ -539,7 +646,7 @@ const SITE_CONTENT = {
         kicker: 'FAQ',
         title: 'Perguntas frequentes antes de reservar',
         items: [
-          { question: 'O que está incluído?', answer: 'Recolha em Lisboa, guia privada e transporte para até 4 pessoas. Bilhetes de palácios não incluídos (~€20/pessoa).' },
+          { question: 'O que está incluído?', answer: 'Recolha e regresso a Lisboa, guia privada e transporte privado para até 4 pessoas. Nas rotas de Sintra, os bilhetes para os palácios não estão incluídos (~€20/pessoa). As refeições não estão incluídas.' },
           { question: 'Como reservo?', answer: 'Envia-nos mensagem no WhatsApp com as tuas datas. Confirmamos disponibilidade, pagamento e recolha. Também disponível na Viator.' },
           { question: 'Qual é a política de cancelamento?', answer: 'Cancelamento gratuito com 24 horas de antecedência.' },
           { question: 'Onde é a recolha?', answer: 'No teu hotel ou alojamento em Lisboa. Confirmamos a hora exata quando reservas.' },
@@ -547,8 +654,8 @@ const SITE_CONTENT = {
         ]
       },
       finalCta: {
-        title: 'Pronto para explorar Sintra à tua maneira?',
-        text: 'Envia as tuas datas no WhatsApp. Ajudamos-te a escolher o tour certo.',
+        title: 'Pronto para conhecer Portugal à tua maneira?',
+        text: 'Envia as tuas datas à Rita. Ela ajuda-te a escolher uma rota ou a criar um dia privado à tua medida.',
         trust: 'Cancelamento gratuito · 24h de antecedência · 5.0 TripAdvisor'
       },
       footer: {

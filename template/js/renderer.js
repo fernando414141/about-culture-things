@@ -132,10 +132,28 @@
       const excluded = (offers.excluded || []).map(function (text) {
         return '<li class="pc-exclude">' + esc(text) + '</li>';
       }).join('');
-      const ctaKey = item.id === 'tour1' ? 'tour1' : item.id === 'tour2' ? 'tour2' : 'offer';
+      const ctaKey = item.id || 'offer';
       const ctaLabel = (c.ctas && (c.ctas[ctaKey] || c.ctas.offer)) || '';
-      return '<article class="pricing-card offer-card ' + (item.featured ? 'featured' : 'alt') + ' reveal d' + ((index % 3) + 1) + '" data-badge="' + esc(item.badge) + '"><div class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="480" height="270"></picture></div><h3 class="pc-name">' + esc(item.name) + '</h3><div class="pc-tag">' + esc(item.tag) + '</div><p class="pc-stops">' + esc(item.stops) + '</p><div class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></div><p class="pc-tickets-note">' + esc(offers.ticketNote) + '</p><div class="pc-cta"><a href="#" class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg><span>' + esc(ctaLabel) + '</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul><p class="pc-places">' + esc(item.places) + '</p></details></article>';
+      const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
+      return '<article id="tour-' + esc(item.id) + '" class="pricing-card offer-card ' + (item.featured ? 'featured' : 'alt') + ' reveal d' + ((index % 3) + 1) + '" data-badge="' + esc(item.badge) + '"><div class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="480" height="270"' + imageStyle + '></picture></div><h3 class="pc-name">' + esc(item.name) + '</h3><div class="pc-tag">' + esc(item.tag) + '</div><p class="pc-stops">' + esc(item.stops) + '</p><div class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></div><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><div class="pc-cta"><a href="#" class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg><span>' + esc(ctaLabel) + '</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul><p class="pc-places">' + esc(item.places) + '</p></details></article>';
     }).join('');
+  }
+
+  function renderStory(lang) {
+    const c = getContent(lang);
+    const story = c.story || {};
+    const section = document.getElementById('about-rita');
+    if (!section) return;
+    const image = section.querySelector('.story-image img');
+    const kicker = section.querySelector('.story-kicker');
+    const title = section.querySelector('.story-title');
+    const text = section.querySelector('.story-text');
+    const signature = section.querySelector('.story-signature');
+    if (image) image.alt = story.imageAlt || '';
+    if (kicker) kicker.textContent = story.kicker || '';
+    if (title) title.textContent = story.title || '';
+    if (text) text.textContent = story.text || '';
+    if (signature) signature.textContent = story.signature || '';
   }
 
   function renderReviews(lang) {
@@ -198,12 +216,13 @@
     renderNav(lang);
     renderHero(lang);
     renderBenefits(lang);
+    renderStory(lang);
     renderOffers(lang);
     renderGallery(lang);
     renderReviews(lang);
     renderFaq(lang);
     renderContact(lang);
-    if (typeof window.applySiteConfig === 'function') window.applySiteConfig();
+    if (typeof window.applySiteConfig === 'function') window.applySiteConfig(lang);
   }
 
   window.renderSiteContent = renderSiteContent;

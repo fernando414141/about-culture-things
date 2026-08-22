@@ -17,7 +17,7 @@
       referralAlt: 'Rita with guests beside the Atlantic coast', socialAlt: 'Rita with a guest overlooking Azenhas do Mar',
       referralMessage: "I'm in Portugal and had a lovely private tour with Rita from About Culture Things. If you're visiting Lisbon or Sintra, take a look:",
       experiencesEyebrow: 'There is always more to discover', experiencesTitle: 'Still exploring Portugal?',
-      experiencesText: 'Two more ways to see Sintra at your own pace.', experienceButton: 'Explore this experience',
+      experiencesText: 'More private ways to explore Portugal at your own pace.', experienceButton: 'Explore this experience',
       customEyebrow: 'Made around you', customTitle: 'Looking for somewhere else?',
       customText: 'Tell Rita what you’d love to see and she can help create a private experience around you.',
       customButton: 'Ask Rita on WhatsApp', customMessage: "Hi Rita! Thank you again for the tour. I'm interested in exploring somewhere else in Portugal...",
@@ -48,7 +48,7 @@
       referralAlt: 'Rita con sus viajeras junto a la costa atlántica', socialAlt: 'Rita con una viajera frente a Azenhas do Mar',
       referralMessage: 'Estoy en Portugal y disfruté muchísimo de un tour privado con Rita, de About Culture Things. Si vas a visitar Lisboa o Sintra, échale un vistazo:',
       experiencesEyebrow: 'Siempre queda algo por descubrir', experiencesTitle: '¿Siguen explorando Portugal?',
-      experiencesText: 'Dos formas más de conocer Sintra a su propio ritmo.', experienceButton: 'Explorar esta experiencia',
+      experiencesText: 'Más formas privadas de conocer Portugal a su propio ritmo.', experienceButton: 'Explorar esta experiencia',
       customEyebrow: 'Creado para ustedes', customTitle: '¿Tienen otro lugar en mente?',
       customText: 'Cuéntenle a Rita qué les gustaría conocer y les ayudará a crear una experiencia privada a medida.',
       customButton: 'Preguntarle a Rita por WhatsApp', customMessage: '¡Hola, Rita! Gracias de nuevo por el tour. Me interesa conocer algún otro lugar de Portugal...',
@@ -79,7 +79,7 @@
       referralAlt: 'A Rita com viajantes junto à costa atlântica', socialAlt: 'A Rita com uma viajante em Azenhas do Mar',
       referralMessage: 'Estou em Portugal e adorei o tour privado com a Rita, da About Culture Things. Se fores visitar Lisboa ou Sintra, vê aqui:',
       experiencesEyebrow: 'Há sempre mais para descobrir', experiencesTitle: 'Ainda estão a explorar Portugal?',
-      experiencesText: 'Mais duas formas de conhecer Sintra ao vosso ritmo.', experienceButton: 'Descobrir esta experiência',
+      experiencesText: 'Mais formas privadas de conhecer Portugal ao vosso ritmo.', experienceButton: 'Descobrir esta experiência',
       customEyebrow: 'Pensado para vocês', customTitle: 'Gostavam de conhecer outro lugar?',
       customText: 'Contem à Rita o que gostariam de ver e ela pode ajudar a criar uma experiência privada à vossa medida.',
       customButton: 'Perguntar à Rita no WhatsApp', customMessage: 'Olá, Rita! Obrigada novamente pelo tour. Gostaria de conhecer outro lugar em Portugal...',
@@ -103,7 +103,9 @@
   const supportedSources = ['direct', 'viator', 'tripadvisor', 'agency', 'hotel', 'referral', 'whatsapp', 'other'];
   const stored = readSession();
   const requestedLang = params.get('lang');
-  let lang = supportedLanguages.includes(requestedLang) ? requestedLang : detectLanguage();
+  let savedLang = '';
+  try { savedLang = localStorage.getItem('act_preferred_language') || ''; } catch (error) { /* Storage may be unavailable. */ }
+  let lang = supportedLanguages.includes(requestedLang) ? requestedLang : (supportedLanguages.includes(savedLang) ? savedLang : detectLanguage());
   const requestedSource = params.get('source');
   const source = requestedSource == null
     ? (stored.source || 'other')
@@ -141,8 +143,8 @@
     return 'en';
   }
 
-  function urlWithLang(path) {
-    return path + (lang === 'en' ? '' : '?lang=' + lang) + '#tours';
+  function urlWithLang(path, hash) {
+    return path + (lang === 'en' ? '' : '?lang=' + lang) + (hash || '#tours');
   }
 
   function homeReferralUrl() {
@@ -182,7 +184,7 @@
       const id = link.getAttribute('data-tour-link');
       const item = tours.find(function (candidate) { return candidate.id === id; });
       if (!item) return;
-      link.href = urlWithLang('../');
+      link.href = urlWithLang('../', '#tour-' + item.id);
       link.setAttribute('data-tour-id', item.id);
       const img = link.querySelector('img');
       const kicker = link.querySelector('.experience-copy p');
@@ -242,6 +244,7 @@
       const url = new URL(location.href);
       if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
       history.replaceState({}, '', url);
+      try { localStorage.setItem('act_preferred_language', lang); } catch (error) { /* Storage may be unavailable. */ }
       track('language_change', { selected_language: lang });
     }
   }
