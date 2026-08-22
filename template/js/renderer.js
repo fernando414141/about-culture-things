@@ -135,7 +135,7 @@
       const ctaKey = item.id || 'offer';
       const ctaLabel = (c.ctas && (c.ctas[ctaKey] || c.ctas.offer)) || '';
       const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
-      return '<article id="tour-' + esc(item.id) + '" class="pricing-card offer-card ' + (item.featured ? 'featured' : 'alt') + ' reveal d' + ((index % 3) + 1) + '" data-badge="' + esc(item.badge) + '"><div class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="480" height="270"' + imageStyle + '></picture></div><h3 class="pc-name">' + esc(item.name) + '</h3><div class="pc-tag">' + esc(item.tag) + '</div><p class="pc-stops">' + esc(item.stops) + '</p><div class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></div><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><div class="pc-cta"><a href="#" class="btn-filled" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><svg width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg><span>' + esc(ctaLabel) + '</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul><p class="pc-places">' + esc(item.places) + '</p></details></article>';
+      return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '"><figure class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="640" height="480"' + imageStyle + '></picture></figure><div class="tour-copy"><p class="pc-tag">' + esc(item.tag) + '</p><h3 class="pc-name">' + esc(item.name) + '</h3><p class="pc-stops">' + esc(item.stops) + '</p><div class="tour-summary"><p class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul></details></div></article>';
     }).join('');
   }
 
@@ -163,8 +163,8 @@
     const source = esc(reviews.source || '');
     if (grid) {
       grid.setAttribute('aria-label', reviews.gridAria || '');
-      grid.innerHTML = (reviews.items || []).map(function (item, index) {
-        return '<article class="review-card reveal d' + (index % 3) + '"><header class="rv-header"><div class="rv-avatar" aria-hidden="true">' + esc(item.initials) + '</div><div class="rv-identity"><cite class="rv-name">' + esc(item.name) + '</cite></div></header><div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div><blockquote class="rv-text">' + esc(item.text) + '</blockquote><p class="rv-source">' + source + '</p></article>';
+      grid.innerHTML = (reviews.items || []).slice(0, 2).map(function (item, index) {
+        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div><blockquote class="rv-text">' + esc(item.text) + '</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + source + '</span></p></article>';
       }).join('');
     }
   }
@@ -196,7 +196,7 @@
     const faq = c.faq || {};
     const list = document.querySelector('.faq-list');
     if (!list) return;
-    list.innerHTML = (faq.items || []).map(function (item) {
+    list.innerHTML = (faq.items || []).slice(0, 4).map(function (item) {
       return '<details class="faq-item"><summary><span class="faq-q">' + esc(item.question) + '</span><span class="faq-icon" aria-hidden="true">+</span></summary><p class="faq-a">' + esc(item.answer) + '</p></details>';
     }).join('');
   }
