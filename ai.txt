@@ -21,7 +21,7 @@ Structured data: JSON-LD on homepage (LocalBusiness, TouristTrip, FAQPage, Revie
 WhatsApp: +351 968 510 019
 Email: aboutculturethings@gmail.com
 Instagram: https://www.instagram.com/aboutculturethings/
-TripAdvisor: https://www.tripadvisor.com.br/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+TripAdvisor: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
 
 ## Languages
 English: https://aboutculturethings.com/

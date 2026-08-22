@@ -45,7 +45,10 @@ const SITE_CONTENT = {
   },
   links: {
     instagram: 'https://www.instagram.com/aboutculturethings/',
-    tripadvisor: 'https://www.tripadvisor.com.br/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
+    instagramHandle: '@aboutculturethings',
+    tripadvisor: 'https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
+    tripadvisorReview: 'https://www.tripadvisor.com/UserReviewEdit-g189158-d28016472-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html',
+    fscLanguages: 'https://fsclanguages.com',
     legal: {
       privacy: 'https://aboutculturethings.com/privacy',
       terms: 'https://aboutculturethings.com/terms',
