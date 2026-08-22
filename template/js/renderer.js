@@ -118,6 +118,8 @@
     const offers = c.offers || {};
     const trust = document.querySelector('.pricing-trust');
     const row = document.querySelector('.tours-row');
+    const currencyLabel = document.getElementById('currency-label');
+    if (currencyLabel) currencyLabel.textContent = offers.currencyLabel || '';
     if (trust) {
       trust.setAttribute('aria-label', offers.trustAria || '');
       trust.innerHTML = (offers.trust || []).map(function (item) {
@@ -135,7 +137,7 @@
       const ctaKey = item.id || 'offer';
       const ctaLabel = (c.ctas && (c.ctas[ctaKey] || c.ctas.offer)) || '';
       const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
-      return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '"><figure class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="640" height="480"' + imageStyle + '></picture></figure><div class="tour-copy"><p class="pc-tag">' + esc(item.tag) + '</p><h3 class="pc-name">' + esc(item.name) + '</h3><p class="pc-stops">' + esc(item.stops) + '</p><div class="tour-summary"><p class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul></details></div></article>';
+      return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '"><figure class="pc-img-wrap"><picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="640" height="480"' + imageStyle + '></picture></figure><div class="tour-copy"><p class="pc-tag">' + esc(item.tag) + '</p><h3 class="pc-name">' + esc(item.name) + '</h3><p class="pc-stops">' + esc(item.stops) + '</p><div class="tour-summary"><div class="price-stack"><p class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><p class="pc-converted" data-eur-price="' + esc(item.priceValue) + '"></p></div><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-fit">' + esc(item.fit) + '</p><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul></details></div></article>';
     }).join('');
   }
 

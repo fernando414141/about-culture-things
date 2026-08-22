@@ -111,6 +111,7 @@ function applyLang(lang, options) {
   var mobClose = document.querySelector('.mob-nav-close');
   if (mobClose && t['nav-close-aria']) mobClose.setAttribute('aria-label', t['nav-close-aria']);
   if (typeof window.refreshTemplateInteractions === 'function') window.refreshTemplateInteractions();
+  window.dispatchEvent(new CustomEvent('act:languagechange', { detail: { lang: lang } }));
   if (location.hash) {
     requestAnimationFrame(() => {
       const target = document.getElementById(location.hash.slice(1));

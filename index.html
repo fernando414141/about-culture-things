@@ -74,7 +74,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap"></noscript>
 <link rel="stylesheet" href="template/css/main.css?v=20260822-02">
-<link rel="stylesheet" href="template/css/quiet.css?v=20260822-02">
+<link rel="stylesheet" href="template/css/quiet.css?v=20260822-04">
 <link rel="author" href="https://aboutculturethings.com/">
 </head>
 <body>
@@ -262,7 +262,16 @@
       <p class="sec-desc" data-i18n="tours-desc">Private, relaxed and yours for the day.</p>
     </div>
     <ul class="pricing-trust" data-i18n-aria="tours-trust-aria" aria-label="What every tour includes"></ul>
-    <p class="currency-note" data-i18n="tours-currency-note">All prices are per private group and charged in EUR.</p>
+    <div class="currency-row">
+      <p class="currency-note" data-i18n="tours-currency-note">All prices are per private group and charged in EUR.</p>
+      <label class="currency-picker" for="currency-select">
+        <span id="currency-label">Estimate in</span>
+        <select id="currency-select" aria-describedby="currency-note">
+          <option value="EUR">EUR</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="BRL">BRL</option><option value="CHF">CHF</option><option value="ARS">ARS</option>
+        </select>
+      </label>
+    </div>
+    <p class="currency-status" id="currency-note" aria-live="polite"></p>
     <div class="tours-row"></div>
   </section>
 
@@ -339,7 +348,7 @@
 </footer>
 
 <script type="application/ld+json" id="structured-data"></script>
-<script src="site/content.js?v=20260822-02"></script>
+<script src="site/content.js?v=20260822-03"></script>
 <script src="template/js/schema.js?v=20260822-02"></script>
 <script>
 (function(){
@@ -351,8 +360,9 @@
 </script>
 <script src="template/js/i18n.js?v=20260822-02" defer></script>
 <script src="template/js/links.js?v=20260822-02" defer></script>
-<script src="template/js/renderer.js?v=20260822-02" defer></script>
-<script src="template/js/app.js?v=20260822-02" defer></script>
+<script src="template/js/renderer.js?v=20260822-03" defer></script>
+<script src="template/js/app.js?v=20260822-03" defer></script>
 <script src="template/js/analytics.js?v=20260822-02" defer></script>
+<script src="template/js/currency.js?v=20260822-04" defer></script>
 </body>
 </html>
