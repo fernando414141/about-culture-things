@@ -71,7 +71,7 @@
     if (offers.length) {
       business.hasOfferCatalog = {
         '@type': 'OfferCatalog',
-        name: (c.offers && c.offers.title) || 'Private tours from Lisbon',
+        name: (c.offers && c.offers.title) || 'Shared tours from Lisbon',
         itemListElement: offers.map(function (offer, index) {
           return {
             '@type': 'Offer',
@@ -80,6 +80,12 @@
             description: offer.fit,
             price: offer.priceValue,
             priceCurrency: offer.currency || 'EUR',
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: offer.priceValue,
+              priceCurrency: offer.currency || 'EUR',
+              unitText: 'PER_PERSON'
+            },
             url: base + '/experiences/' + (offer.slug || offer.id) + '/',
             itemOffered: { '@id': base + '#tour-' + offer.id }
           };
@@ -147,7 +153,7 @@
         name: offer.name,
         description: offer.fit,
         image: base + '/' + offer.image,
-        touristType: 'Private group (max 4 guests)',
+        touristType: 'Shared small-group tour in a luxury Mercedes-Benz Vito',
         itinerary: {
           '@type': 'ItemList',
           name: offer.stops,
@@ -159,6 +165,12 @@
           '@type': 'Offer',
           price: offer.priceValue,
           priceCurrency: offer.currency || 'EUR',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            price: offer.priceValue,
+            priceCurrency: offer.currency || 'EUR',
+            unitText: 'PER_PERSON'
+          },
           url: base + '/experiences/' + (offer.slug || offer.id) + '/'
         },
         provider: { '@id': base + '#business' }

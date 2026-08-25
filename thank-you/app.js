@@ -15,11 +15,11 @@
       referralText: 'If the day meant something to you, sharing it with someone you know helps other travellers find us.',
       referralButton: 'Share with a friend', copyLink: 'Copy tour link',
       referralAlt: 'Travellers beside the Atlantic coast', socialAlt: 'Travellers overlooking Azenhas do Mar',
-      referralMessage: "I'm in Portugal and had a lovely private tour with About Culture Things. If you're visiting Lisbon or Sintra, take a look:",
+      referralMessage: "I'm in Portugal and had a lovely shared small-group tour with About Culture Things. If you're visiting Lisbon or Sintra, take a look:",
       experiencesEyebrow: 'There is always more to discover', experiencesTitle: 'Still exploring Portugal?',
-      experiencesText: 'Three private ways to see more.', experienceButton: 'View tour',
+      experiencesText: 'Three shared luxury-van tours to see more.', experienceButton: 'View tour',
       customEyebrow: 'Another day', customTitle: 'See somewhere new.',
-      customText: 'Tell About Culture Things what you’d love to see and we can help shape another private experience.',
+      customText: 'Tell About Culture Things what you’d love to see and we can help you choose another shared experience.',
       customButton: 'Ask us', customMessage: "Hello About Culture Things! Thank you again for the tour. I'm interested in exploring somewhere else in Portugal...",
       socialEyebrow: 'Stay close', socialTitle: 'Follow the journey.',
       socialText: 'Follow along, share a favourite photo and tag us so our team can see it too.',
@@ -30,8 +30,8 @@
       languagesEyebrow: 'Our recommendation', languagesTitle: 'Keep learning.',
       languagesText: 'Continue practising Portuguese, Spanish or English online with FSC Languages.',
       languagesButton: 'FSC Languages',
-      footerText: 'Private tours, local stories and a slower way to see Portugal.',
-      copiedLink: 'Link copied — ready to share.', copiedHandle: '@aboutculturethings copied.', copyFailed: 'Copy this link:', shareTitle: 'A lovely private tour in Portugal'
+      footerText: 'Shared luxury-van tours, local stories and a considered way to see Portugal.',
+      copiedLink: 'Link copied — ready to share.', copiedHandle: '@aboutculturethings copied.', copyFailed: 'Copy this link:', shareTitle: 'A lovely shared tour in Portugal'
     },
     es: {
       htmlLang: 'es-ES', title: 'Gracias por descubrir Portugal | About Culture Things',
@@ -46,11 +46,11 @@
       referralText: 'Si el día fue especial, compartirlo con alguien cercano ayuda a que otros viajeros nos encuentren.',
       referralButton: 'Compartir con un amigo', copyLink: 'Copiar enlace',
       referralAlt: 'Viajeras junto a la costa atlántica', socialAlt: 'Viajeras frente a Azenhas do Mar',
-      referralMessage: 'Estoy en Portugal y disfruté muchísimo de un tour privado con About Culture Things. Si vas a visitar Lisboa o Sintra, échale un vistazo:',
+      referralMessage: 'Estoy en Portugal y disfruté muchísimo de un tour compartido en grupo pequeño con About Culture Things. Si vas a visitar Lisboa o Sintra, échale un vistazo:',
       experiencesEyebrow: 'Siempre queda algo por descubrir', experiencesTitle: '¿Siguen explorando Portugal?',
-      experiencesText: 'Tres formas privadas de seguir descubriendo.', experienceButton: 'Ver tour',
+      experiencesText: 'Tres tours compartidos en van de lujo para seguir descubriendo.', experienceButton: 'Ver tour',
       customEyebrow: 'Otro día', customTitle: 'Descubran algo nuevo.',
-      customText: 'Cuenten a About Culture Things qué les gustaría conocer y podremos ayudarles a diseñar otra experiencia privada.',
+      customText: 'Cuenten a About Culture Things qué les gustaría conocer y podremos ayudarles a elegir otra experiencia compartida.',
       customButton: 'Preguntarnos', customMessage: '¡Hola, About Culture Things! Gracias de nuevo por el tour. Me interesa conocer algún otro lugar de Portugal...',
       socialEyebrow: 'Sigan cerca', socialTitle: 'Sigan el viaje.',
       socialText: 'Sigan las próximas aventuras, compartan su foto favorita y etiqueten a nuestro equipo para que podamos verla.',
@@ -61,8 +61,8 @@
       languagesEyebrow: 'Nuestra recomendación', languagesTitle: 'Sigan aprendiendo.',
       languagesText: 'Sigan practicando portugués, español o inglés online con FSC Languages.',
       languagesButton: 'FSC Languages',
-      footerText: 'Tours privados, historias locales y una forma más tranquila de conocer Portugal.',
-      copiedLink: 'Enlace copiado y listo para compartir.', copiedHandle: '@aboutculturethings copiado.', copyFailed: 'Copia este enlace:', shareTitle: 'Un precioso tour privado por Portugal'
+      footerText: 'Tours compartidos en van de lujo, historias locales y una forma cuidada de conocer Portugal.',
+      copiedLink: 'Enlace copiado y listo para compartir.', copiedHandle: '@aboutculturethings copiado.', copyFailed: 'Copia este enlace:', shareTitle: 'Un precioso tour compartido por Portugal'
     },
     pt: {
       htmlLang: 'pt-PT', title: 'Obrigado por descobrirem Portugal | About Culture Things',
@@ -77,11 +77,11 @@
       referralText: 'Se o dia foi especial, partilhá-lo com alguém próximo ajuda outros viajantes a encontrar-nos.',
       referralButton: 'Partilhar com um amigo', copyLink: 'Copiar ligação',
       referralAlt: 'Viajantes junto à costa atlântica', socialAlt: 'Viajantes em Azenhas do Mar',
-      referralMessage: 'Estou em Portugal e adorei o tour privado com a About Culture Things. Se fores visitar Lisboa ou Sintra, vê aqui:',
+      referralMessage: 'Estou em Portugal e adorei o tour partilhado em grupo pequeno com a About Culture Things. Se fores visitar Lisboa ou Sintra, vê aqui:',
       experiencesEyebrow: 'Há sempre mais para descobrir', experiencesTitle: 'Ainda estão a explorar Portugal?',
-      experiencesText: 'Três formas privadas de continuar a descobrir.', experienceButton: 'Ver tour',
+      experiencesText: 'Três tours partilhados em van de luxo para continuar a descobrir.', experienceButton: 'Ver tour',
       customEyebrow: 'Outro dia', customTitle: 'Descubram algo novo.',
-      customText: 'Contem à About Culture Things o que gostariam de ver e podemos ajudar a criar outra experiência privada.',
+      customText: 'Contem à About Culture Things o que gostariam de ver e podemos ajudar a escolher outra experiência partilhada.',
       customButton: 'Perguntar-nos', customMessage: 'Olá, About Culture Things! Obrigado novamente pelo tour. Gostaria de conhecer outro lugar em Portugal...',
       socialEyebrow: 'Continuem por perto', socialTitle: 'Sigam a viagem.',
       socialText: 'Acompanhem as próximas aventuras, partilhem a vossa fotografia preferida e identifiquem-nos para a nossa equipa também a ver.',
@@ -92,8 +92,8 @@
       languagesEyebrow: 'A nossa recomendação', languagesTitle: 'Continuem a aprender.',
       languagesText: 'Continuem a praticar português, espanhol ou inglês online com a FSC Languages.',
       languagesButton: 'FSC Languages',
-      footerText: 'Tours privados, histórias locais e uma forma mais tranquila de conhecer Portugal.',
-      copiedLink: 'Ligação copiada e pronta a partilhar.', copiedHandle: '@aboutculturethings copiado.', copyFailed: 'Copiem esta ligação:', shareTitle: 'Um tour privado muito especial em Portugal'
+      footerText: 'Tours partilhados em van de luxo, histórias locais e uma forma cuidada de conhecer Portugal.',
+      copiedLink: 'Ligação copiada e pronta a partilhar.', copiedHandle: '@aboutculturethings copiado.', copyFailed: 'Copiem esta ligação:', shareTitle: 'Um tour partilhado muito especial em Portugal'
     }
   };
 
