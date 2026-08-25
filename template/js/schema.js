@@ -114,7 +114,7 @@
         },
         speakable: {
           '@type': 'SpeakableSpecification',
-          cssSelector: ['.hero-desc', '.faq-list', '.benefits-grid']
+          cssSelector: ['.hero-desc', '.story-copy', '.faq-list']
         },
         dateModified: '2026-08-25'
       },

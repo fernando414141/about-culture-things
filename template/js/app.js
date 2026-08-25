@@ -214,6 +214,7 @@ const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
 const navOverlay = document.getElementById('nav-overlay');
 const fabWa  = document.getElementById('fab-wa');
+const mobileSticky = document.querySelector('.mobile-sticky');
 let menuFocusReturn = null;
 
 function updateNavState() {
@@ -229,6 +230,13 @@ function updateNavState() {
       return rect.bottom > 0 && rect.top < window.innerHeight;
     });
     fabWa.classList.toggle('context-hidden', hasVisibleWhatsAppCta);
+  }
+  if (mobileSticky) {
+    var otherWhatsAppVisible = Array.from(document.querySelectorAll('main [data-site-wa]')).some(function (cta) {
+      var rect = cta.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < window.innerHeight;
+    });
+    mobileSticky.classList.toggle('visible', sy > heroEnd * 0.72 && !otherWhatsAppVisible);
   }
 }
 
@@ -264,13 +272,17 @@ window.addEventListener('resize', updateNavState, { passive: true });
     const attempt = video.play();
     if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
   };
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (connection && connection.saveData)) {
     video.pause();
     video.removeAttribute('autoplay');
     return;
   }
   if (video.readyState >= 2) play();
   else video.addEventListener('canplay', play, { once: true });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) video.pause(); else play();
+  });
 })();
 
 // Active nav link — Intersection Observer (more reliable than offsetTop)

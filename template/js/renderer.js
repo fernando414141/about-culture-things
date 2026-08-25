@@ -130,23 +130,15 @@
     }
     if (!row) return;
     row.innerHTML = (offers.items || []).map(function (item, index) {
-      const included = (offers.included || []).map(function (text) {
-        return '<li class="pc-include">' + esc(text) + '</li>';
-      }).join('');
-      const excluded = (offers.excluded || []).map(function (text) {
-        return '<li class="pc-exclude">' + esc(text) + '</li>';
-      }).join('');
       const ctaKey = item.id || 'offer';
       const ctaLabel = (c.ctas && (c.ctas[ctaKey] || c.ctas.offer)) || '';
       const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
       const detailHref = 'experiences/' + esc(item.slug || item.id) + '/';
-      const detailLabel = esc(offers.experienceLabel || 'View experience');
       const hasLocalizedDetail = lang === 'en';
       const mediaOpen = hasLocalizedDetail ? '<a href="' + detailHref + '">' : '';
       const mediaClose = hasLocalizedDetail ? '</a>' : '';
       const name = hasLocalizedDetail ? '<a href="' + detailHref + '">' + esc(item.name) + '</a>' : esc(item.name);
-      const detailLink = hasLocalizedDetail ? '<a class="experience-link" href="' + detailHref + '">' + detailLabel + ' <span aria-hidden="true">→</span></a>' : '';
-      return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '"><figure class="pc-img-wrap">' + mediaOpen + '<picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="640" height="480"' + imageStyle + '></picture>' + mediaClose + '</figure><div class="tour-copy"><p class="pc-tag">' + esc(item.tag) + '</p><h3 class="pc-name">' + name + '</h3><p class="pc-stops">' + esc(item.stops) + '</p><p class="pc-fit">' + esc(item.fit) + '</p>' + detailLink + '<div class="tour-summary"><div class="price-stack"><p class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><p class="pc-converted" data-eur-price="' + esc(item.priceValue) + '"></p></div><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div><details class="pc-details"><summary>' + esc(offers.detailsLabel) + '</summary><p class="pc-places">' + esc(item.places) + '</p><p class="pc-tickets-note">' + esc(item.ticketNote || offers.ticketNote) + '</p><ul class="pc-includes" aria-label="' + esc(c.ui && c.ui.includedAria) + '">' + included + excluded + '</ul></details></div></article>';
+      return '<article id="tour-' + esc(item.id) + '" class="offer-card offer-card--' + (index + 1) + '"><figure class="pc-img-wrap">' + mediaOpen + '<picture><source srcset="' + esc(item.image) + '" type="image/webp"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="640" height="480"' + imageStyle + '></picture>' + mediaClose + '</figure><div class="tour-copy"><p class="pc-tag">' + esc(item.tag) + '</p><h3 class="pc-name">' + name + '</h3><p class="pc-stops">' + esc(item.stops) + '</p><div class="tour-summary"><p class="pc-price-row"><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></article>';
     }).join('');
   }
 
@@ -207,7 +199,8 @@
     const faq = c.faq || {};
     const list = document.querySelector('.faq-list');
     if (!list) return;
-    list.innerHTML = (faq.items || []).map(function (item) {
+    const essential = [faq.items && faq.items[0], faq.items && faq.items[1], faq.items && faq.items[2], faq.items && faq.items[5]].filter(Boolean);
+    list.innerHTML = essential.map(function (item) {
       return '<details class="faq-item"><summary><span class="faq-q">' + esc(item.question) + '</span><span class="faq-icon" aria-hidden="true">+</span></summary><p class="faq-a">' + esc(item.answer) + '</p></details>';
     }).join('');
   }

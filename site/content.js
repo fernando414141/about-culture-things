@@ -143,13 +143,12 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Experiences', href: '#tours', key: 'tours' },
-        { label: 'Why private', href: '#approach', key: 'approach' },
         { label: 'Reviews', href: '#reviews', key: 'reviews' },
         { label: 'About', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Check availability',
-        hero: 'Explore experiences',
+        hero: 'See the experiences',
         offer: 'Check availability',
         tour1: 'Check availability',
         tour2: 'Check availability',
@@ -160,9 +159,9 @@ const SITE_CONTENT = {
         fabTooltip: 'Check availability'
       },
       hero: {
-        kicker: 'Private guided experiences in Portugal',
-        title: 'Private tours from Lisbon, shaped around your day.',
-        subtitle: 'Explore Sintra, the Atlantic coast, Fátima and Óbidos with private transport, local knowledge and room to set the pace.',
+        kicker: 'Private tours from Lisbon',
+        title: 'Portugal at your own pace.',
+        subtitle: 'Sintra, the Atlantic coast, Fátima and Óbidos, with private transport and thoughtful local guidance.',
         secondaryCta: 'See tours',
         trust: '5.0 on TripAdvisor',
         trustAria: 'Read traveler reviews on TripAdvisor',
@@ -184,16 +183,16 @@ const SITE_CONTENT = {
         ]
       },
       story: {
-        kicker: 'Founder story',
-        title: 'A local point of view, carried by the brand.',
-        text: 'Rita founded About Culture Things and works as a local guide. Her warm, precise and attentive way of hosting shaped the standard behind every experience.',
+        kicker: '',
+        title: 'Local knowledge, with a name behind it.',
+        text: 'Rita founded About Culture Things in Sintra and shaped how each private day is planned and hosted.',
         signature: 'Rita · Founder and local guide',
         imageAlt: 'Rita with a guest overlooking the Atlantic coast near Sintra'
       },
       offers: {
         kicker: 'Private experiences from Lisbon',
-        title: 'Choose the day that fits you.',
-        description: 'Each route has a clear shape, with flexibility in the pace and practical decisions along the way.',
+        title: 'Three private days from Lisbon.',
+        description: 'Private transport, Lisbon pickup and room to change the pace.',
         trustAria: 'What every tour includes',
         trust: ['Up to 4 guests', 'Lisbon pickup included', 'Flexible pacing'],
         currencyNote: 'All prices are per private group and charged in EUR.',
@@ -266,7 +265,7 @@ const SITE_CONTENT = {
       },
       reviews: {
         kicker: 'Traveller reviews',
-        title: 'Known for the details that make a day easy.',
+        title: 'What travellers remember.',
         trustAria: 'TripAdvisor rating',
         averageLabel: 'average rating',
         trustNote: '★★★★★ 5.0 on TripAdvisor',
@@ -290,7 +289,7 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'Before you book',
-        title: 'Practical answers, upfront.',
+        title: 'Good to know.',
         items: [
           { question: 'What\'s included?', answer: 'Lisbon pickup and drop-off, private guide, and private transport for up to 4 guests. For Sintra routes, palace tickets are not included (~€20/person). Meals are not included.' },
           { question: 'How do I book?', answer: 'Message us on WhatsApp with your dates. We\'ll confirm availability, payment, and pickup details. Viator booking also available.' },
@@ -302,8 +301,8 @@ const SITE_CONTENT = {
       },
       finalCta: {
         kicker: 'Start with your dates',
-        title: 'Tell us what would make the day work for you.',
-        text: 'Share your dates, group size and what you want from the day. About Culture Things will help you choose.',
+        title: 'Have dates in mind?',
+        text: 'Send us your dates and group size. We’ll help you choose the right day.',
         trust: 'Free cancellation with 24 hours’ notice · 5.0 on TripAdvisor'
       },
       footer: {
@@ -336,13 +335,12 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Experiencias', href: '#tours', key: 'tours' },
-        { label: 'Por qué privado', href: '#approach', key: 'approach' },
         { label: 'Reseñas', href: '#reviews', key: 'reviews' },
         { label: 'Nosotros', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Consultar disponibilidad',
-        hero: 'Ver experiencias',
+        hero: 'Ver las experiencias',
         offer: 'Consultar disponibilidad',
         tour1: 'Consultar disponibilidad',
         tour2: 'Consultar disponibilidad',
@@ -353,9 +351,9 @@ const SITE_CONTENT = {
         fabTooltip: 'Consultar disponibilidad'
       },
       hero: {
-        kicker: 'Experiencias privadas guiadas en Portugal',
-        title: 'Tours privados desde Lisboa, pensados para tu día.',
-        subtitle: 'Descubre Sintra, la costa atlántica, Fátima y Óbidos con transporte privado, conocimiento local y libertad para marcar el ritmo.',
+        kicker: 'Tours privados desde Lisboa',
+        title: 'Portugal a su ritmo.',
+        subtitle: 'Sintra, la costa atlántica, Fátima y Óbidos, con transporte privado y conocimiento local.',
         secondaryCta: 'Ver tours',
         trust: '5.0 en TripAdvisor',
         trustAria: 'Leer reseñas en TripAdvisor',
@@ -377,16 +375,16 @@ const SITE_CONTENT = {
         ]
       },
       story: {
-        kicker: 'Historia de la fundadora',
-        title: 'Una mirada local que vive en la marca.',
-        text: 'Rita fundó About Culture Things y trabaja como guía local. Su forma cálida, precisa y atenta de recibir dio forma al estándar de cada experiencia.',
+        kicker: '',
+        title: 'Conocimiento local, con un nombre detrás.',
+        text: 'Rita fundó About Culture Things en Sintra y definió cómo se planifica y acompaña cada día privado.',
         signature: 'Rita · Fundadora y guía local',
         imageAlt: 'Rita con una viajera frente a la costa atlántica cerca de Sintra'
       },
       offers: {
         kicker: 'Experiencias privadas desde Lisboa',
-        title: 'Elige el día que encaje contigo.',
-        description: 'Cada ruta tiene una forma clara, con flexibilidad en el ritmo y en las decisiones prácticas del camino.',
+        title: 'Tres días privados desde Lisboa.',
+        description: 'Transporte privado, recogida en Lisboa y libertad para cambiar el ritmo.',
         trustAria: 'Qué incluye cada tour',
         trust: ['Hasta 4 personas', 'Recogida en Lisboa incluida', 'Ritmo flexible'],
         currencyNote: 'Todos los precios son por grupo privado y se cobran en EUR.',
@@ -459,7 +457,7 @@ const SITE_CONTENT = {
       },
       reviews: {
         kicker: 'Reseñas de viajeros',
-        title: 'Reconocidos por los detalles que hacen el día fácil.',
+        title: 'Lo que recuerdan los viajeros.',
         trustAria: 'Valoración en TripAdvisor',
         averageLabel: 'valoración media',
         trustNote: '★★★★★ 5.0 en TripAdvisor',
@@ -483,7 +481,7 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'Antes de reservar',
-        title: 'Respuestas prácticas, desde el principio.',
+        title: 'Conviene saberlo.',
         items: [
           { question: '¿Qué incluye?', answer: 'Recogida y regreso a Lisboa, guía privada y transporte privado para hasta 4 personas. En las rutas de Sintra, las entradas a palacios no están incluidas (~€20/persona). Las comidas no están incluidas.' },
           { question: '¿Cómo reservo?', answer: 'Escríbenos por WhatsApp con tus fechas. Confirmamos disponibilidad, pago y recogida. También disponible en Viator.' },
@@ -495,8 +493,8 @@ const SITE_CONTENT = {
       },
       finalCta: {
         kicker: 'Empiecen por sus fechas',
-        title: 'Cuéntanos qué haría que el día funcionase para ustedes.',
-        text: 'Comparte las fechas, el tamaño del grupo y lo que esperan del día. About Culture Things les ayudará a elegir.',
+        title: '¿Ya tienen fechas?',
+        text: 'Envíennos sus fechas y el tamaño del grupo. Les ayudaremos a elegir el día adecuado.',
         trust: 'Cancelación gratuita con 24h de antelación · 5.0 en TripAdvisor'
       },
       footer: {
@@ -529,13 +527,12 @@ const SITE_CONTENT = {
       },
       nav: [
         { label: 'Experiências', href: '#tours', key: 'tours' },
-        { label: 'Porquê privado', href: '#approach', key: 'approach' },
         { label: 'Avaliações', href: '#reviews', key: 'reviews' },
         { label: 'Sobre nós', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Ver disponibilidade',
-        hero: 'Ver experiências',
+        hero: 'Ver as experiências',
         offer: 'Ver disponibilidade',
         tour1: 'Ver disponibilidade',
         tour2: 'Ver disponibilidade',
@@ -546,9 +543,9 @@ const SITE_CONTENT = {
         fabTooltip: 'Verificar disponibilidade'
       },
       hero: {
-        kicker: 'Experiências privadas guiadas em Portugal',
-        title: 'Tours privados desde Lisboa, pensados para o teu dia.',
-        subtitle: 'Descobre Sintra, a costa atlântica, Fátima e Óbidos com transporte privado, conhecimento local e liberdade para definir o ritmo.',
+        kicker: 'Tours privados desde Lisboa',
+        title: 'Portugal ao vosso ritmo.',
+        subtitle: 'Sintra, a costa atlântica, Fátima e Óbidos, com transporte privado e conhecimento local.',
         secondaryCta: 'Ver tours',
         trust: '5.0 no TripAdvisor',
         trustAria: 'Ler avaliações no TripAdvisor',
@@ -570,16 +567,16 @@ const SITE_CONTENT = {
         ]
       },
       story: {
-        kicker: 'História da fundadora',
-        title: 'Um olhar local que vive na marca.',
-        text: 'A Rita fundou a About Culture Things e trabalha como guia local. A sua forma calorosa, precisa e atenta de receber definiu o padrão de cada experiência.',
+        kicker: '',
+        title: 'Conhecimento local, com um nome por trás.',
+        text: 'A Rita fundou a About Culture Things em Sintra e definiu a forma como cada dia privado é planeado e acompanhado.',
         signature: 'Rita · Fundadora e guia local',
         imageAlt: 'A Rita com uma viajante junto à costa atlântica perto de Sintra'
       },
       offers: {
         kicker: 'Experiências privadas desde Lisboa',
-        title: 'Escolhe o dia que combina contigo.',
-        description: 'Cada rota tem uma forma clara, com flexibilidade no ritmo e nas decisões práticas pelo caminho.',
+        title: 'Três dias privados desde Lisboa.',
+        description: 'Transporte privado, recolha em Lisboa e liberdade para mudar o ritmo.',
         trustAria: 'O que cada tour inclui',
         trust: ['Até 4 pessoas', 'Recolha em Lisboa incluída', 'Ritmo flexível'],
         currencyNote: 'Todos os preços são por grupo privado e cobrados em EUR.',
@@ -652,7 +649,7 @@ const SITE_CONTENT = {
       },
       reviews: {
         kicker: 'Avaliações de viajantes',
-        title: 'Reconhecidos pelos detalhes que tornam o dia fácil.',
+        title: 'O que os viajantes recordam.',
         trustAria: 'Classificação no TripAdvisor',
         averageLabel: 'classificação média',
         trustNote: '★★★★★ 5.0 no TripAdvisor',
@@ -676,7 +673,7 @@ const SITE_CONTENT = {
       },
       faq: {
         kicker: 'Antes de reservar',
-        title: 'Respostas práticas, logo à partida.',
+        title: 'É bom saber.',
         items: [
           { question: 'O que está incluído?', answer: 'Recolha e regresso a Lisboa, guia privada e transporte privado para até 4 pessoas. Nas rotas de Sintra, os bilhetes para os palácios não estão incluídos (~€20/pessoa). As refeições não estão incluídas.' },
           { question: 'Como reservo?', answer: 'Envia-nos mensagem no WhatsApp com as tuas datas. Confirmamos disponibilidade, pagamento e recolha. Também disponível na Viator.' },
@@ -688,8 +685,8 @@ const SITE_CONTENT = {
       },
       finalCta: {
         kicker: 'Comecem pelas datas',
-        title: 'Conta-nos o que faria o dia resultar para vocês.',
-        text: 'Partilha as datas, o tamanho do grupo e o que esperam do dia. A About Culture Things ajuda-vos a escolher.',
+        title: 'Já têm datas?',
+        text: 'Enviem-nos as datas e o tamanho do grupo. Ajudamos-vos a escolher o dia certo.',
         trust: 'Cancelamento gratuito com 24h de antecedência · 5.0 no TripAdvisor'
       },
       footer: {
