@@ -145,7 +145,7 @@
   function renderStory(lang) {
     const c = getContent(lang);
     const story = c.story || {};
-    const section = document.getElementById('about') || document.getElementById('about-rita');
+    const section = document.getElementById('about');
     if (!section) return;
     const image = section.querySelector('.story-image img');
     const kicker = section.querySelector('.story-kicker');
@@ -164,10 +164,11 @@
     const reviews = c.reviews || {};
     const grid = document.getElementById('reviews-grid');
     const source = esc(reviews.source || '');
+    const items = (reviews.items && reviews.items.length) ? reviews.items : (cfg.reviewItems || []);
     if (grid) {
       grid.setAttribute('aria-label', reviews.gridAria || '');
-      grid.innerHTML = (reviews.items || []).slice(0, 2).map(function (item, index) {
-        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-rating" aria-label="5 out of 5 stars" role="img">★★★★★</div><blockquote class="rv-text">' + esc(item.text) + '</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + source + '</span></p></article>';
+      grid.innerHTML = items.slice(0, 3).map(function (item, index) {
+        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-source"><span class="rv-bubbles" aria-label="5 out of 5 bubbles" role="img">●●●●●</span><span>' + source + '</span></div><blockquote class="rv-text">“' + esc(item.text) + '”</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + esc(item.meta || '') + '</span></p></article>';
       }).join('');
     }
   }

@@ -140,7 +140,7 @@ body {
 .sec-desc { max-width: 28rem; margin: 1rem 0 0; color: rgba(39,57,71,.72); font-size: .98rem; }
 .reveal { transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 
-/* Rita */
+/* Approach */
 .story-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--quiet-cream); }
 .story-layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(18rem, .82fr); gap: clamp(3rem, 7vw, 7rem); align-items: center; }
 .story-image { aspect-ratio: 3 / 2; max-height: 32rem; margin: 0; overflow: hidden; border-radius: var(--radius-media); }
@@ -264,7 +264,6 @@ body {
 .footer-contact { gap: 1.5rem; }
 .footer-contact-link { color: rgba(255,255,255,.76); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 .footer-contact-link svg { display: none; }
-.fab-wa { display: none !important; }
 
 @media (max-width: 62rem) {
   .nav-tabs, .nav-actions { display: none; }

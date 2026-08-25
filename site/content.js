@@ -119,6 +119,11 @@ const SITE_CONTENT = {
     { src: 'site/images/castelo-640.webp', width: 640, height: 958, alt: { en: 'Castelo dos Mouros stone walls in Sintra', es: 'Murallas del Castelo dos Mouros en Sintra', pt: 'Muralhas do Castelo dos Mouros em Sintra' } },
     { src: 'site/images/regaleira-640.webp', width: 640, height: 853, alt: { en: 'Quinta da Regaleira architecture surrounded by Sintra gardens', es: 'Arquitectura de Quinta da Regaleira entre jardines de Sintra', pt: 'Arquitetura da Quinta da Regaleira entre jardins de Sintra' } }
   ],
+  reviewItems: [
+    { name: '_P8031OX', text: 'We felt every story come alive.', meta: 'Dec 2025' },
+    { name: 'Road14564539690', text: 'Excellent tour!! Complete and fun.', meta: 'Apr 2026 · Family or couples' },
+    { name: 'Kristina P', text: 'We never felt rushed, and her flexibility made a huge difference.', meta: 'Jun 2026 · Family' }
+  ],
   content: {
     en: {
       seo: {
@@ -268,24 +273,17 @@ const SITE_CONTENT = {
         title: 'What travellers remember.',
         trustAria: 'TripAdvisor rating',
         averageLabel: 'average rating',
-        trustNote: '★★★★★ 5.0 on TripAdvisor',
+        trustNote: '5.0 on Tripadvisor',
         gridAria: 'Traveler reviews',
         dotsAria: 'Review pagination',
         previousAria: 'Show previous reviews',
         nextAria: 'Show next reviews',
         viewAll: 'Read all reviews on TripAdvisor',
         viewAllAria: 'See all reviews on TripAdvisor (opens in new tab)',
-        source: 'TripAdvisor',
+        source: 'Excerpt from a Tripadvisor traveller review',
         ratingValue: '5.0',
         ratingLabel: '5.0 out of 5 average rating',
-        items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Warm, personal, and full of local insight. Sintra felt special from the first stop."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Clear, friendly, and well-paced — exactly where to go without any stress."' },
-          { initials: 'FG', name: 'Fernando G.', text: '"Local knowledge made the difference. We found places we\'d never reach alone."' },
-          { initials: 'AT', name: 'Amanda T.', text: '"Relaxed private tour with great stories and smart pacing throughout."' },
-          { initials: 'LS', name: 'Laura S.', text: '"Professional and warm. The whole day felt easy and well looked after."' },
-          { initials: 'JW', name: 'James W.', text: '"Memorable viewpoints and hidden spots, shown with real care."' }
-        ]
+        items: []
       },
       faq: {
         kicker: 'Before you book',
@@ -460,24 +458,17 @@ const SITE_CONTENT = {
         title: 'Lo que recuerdan los viajeros.',
         trustAria: 'Valoración en TripAdvisor',
         averageLabel: 'valoración media',
-        trustNote: '★★★★★ 5.0 en TripAdvisor',
+        trustNote: '5.0 en Tripadvisor',
         gridAria: 'Reseñas de viajeros',
         dotsAria: 'Paginación de reseñas',
         previousAria: 'Mostrar reseñas anteriores',
         nextAria: 'Mostrar reseñas siguientes',
         viewAll: 'Ver todo en TripAdvisor',
         viewAllAria: 'Ver todas las reseñas en TripAdvisor (se abre en una pestaña nueva)',
-        source: 'TripAdvisor',
+        source: 'Extracto de una reseña en Tripadvisor',
         ratingValue: '5.0',
         ratingLabel: '5.0 de 5 valoración media',
-        items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Cálida, cercana y con mucho conocimiento local. Sintra se sintió especial desde el primer momento."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Muy clara, amable y bien organizada — supo exactamente a dónde ir sin estrés."' },
-          { initials: 'FG', name: 'Fernando G.', text: '"Su conocimiento local marcó la diferencia. Encontramos lugares imposibles por nuestra cuenta."' },
-          { initials: 'AT', name: 'Amanda T.', text: '"Tour privado relajado, con buenas historias y un ritmo muy bien pensado."' },
-          { initials: 'LS', name: 'Laura S.', text: '"Profesional y cálida. Todo el día fue fácil y muy bien cuidado."' },
-          { initials: 'JW', name: 'James W.', text: '"Miradores inolvidables y rincones escondidos, mostrados con mucho cuidado."' }
-        ]
+        items: []
       },
       faq: {
         kicker: 'Antes de reservar',
@@ -652,24 +643,17 @@ const SITE_CONTENT = {
         title: 'O que os viajantes recordam.',
         trustAria: 'Classificação no TripAdvisor',
         averageLabel: 'classificação média',
-        trustNote: '★★★★★ 5.0 no TripAdvisor',
+        trustNote: '5.0 no Tripadvisor',
         gridAria: 'Avaliações de viajantes',
         dotsAria: 'Paginação das avaliações',
         previousAria: 'Mostrar avaliações anteriores',
         nextAria: 'Mostrar avaliações seguintes',
         viewAll: 'Ver tudo no TripAdvisor',
         viewAllAria: 'Ver todas as avaliações no TripAdvisor (abre num novo separador)',
-        source: 'TripAdvisor',
+        source: 'Excerto de uma avaliação no Tripadvisor',
         ratingValue: '5.0',
         ratingLabel: '5.0 de 5 classificação média',
-        items: [
-          { initials: 'RB', name: 'Roman B.', text: '"Próxima e cheia de conhecimento local. Sintra foi especial desde o primeiro momento."' },
-          { initials: 'MM', name: 'Monica M.', text: '"Muito clara, simpática e bem organizada — soube exatamente para onde ir sem stress."' },
-          { initials: 'FG', name: 'Fernando G.', text: '"O conhecimento local fez toda a diferença. Encontrámos lugares impossíveis sozinhos."' },
-          { initials: 'AT', name: 'Amanda T.', text: '"Tour privado descontraído, com boas histórias e um ritmo muito bem pensado."' },
-          { initials: 'LS', name: 'Laura S.', text: '"Profissional e calorosa. O dia todo foi fácil e muito bem cuidado."' },
-          { initials: 'JW', name: 'James W.', text: '"Miradouros inesquecíveis e recantos escondidos, mostrados com muito cuidado."' }
-        ]
+        items: []
       },
       faq: {
         kicker: 'Antes de reservar',

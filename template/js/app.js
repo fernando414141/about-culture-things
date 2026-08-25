@@ -213,23 +213,13 @@ const hero   = document.querySelector('.hero');
 const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
 const navOverlay = document.getElementById('nav-overlay');
-const fabWa  = document.getElementById('fab-wa');
 let menuFocusReturn = null;
 
 function updateNavState() {
   const sy = window.scrollY;
-  const compactViewport = !mqDesktop.matches;
   const heroEnd = hero ? hero.offsetHeight - (nav ? nav.offsetHeight : 0) : 0;
   nav.classList.toggle('elevated', sy > 10);
   nav.classList.toggle('nav-on-hero', heroEnd > 0 && sy < heroEnd * 0.92);
-  if (fabWa) {
-    fabWa.classList.toggle('visible', sy > (compactViewport ? 180 : 380));
-    var hasVisibleWhatsAppCta = Array.from(document.querySelectorAll('main [data-site-wa]')).some(function (cta) {
-      var rect = cta.getBoundingClientRect();
-      return rect.bottom > 0 && rect.top < window.innerHeight;
-    });
-    fabWa.classList.toggle('context-hidden', hasVisibleWhatsAppCta);
-  }
 }
 
 let ticking = false;
