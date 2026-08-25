@@ -214,7 +214,6 @@ const burger = document.getElementById('burger');
 const mobNav = document.getElementById('mob-nav');
 const navOverlay = document.getElementById('nav-overlay');
 const fabWa  = document.getElementById('fab-wa');
-const mobileSticky = document.querySelector('.mobile-sticky');
 let menuFocusReturn = null;
 
 function updateNavState() {
@@ -231,13 +230,6 @@ function updateNavState() {
     });
     fabWa.classList.toggle('context-hidden', hasVisibleWhatsAppCta);
   }
-  if (mobileSticky) {
-    var otherWhatsAppVisible = Array.from(document.querySelectorAll('main [data-site-wa]')).some(function (cta) {
-      var rect = cta.getBoundingClientRect();
-      return rect.bottom > 0 && rect.top < window.innerHeight;
-    });
-    mobileSticky.classList.toggle('visible', sy > heroEnd * 0.72 && !otherWhatsAppVisible);
-  }
 }
 
 let ticking = false;
@@ -253,30 +245,23 @@ window.addEventListener('scroll', () => {
 updateNavState();
 window.addEventListener('resize', updateNavState, { passive: true });
 
-// Hide the mobile conversion bar while the footer is visible so it never
-// covers legal or contact links.
-(function () {
-  const footer = document.querySelector('.site-footer');
-  if (!footer) return;
-  const observer = new IntersectionObserver(function (entries) {
-    document.body.classList.toggle('at-footer', entries[0].isIntersecting);
-  }, { threshold: 0.05 });
-  observer.observe(footer);
-})();
-
-// Hero video — ensure autoplay on supported browsers
+// Hero video — desktop atmosphere without spending mobile users' bandwidth.
 (function () {
   const video = document.querySelector('.hero-video');
   if (!video) return;
+  var source = video.querySelector('source[data-src]');
   const play = () => {
     const attempt = video.play();
     if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
   };
   var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (connection && connection.saveData)) {
-    video.pause();
-    video.removeAttribute('autoplay');
+  if (!window.matchMedia('(min-width: 48rem)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches || (connection && connection.saveData)) {
     return;
+  }
+  if (source) {
+    source.src = source.dataset.src;
+    source.removeAttribute('data-src');
+    video.load();
   }
   if (video.readyState >= 2) play();
   else video.addEventListener('canplay', play, { once: true });

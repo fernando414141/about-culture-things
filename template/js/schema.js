@@ -128,13 +128,6 @@
       },
       business,
       {
-        '@type': 'Person',
-        '@id': base + '#rita',
-        name: 'Rita',
-        jobTitle: 'Founder and local guide',
-        worksFor: { '@id': base + '#business' }
-      },
-      {
         '@type': 'FAQPage',
         '@id': pageUrl + '#faq',
         mainEntity: faq.map(function (item) {

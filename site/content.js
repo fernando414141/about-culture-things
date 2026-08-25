@@ -144,7 +144,7 @@ const SITE_CONTENT = {
       nav: [
         { label: 'Experiences', href: '#tours', key: 'tours' },
         { label: 'Reviews', href: '#reviews', key: 'reviews' },
-        { label: 'About', href: '#about', key: 'about' }
+        { label: 'Our approach', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Check availability',
@@ -184,10 +184,10 @@ const SITE_CONTENT = {
       },
       story: {
         kicker: '',
-        title: 'Local knowledge, with a name behind it.',
-        text: 'Rita founded About Culture Things in Sintra and shaped how each private day is planned and hosted.',
-        signature: 'Rita · Founder and local guide',
-        imageAlt: 'Rita with a guest overlooking the Atlantic coast near Sintra'
+        title: 'Planned locally. Hosted with care.',
+        text: 'Our team brings together local knowledge, private transport and a considered plan, then adapts the day to your group as it unfolds.',
+        signature: 'Based in Sintra · Guiding from Lisbon',
+        imageAlt: 'Guests overlooking the Atlantic coast near Sintra'
       },
       offers: {
         kicker: 'Private experiences from Lisbon',
@@ -296,7 +296,7 @@ const SITE_CONTENT = {
           { question: 'What\'s the cancellation policy?', answer: 'Free cancellation with 24 hours\' notice.' },
           { question: 'Where is pickup?', answer: 'From your hotel or accommodation in Lisbon. We confirm the exact time when you book.' },
           { question: 'Can we customize the route?', answer: 'Yes. Stops, pace, and timing adapt to your group, weather, and interests.' },
-          { question: 'Who will guide our experience?', answer: 'Rita is the founder and a local guide behind About Culture Things. Your booking confirmation includes the practical details for your day.' }
+          { question: 'Who will guide our experience?', answer: 'Your experience is hosted by a local guide from our team. Your booking confirmation includes the guide and practical details for your day.' }
         ]
       },
       finalCta: {
@@ -336,7 +336,7 @@ const SITE_CONTENT = {
       nav: [
         { label: 'Experiencias', href: '#tours', key: 'tours' },
         { label: 'Reseñas', href: '#reviews', key: 'reviews' },
-        { label: 'Nosotros', href: '#about', key: 'about' }
+        { label: 'Nuestro enfoque', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Consultar disponibilidad',
@@ -376,10 +376,10 @@ const SITE_CONTENT = {
       },
       story: {
         kicker: '',
-        title: 'Conocimiento local, con un nombre detrás.',
-        text: 'Rita fundó About Culture Things en Sintra y definió cómo se planifica y acompaña cada día privado.',
-        signature: 'Rita · Fundadora y guía local',
-        imageAlt: 'Rita con una viajera frente a la costa atlántica cerca de Sintra'
+        title: 'Planificado aquí. Cuidado en cada detalle.',
+        text: 'Nuestro equipo combina conocimiento local, transporte privado y un plan bien pensado, y adapta el día al grupo sobre la marcha.',
+        signature: 'En Sintra · Guiando desde Lisboa',
+        imageAlt: 'Viajeras frente a la costa atlántica cerca de Sintra'
       },
       offers: {
         kicker: 'Experiencias privadas desde Lisboa',
@@ -488,7 +488,7 @@ const SITE_CONTENT = {
           { question: '¿Cuál es la política de cancelación?', answer: 'Cancelación gratuita con 24 horas de antelación.' },
           { question: '¿Dónde es la recogida?', answer: 'En tu hotel o alojamiento en Lisboa. Confirmamos la hora exacta al reservar.' },
           { question: '¿Podemos personalizar la ruta?', answer: 'Sí. Paradas, ritmo y horarios se adaptan a tu grupo, el clima y tus intereses.' },
-          { question: '¿Quién guiará nuestra experiencia?', answer: 'Rita es la fundadora y guía local de About Culture Things. La confirmación de la reserva incluye los detalles prácticos de su día.' }
+          { question: '¿Quién guiará nuestra experiencia?', answer: 'La experiencia estará acompañada por un guía local de nuestro equipo. La confirmación incluye el guía y los detalles prácticos del día.' }
         ]
       },
       finalCta: {
@@ -528,7 +528,7 @@ const SITE_CONTENT = {
       nav: [
         { label: 'Experiências', href: '#tours', key: 'tours' },
         { label: 'Avaliações', href: '#reviews', key: 'reviews' },
-        { label: 'Sobre nós', href: '#about', key: 'about' }
+        { label: 'A nossa abordagem', href: '#about', key: 'about' }
       ],
       ctas: {
         nav: 'Ver disponibilidade',
@@ -568,10 +568,10 @@ const SITE_CONTENT = {
       },
       story: {
         kicker: '',
-        title: 'Conhecimento local, com um nome por trás.',
-        text: 'A Rita fundou a About Culture Things em Sintra e definiu a forma como cada dia privado é planeado e acompanhado.',
-        signature: 'Rita · Fundadora e guia local',
-        imageAlt: 'A Rita com uma viajante junto à costa atlântica perto de Sintra'
+        title: 'Planeado aqui. Cuidado em cada detalhe.',
+        text: 'A nossa equipa combina conhecimento local, transporte privado e um plano bem pensado, adaptando o dia ao grupo à medida que acontece.',
+        signature: 'Em Sintra · A guiar a partir de Lisboa',
+        imageAlt: 'Viajantes junto à costa atlântica perto de Sintra'
       },
       offers: {
         kicker: 'Experiências privadas desde Lisboa',
@@ -680,7 +680,7 @@ const SITE_CONTENT = {
           { question: 'Qual é a política de cancelamento?', answer: 'Cancelamento gratuito com 24 horas de antecedência.' },
           { question: 'Onde é a recolha?', answer: 'No teu hotel ou alojamento em Lisboa. Confirmamos a hora exata quando reservas.' },
           { question: 'Podemos personalizar a rota?', answer: 'Sim. Paragens, ritmo e horários adaptam-se ao teu grupo, ao tempo e aos teus interesses.' },
-          { question: 'Quem vai guiar a nossa experiência?', answer: 'A Rita é a fundadora e guia local da About Culture Things. A confirmação da reserva inclui os detalhes práticos do vosso dia.' }
+          { question: 'Quem vai guiar a nossa experiência?', answer: 'A experiência será acompanhada por um guia local da nossa equipa. A confirmação inclui o guia e os detalhes práticos do dia.' }
         ]
       },
       finalCta: {

@@ -5,7 +5,7 @@ Type: Private tour operator
 Website: https://aboutculturethings.com/
 Location: Sintra and Lisbon, Portugal
 Services: Private guided experiences from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos
-Founder and local guide: Rita
+Team: Local guides; the assigned guide is confirmed with each booking
 Languages listed: English, Spanish and Portuguese
 Group size for current experiences: Up to 4 guests
 Transport: Private transport with Lisbon pickup is included in current experiences
@@ -15,7 +15,7 @@ Experience URLs:
 - https://aboutculturethings.com/experiences/sintra-hidden-beaches/
 - https://aboutculturethings.com/experiences/fatima-obidos/
 
-Important identity note: About Culture Things is the service brand. Rita is the founder and a local guide; the site does not guarantee that every booking is personally hosted by Rita.
+Important identity note: About Culture Things is the service brand and communicates as a professional team. The assigned local guide is confirmed with each booking; do not infer team size.
 
 For prices, inclusions, exclusions and routes, use the experience pages or https://aboutculturethings.com/llms.txt.
 Do not infer review counts, staff size, vehicle count, certifications, payment methods or availability unless confirmed by a current first-party page.
