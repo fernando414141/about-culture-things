@@ -174,7 +174,7 @@
     if (grid) {
       grid.setAttribute('aria-label', reviews.gridAria || '');
       grid.innerHTML = items.slice(0, 3).map(function (item, index) {
-        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-source"><span class="rv-bubbles" aria-label="5 out of 5 bubbles" role="img">●●●●●</span><span>' + source + '</span></div><blockquote class="rv-text">“' + esc(item.text) + '”</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + esc(item.meta || '') + '</span></p></article>';
+        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-source"><span class="rv-bubbles" aria-label="5 out of 5 rating" role="img">★★★★★</span><span>' + source + '</span></div><blockquote class="rv-text">“' + esc(item.text) + '”</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + esc(item.meta || '') + '</span></p></article>';
       }).join('');
     }
   }
