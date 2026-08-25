@@ -151,31 +151,30 @@
     const walkingGrid = document.querySelector('[data-tour-kind="walking"]');
 
     function buildCardHtml(item, index) {
-      const ctaLabel = (c.ctas && (c.ctas[item.id] || c.ctas.offer)) || '';
+      const ctaLabel = (c.ctas && (c.ctas[item.id] || c.ctas.hero || c.ctas.nav)) || 'Book Experience';
       const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
-      const detailHref = 'experiences/' + esc(item.id) + '/';
+      const detailHref = '#';
       const microTags = (item.tags || []).map(function (t) {
         return '<span class="micro-badge">' + esc(t) + '</span>';
       }).join('');
 
       return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '" data-category="' + esc(item.category || item.kind) + '">' +
-        '<a class="pc-img-wrap" href="' + detailHref + '" aria-label="' + esc(offers.detailsCta + ': ' + item.name) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></a>' +
+        '<a class="pc-img-wrap" href="#" data-open-booking="' + esc(item.id) + '" aria-label="' + esc(item.name) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></a>' +
         '<div class="tour-copy"><div class="pc-overline"><span>' + esc(item.badge || '') + '</span><span>' + esc(item.tag || '') + '</span></div>' +
-        '<h3 class="pc-name"><a href="' + detailHref + '">' + esc(item.name) + '</a></h3>' +
+        '<h3 class="pc-name"><a href="#" data-open-booking="' + esc(item.id) + '">' + esc(item.name) + '</a></h3>' +
         '<div class="pc-micro-tags">' + microTags + '</div>' +
         '<p class="pc-fit">' + esc(item.fit || '') + '</p>' +
-        '<p class="tour-meeting"><span>' + esc(offers.meetingLabel) + '</span>' + esc(item.meeting || '') + '</p>' +
-        '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><div class="tour-actions"><a href="' + detailHref + '" class="tour-detail">' + esc(offers.detailsCta) + ' <span aria-hidden="true">→</span></a><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></div></article>';
+        '<p class="tour-meeting"><span>' + esc(offers.meetingLabel) + '</span> 09:00 — Hard Rock Cafe Lisbon</p>' +
+        '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><div class="tour-actions"><button type="button" class="button button-gold-primary" data-open-booking="' + esc(item.id) + '"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">→</span></button></div></div></div></article>';
     }
 
     if (vanGrid) {
-      const items = (offers.items || []).filter(function (item) { return item.kind === 'van'; });
-      vanGrid.innerHTML = items.map(buildCardHtml).join('');
+      vanGrid.innerHTML = (offers.items || []).map(buildCardHtml).join('');
     }
 
     if (walkingGrid) {
-      const items = (offers.items || []).filter(function (item) { return item.kind === 'walking'; });
-      walkingGrid.innerHTML = items.map(buildCardHtml).join('');
+      const walkingCollection = walkingGrid.closest('.tour-collection');
+      if (walkingCollection) walkingCollection.style.display = 'none';
     }
   }
 
@@ -200,7 +199,7 @@
     const c = getContent(lang);
     const reviews = c.reviews || {};
     const grid = document.getElementById('reviews-grid');
-    const items = (cfg.reviewItems && cfg.reviewItems.length) ? cfg.reviewItems : [];
+    const items = (c.reviews && c.reviews.items && c.reviews.items.length) ? c.reviews.items : (cfg.reviewItems || []);
     if (grid) {
       grid.setAttribute('aria-label', reviews.gridAria || '');
       grid.innerHTML = items.map(function (item, index) {
@@ -209,29 +208,12 @@
           '<div class="rv-header">' +
           avatarHtml +
           '<div><div class="rv-author-row"><cite class="rv-name">' + esc(item.name) + '</cite><span class="rv-country">' + esc(item.country || '') + '</span></div>' +
-          '<div class="rv-rating-row"><span class="rv-bubbles" aria-label="5 out of 5 stars" role="img">★★★★★</span><span class="rv-meta">' + esc(item.meta || '') + '</span></div></div>' +
+          '<div class="rv-rating-row"><span class="rv-bubbles" aria-label="5 out of 5 stars" role="img">★★★★★</span><span class="rv-meta">' + esc(item.meta || 'TripAdvisor 5.0 · Verified Guest') + '</span></div></div>' +
           '</div>' +
           '<blockquote class="rv-text">“' + esc(item.text) + '”</blockquote>' +
           '</article>';
       }).join('');
     }
-  }
-
-  function renderLeadMagnet(lang) {
-    const c = getContent(lang);
-    const lm = c.leadMagnet;
-    const container = document.getElementById('lead-magnet-container');
-    if (!container || !lm) return;
-
-    container.innerHTML = '<div class="section-shell lead-magnet-shell">' +
-      '<div class="lead-magnet-box">' +
-      '<div class="lm-copy"><p class="lm-kicker">' + esc(lm.kicker) + '</p><h2>' + esc(lm.title) + '</h2><p class="lm-sub">' + esc(lm.subtitle) + '</p></div>' +
-      '<form class="lm-form" onsubmit="event.preventDefault(); alert(\'Thank you! Your VIP Guide download link has been sent.\');">' +
-      '<input type="text" class="lm-input" placeholder="' + esc(lm.emailPlaceholder) + '" required>' +
-      '<button type="submit" class="button button-gold">' + esc(lm.buttonText) + '</button>' +
-      '<p class="lm-privacy">' + esc(lm.privacyText) + '</p>' +
-      '</form>' +
-      '</div></div>';
   }
 
   function renderWhatsappWidget(lang) {
@@ -240,10 +222,9 @@
     const container = document.getElementById('whatsapp-widget-container');
     if (!container || !widget) return;
 
-    container.innerHTML = '<a href="#" class="whatsapp-float-btn" data-site-wa="book" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp VIP Concierge">' +
+    container.innerHTML = '<a href="mailto:aboutculturethings@gmail.com" class="whatsapp-float-btn" aria-label="Concierge Email">' +
       '<div class="wa-status-dot"></div>' +
-      '<div class="wa-float-text"><span class="wa-status">' + esc(widget.status) + '</span><span class="wa-title">' + esc(widget.actionText) + '</span></div>' +
-      '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88"/></svg>' +
+      '<div class="wa-float-text"><span class="wa-status">Email & WhatsApp Concierge</span><span class="wa-title">aboutculturethings@gmail.com</span></div>' +
       '</a>';
   }
 
@@ -285,7 +266,7 @@
     const footer = c.footer || {};
     const mobileLinks = document.querySelector('.mob-contact-links');
     if (mobileLinks) {
-      mobileLinks.innerHTML = '<a href="#" target="_blank" rel="noopener noreferrer" data-site-instagram>' + esc(footer.socialLabels && footer.socialLabels.instagram) + '</a><a href="#" data-site-email data-site-email-subject="Boutique Tour enquiry">' + esc(footer.socialLabels && footer.socialLabels.email) + '</a>';
+      mobileLinks.innerHTML = '<a href="mailto:aboutculturethings@gmail.com">Email</a><a href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener noreferrer">Instagram</a>';
     }
   }
 
@@ -301,7 +282,6 @@
     renderOffers(lang);
     renderGallery(lang);
     renderReviews(lang);
-    renderLeadMagnet(lang);
     renderWhatsappWidget(lang);
     renderFaq(lang);
     renderContact(lang);
@@ -310,3 +290,4 @@
 
   window.renderSiteContent = renderSiteContent;
 })();
+
