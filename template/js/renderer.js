@@ -1,6 +1,6 @@
 /**
- * Section renderer for one-page site templates.
- * Components are data-driven; presentation stays in template/css/main.css.
+ * Section renderer for About Culture Things.
+ * High-ticket luxury components: social proof bar, category filters, micro-badges, floating review cards, lead magnet & WhatsApp VIP concierge.
  */
 (function () {
   const cfg = window.SITE_CONTENT || SITE_CONTENT;
@@ -16,16 +16,6 @@
 
   function getContent(lang) {
     return (cfg.content && cfg.content[lang]) || (cfg.content && cfg.content.en) || {};
-  }
-
-  function icon(name) {
-    if (name === 'pin') {
-      return '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 17s5-4.7 5-9A5 5 0 005 8c0 4.3 5 9 5 9z" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="8" r="1.6" stroke="currentColor" stroke-width="1.5"/></svg>';
-    }
-    if (name === 'bag') {
-      return '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 7h12l-1.2 6.5a2 2 0 01-2 1.5H7.2a2 2 0 01-2-1.5L4 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 7V5.8A3 3 0 0110 3a3 3 0 013 2.8V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
-    }
-    return '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
   }
 
   function waKey(id) {
@@ -105,6 +95,21 @@
     }
   }
 
+  function renderSocialProof(lang) {
+    const c = getContent(lang);
+    const proof = c.socialProof;
+    const container = document.getElementById('social-proof-bar');
+    if (!container || !proof) return;
+
+    container.innerHTML = '<div class="section-shell proof-shell">' +
+      '<span class="proof-label">' + esc(proof.title) + '</span>' +
+      '<div class="proof-grid">' +
+      (proof.items || []).map(function (item) {
+        return '<div class="proof-item"><span class="proof-icon">' + esc(item.icon) + '</span><span class="proof-text">' + esc(item.text) + '</span></div>';
+      }).join('') +
+      '</div></div>';
+  }
+
   function renderBenefits(lang) {
     const c = getContent(lang);
     const grid = document.querySelector('.benefits-grid');
@@ -112,6 +117,17 @@
     grid.setAttribute('aria-label', c.benefits.aria || '');
     grid.innerHTML = (c.benefits.items || []).map(function (item, index) {
       return '<article class="benefit-card reveal d' + ((index % 3) + 1) + '"><span class="benefit-number" aria-hidden="true">0' + (index + 1) + '</span><h3>' + esc(item.title) + '</h3><p>' + esc(item.text) + '</p></article>';
+    }).join('');
+  }
+
+  function renderFilters(lang) {
+    const c = getContent(lang);
+    const offers = c.offers || {};
+    const filtersContainer = document.getElementById('tour-filters');
+    if (!filtersContainer || !offers.filters) return;
+
+    filtersContainer.innerHTML = offers.filters.map(function (f, idx) {
+      return '<button class="filter-tab' + (idx === 0 ? ' active' : '') + '" type="button" data-filter="' + esc(f.key) + '">' + esc(f.label) + '</button>';
     }).join('');
   }
 
@@ -131,21 +147,36 @@
       el.textContent = offers[el.getAttribute('data-offers-label')] || '';
     });
 
-    document.querySelectorAll('[data-tour-kind]').forEach(function (grid) {
-      const kind = grid.getAttribute('data-tour-kind');
-      const items = (offers.items || []).filter(function (item) { return item.kind === kind; });
-      grid.innerHTML = items.map(function (item, index) {
-        const ctaLabel = (c.ctas && (c.ctas[item.id] || c.ctas.offer)) || '';
-        const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
-        const detailHref = 'experiences/' + esc(item.id) + '/';
-        return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '">' +
-          '<a class="pc-img-wrap" href="' + detailHref + '" aria-label="' + esc(offers.detailsCta + ': ' + item.name) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></a>' +
-          '<div class="tour-copy"><div class="pc-overline"><span>' + esc(item.badge || '') + '</span><span>' + esc(item.tag || '') + '</span></div>' +
-          '<h3 class="pc-name"><a href="' + detailHref + '">' + esc(item.name) + '</a></h3><p class="pc-fit">' + esc(item.fit || '') + '</p>' +
-          '<p class="tour-meeting"><span>' + esc(offers.meetingLabel) + '</span>' + esc(item.meeting || '') + '</p>' +
-          '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><div class="tour-actions"><a href="' + detailHref + '" class="tour-detail">' + esc(offers.detailsCta) + ' <span aria-hidden="true">→</span></a><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></div></article>';
+    const vanGrid = document.querySelector('[data-tour-kind="van"]');
+    const walkingGrid = document.querySelector('[data-tour-kind="walking"]');
+
+    function buildCardHtml(item, index) {
+      const ctaLabel = (c.ctas && (c.ctas[item.id] || c.ctas.offer)) || '';
+      const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
+      const detailHref = 'experiences/' + esc(item.id) + '/';
+      const microTags = (item.tags || []).map(function (t) {
+        return '<span class="micro-badge">' + esc(t) + '</span>';
       }).join('');
-    });
+
+      return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '" data-category="' + esc(item.category || item.kind) + '">' +
+        '<a class="pc-img-wrap" href="' + detailHref + '" aria-label="' + esc(offers.detailsCta + ': ' + item.name) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></a>' +
+        '<div class="tour-copy"><div class="pc-overline"><span>' + esc(item.badge || '') + '</span><span>' + esc(item.tag || '') + '</span></div>' +
+        '<h3 class="pc-name"><a href="' + detailHref + '">' + esc(item.name) + '</a></h3>' +
+        '<div class="pc-micro-tags">' + microTags + '</div>' +
+        '<p class="pc-fit">' + esc(item.fit || '') + '</p>' +
+        '<p class="tour-meeting"><span>' + esc(offers.meetingLabel) + '</span>' + esc(item.meeting || '') + '</p>' +
+        '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><div class="tour-actions"><a href="' + detailHref + '" class="tour-detail">' + esc(offers.detailsCta) + ' <span aria-hidden="true">→</span></a><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></div></article>';
+    }
+
+    if (vanGrid) {
+      const items = (offers.items || []).filter(function (item) { return item.kind === 'van'; });
+      vanGrid.innerHTML = items.map(buildCardHtml).join('');
+    }
+
+    if (walkingGrid) {
+      const items = (offers.items || []).filter(function (item) { return item.kind === 'walking'; });
+      walkingGrid.innerHTML = items.map(buildCardHtml).join('');
+    }
   }
 
   function renderStory(lang) {
@@ -169,14 +200,51 @@
     const c = getContent(lang);
     const reviews = c.reviews || {};
     const grid = document.getElementById('reviews-grid');
-    const source = esc(reviews.source || '');
-    const items = (reviews.items && reviews.items.length) ? reviews.items : (cfg.reviewItems || []);
+    const items = (cfg.reviewItems && cfg.reviewItems.length) ? cfg.reviewItems : [];
     if (grid) {
       grid.setAttribute('aria-label', reviews.gridAria || '');
-      grid.innerHTML = items.slice(0, 3).map(function (item, index) {
-        return '<article class="review-card reveal d' + (index + 1) + '"><div class="rv-source"><span class="rv-bubbles" aria-label="5 out of 5 rating" role="img">★★★★★</span><span>' + source + '</span></div><blockquote class="rv-text">“' + esc(item.text) + '”</blockquote><p class="rv-byline"><cite class="rv-name">' + esc(item.name) + '</cite><span>' + esc(item.meta || '') + '</span></p></article>';
+      grid.innerHTML = items.map(function (item, index) {
+        const avatarHtml = item.avatar ? '<img class="rv-avatar" src="' + esc(item.avatar) + '" alt="' + esc(item.name) + '" width="48" height="48" loading="lazy">' : '';
+        return '<article class="luxury-review-card reveal d' + (index + 1) + '">' +
+          '<div class="rv-header">' +
+          avatarHtml +
+          '<div><div class="rv-author-row"><cite class="rv-name">' + esc(item.name) + '</cite><span class="rv-country">' + esc(item.country || '') + '</span></div>' +
+          '<div class="rv-rating-row"><span class="rv-bubbles" aria-label="5 out of 5 stars" role="img">★★★★★</span><span class="rv-meta">' + esc(item.meta || '') + '</span></div></div>' +
+          '</div>' +
+          '<blockquote class="rv-text">“' + esc(item.text) + '”</blockquote>' +
+          '</article>';
       }).join('');
     }
+  }
+
+  function renderLeadMagnet(lang) {
+    const c = getContent(lang);
+    const lm = c.leadMagnet;
+    const container = document.getElementById('lead-magnet-container');
+    if (!container || !lm) return;
+
+    container.innerHTML = '<div class="section-shell lead-magnet-shell">' +
+      '<div class="lead-magnet-box">' +
+      '<div class="lm-copy"><p class="lm-kicker">' + esc(lm.kicker) + '</p><h2>' + esc(lm.title) + '</h2><p class="lm-sub">' + esc(lm.subtitle) + '</p></div>' +
+      '<form class="lm-form" onsubmit="event.preventDefault(); alert(\'Thank you! Your VIP Guide download link has been sent.\');">' +
+      '<input type="text" class="lm-input" placeholder="' + esc(lm.emailPlaceholder) + '" required>' +
+      '<button type="submit" class="button button-gold">' + esc(lm.buttonText) + '</button>' +
+      '<p class="lm-privacy">' + esc(lm.privacyText) + '</p>' +
+      '</form>' +
+      '</div></div>';
+  }
+
+  function renderWhatsappWidget(lang) {
+    const c = getContent(lang);
+    const widget = c.whatsappWidget;
+    const container = document.getElementById('whatsapp-widget-container');
+    if (!container || !widget) return;
+
+    container.innerHTML = '<a href="#" class="whatsapp-float-btn" data-site-wa="book" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp VIP Concierge">' +
+      '<div class="wa-status-dot"></div>' +
+      '<div class="wa-float-text"><span class="wa-status">' + esc(widget.status) + '</span><span class="wa-title">' + esc(widget.actionText) + '</span></div>' +
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88"/></svg>' +
+      '</a>';
   }
 
   function renderGallery(lang) {
@@ -206,7 +274,7 @@
     const faq = c.faq || {};
     const list = document.querySelector('.faq-list');
     if (!list) return;
-    const essential = [faq.items && faq.items[0], faq.items && faq.items[1], faq.items && faq.items[2], faq.items && faq.items[5]].filter(Boolean);
+    const essential = [faq.items && faq.items[0], faq.items && faq.items[1], faq.items && faq.items[2], faq.items && faq.items[3]].filter(Boolean);
     list.innerHTML = essential.map(function (item) {
       return '<details class="faq-item"><summary><span class="faq-q">' + esc(item.question) + '</span><span class="faq-icon" aria-hidden="true">+</span></summary><p class="faq-a">' + esc(item.answer) + '</p></details>';
     }).join('');
@@ -217,7 +285,7 @@
     const footer = c.footer || {};
     const mobileLinks = document.querySelector('.mob-contact-links');
     if (mobileLinks) {
-      mobileLinks.innerHTML = '<a href="#" target="_blank" rel="noopener noreferrer" data-site-instagram>' + esc(footer.socialLabels && footer.socialLabels.instagram) + '</a><a href="#" data-site-email data-site-email-subject="Tour enquiry">' + esc(footer.socialLabels && footer.socialLabels.email) + '</a>';
+      mobileLinks.innerHTML = '<a href="#" target="_blank" rel="noopener noreferrer" data-site-instagram>' + esc(footer.socialLabels && footer.socialLabels.instagram) + '</a><a href="#" data-site-email data-site-email-subject="Boutique Tour enquiry">' + esc(footer.socialLabels && footer.socialLabels.email) + '</a>';
     }
   }
 
@@ -226,11 +294,15 @@
     renderLanguageControls();
     renderNav(lang);
     renderHero(lang);
+    renderSocialProof(lang);
     renderBenefits(lang);
     renderStory(lang);
+    renderFilters(lang);
     renderOffers(lang);
     renderGallery(lang);
     renderReviews(lang);
+    renderLeadMagnet(lang);
+    renderWhatsappWidget(lang);
     renderFaq(lang);
     renderContact(lang);
     if (typeof window.applySiteConfig === 'function') window.applySiteConfig(lang);

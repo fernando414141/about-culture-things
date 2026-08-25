@@ -393,6 +393,40 @@ window.refreshTemplateInteractions = function () {
   document.querySelectorAll('.sec-head, #final-cta').forEach(el => headObs.observe(el));
 };
 
+// ─── TOUR CATEGORY FILTER ───────────────────────────
+document.addEventListener('click', function (e) {
+  const tab = e.target.closest('.filter-tab');
+  if (!tab) return;
+  const filter = tab.getAttribute('data-filter');
+  const container = document.getElementById('tour-filters');
+  if (container) {
+    container.querySelectorAll('.filter-tab').forEach(btn => btn.classList.remove('active'));
+  }
+  tab.classList.add('active');
+
+  const cards = document.querySelectorAll('.offer-card');
+  const collections = document.querySelectorAll('.tour-collection');
+
+  cards.forEach(card => {
+    const category = card.getAttribute('data-category');
+    if (filter === 'all' || category === filter) {
+      card.style.display = 'flex';
+      card.classList.add('in');
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  collections.forEach(col => {
+    const visibleCards = col.querySelectorAll('.offer-card[style*="display: flex"], .offer-card:not([style*="display: none"])');
+    if (filter !== 'all' && visibleCards.length === 0) {
+      col.style.display = 'none';
+    } else {
+      col.style.display = 'block';
+    }
+  });
+});
+
 // ─── FAQ ACCORDION (one open at a time) ──────────────
 document.addEventListener('toggle', e => {
   const item = e.target;
@@ -401,3 +435,4 @@ document.addEventListener('toggle', e => {
     if (other !== item) other.open = false;
   });
 }, true);
+
