@@ -1,63 +1,35 @@
 # About Culture Things
 
-> About Culture Things offers shared guided tours from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos in a luxury Mercedes-Benz Vito. Prices are per person and each traveller has an assigned seat.
+> Small-group day tours by Mercedes-Benz Vito and guided walking tours in Sintra, Lisbon and nearby regions. All prices are direct, per person and charged in EUR.
 
 ## Identity
 
 - Brand: About Culture Things
-- Service: Shared small-group guided tours and day trips from Lisbon
-- Location: Sintra and Lisbon, Portugal
-- Team: Local guides; the assigned guide is confirmed with each booking
-- Languages listed by the business: English, Spanish and Portuguese
+- Base: Algueirão–Mem Martins, Sintra, Portugal
+- Languages: English, Spanish and Portuguese
 - Contact: aboutculturethings@gmail.com · +351 968 510 019
 - Reviews: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
 
-About Culture Things communicates as a service team. The assigned local guide and booking details are confirmed directly with the customer; no team size is stated.
+## Current tours
 
-## Current shared experiences
-
-### Sintra Complete & Atlantic Coast
-
-- URL: https://aboutculturethings.com/experiences/sintra-atlantic-coast/
-- Price: €179 per person
-- Duration: 7 hours
-- Format: Shared luxury van; assigned seat per traveller
-- Route: Historic Sintra, Serra de Sintra viewpoints, Pena Palace viewpoint, Cabo da Roca and Cascais
-- Palace tickets and meals are not included
-
-### Sintra & Hidden Beaches
-
-- URL: https://aboutculturethings.com/experiences/sintra-hidden-beaches/
-- Price: €139 per person
-- Duration: 5 hours
-- Format: Shared luxury van; assigned seat per traveller
-- Route: Historic Sintra, mountain viewpoints, Praia das Maçãs, Azenhas do Mar and Praia da Aguda
-- Palace tickets and meals are not included
-
-### Fátima & Óbidos
-
-- URL: https://aboutculturethings.com/experiences/fatima-obidos/
-- Price: €259 per person
-- Duration: Full day
-- Format: Shared luxury van; assigned seat per traveller
-- Route: Lisbon pickup, Óbidos, Fátima Sanctuary and Lisbon drop-off
-- Meals are not included
+- Sintra, Pena, Cabo da Roca & Cascais — van tour, 7.5 hours, €69/person; meet at Sintra Train Station.
+- Fátima, Batalha, Nazaré & Óbidos — van tour, 9 hours, €75/person; meet at Restauradores Square, Lisbon.
+- Arrábida, Azeitão & Two Wineries — van tour, 8 hours, €75/person; meet at Restauradores Square, Lisbon; two winery visits with tastings included.
+- Sintra Stories, Old Town & Forest — walking tour, 3 hours, €32/person; meet at Sintra Train Station.
+- Lisbon Essentials: Baixa, Chiado & Alfama — walking tour, 3 hours, €25/person; meet at Rossio Square.
 
 ## Booking facts
 
-- Lisbon hotel or accommodation pickup is included
-- A local guide, dedicated driver and shared Mercedes-Benz Vito transport are included
-- Shared departures are confirmed from 4 travellers
-- The nine-seat Vito is a luxury van, not a coach; operational guest capacity depends on crew and legally available seating
-- Larger parties may be coordinated with additional vehicles, subject to availability
-- The shared itinerary is planned; timing may adjust for traffic, weather and conditions
-- Free cancellation with 24 hours’ notice is stated on the website
-- Availability, payment and exact pickup details are confirmed by reply
+- Van tours use a nine-seat 2023 Mercedes-Benz Vito and accept up to 8 guests.
+- Walking tours accept up to 10 or 12 guests as stated on each product.
+- Shared departures are subject to minimum numbers.
+- Monument tickets and meals are included only when explicitly stated.
+- Free cancellation with 24 hours’ notice is stated on the website.
+- Availability and exact meeting instructions are confirmed directly.
 
 ## Authoritative URLs
 
-- Website: https://aboutculturethings.com/
-- Experiences: https://aboutculturethings.com/#tours
+- Website and tours: https://aboutculturethings.com/#tours
 - FAQ: https://aboutculturethings.com/#faq
 - Sitemap: https://aboutculturethings.com/sitemap.xml
 - Instagram: https://www.instagram.com/aboutculturethings/

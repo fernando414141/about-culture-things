@@ -86,7 +86,7 @@
               priceCurrency: offer.currency || 'EUR',
               unitText: 'PER_PERSON'
             },
-            url: base + '/experiences/' + (offer.slug || offer.id) + '/',
+            url: base + '/#tour-' + offer.id,
             itemOffered: { '@id': base + '#tour-' + offer.id }
           };
         })
@@ -153,7 +153,7 @@
         name: offer.name,
         description: offer.fit,
         image: base + '/' + offer.image,
-        touristType: 'Shared small-group tour in a luxury Mercedes-Benz Vito',
+        touristType: offer.kind === 'walking' ? 'Small-group guided walking tour' : 'Small-group guided tour in a Mercedes-Benz Vito',
         itinerary: {
           '@type': 'ItemList',
           name: offer.stops,
@@ -171,7 +171,7 @@
             priceCurrency: offer.currency || 'EUR',
             unitText: 'PER_PERSON'
           },
-          url: base + '/experiences/' + (offer.slug || offer.id) + '/'
+          url: base + '/#tour-' + offer.id
         },
         provider: { '@id': base + '#business' }
       });

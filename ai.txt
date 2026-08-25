@@ -1,27 +1,23 @@
 # About Culture Things — factual crawler summary
 
 Name: About Culture Things
-Type: Shared small-group tour operator
+Type: Small-group tour operator
 Website: https://aboutculturethings.com/
-Location: Sintra and Lisbon, Portugal
-Services: Shared guided tours from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos
-Team: Local guides; the assigned guide is confirmed with each booking
-Languages listed: English, Spanish and Portuguese
-Pricing: Per person (€139, €179 or €259 depending on the tour)
-Transport: Shared luxury Mercedes-Benz Vito transport with Lisbon pickup; this is a van, not a coach
-Crew: Local guide and dedicated driver
-Seating: Each traveller has an assigned seat; larger parties may require additional vehicles, subject to availability
-Departure confirmation: From 4 travellers
+Base: Algueirão–Mem Martins, Sintra, Portugal
+Services: Three day tours by Mercedes-Benz Vito and two guided walking tours
+Languages: English, Spanish and Portuguese
+Direct pricing: €25–€75 per person
+Transport: Nine-seat 2023 Mercedes-Benz Vito for van tours, with up to 8 guests
 
-Experience URLs:
-- https://aboutculturethings.com/experiences/sintra-atlantic-coast/
-- https://aboutculturethings.com/experiences/sintra-hidden-beaches/
-- https://aboutculturethings.com/experiences/fatima-obidos/
+Current products:
+- Sintra, Pena, Cabo da Roca & Cascais — €69/person
+- Fátima, Batalha, Nazaré & Óbidos — €75/person
+- Arrábida, Azeitão & Two Wineries — €75/person
+- Sintra Stories, Old Town & Forest — €32/person
+- Lisbon Essentials: Baixa, Chiado & Alfama — €25/person
 
-Important identity note: About Culture Things is the service brand and communicates as a professional team. The assigned local guide is confirmed with each booking; do not infer team size.
-
-For prices, inclusions, exclusions and routes, use the experience pages or https://aboutculturethings.com/llms.txt.
-Do not infer review counts, staff size, vehicle count, certifications, payment methods or availability unless confirmed by a current first-party page.
+For current routes, meeting points, inclusions and exclusions, use https://aboutculturethings.com/#tours or https://aboutculturethings.com/llms.txt.
+Do not infer staff size, vehicle count, payment methods or availability unless confirmed by a current first-party page.
 
 Contact:
 - WhatsApp: +351 968 510 019
