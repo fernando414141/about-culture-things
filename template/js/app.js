@@ -245,6 +245,17 @@ window.addEventListener('scroll', () => {
 updateNavState();
 window.addEventListener('resize', updateNavState, { passive: true });
 
+// Hide the mobile conversion bar while the footer is visible so it never
+// covers legal or contact links.
+(function () {
+  const footer = document.querySelector('.site-footer');
+  if (!footer) return;
+  const observer = new IntersectionObserver(function (entries) {
+    document.body.classList.toggle('at-footer', entries[0].isIntersecting);
+  }, { threshold: 0.05 });
+  observer.observe(footer);
+})();
+
 // Hero video — ensure autoplay on supported browsers
 (function () {
   const video = document.querySelector('.hero-video');

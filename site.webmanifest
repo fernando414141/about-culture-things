@@ -1,7 +1,7 @@
 {
   "name": "About Culture Things",
   "short_name": "Culture Things",
-  "description": "Private tours from Lisbon with Rita. Sintra, Atlantic coast, Fátima and Óbidos for up to 4 guests, with private transport.",
+  "description": "Private guided experiences from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos, with private transport.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

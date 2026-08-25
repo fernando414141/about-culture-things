@@ -1,95 +1,60 @@
 # About Culture Things
 
-> Private tours from Lisbon with Rita. Three private routes cover Sintra, the Atlantic coast, Fátima and Óbidos, for a maximum of 4 guests per group with Lisbon pickup and private transport. Prices range from €199 to €500 per group.
+> About Culture Things offers private guided experiences from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos. Current experiences include private transport, Lisbon pickup and flexible pacing for groups of up to four guests.
 
-About Culture Things is a boutique private tour operator based in Sintra, Lisbon District, Portugal (coordinates: 38.7977, -9.3900). Rita personally hosts private experiences in English, Spanish and Portuguese. Booking is available directly through WhatsApp (+351 968 510 019) or email (aboutculturethings@gmail.com).
+## Identity
 
-## Quick facts
+- Brand: About Culture Things
+- Service: Private guided tours and day trips from Lisbon
+- Location: Sintra and Lisbon, Portugal
+- Founder and local guide: Rita
+- Languages listed by the business: English, Spanish and Portuguese
+- Contact: aboutculturethings@gmail.com · +351 968 510 019
+- Reviews: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
 
-- Business: About Culture Things
-- Website: https://aboutculturethings.com/
-- Location: Sintra, Lisbon District, Portugal (serves Lisbon, Sintra, Cascais, Cabo da Roca, Óbidos and Fátima)
-- Languages: English, Spanish, Portuguese
-- Group size: Maximum 4 guests per private tour
-- Pickup: From your hotel or accommodation in Lisbon (included)
-- Rating: 5.0/5 on TripAdvisor (6 reviews, all 5-star)
-- Cancellation: Free with 24 hours' notice
-- Payment: Cash, credit card, bank transfer
-- Currency: EUR (€)
-- Attraction tickets and meals: Not included unless confirmed otherwise
+Rita is the founder and an important human face of About Culture Things. The brand does not promise that every booking will necessarily be hosted by Rita. Booking details are confirmed directly with the customer.
 
-## Tours & pricing
+## Current private experiences
 
-### Sintra Complete & Atlantic Coast — €299 per private group
+### Sintra Complete & Atlantic Coast
+
+- URL: https://aboutculturethings.com/experiences/sintra-atlantic-coast/
+- Price: €299 per private group
 - Duration: 7 hours
-- Best for: First-time visitors to Sintra
-- Route: Historic Sintra · Pena Palace viewpoint · Castelo dos Mouros viewpoint · Serra de Sintra · Cabo da Roca (Europe's westernmost point) · Cascais
-- Includes: Private guide, Lisbon pickup, transport
-- Excludes: Meals, palace entry tickets (~€20/person)
-- Book: https://aboutculturethings.com/#tours
+- Group size: Up to 4 guests
+- Route: Historic Sintra, Serra de Sintra viewpoints, Pena Palace viewpoint, Cabo da Roca and Cascais
+- Palace tickets and meals are not included
 
-### Sintra & Hidden Beaches — €199 per private group
+### Sintra & Hidden Beaches
+
+- URL: https://aboutculturethings.com/experiences/sintra-hidden-beaches/
+- Price: €199 per private group
 - Duration: 5 hours
-- Best for: Families, slower pace, coastal focus
-- Route: Sintra hills · Hidden coves · Praia das Maçãs · Azenhas do Mar · Praia da Aguda
-- Includes: Private guide, Lisbon pickup, transport
-- Excludes: Meals, palace entry tickets (~€20/person)
-- Book: https://aboutculturethings.com/#tours
+- Group size: Up to 4 guests
+- Route: Historic Sintra, mountain viewpoints, Praia das Maçãs, Azenhas do Mar and Praia da Aguda
+- Palace tickets and meals are not included
 
-### Fátima & Óbidos Private Day Tour — €500 per private group
+### Fátima & Óbidos
+
+- URL: https://aboutculturethings.com/experiences/fatima-obidos/
+- Price: €500 per private group
 - Duration: Full day
-- Best for: Travelers interested in Portuguese heritage, medieval atmosphere and Fátima
-- Route: Lisbon pickup · Óbidos medieval village · Fátima Sanctuary · Lisbon drop-off
-- Includes: Private guide, Lisbon pickup and drop-off, private transport
-- Excludes: Meals
-- Book: https://aboutculturethings.com/#tour-fatima-obidos
+- Group size: Up to 4 guests
+- Route: Lisbon pickup, Óbidos, Fátima Sanctuary and Lisbon drop-off
+- Meals are not included
 
-## Why choose About Culture Things
+## Booking facts
 
-1. **Only your group** — Up to four guests, with freedom to slow down or change the pace.
-2. **Hosted by Rita** — A local person who knows the stories, roads and quieter corners.
-3. **Direct planning** — Ask questions and confirm the day with Rita on WhatsApp.
+- Lisbon hotel or accommodation pickup is included
+- Private guide and private transport are included
+- Stops, pace and timing can adapt to the group, weather and interests
+- Free cancellation with 24 hours’ notice is stated on the website
+- Availability, payment and exact pickup details are confirmed by reply
 
-## Key pages
+## Authoritative URLs
 
-- [Tours & pricing](https://aboutculturethings.com/#tours): Three private tour options with itineraries and prices.
-- [Why book a private tour](https://aboutculturethings.com/#benefits): Small groups, local hosting and direct planning with Rita.
-- [Reviews](https://aboutculturethings.com/#reviews): 5.0/5 on TripAdvisor — 6 reviews, all 5-star.
-- [Gallery](https://aboutculturethings.com/#gallery): Pena Palace, Cabo da Roca, Azenhas do Mar, Cascais, Castelo dos Mouros, Quinta da Regaleira.
-- [FAQ & booking](https://aboutculturethings.com/#faq): Inclusions, booking process, cancellation, pickup, customization.
-- [Book a tour](https://aboutculturethings.com/#final-cta): Message on WhatsApp to check availability.
-
-## Frequently asked questions
-
-**What's included?**
-Lisbon pickup, private guide, and transport for up to 4 guests. Palace entry tickets are not included (~€20/person).
-
-**How do I book?**
-Message on WhatsApp (+351 968 510 019) with your dates. Availability, payment, and pickup details are confirmed by reply. Also available via Viator.
-
-**What's the cancellation policy?**
-Free cancellation with 24 hours' notice.
-
-**Where is pickup?**
-From your hotel or accommodation in Lisbon. Exact time confirmed when you book.
-
-**Can we customize the route?**
-Yes. Stops, pace, and timing adapt to your group, weather, and interests.
-
-## Contact
-
-- WhatsApp: +351 968 510 019 — https://wa.me/351968510019
-- Email: aboutculturethings@gmail.com
+- Website: https://aboutculturethings.com/
+- Experiences: https://aboutculturethings.com/#tours
+- FAQ: https://aboutculturethings.com/#faq
+- Sitemap: https://aboutculturethings.com/sitemap.xml
 - Instagram: https://www.instagram.com/aboutculturethings/
-- TripAdvisor: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
-
-## Languages
-
-- [English (default)](https://aboutculturethings.com/)
-- [Spanish](https://aboutculturethings.com/?lang=es)
-- [Portuguese](https://aboutculturethings.com/?lang=pt)
-
-## Optional
-
-- [Sitemap](https://aboutculturethings.com/sitemap.xml)
-- [AI guidance](https://aboutculturethings.com/ai.txt)

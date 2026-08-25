@@ -12,10 +12,6 @@
     return (c.languages || []).find(function (l) { return l.code === lang; }) || {};
   }
 
-  function stripQuote(text) {
-    return String(text || '').replace(/^"|"$/g, '');
-  }
-
   window.buildSchemaGraph = function (lang) {
     const site = cfg();
     const b = site.business || {};
@@ -26,7 +22,6 @@
     const links = site.links || {};
     const offers = (c.offers && c.offers.items) || [];
     const faq = (c.faq && c.faq.items) || [];
-    const reviews = (c.reviews && c.reviews.items) || [];
     const types = schema.types || ['LocalBusiness'];
     const pageUrl = lm.href || base + '/';
 
@@ -42,7 +37,6 @@
       email: b.email,
       priceRange: schema.priceRange,
       currenciesAccepted: 'EUR',
-      paymentAccepted: 'Cash, Credit Card, Bank Transfer',
       address: {
         '@type': 'PostalAddress',
         addressLocality: b.location && b.location.locality,
@@ -74,16 +68,6 @@
       business.availableLanguage = schema.availableLanguage;
     }
 
-    if (reviews.length) {
-      business.aggregateRating = {
-        '@type': 'AggregateRating',
-        ratingValue: (c.reviews && c.reviews.ratingValue) || '5.0',
-        reviewCount: String(reviews.length),
-        bestRating: '5',
-        worstRating: '1'
-      };
-    }
-
     if (offers.length) {
       business.hasOfferCatalog = {
         '@type': 'OfferCatalog',
@@ -96,8 +80,7 @@
             description: offer.fit,
             price: offer.priceValue,
             priceCurrency: offer.currency || 'EUR',
-            availability: 'https://schema.org/InStock',
-            url: pageUrl + '#tour-' + offer.id,
+            url: base + '/experiences/' + (offer.slug || offer.id) + '/',
             itemOffered: { '@id': base + '#tour-' + offer.id }
           };
         })
@@ -133,7 +116,7 @@
           '@type': 'SpeakableSpecification',
           cssSelector: ['.hero-desc', '.faq-list', '.benefits-grid']
         },
-        dateModified: '2026-08-22'
+        dateModified: '2026-08-25'
       },
       {
         '@type': 'BreadcrumbList',
@@ -144,6 +127,13 @@
         ]
       },
       business,
+      {
+        '@type': 'Person',
+        '@id': base + '#rita',
+        name: 'Rita',
+        jobTitle: 'Founder and local guide',
+        worksFor: { '@id': base + '#business' }
+      },
       {
         '@type': 'FAQPage',
         '@id': pageUrl + '#faq',
@@ -176,21 +166,9 @@
           '@type': 'Offer',
           price: offer.priceValue,
           priceCurrency: offer.currency || 'EUR',
-          availability: 'https://schema.org/InStock',
-          url: pageUrl + '#tour-' + offer.id,
-          validFrom: '2026-01-01'
+          url: base + '/experiences/' + (offer.slug || offer.id) + '/'
         },
         provider: { '@id': base + '#business' }
-      });
-    });
-
-    reviews.slice(0, 3).forEach(function (item) {
-      graph.push({
-        '@type': 'Review',
-        author: { '@type': 'Person', name: item.name },
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        reviewBody: stripQuote(item.text),
-        itemReviewed: { '@id': base + '#business' }
       });
     });
 

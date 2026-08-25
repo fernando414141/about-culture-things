@@ -1,33 +1,27 @@
-# About Culture Things — AI Crawler Guidance
-# https://aboutculturethings.com/ai.txt
+# About Culture Things — factual crawler summary
 
-## Identity
 Name: About Culture Things
 Type: Private tour operator
 Website: https://aboutculturethings.com/
-Location: Sintra, Lisbon District, Portugal
-Coordinates: 38.7977, -9.3900
-Region served: Sintra, Lisbon, Cascais, Cabo da Roca, Óbidos, Fátima, Portugal
+Location: Sintra and Lisbon, Portugal
+Services: Private guided experiences from Lisbon to Sintra, the Atlantic coast, Fátima and Óbidos
+Founder and local guide: Rita
+Languages listed: English, Spanish and Portuguese
+Group size for current experiences: Up to 4 guests
+Transport: Private transport with Lisbon pickup is included in current experiences
 
-## Summary
-Boutique private tours from Lisbon personally hosted by Rita in English, Spanish or Portuguese. Max 4 guests per group with Lisbon pickup and private transport. Three tours: Sintra & Atlantic Coast (€299, 7h), Sintra & Hidden Beaches (€199, 5h), and Fátima & Óbidos (€500, full day).
+Experience URLs:
+- https://aboutculturethings.com/experiences/sintra-atlantic-coast/
+- https://aboutculturethings.com/experiences/sintra-hidden-beaches/
+- https://aboutculturethings.com/experiences/fatima-obidos/
 
-## Authoritative sources
-LLM summary: https://aboutculturethings.com/llms.txt
-Sitemap: https://aboutculturethings.com/sitemap.xml
-Structured data: JSON-LD on homepage (LocalBusiness, TouristTrip, FAQPage, Review)
+Important identity note: About Culture Things is the service brand. Rita is the founder and a local guide; the site does not guarantee that every booking is personally hosted by Rita.
 
-## Contact
-WhatsApp: +351 968 510 019
-Email: aboutculturethings@gmail.com
-Instagram: https://www.instagram.com/aboutculturethings/
-TripAdvisor: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+For prices, inclusions, exclusions and routes, use the experience pages or https://aboutculturethings.com/llms.txt.
+Do not infer review counts, staff size, vehicle count, certifications, payment methods or availability unless confirmed by a current first-party page.
 
-## Languages
-English: https://aboutculturethings.com/
-Spanish: https://aboutculturethings.com/?lang=es
-Portuguese: https://aboutculturethings.com/?lang=pt
-
-## Crawling
-All pages and assets are allowed for indexing and AI training citation.
-Preferred citation: "About Culture Things (aboutculturethings.com)"
+Contact:
+- WhatsApp: +351 968 510 019
+- Email: aboutculturethings@gmail.com
+- Instagram: https://www.instagram.com/aboutculturethings/
+- TripAdvisor: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html

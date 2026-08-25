@@ -160,6 +160,7 @@
       'faq5-a': faq5.answer,
       'footer-contact-aria': footer.contactAria,
       'cta-h2': c.finalCta && c.finalCta.title,
+      'cta-kicker': c.finalCta && c.finalCta.kicker,
       'cta-tagline': c.finalCta && c.finalCta.text,
       'cta-trust': c.finalCta && c.finalCta.trust,
       'foot-instagram': socialLabels.instagram,
@@ -169,6 +170,8 @@
       'foot-linkedin': socialLabels.linkedin,
       'foot-facebook': socialLabels.facebook,
       'foot-tiktok': socialLabels.tiktok
+      ,'footer-description': footer.description
+      ,'footer-location': footer.location
     };
   }
 
