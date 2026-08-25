@@ -137,12 +137,13 @@
       grid.innerHTML = items.map(function (item, index) {
         const ctaLabel = (c.ctas && (c.ctas[item.id] || c.ctas.offer)) || '';
         const imageStyle = item.imagePosition ? ' style="object-position:' + esc(item.imagePosition) + '"' : '';
+        const detailHref = 'experiences/' + esc(item.id) + '/';
         return '<article id="tour-' + esc(item.id) + '" class="offer-card reveal d' + ((index % 3) + 1) + '">' +
-          '<figure class="pc-img-wrap"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></figure>' +
+          '<a class="pc-img-wrap" href="' + detailHref + '" aria-label="' + esc(offers.detailsCta + ': ' + item.name) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.imageAlt || item.name) + '" loading="lazy" decoding="async" width="960" height="640"' + imageStyle + '></a>' +
           '<div class="tour-copy"><div class="pc-overline"><span>' + esc(item.badge || '') + '</span><span>' + esc(item.tag || '') + '</span></div>' +
-          '<h3 class="pc-name">' + esc(item.name) + '</h3><p class="pc-fit">' + esc(item.fit || '') + '</p>' +
-          '<dl class="tour-details"><div><dt>' + esc(offers.routeLabel) + '</dt><dd>' + esc(item.stops || '') + '</dd></div><div><dt>' + esc(offers.meetingLabel) + '</dt><dd>' + esc(item.meeting || '') + '</dd></div><div><dt>' + esc(offers.includesLabel) + '</dt><dd>' + esc(item.includes || '') + '</dd></div><div><dt>' + esc(offers.extrasLabel) + '</dt><dd>' + esc(item.extras || '') + '</dd></div></dl>' +
-          '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></article>';
+          '<h3 class="pc-name"><a href="' + detailHref + '">' + esc(item.name) + '</a></h3><p class="pc-fit">' + esc(item.fit || '') + '</p>' +
+          '<p class="tour-meeting"><span>' + esc(offers.meetingLabel) + '</span>' + esc(item.meeting || '') + '</p>' +
+          '<div class="tour-summary"><p class="pc-price-row"><span class="pc-price-label">' + esc(offers.directPrice) + '</span><span class="pc-price">' + esc(item.price) + '</span><span class="pc-per">' + esc(offers.perGroup) + '</span></p><div class="tour-actions"><a href="' + detailHref + '" class="tour-detail">' + esc(offers.detailsCta) + ' <span aria-hidden="true">→</span></a><a href="#" class="tour-enquire" target="_blank" rel="noopener noreferrer" data-site-wa="' + esc(waKey(item.id)) + '" data-analytics-label="' + esc(item.id) + '-book"><span>' + esc(ctaLabel) + '</span><span aria-hidden="true">↗</span></a></div></div></div></article>';
       }).join('');
     });
   }

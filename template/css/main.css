@@ -94,7 +94,7 @@ p{text-wrap:pretty}
 .tours-grid--van{grid-template-columns:repeat(3,minmax(0,1fr))}
 .tours-grid--walking{grid-template-columns:repeat(2,minmax(0,1fr))}
 .offer-card{display:flex;min-width:0;flex-direction:column}
-.pc-img-wrap{aspect-ratio:4/3;margin:0 0 1.45rem;overflow:hidden;background:var(--sand)}
+.pc-img-wrap{display:block;aspect-ratio:4/3;margin:0 0 1.45rem;overflow:hidden;background:var(--sand)}
 .pc-img-wrap img{display:block;width:100%;height:100%}
 .pc-img-wrap img{object-fit:cover;transition:transform .75s var(--ease)}
 .offer-card:hover .pc-img-wrap img{transform:scale(1.025)}
@@ -103,17 +103,18 @@ p{text-wrap:pretty}
 .pc-overline span:last-child{text-align:right}
 .pc-name{max-width:13ch;margin-bottom:.7rem;font:600 clamp(1.9rem,2.6vw,2.65rem)/.98 var(--serif);letter-spacing:-.025em}
 .tours-grid--walking .pc-name{max-width:18ch;font-size:clamp(2rem,3vw,3rem)}
-.pc-fit{min-height:5.2rem;margin-bottom:1.25rem;color:var(--soft);font-size:.82rem;line-height:1.6}
-.tour-details{margin:0 0 1.4rem;border-top:1px solid var(--line)}
-.tour-details>div{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;padding:.62rem 0;border-bottom:1px solid var(--line)}
-.tour-details dt{color:var(--soft);font-size:.58rem;letter-spacing:.055em;text-transform:uppercase}
-.tour-details dd{margin:0;font-size:.68rem;line-height:1.5}
+.pc-fit{min-height:4.4rem;margin-bottom:1rem;color:var(--soft);font-size:.82rem;line-height:1.6}
+.tour-meeting{display:grid;grid-template-columns:4.8rem 1fr;gap:.75rem;margin:0;padding:.72rem 0;border-block:1px solid var(--line);font-size:.69rem;line-height:1.45}
+.tour-meeting span{color:var(--soft);font-size:.58rem;letter-spacing:.055em;text-transform:uppercase}
 .tour-summary{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.85rem}
 .pc-price-row{display:grid;grid-template-columns:auto auto;align-items:baseline;column-gap:.35rem;margin:0}
 .pc-price-label{grid-column:1/-1;margin-bottom:.2rem;color:var(--soft);font-size:.57rem;letter-spacing:.055em;text-transform:uppercase}
 .pc-price{font:600 1.85rem/1 var(--serif)}
 .pc-per{max-width:6.5rem;color:var(--soft);font-size:.62rem;line-height:1.2}
-.tour-enquire{display:inline-flex;align-items:center;gap:.35rem;color:var(--forest);font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tour-actions{display:flex;align-items:flex-end;flex-direction:column;gap:.45rem}
+.tour-detail,.tour-enquire{display:inline-flex;align-items:center;gap:.35rem;color:var(--forest);font-size:.64rem;font-weight:600;letter-spacing:.055em;text-transform:uppercase;white-space:nowrap}
+.tour-detail{padding-bottom:.12rem;border-bottom:1px solid var(--line)}
+.tour-enquire{color:var(--soft);font-size:.58rem}
 .price-note{max-width:43rem;margin:2.5rem 0 0 auto;color:var(--soft);font-size:.68rem;text-align:right}
 
 /* Approach */

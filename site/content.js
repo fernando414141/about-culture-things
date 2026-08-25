@@ -98,7 +98,7 @@ const SITE_CONTENT = {
   },
   schema: {
     types: ['TravelAgency'],
-    priceRange: '€25–€75 per person',
+    priceRange: '€45–€179 per person',
     areaServed: ['Sintra', 'Lisbon', 'Cascais', 'Cabo da Roca', 'Óbidos', 'Nazaré', 'Fátima', 'Arrábida', 'Portugal'],
     knowsAbout: [
       'Small-group Sintra tours',
@@ -171,8 +171,8 @@ const SITE_CONTENT = {
       },
       hero: {
         kicker: 'Local tours from Sintra',
-        title: 'Five ways to know Portugal better.',
-        subtitle: 'Three road journeys in a nine-seat 2023 Mercedes-Benz Vito and two intimate walking tours—priced directly, per person.',
+        title: 'See Portugal in good company.',
+        subtitle: 'Three shared journeys by luxury van and two local walks, with clear routes and direct per-person prices.',
         secondaryCta: 'See tours',
         trust: '5.0 on TripAdvisor',
         trustAria: 'Read traveler reviews on TripAdvisor',
@@ -188,16 +188,16 @@ const SITE_CONTENT = {
         description: 'A thoughtfully sized shared tour offers the comfort and attention of a van journey without the scale or timetable of a coach.',
         aria: 'Why book About Culture Things',
         items: [
-          { title: 'A van, never a coach', text: 'Travel in a nine-seat Mercedes-Benz Vito luxury van, with an assigned seat for every traveller and no large-bus experience.', icon: 'plus' },
-          { title: 'Guide and driver', text: 'Separate professionals keep the journey safe and the stories flowing, without asking one person to do both jobs.', icon: 'pin' },
+          { title: 'A van, never a coach', text: 'Travel in a nine-seat 2023 Mercedes-Benz Vito luxury van, with an assigned seat and no large-bus experience.', icon: 'plus' },
+          { title: 'One professional host', text: 'A local driver-guide keeps the day smooth, safe and full of context from the first stop to the last.', icon: 'pin' },
           { title: 'Local decisions', text: 'Context, practical choices and quieter corners turn a list of landmarks into a day that makes sense.', icon: 'bag' }
         ]
       },
       story: {
         kicker: '',
         title: 'Planned locally. Hosted with care.',
-        text: 'Our team brings together local knowledge, a dedicated driver and comfortable shared transport. The route is planned; the experience still feels personal.',
-        signature: 'Based in Sintra · Guiding from Lisbon',
+        text: 'Every route starts with local knowledge and realistic timing. Van journeys include the hidden work from our base in Algueirão–Mem Martins, while walking tours begin where the story does.',
+        signature: 'Based in Algueirão–Mem Martins, Sintra',
         imageAlt: 'Guests overlooking the Atlantic coast near Sintra'
       },
       offers: {
@@ -206,7 +206,7 @@ const SITE_CONTENT = {
         description: 'A clear route, meeting point and direct per-person price for every tour.',
         vanKicker: 'By Mercedes-Benz Vito',
         vanTitle: 'Small-group day tours',
-        vanDescription: 'Up to 8 guests in a 2023 Mercedes-Benz Vito, with air conditioning and one central meeting point.',
+        vanDescription: 'A shared luxury van—not a bus—with air conditioning, assigned seats and a professional driver-guide.',
         walkingKicker: 'On foot with a local guide',
         walkingTitle: 'Walking tours',
         walkingDescription: 'Meet the guide in Sintra or Lisbon. No transport is needed.',
@@ -219,6 +219,7 @@ const SITE_CONTENT = {
         currencyUnavailable: 'Conversion unavailable. Payment is charged in EUR.',
         perGroup: 'per person',
         directPrice: 'Direct price',
+        detailsCta: 'Tour details',
         routeLabel: 'Route',
         meetingLabel: 'Meet at',
         includesLabel: 'Included',
@@ -227,13 +228,13 @@ const SITE_CONTENT = {
           {
             id: 'sintra-coast', kind: 'van', badge: 'Best seller',
             name: 'Sintra, Pena, Cabo da Roca & Cascais',
-            tag: 'Full day · 7.5 hours · Up to 8 guests',
+            tag: '7.5 hours · Departs from 4 guests',
             stops: 'Sintra Station · Pena · Historic Sintra · Cabo da Roca · Cascais',
             fit: 'The essential first visit: palaces, forest, Europe’s western edge and the Atlantic coast in one well-paced day.',
             meeting: 'Sintra Train Station',
             includes: 'Local driver-guide, Mercedes-Benz Vito, bottled water and insurance',
             extras: 'Palace tickets and lunch',
-            price: '€69', priceValue: '69',
+            price: '€119', priceValue: '119',
             currency: 'EUR',
             places: 'Sintra Train Station · Pena Palace · Sintra Historic Centre · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp',
@@ -242,13 +243,13 @@ const SITE_CONTENT = {
           {
             id: 'fatima-nazare-obidos', kind: 'van', badge: 'Most popular northbound day',
             name: 'Fátima, Batalha, Nazaré & Óbidos',
-            tag: 'Full day · 9 hours · Up to 8 guests',
+            tag: '9 hours · Departs from 5 guests',
             stops: 'Fátima · Batalha · Nazaré · Óbidos',
             fit: 'Faith, Gothic heritage, Atlantic views and a medieval walled village—the strongest four-stop route north of Lisbon.',
             meeting: 'Restauradores Square, Lisbon',
             includes: 'Local driver-guide, Mercedes-Benz Vito, bottled water, ginjinha and insurance',
             extras: 'Monument tickets and lunch',
-            price: '€75', priceValue: '75',
+            price: '€179', priceValue: '179',
             currency: 'EUR',
             places: 'Restauradores Square · Fátima Sanctuary · Batalha Monastery · Nazaré · Óbidos',
             image: 'site/images/tour-fatima-obidos-736.webp',
@@ -258,13 +259,13 @@ const SITE_CONTENT = {
           {
             id: 'arrabida-wine', kind: 'van', badge: 'Premium food & wine',
             name: 'Arrábida, Azeitão & Two Wineries',
-            tag: 'Full day · 8 hours · Up to 8 guests',
+            tag: '8 hours · Departs from 5 guests',
             stops: 'Palmela · Azeitão · Arrábida · Sesimbra',
             fit: 'Two contrasting wine producers, mountain panoramas and a relaxed coastal lunch stop south of Lisbon.',
             meeting: 'Restauradores Square, Lisbon',
             includes: 'Local driver-guide, Mercedes-Benz Vito, two winery visits with tastings and insurance',
             extras: 'Lunch',
-            price: '€75', priceValue: '75',
+            price: '€169', priceValue: '169',
             currency: 'EUR',
             places: 'Restauradores Square · Palmela · Azeitão · Arrábida Natural Park · Sesimbra',
             image: 'site/images/tour-arrabida-wine-960.webp',
@@ -273,13 +274,13 @@ const SITE_CONTENT = {
           {
             id: 'sintra-walk', kind: 'walking', badge: 'Local favourite',
             name: 'Sintra Stories, Old Town & Forest',
-            tag: 'Walking tour · 3 hours · Up to 10 guests',
+            tag: '3 hours · Departs from 5 guests',
             stops: 'Sintra Station · Volta do Duche · Old Town · Seteais viewpoint',
             fit: 'A story-led introduction to Sintra through the old town, hidden lanes and the forest paths most visitors miss.',
             meeting: 'Sintra Train Station',
             includes: 'Local guide and one traditional pastry tasting',
             extras: 'Monument tickets',
-            price: '€32', priceValue: '32', currency: 'EUR',
+            price: '€45', priceValue: '45', currency: 'EUR',
             places: 'Sintra Train Station · Volta do Duche · Sintra Historic Centre · Seteais viewpoint',
             image: 'site/images/tour-sintra-walk-960.webp',
             imageAlt: 'Small guided walking group on a forest path in Sintra'
@@ -287,13 +288,13 @@ const SITE_CONTENT = {
           {
             id: 'lisbon-walk', kind: 'walking', badge: 'Perfect first morning',
             name: 'Lisbon Essentials: Baixa, Chiado & Alfama',
-            tag: 'Walking tour · 3 hours · Up to 12 guests',
+            tag: '3 hours · Departs from 5 guests',
             stops: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
             fit: 'A compact, lively introduction to Lisbon’s history, viewpoints, tiled streets and oldest neighbourhood.',
             meeting: 'Rossio Square, by the statue',
             includes: 'Local guide and one pastel de nata',
             extras: 'Transport and additional food or drinks',
-            price: '€25', priceValue: '25', currency: 'EUR',
+            price: '€49', priceValue: '49', currency: 'EUR',
             places: 'Rossio Square · Baixa · Chiado · Alfama · Portas do Sol',
             image: 'site/images/tour-lisbon-walk-960.webp',
             imageAlt: 'Local guide with a small walking group in historic Alfama, Lisbon'
@@ -326,7 +327,7 @@ const SITE_CONTENT = {
         title: 'Good to know.',
         items: [
           { question: 'What\'s included?', answer: 'Every tour includes a local guide and insurance. Van tours also include transport in a nine-seat Mercedes-Benz Vito and bottled water; the Arrábida tour includes two winery visits with tastings. Each product states any extras clearly.' },
-          { question: 'How do departures work?', answer: 'Prices are per person. Van tours run with up to 8 guests and walking tours with up to 10 or 12. Shared departures are subject to minimum numbers; we confirm the departure and exact meeting instructions when you book.' },
+          { question: 'How do departures work?', answer: 'Prices are per person. Sintra by van departs from 4 guests; the other tours depart from 5. Every traveller has an assigned legal seat, and larger parties can be served with additional vehicles by prior arrangement.' },
           { question: 'What\'s the cancellation policy?', answer: 'Free cancellation with 24 hours\' notice.' },
           { question: 'Where do we meet?', answer: 'Sintra tours meet at Sintra Train Station. Lisbon, Fátima and Arrábida tours use the central meeting point shown on each product. We send a map pin with your confirmation.' },
           { question: 'Can the route change?', answer: 'The shared itinerary is fixed so every traveller knows what to expect. The guide may adjust timing for traffic, weather and conditions on the day.' },
@@ -386,8 +387,8 @@ const SITE_CONTENT = {
       },
       hero: {
         kicker: 'Tours locales desde Sintra',
-        title: 'Cinco formas de conocer mejor Portugal.',
-        subtitle: 'Tres rutas en una Mercedes-Benz Vito 2023 de nueve plazas y dos walking tours íntimos, con precio directo por persona.',
+        title: 'Portugal, en buena compañía.',
+        subtitle: 'Tres rutas compartidas en van de lujo y dos paseos locales, con itinerarios claros y precios directos por persona.',
         secondaryCta: 'Ver tours',
         trust: '5.0 en TripAdvisor',
         trustAria: 'Leer reseñas en TripAdvisor',
@@ -403,16 +404,16 @@ const SITE_CONTENT = {
         description: 'Un tour compartido bien dimensionado ofrece la comodidad y atención de una van sin la escala ni los horarios de un autobús.',
         aria: 'Por qué reservar con About Culture Things',
         items: [
-          { title: 'Una van, nunca un autobús', text: 'Viajen en una Mercedes-Benz Vito de lujo de nueve asientos, con una plaza asignada para cada viajero.', icon: 'plus' },
-          { title: 'Guía y conductor', text: 'Profesionales separados mantienen el viaje seguro y las historias presentes, sin pedir a una sola persona que haga ambas tareas.', icon: 'pin' },
+          { title: 'Una van, nunca un autobús', text: 'Viajen en una Mercedes-Benz Vito 2023 de lujo y nueve asientos, con una plaza asignada para cada viajero.', icon: 'plus' },
+          { title: 'Un anfitrión profesional', text: 'Un guía-conductor local mantiene el día fluido, seguro y lleno de contexto de principio a fin.', icon: 'pin' },
           { title: 'Decisiones locales', text: 'El contexto, las decisiones prácticas y los rincones tranquilos convierten una lista de lugares en un día con sentido.', icon: 'bag' }
         ]
       },
       story: {
         kicker: '',
         title: 'Planificado aquí. Cuidado en cada detalle.',
-        text: 'Nuestro equipo combina conocimiento local, un conductor dedicado y transporte compartido confortable. La ruta está planificada; la experiencia sigue siendo cercana.',
-        signature: 'En Sintra · Guiando desde Lisboa',
+        text: 'Cada ruta nace del conocimiento local y de tiempos realistas. Los tours en van contemplan el trayecto desde nuestra base en Algueirão–Mem Martins; los paseos empiezan donde comienza la historia.',
+        signature: 'Con base en Algueirão–Mem Martins, Sintra',
         imageAlt: 'Viajeras frente a la costa atlántica cerca de Sintra'
       },
       offers: {
@@ -420,7 +421,7 @@ const SITE_CONTENT = {
         title: 'Elige cómo quieres explorar.',
         description: 'Ruta, punto de encuentro y precio directo por persona claramente indicados.',
         vanKicker: 'En Mercedes-Benz Vito', vanTitle: 'Tours de día en grupo pequeño',
-        vanDescription: 'Hasta 8 viajeros en una Mercedes-Benz Vito 2023, con aire acondicionado y un punto de encuentro céntrico.',
+        vanDescription: 'Una van de lujo compartida —no un autobús— con aire acondicionado, plazas asignadas y guía-conductor profesional.',
         walkingKicker: 'A pie con guía local', walkingTitle: 'Walking tours',
         walkingDescription: 'Encuentro con el guía en Sintra o Lisboa. No se necesita transporte.',
         trustAria: 'Qué incluye cada tour',
@@ -431,55 +432,55 @@ const SITE_CONTENT = {
         currencyApprox: 'Conversión aproximada. El pago siempre se realiza en EUR.',
         currencyUnavailable: 'Conversión no disponible. El pago se realiza en EUR.',
         perGroup: 'por persona',
-        directPrice: 'Precio directo', routeLabel: 'Ruta', meetingLabel: 'Encuentro',
+        directPrice: 'Precio directo', detailsCta: 'Ver tour', routeLabel: 'Ruta', meetingLabel: 'Encuentro',
         includesLabel: 'Incluye', extrasLabel: 'No incluye',
         items: [
           {
             id: 'sintra-coast', kind: 'van', badge: 'Más vendido',
-            name: 'Sintra, Pena, Cabo da Roca & Cascais', tag: 'Día completo · 7,5 horas · Hasta 8 viajeros',
+            name: 'Sintra, Pena, Cabo da Roca & Cascais', tag: '7,5 horas · Sale desde 4 viajeros',
             stops: 'Estación de Sintra · Pena · Sintra histórica · Cabo da Roca · Cascais',
             fit: 'La primera visita esencial: palacios, bosque, el extremo occidental de Europa y la costa atlántica en un día bien organizado.',
             meeting: 'Estación de tren de Sintra', includes: 'Guía-conductor local, Mercedes-Benz Vito, agua y seguro',
-            extras: 'Entradas a palacios y almuerzo', price: '€69', priceValue: '69', currency: 'EUR',
+            extras: 'Entradas a palacios y almuerzo', price: '€119', priceValue: '119', currency: 'EUR',
             places: 'Estación de Sintra · Palacio da Pena · Centro histórico de Sintra · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp', imageAlt: 'Cabo da Roca en el tour de Sintra y Cascais'
           },
           {
             id: 'fatima-nazare-obidos', kind: 'van', badge: 'La ruta norte más popular',
-            name: 'Fátima, Batalha, Nazaré & Óbidos', tag: 'Día completo · 9 horas · Hasta 8 viajeros',
+            name: 'Fátima, Batalha, Nazaré & Óbidos', tag: '9 horas · Sale desde 5 viajeros',
             stops: 'Fátima · Batalha · Nazaré · Óbidos',
             fit: 'Fe, patrimonio gótico, vistas atlánticas y una villa medieval amurallada en la ruta más completa al norte de Lisboa.',
             meeting: 'Plaza de Restauradores, Lisboa', includes: 'Guía-conductor local, Mercedes-Benz Vito, agua, ginjinha y seguro',
-            extras: 'Entradas a monumentos y almuerzo', price: '€75', priceValue: '75', currency: 'EUR',
+            extras: 'Entradas a monumentos y almuerzo', price: '€179', priceValue: '179', currency: 'EUR',
             places: 'Restauradores · Santuario de Fátima · Monasterio de Batalha · Nazaré · Óbidos',
             image: 'site/images/tour-fatima-obidos-736.webp', imageAlt: 'Basílica de Nuestra Señora del Rosario en Fátima', imagePosition: 'center 38%'
           },
           {
             id: 'arrabida-wine', kind: 'van', badge: 'Gastronomía y vino',
-            name: 'Arrábida, Azeitão & Dos Bodegas', tag: 'Día completo · 8 horas · Hasta 8 viajeros',
+            name: 'Arrábida, Azeitão & Dos Bodegas', tag: '8 horas · Sale desde 5 viajeros',
             stops: 'Palmela · Azeitão · Arrábida · Sesimbra',
             fit: 'Dos productores de vino muy diferentes, panorámicas de montaña y una parada relajada para almorzar junto al mar.',
             meeting: 'Plaza de Restauradores, Lisboa', includes: 'Guía-conductor local, Mercedes-Benz Vito, dos visitas con catas y seguro',
-            extras: 'Almuerzo', price: '€75', priceValue: '75', currency: 'EUR',
+            extras: 'Almuerzo', price: '€169', priceValue: '169', currency: 'EUR',
             places: 'Restauradores · Palmela · Azeitão · Parque Natural de Arrábida · Sesimbra',
             image: 'site/images/tour-arrabida-wine-960.webp', imageAlt: 'Grupo pequeño en un viñedo de la región de Arrábida'
           },
           {
             id: 'sintra-walk', kind: 'walking', badge: 'Favorito local',
-            name: 'Historias de Sintra, Casco Antiguo & Bosque', tag: 'Walking tour · 3 horas · Hasta 10 viajeros',
+            name: 'Historias de Sintra, Casco Antiguo & Bosque', tag: '3 horas · Sale desde 5 viajeros',
             stops: 'Estación de Sintra · Volta do Duche · Casco antiguo · Mirador de Seteais',
             fit: 'Una introducción a Sintra a través de sus historias, callejuelas y senderos de bosque que muchos visitantes no llegan a ver.',
             meeting: 'Estación de tren de Sintra', includes: 'Guía local y degustación de un dulce tradicional', extras: 'Entradas a monumentos',
-            price: '€32', priceValue: '32', currency: 'EUR', places: 'Estación de Sintra · Volta do Duche · Centro histórico · Mirador de Seteais',
+            price: '€45', priceValue: '45', currency: 'EUR', places: 'Estación de Sintra · Volta do Duche · Centro histórico · Mirador de Seteais',
             image: 'site/images/tour-sintra-walk-960.webp', imageAlt: 'Grupo pequeño caminando por un sendero de bosque en Sintra'
           },
           {
             id: 'lisbon-walk', kind: 'walking', badge: 'Perfecto para la primera mañana',
-            name: 'Lisboa Esencial: Baixa, Chiado & Alfama', tag: 'Walking tour · 3 horas · Hasta 12 viajeros',
+            name: 'Lisboa Esencial: Baixa, Chiado & Alfama', tag: '3 horas · Sale desde 5 viajeros',
             stops: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
             fit: 'Una introducción dinámica a la historia, miradores, azulejos y el barrio más antiguo de Lisboa.',
             meeting: 'Plaza de Rossio, junto a la estatua', includes: 'Guía local y un pastel de nata', extras: 'Transporte y otras comidas o bebidas',
-            price: '€25', priceValue: '25', currency: 'EUR', places: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
+            price: '€49', priceValue: '49', currency: 'EUR', places: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
             image: 'site/images/tour-lisbon-walk-960.webp', imageAlt: 'Guía local con un grupo pequeño en la histórica Alfama'
           }
         ]
@@ -510,7 +511,7 @@ const SITE_CONTENT = {
         title: 'Conviene saberlo.',
         items: [
           { question: '¿Qué incluye?', answer: 'Todos los tours incluyen guía local y seguro. Los tours en van incluyen una Mercedes-Benz Vito de nueve plazas y agua; Arrábida incluye dos visitas a bodegas con catas. Cada producto indica claramente los extras.' },
-          { question: '¿Cómo funcionan las salidas?', answer: 'Los precios son por persona. Los tours en van admiten hasta 8 viajeros y los walking tours hasta 10 o 12. Las salidas están sujetas a un mínimo de participantes y se confirman al reservar.' },
+          { question: '¿Cómo funcionan las salidas?', answer: 'Los precios son por persona. Sintra en van sale desde 4 viajeros; los demás tours, desde 5. Cada viajero tiene una plaza legal asignada y los grupos mayores pueden atenderse con vehículos adicionales previa coordinación.' },
           { question: '¿Cuál es la política de cancelación?', answer: 'Cancelación gratuita con 24 horas de antelación.' },
           { question: '¿Dónde nos encontramos?', answer: 'Los tours de Sintra se encuentran en la estación de tren de Sintra. Los de Lisboa, Fátima y Arrábida usan el punto céntrico indicado en cada producto. Enviamos el pin al confirmar.' },
           { question: '¿Puede cambiar la ruta?', answer: 'El itinerario compartido está definido para que todos sepan qué esperar. El guía puede ajustar tiempos por tráfico, clima o condiciones del día.' },
@@ -570,8 +571,8 @@ const SITE_CONTENT = {
       },
       hero: {
         kicker: 'Tours locais a partir de Sintra',
-        title: 'Cinco formas de conhecer melhor Portugal.',
-        subtitle: 'Três rotas numa Mercedes-Benz Vito 2023 de nove lugares e dois walking tours intimistas, com preço direto por pessoa.',
+        title: 'Portugal, em boa companhia.',
+        subtitle: 'Três viagens partilhadas em van de luxo e dois passeios locais, com rotas claras e preços diretos por pessoa.',
         secondaryCta: 'Ver tours',
         trust: '5.0 no TripAdvisor',
         trustAria: 'Ler avaliações no TripAdvisor',
@@ -587,16 +588,16 @@ const SITE_CONTENT = {
         description: 'Um tour partilhado bem dimensionado oferece o conforto e a atenção de uma van sem a escala nem os horários de um autocarro.',
         aria: 'Porquê reservar com About Culture Things',
         items: [
-          { title: 'Uma van, nunca um autocarro', text: 'Viajem numa Mercedes-Benz Vito de luxo de nove lugares, com um lugar atribuído a cada viajante.', icon: 'plus' },
-          { title: 'Guia e motorista', text: 'Profissionais separados mantêm a viagem segura e as histórias presentes, sem pedir a uma só pessoa que faça ambas as funções.', icon: 'pin' },
+          { title: 'Uma van, nunca um autocarro', text: 'Viajem numa Mercedes-Benz Vito 2023 de luxo e nove lugares, com um lugar atribuído a cada viajante.', icon: 'plus' },
+          { title: 'Um anfitrião profissional', text: 'Um guia-motorista local mantém o dia fluido, seguro e cheio de contexto do primeiro ao último ponto.', icon: 'pin' },
           { title: 'Decisões locais', text: 'O contexto, as escolhas práticas e os recantos tranquilos transformam uma lista de lugares num dia com sentido.', icon: 'bag' }
         ]
       },
       story: {
         kicker: '',
         title: 'Planeado aqui. Cuidado em cada detalhe.',
-        text: 'A nossa equipa combina conhecimento local, um motorista dedicado e transporte partilhado confortável. A rota é planeada; a experiência continua próxima.',
-        signature: 'Em Sintra · A guiar a partir de Lisboa',
+        text: 'Cada rota nasce do conhecimento local e de tempos realistas. Os tours em van incluem a deslocação desde a nossa base em Algueirão–Mem Martins; os passeios começam onde a história acontece.',
+        signature: 'Com base em Algueirão–Mem Martins, Sintra',
         imageAlt: 'Viajantes junto à costa atlântica perto de Sintra'
       },
       offers: {
@@ -604,7 +605,7 @@ const SITE_CONTENT = {
         title: 'Escolhe como queres explorar.',
         description: 'Rota, ponto de encontro e preço direto por pessoa claramente indicados.',
         vanKicker: 'Em Mercedes-Benz Vito', vanTitle: 'Tours de dia em grupo pequeno',
-        vanDescription: 'Até 8 viajantes numa Mercedes-Benz Vito 2023, com ar condicionado e um ponto de encontro central.',
+        vanDescription: 'Uma van de luxo partilhada —não um autocarro— com ar condicionado, lugares atribuídos e guia-motorista profissional.',
         walkingKicker: 'A pé com guia local', walkingTitle: 'Walking tours',
         walkingDescription: 'Encontro com o guia em Sintra ou Lisboa. Não é necessário transporte.',
         trustAria: 'O que cada tour inclui',
@@ -615,55 +616,55 @@ const SITE_CONTENT = {
         currencyApprox: 'Conversão aproximada. O pagamento é sempre cobrado em EUR.',
         currencyUnavailable: 'Conversão indisponível. O pagamento é cobrado em EUR.',
         perGroup: 'por pessoa',
-        directPrice: 'Preço direto', routeLabel: 'Rota', meetingLabel: 'Encontro',
+        directPrice: 'Preço direto', detailsCta: 'Ver tour', routeLabel: 'Rota', meetingLabel: 'Encontro',
         includesLabel: 'Inclui', extrasLabel: 'Não inclui',
         items: [
           {
             id: 'sintra-coast', kind: 'van', badge: 'Mais vendido',
-            name: 'Sintra, Pena, Cabo da Roca & Cascais', tag: 'Dia inteiro · 7,5 horas · Até 8 viajantes',
+            name: 'Sintra, Pena, Cabo da Roca & Cascais', tag: '7,5 horas · Parte com 4 viajantes',
             stops: 'Estação de Sintra · Pena · Sintra histórica · Cabo da Roca · Cascais',
             fit: 'A primeira visita essencial: palácios, floresta, o ponto mais ocidental da Europa e a costa atlântica num dia bem organizado.',
             meeting: 'Estação de comboios de Sintra', includes: 'Guia-motorista local, Mercedes-Benz Vito, água e seguro',
-            extras: 'Bilhetes para palácios e almoço', price: '€69', priceValue: '69', currency: 'EUR',
+            extras: 'Bilhetes para palácios e almoço', price: '€119', priceValue: '119', currency: 'EUR',
             places: 'Estação de Sintra · Palácio da Pena · Centro histórico de Sintra · Cabo da Roca · Cascais',
             image: 'site/images/tour-full-sintra-coast-640.webp', imageAlt: 'Cabo da Roca no tour de Sintra e Cascais'
           },
           {
             id: 'fatima-nazare-obidos', kind: 'van', badge: 'A rota norte mais popular',
-            name: 'Fátima, Batalha, Nazaré & Óbidos', tag: 'Dia inteiro · 9 horas · Até 8 viajantes',
+            name: 'Fátima, Batalha, Nazaré & Óbidos', tag: '9 horas · Parte com 5 viajantes',
             stops: 'Fátima · Batalha · Nazaré · Óbidos',
             fit: 'Fé, património gótico, vistas atlânticas e uma vila medieval amuralhada na rota mais completa a norte de Lisboa.',
             meeting: 'Praça dos Restauradores, Lisboa', includes: 'Guia-motorista local, Mercedes-Benz Vito, água, ginjinha e seguro',
-            extras: 'Bilhetes para monumentos e almoço', price: '€75', priceValue: '75', currency: 'EUR',
+            extras: 'Bilhetes para monumentos e almoço', price: '€179', priceValue: '179', currency: 'EUR',
             places: 'Restauradores · Santuário de Fátima · Mosteiro da Batalha · Nazaré · Óbidos',
             image: 'site/images/tour-fatima-obidos-736.webp', imageAlt: 'Basílica de Nossa Senhora do Rosário em Fátima', imagePosition: 'center 38%'
           },
           {
             id: 'arrabida-wine', kind: 'van', badge: 'Gastronomia e vinho',
-            name: 'Arrábida, Azeitão & Duas Adegas', tag: 'Dia inteiro · 8 horas · Até 8 viajantes',
+            name: 'Arrábida, Azeitão & Duas Adegas', tag: '8 horas · Parte com 5 viajantes',
             stops: 'Palmela · Azeitão · Arrábida · Sesimbra',
             fit: 'Dois produtores de vinho distintos, panoramas de montanha e uma pausa relaxada para almoço junto ao mar.',
             meeting: 'Praça dos Restauradores, Lisboa', includes: 'Guia-motorista local, Mercedes-Benz Vito, duas visitas com provas e seguro',
-            extras: 'Almoço', price: '€75', priceValue: '75', currency: 'EUR',
+            extras: 'Almoço', price: '€169', priceValue: '169', currency: 'EUR',
             places: 'Restauradores · Palmela · Azeitão · Parque Natural da Arrábida · Sesimbra',
             image: 'site/images/tour-arrabida-wine-960.webp', imageAlt: 'Grupo pequeno numa vinha da região da Arrábida'
           },
           {
             id: 'sintra-walk', kind: 'walking', badge: 'Favorito local',
-            name: 'Histórias de Sintra, Vila Velha & Floresta', tag: 'Walking tour · 3 horas · Até 10 viajantes',
+            name: 'Histórias de Sintra, Vila Velha & Floresta', tag: '3 horas · Parte com 5 viajantes',
             stops: 'Estação de Sintra · Volta do Duche · Vila Velha · Miradouro de Seteais',
             fit: 'Uma introdução a Sintra através das suas histórias, vielas e caminhos de floresta que muitos visitantes não chegam a ver.',
             meeting: 'Estação de comboios de Sintra', includes: 'Guia local e prova de um doce tradicional', extras: 'Bilhetes para monumentos',
-            price: '€32', priceValue: '32', currency: 'EUR', places: 'Estação de Sintra · Volta do Duche · Centro histórico · Miradouro de Seteais',
+            price: '€45', priceValue: '45', currency: 'EUR', places: 'Estação de Sintra · Volta do Duche · Centro histórico · Miradouro de Seteais',
             image: 'site/images/tour-sintra-walk-960.webp', imageAlt: 'Grupo pequeno a caminhar num trilho de floresta em Sintra'
           },
           {
             id: 'lisbon-walk', kind: 'walking', badge: 'Perfeito para a primeira manhã',
-            name: 'Lisboa Essencial: Baixa, Chiado & Alfama', tag: 'Walking tour · 3 horas · Até 12 viajantes',
+            name: 'Lisboa Essencial: Baixa, Chiado & Alfama', tag: '3 horas · Parte com 5 viajantes',
             stops: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
             fit: 'Uma introdução dinâmica à história, miradouros, azulejos e ao bairro mais antigo de Lisboa.',
             meeting: 'Praça do Rossio, junto à estátua', includes: 'Guia local e um pastel de nata', extras: 'Transporte e outras comidas ou bebidas',
-            price: '€25', priceValue: '25', currency: 'EUR', places: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
+            price: '€49', priceValue: '49', currency: 'EUR', places: 'Rossio · Baixa · Chiado · Alfama · Portas do Sol',
             image: 'site/images/tour-lisbon-walk-960.webp', imageAlt: 'Guia local com um pequeno grupo na histórica Alfama'
           }
         ]
@@ -694,7 +695,7 @@ const SITE_CONTENT = {
         title: 'É bom saber.',
         items: [
           { question: 'O que está incluído?', answer: 'Todos os tours incluem guia local e seguro. Os tours em van incluem uma Mercedes-Benz Vito de nove lugares e água; a Arrábida inclui duas visitas a adegas com provas. Cada produto indica claramente os extras.' },
-          { question: 'Como funcionam as saídas?', answer: 'Os preços são por pessoa. Os tours em van levam até 8 viajantes e os walking tours até 10 ou 12. As saídas estão sujeitas a um número mínimo e são confirmadas na reserva.' },
+          { question: 'Como funcionam as saídas?', answer: 'Os preços são por pessoa. Sintra em van parte com 4 viajantes; os restantes tours partem com 5. Cada viajante tem um lugar legal atribuído e grupos maiores podem ser servidos com veículos adicionais mediante combinação.' },
           { question: 'Qual é a política de cancelamento?', answer: 'Cancelamento gratuito com 24 horas de antecedência.' },
           { question: 'Onde nos encontramos?', answer: 'Os tours de Sintra encontram-se na estação de comboios de Sintra. Lisboa, Fátima e Arrábida usam o ponto central indicado em cada produto. Enviamos o pin na confirmação.' },
           { question: 'A rota pode mudar?', answer: 'O itinerário partilhado está definido para que todos saibam o que esperar. O guia pode ajustar horários devido ao trânsito, tempo ou condições do dia.' },

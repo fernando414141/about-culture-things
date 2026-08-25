@@ -12,17 +12,17 @@
 
 ## Current tours
 
-- Sintra, Pena, Cabo da Roca & Cascais — van tour, 7.5 hours, €69/person; meet at Sintra Train Station.
-- Fátima, Batalha, Nazaré & Óbidos — van tour, 9 hours, €75/person; meet at Restauradores Square, Lisbon.
-- Arrábida, Azeitão & Two Wineries — van tour, 8 hours, €75/person; meet at Restauradores Square, Lisbon; two winery visits with tastings included.
-- Sintra Stories, Old Town & Forest — walking tour, 3 hours, €32/person; meet at Sintra Train Station.
-- Lisbon Essentials: Baixa, Chiado & Alfama — walking tour, 3 hours, €25/person; meet at Rossio Square.
+- Sintra, Pena, Cabo da Roca & Cascais — van tour, 7.5 hours, €119/person; departs from 4 guests; meet at Sintra Train Station.
+- Fátima, Batalha, Nazaré & Óbidos — van tour, 9 hours, €179/person; departs from 5 guests; meet at Restauradores Square, Lisbon.
+- Arrábida, Azeitão & Two Wineries — van tour, 8 hours, €169/person; departs from 5 guests; two winery visits with tastings included.
+- Sintra Stories, Old Town & Forest — walking tour, 3 hours, €45/person; departs from 5 guests; meet at Sintra Train Station.
+- Lisbon Essentials: Baixa, Chiado & Alfama — walking tour, 3 hours, €49/person; departs from 5 guests; meet at Rossio Square.
 
 ## Booking facts
 
-- Van tours use a nine-seat 2023 Mercedes-Benz Vito and accept up to 8 guests.
-- Walking tours accept up to 10 or 12 guests as stated on each product.
-- Shared departures are subject to minimum numbers.
+- Van tours use a nine-seat 2023 Mercedes-Benz Vito luxury van; this is not a bus.
+- Every traveller receives a legal assigned seat; larger parties can use additional vehicles by arrangement.
+- Shared departures are subject to the minimum shown on each tour.
 - Monument tickets and meals are included only when explicitly stated.
 - Free cancellation with 24 hours’ notice is stated on the website.
 - Availability and exact meeting instructions are confirmed directly.
@@ -30,6 +30,7 @@
 ## Authoritative URLs
 
 - Website and tours: https://aboutculturethings.com/#tours
+- Individual tour pages: https://aboutculturethings.com/experiences/sintra-coast/ and the other URLs in the sitemap
 - FAQ: https://aboutculturethings.com/#faq
 - Sitemap: https://aboutculturethings.com/sitemap.xml
 - Instagram: https://www.instagram.com/aboutculturethings/
