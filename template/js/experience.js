@@ -1,97 +1,25 @@
-(function () {
-  const tours = {
-    'sintra-coast': {
-      type: 'Shared luxury-van day tour', name: 'Sintra, Pena, Cabo da Roca & Cascais',
-      deck: 'Palaces, forest and Atlantic coast in one unhurried route from Sintra.',
-      duration: '7.5 hours', minimum: 'Departs from 4 guests', meeting: 'Sintra Train Station', price: '€119',
-      image: '../../site/images/tour-full-sintra-coast-640.webp', position: 'center',
-      intro: 'A complete first day in Sintra without turning it into a checklist. The route connects Pena, the historic centre, Cabo da Roca and Cascais in a shared 2023 Mercedes-Benz Vito luxury van—not a bus.',
-      fit: 'Best for first-time visitors who want the palace landscape and Atlantic coast in one day.',
-      route: ['Meet at Sintra Train Station', 'Pena area and guided local context', 'Historic Sintra and time for lunch', 'Cabo da Roca Atlantic viewpoint', 'Coastal drive and Cascais'],
-      included: ['Professional local driver-guide', 'Mercedes-Benz Vito transport', 'Bottled water', 'Required passenger insurance'],
-      excluded: ['Palace tickets', 'Lunch and personal expenses'],
-      message: "Hello! I'm interested in the Sintra, Pena, Cabo da Roca & Cascais tour. Could you check my dates and number of travellers?"
-    },
-    'fatima-nazare-obidos': {
-      type: 'Shared luxury-van day tour', name: 'Fátima, Batalha, Nazaré & Óbidos',
-      deck: 'Faith, Gothic heritage, Atlantic views and a medieval village in one northbound day.',
-      duration: '9 hours', minimum: 'Departs from 5 guests', meeting: 'Restauradores Square, Lisbon', price: '€179',
-      image: '../../site/images/tour-fatima-obidos-736.webp', position: 'center 38%',
-      intro: 'A carefully timed route through four distinct places north of Lisbon. The direct rate includes the real positioning and operating time from our Sintra base, so the day remains sustainable without marketplace mark-ups.',
-      fit: 'Best for travellers who want cultural range and are comfortable with a full day on the road.',
-      route: ['Meet at Restauradores Square', 'Fátima Sanctuary', 'Batalha Monastery exterior and context', 'Nazaré Atlantic viewpoint and lunch time', 'Óbidos walls, lanes and ginjinha'],
-      included: ['Professional local driver-guide', 'Mercedes-Benz Vito transport', 'Bottled water and ginjinha', 'Required passenger insurance'],
-      excluded: ['Monument tickets', 'Lunch and personal expenses'],
-      message: "Hello! I'm interested in the Fátima, Batalha, Nazaré & Óbidos tour. Could you check my dates and number of travellers?"
-    },
-    'arrabida-wine': {
-      type: 'Shared luxury-van wine tour', name: 'Arrábida, Azeitão & Two Wineries',
-      deck: 'Two wine producers, mountain panoramas and a relaxed coastal pause south of Lisbon.',
-      duration: '8 hours', minimum: 'Departs from 5 guests', meeting: 'Restauradores Square, Lisbon', price: '€169',
-      image: '../../site/images/tour-arrabida-wine-960.webp', position: 'center',
-      intro: 'A wine day that leaves room for the landscape. Two contrasting producers anchor the route, with Palmela, Arrábida and Sesimbra adding the cultural and coastal context.',
-      fit: 'Best for wine-curious travellers who prefer a small shared van to a large group excursion.',
-      route: ['Meet at Restauradores Square', 'Palmela landscape and heritage', 'First Azeitão winery and tasting', 'Arrábida scenic route and Sesimbra lunch pause', 'Second winery visit and tasting'],
-      included: ['Professional local driver-guide', 'Mercedes-Benz Vito transport', 'Two winery visits with tastings', 'Required passenger insurance'],
-      excluded: ['Lunch', 'Additional bottles or premium tastings'],
-      message: "Hello! I'm interested in the Arrábida, Azeitão & Two Wineries tour. Could you check my dates and number of travellers?"
-    },
-    'sintra-walk': {
-      type: 'Shared guided walking tour', name: 'Sintra Stories, Old Town & Forest',
-      deck: 'A story-led walk through Sintra’s old town, quieter lanes and forest edge.',
-      duration: '3 hours', minimum: 'Departs from 5 guests', meeting: 'Sintra Train Station', price: '€45',
-      image: '../../site/images/tour-sintra-walk-960.webp', position: 'center',
-      intro: 'A grounded introduction to Sintra before or instead of a monument-heavy day. The route uses the old town, viewpoints and green paths to explain why this landscape feels unlike anywhere else near Lisbon.',
-      fit: 'Best for curious travellers who value stories, orientation and a slower pace.',
-      route: ['Meet at Sintra Train Station', 'Volta do Duche and the valley', 'Historic centre and local stories', 'Quieter lanes and forest edge', 'Seteais viewpoint'],
-      included: ['Professional local guide', 'Traditional pastry tasting', 'Tour liability insurance'],
-      excluded: ['Monument tickets', 'Additional food or transport'],
-      message: "Hello! I'm interested in the Sintra Stories walking tour. Could you check my dates and number of travellers?"
-    },
-    'lisbon-walk': {
-      type: 'Shared guided walking tour', name: 'Lisbon Essentials: Baixa, Chiado & Alfama',
-      deck: 'Three neighbourhoods, tiled streets and the viewpoints that make Lisbon legible.',
-      duration: '3 hours', minimum: 'Departs from 5 guests', meeting: 'Rossio Square, by the statue', price: '€49',
-      image: '../../site/images/tour-lisbon-walk-960.webp', position: 'center',
-      intro: 'A compact first look at Lisbon with enough context to enjoy the rest of your stay independently. The walk connects the rebuilt downtown, literary Chiado and the older lanes of Alfama.',
-      fit: 'Best for a first morning in Lisbon and travellers who want orientation without information overload.',
-      route: ['Meet at Rossio Square', 'Baixa and the rebuilt city', 'Chiado and Lisbon’s cultural life', 'Alfama lanes and viewpoints', 'Finish near Portas do Sol'],
-      included: ['Professional local guide', 'One pastel de nata', 'Tour liability insurance'],
-      excluded: ['Transport', 'Additional food or drinks'],
-      message: "Hello! I'm interested in the Lisbon Essentials walking tour. Could you check my dates and number of travellers?"
-    }
+(function(){
+  const key=document.body.dataset.experience,query=new URLSearchParams(location.search),supported=['en','pt','es','fr','de'];
+  const lang=supported.includes(query.get('lang'))?query.get('lang'):(supported.includes((navigator.language||'en').slice(0,2))?(navigator.language||'en').slice(0,2):'en');
+  const common={
+    en:{back:'All experiences',type:'Small-group experience',route:'The route',included:'Included',excluded:'Not included',fit:'Good to know',book:'Check availability',price:'per person · charged in EUR',note:'Exact pickup or meeting details are requested during booking.',guided:'Guided in English, Spanish or Portuguese.',guests:'guests',cancel:'Free cancellation up to 48 hours before departure.',guide:'Experienced local guide',transport:'Comfortable transport',return:'Lisbon pickup and return',insurance:'Required insurance',tickets:'Monument tickets',meals:'Meals and personal expenses'},
+    pt:{back:'Todas as experiências',type:'Experiência em grupo reduzido',route:'O percurso',included:'Incluído',excluded:'Não incluído',fit:'Convém saber',book:'Ver disponibilidade',price:'por pessoa · cobrado em EUR',note:'Os detalhes exatos de recolha ou encontro são pedidos na reserva.',guided:'Guiado em inglês, espanhol ou português.',guests:'pessoas',cancel:'Cancelamento gratuito até 48 horas antes.',guide:'Guia local experiente',transport:'Transporte confortável',return:'Recolha e regresso em Lisboa',insurance:'Seguros obrigatórios',tickets:'Bilhetes para monumentos',meals:'Refeições e despesas pessoais'},
+    es:{back:'Todas las experiencias',type:'Experiencia en grupo reducido',route:'La ruta',included:'Incluido',excluded:'No incluido',fit:'Conviene saber',book:'Ver disponibilidad',price:'por persona · cobrado en EUR',note:'Los detalles exactos de recogida o encuentro se solicitan al reservar.',guided:'Guiado en inglés, español o portugués.',guests:'personas',cancel:'Cancelación gratuita hasta 48 horas antes.',guide:'Guía local experto',transport:'Transporte cómodo',return:'Recogida y regreso en Lisboa',insurance:'Seguros obligatorios',tickets:'Entradas a monumentos',meals:'Comidas y gastos personales'},
+    fr:{back:'Toutes les expériences',type:'Expérience en petit groupe',route:'L’itinéraire',included:'Inclus',excluded:'Non inclus',fit:'À savoir',book:'Voir les disponibilités',price:'par personne · débité en EUR',note:'Les détails de prise en charge ou de rendez-vous sont demandés lors de la réservation.',guided:'Guidé en anglais, espagnol ou portugais.',guests:'personnes',cancel:'Annulation gratuite jusqu’à 48 heures avant.',guide:'Guide local expérimenté',transport:'Transport confortable',return:'Prise en charge et retour à Lisbonne',insurance:'Assurances obligatoires',tickets:'Billets des monuments',meals:'Repas et dépenses personnelles'},
+    de:{back:'Alle Erlebnisse',type:'Kleingruppen-Erlebnis',route:'Die Route',included:'Enthalten',excluded:'Nicht enthalten',fit:'Gut zu wissen',book:'Verfügbarkeit prüfen',price:'pro Person · Abrechnung in EUR',note:'Genaue Abhol- oder Treffpunktangaben werden bei der Buchung abgefragt.',guided:'Geführt auf Englisch, Spanisch oder Portugiesisch.',guests:'Gäste',cancel:'Kostenlose Stornierung bis 48 Stunden vorher.',guide:'Erfahrener lokaler Guide',transport:'Komfortabler Transport',return:'Abholung und Rückfahrt in Lissabon',insurance:'Vorgeschriebene Versicherungen',tickets:'Eintrittskarten',meals:'Mahlzeiten und persönliche Ausgaben'}
   };
-
-  const key = document.body.getAttribute('data-experience');
-  const tour = tours[key];
-  if (!tour) return;
-  const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const wa = 'https://wa.me/351968510019?text=' + encodeURIComponent(tour.message);
-  document.title = tour.name + ' | About Culture Things';
-  const description = document.querySelector('meta[name="description"]');
-  if (description) description.content = tour.deck;
-  const structuredData = document.createElement('script');
-  structuredData.type = 'application/ld+json';
-  structuredData.textContent = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'TouristTrip',
-    name: tour.name,
-    description: tour.deck,
-    touristType: 'Small group travellers',
-    provider: { '@type': 'TravelAgency', name: 'About Culture Things', url: 'https://aboutculturethings.com/' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'EUR',
-      price: tour.price.replace('€', ''),
-      availability: 'https://schema.org/InStock',
-      url: location.href
-    }
-  });
-  document.head.appendChild(structuredData);
-  document.getElementById('experience').innerHTML =
-    '<section class="experience-hero"><img src="' + esc(tour.image) + '" alt="' + esc(tour.name) + '" style="object-position:' + esc(tour.position) + '"><div class="hero-shade"></div><div class="shell hero-content"><p class="eyebrow">' + esc(tour.type) + '</p><h1>' + esc(tour.name) + '</h1><p class="hero-deck">' + esc(tour.deck) + '</p><ul class="facts"><li>' + esc(tour.duration) + '</li><li>' + esc(tour.minimum) + '</li><li>Direct price · ' + esc(tour.price) + ' per person</li></ul></div></section>' +
-    '<section class="intro"><div class="shell intro-grid"><h2>One clear route.<br>A better-paced day.</h2><div class="intro-copy"><p>' + esc(tour.intro) + '</p><p class="fit"><strong>Who it suits</strong>' + esc(tour.fit) + '</p></div></div></section>' +
-    '<section class="day"><div class="shell"><div class="day-head"><h2>The route</h2><p>The sequence may adjust for traffic, weather and confirmed venue times, without changing the character of the experience.</p></div><div class="day-grid"><ol class="route">' + tour.route.map(stop => '<li>' + esc(stop) + '</li>').join('') + '</ol><figure class="day-media"><img src="' + esc(tour.image) + '" alt="" loading="lazy"></figure></div></div></section>' +
-    '<section class="practical"><div class="shell practical-grid"><article><h2>Meet</h2><p>' + esc(tour.meeting) + '<br>Exact pin sent with confirmation.</p></article><article><h2>Included</h2><ul>' + tour.included.map(item => '<li>' + esc(item) + '</li>').join('') + '</ul></article><article><h2>Not included</h2><ul>' + tour.excluded.map(item => '<li>' + esc(item) + '</li>').join('') + '</ul></article></div></section>' +
-    '<section class="booking"><div class="shell booking-grid"><div class="booking-copy"><p class="eyebrow">Direct booking</p><h2>Start with your dates.</h2><p>Send your preferred date and number of travellers. We confirm the shared departure before payment.</p></div><div class="booking-action"><p class="price">' + esc(tour.price) + '<span>per person · charged in EUR</span></p><a class="button" href="' + wa + '" target="_blank" rel="noopener noreferrer">Check availability on WhatsApp</a><p class="micro">Free cancellation with 24 hours’ notice.</p></div></div></section>';
-})();
+  const products={
+    'essential-sintra':{price:99,duration:'6 h',max:8,image:'../../site/images/pena-640.webp',name:{en:'Essential Sintra',pt:'Sintra Essencial',es:'Sintra Esencial',fr:'Sintra Essentiel',de:'Sintra Essentials'},deck:{en:'Sintra’s palaces and historic centre in one focused day from Lisbon.',pt:'Os palácios e o centro histórico de Sintra num dia focado desde Lisboa.',es:'Los palacios y el centro histórico de Sintra en un día claro desde Lisboa.',fr:'Les palais et le centre historique de Sintra lors d’une journée ciblée depuis Lisbonne.',de:'Sintras Paläste und Altstadt an einem fokussierten Tag ab Lissabon.'},fit:{en:'Best for first-time visitors who want the essence of Sintra without adding the coast.',pt:'Ideal para uma primeira visita centrada no essencial de Sintra, sem acrescentar a costa.',es:'Ideal para una primera visita centrada en lo esencial de Sintra, sin añadir la costa.',fr:'Idéal pour une première visite centrée sur l’essentiel de Sintra, sans ajouter la côte.',de:'Ideal für den ersten Besuch mit Sintras wichtigsten Eindrücken ohne zusätzliche Küstenroute.'},route:{en:['Pickup in Lisbon','Historic Sintra and local context','Pena Palace area','Return to Lisbon'],pt:['Recolha em Lisboa','Sintra histórica e contexto local','Zona do Palácio da Pena','Regresso a Lisboa'],es:['Recogida en Lisboa','Sintra histórica y contexto local','Zona del Palacio da Pena','Regreso a Lisboa'],fr:['Prise en charge à Lisbonne','Sintra historique et contexte local','Secteur du palais de Pena','Retour à Lisbonne'],de:['Abholung in Lissabon','Historisches Sintra und lokaler Kontext','Umgebung des Pena-Palasts','Rückfahrt nach Lissabon']}},
+    'sintra-coast':{price:119,duration:'8 h',max:8,image:'../../site/images/tour-full-sintra-coast-640.webp',name:{en:'Sintra, Cabo da Roca & Cascais',pt:'Sintra, Cabo da Roca e Cascais',es:'Sintra, Cabo da Roca y Cascais',fr:'Sintra, Cabo da Roca et Cascais',de:'Sintra, Cabo da Roca & Cascais'},deck:{en:'Palaces, forest and Atlantic coast in one complete day from Lisbon.',pt:'Palácios, serra e costa atlântica num dia completo desde Lisboa.',es:'Palacios, sierra y costa atlántica en un día completo desde Lisboa.',fr:'Palais, forêt et côte atlantique en une journée complète depuis Lisbonne.',de:'Paläste, Wald und Atlantikküste an einem ganzen Tag ab Lissabon.'},fit:{en:'The signature choice for travelers who want Sintra and the Atlantic coast in one day.',pt:'A escolha principal para quem quer conhecer Sintra e a costa atlântica no mesmo dia.',es:'La opción principal para conocer Sintra y la costa atlántica en un solo día.',fr:'Le choix signature pour découvrir Sintra et la côte atlantique en une journée.',de:'Die wichtigste Wahl für Sintra und die Atlantikküste an einem Tag.'},route:{en:['Pickup in Lisbon','Historic Sintra','One key monument','Cabo da Roca','Cascais and return'],pt:['Recolha em Lisboa','Sintra histórica','Um monumento principal','Cabo da Roca','Cascais e regresso'],es:['Recogida en Lisboa','Sintra histórica','Un monumento principal','Cabo da Roca','Cascais y regreso'],fr:['Prise en charge à Lisbonne','Sintra historique','Un monument majeur','Cabo da Roca','Cascais et retour'],de:['Abholung in Lissabon','Historisches Sintra','Ein Hauptmonument','Cabo da Roca','Cascais und Rückfahrt']}},
+    'sintra-walk':{price:45,duration:'3 h',max:10,image:'../../site/images/tour-sintra-walk-960.webp',walking:true,name:{en:'Sintra Walking Tour',pt:'Walking Tour por Sintra',es:'Walking Tour por Sintra',fr:'Visite à pied de Sintra',de:'Sintra Rundgang'},deck:{en:'Stories, architecture and local recommendations through central Sintra.',pt:'Histórias, arquitetura e recomendações locais pelo centro de Sintra.',es:'Historias, arquitectura y recomendaciones locales por el centro de Sintra.',fr:'Histoires, architecture et bonnes adresses dans le centre de Sintra.',de:'Geschichten, Architektur und lokale Empfehlungen im Zentrum Sintras.'},fit:{en:'Best for curious travelers who want local context and orientation without a full day on the road.',pt:'Ideal para quem procura contexto local e orientação sem ocupar um dia inteiro.',es:'Ideal para quien busca contexto local y orientación sin ocupar todo el día.',fr:'Idéal pour ceux qui cherchent contexte local et repères sans y consacrer toute la journée.',de:'Ideal für Neugierige, die lokalen Kontext und Orientierung ohne ganzen Reisetag suchen.'},route:{en:['Meet in central Sintra','Historic lanes and architecture','Local stories and viewpoints','Personal recommendations'],pt:['Encontro no centro de Sintra','Ruas históricas e arquitetura','Histórias locais e miradouros','Recomendações pessoais'],es:['Encuentro en el centro de Sintra','Calles históricas y arquitectura','Historias locales y miradores','Recomendaciones personales'],fr:['Rendez-vous au centre de Sintra','Ruelles historiques et architecture','Récits locaux et belvédères','Recommandations personnelles'],de:['Treffpunkt im Zentrum Sintras','Historische Gassen und Architektur','Lokale Geschichten und Aussichtspunkte','Persönliche Empfehlungen']}},
+    'fatima-nazare-obidos':{price:129,duration:'9 h',max:8,image:'../../site/images/tour-fatima-obidos-736.webp',name:{en:'Fátima, Nazaré & Óbidos',pt:'Fátima, Nazaré e Óbidos',es:'Fátima, Nazaré y Óbidos',fr:'Fátima, Nazaré et Óbidos',de:'Fátima, Nazaré & Óbidos'},deck:{en:'Faith, Atlantic character and a medieval village north of Lisbon.',pt:'Fé, caráter atlântico e uma vila medieval a norte de Lisboa.',es:'Fe, carácter atlántico y una villa medieval al norte de Lisboa.',fr:'Foi, caractère atlantique et cité médiévale au nord de Lisbonne.',de:'Glaube, Atlantik und eine mittelalterliche Stadt nördlich von Lissabon.'},fit:{en:'A full heritage day. Nazaré adds Atlantic culture and a natural lunch pause.',pt:'Um dia completo de património. Nazaré acrescenta cultura atlântica e uma pausa natural para almoço.',es:'Un día completo de patrimonio. Nazaré aporta cultura atlántica y una pausa natural para comer.',fr:'Une journée de patrimoine complète. Nazaré apporte culture atlantique et pause déjeuner naturelle.',de:'Ein ganzer Kulturerbe-Tag. Nazaré ergänzt Atlantikkultur und eine natürliche Mittagspause.'},route:{en:['Pickup in Lisbon','Fátima Sanctuary','Nazaré coast and lunch time','Medieval Óbidos','Return to Lisbon'],pt:['Recolha em Lisboa','Santuário de Fátima','Costa da Nazaré e almoço','Óbidos medieval','Regresso a Lisboa'],es:['Recogida en Lisboa','Santuario de Fátima','Costa de Nazaré y comida','Óbidos medieval','Regreso a Lisboa'],fr:['Prise en charge à Lisbonne','Sanctuaire de Fátima','Côte de Nazaré et déjeuner','Óbidos médiévale','Retour à Lisbonne'],de:['Abholung in Lissabon','Heiligtum Fátima','Küste von Nazaré und Mittagspause','Mittelalterliches Óbidos','Rückfahrt nach Lissabon']}}
+  };
+  const launched=['sintra-coast','sintra-walk','fatima-nazare-obidos'];
+  const t=launched.includes(key)?products[key]:null,ui=common[lang],esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  document.documentElement.lang=lang;if(!t){const robots=document.createElement('meta');robots.name='robots';robots.content='noindex,follow';document.head.appendChild(robots);document.getElementById('experience').innerHTML='<section class="intro"><div class="shell"><h1>Experience no longer offered.</h1><a class="button" href="../../#experiences">'+esc(ui.back)+'</a></div></section>';return;}
+  const name=t.name[lang],deck=t.deck[lang],included=t.walking?[ui.guide,ui.type,ui.insurance]:[ui.guide,ui.transport,ui.return,ui.insurance],excluded=t.walking?[ui.tickets,ui.meals]:[ui.tickets,ui.meals];
+  const auxiliary={en:{skip:'Skip to content',home:'Back to home'},pt:{skip:'Ir para o conteúdo',home:'Voltar ao início'},es:{skip:'Saltar al contenido',home:'Volver al inicio'},fr:{skip:'Aller au contenu',home:'Retour à l’accueil'},de:{skip:'Zum Inhalt',home:'Zur Startseite'}}[lang];
+  document.title=name+' | About Culture Things';document.querySelector('meta[name="description"]').content=deck;document.querySelector('.skip').textContent=auxiliary.skip;const backLinks=document.querySelectorAll('.back');backLinks[0].textContent='← '+ui.back;backLinks[0].href='../../?lang='+lang+'#experiences';if(backLinks[1]){backLinks[1].textContent=auxiliary.home;backLinks[1].href='../../?lang='+lang;}
+  document.getElementById('experience').innerHTML=`<section class="experience-hero"><img src="${esc(t.image)}" alt="${esc(name)}"><div class="hero-shade"></div><div class="shell hero-content"><p class="eyebrow">${esc(ui.type)}</p><h1>${esc(name)}</h1><p class="hero-deck">${esc(deck)}</p><ul class="facts"><li>${t.duration}</li><li>${t.max} ${esc(ui.guests)}</li><li>${esc(ui.guided)}</li></ul></div></section><section class="intro"><div class="shell intro-grid"><h2>${esc(ui.fit)}</h2><div class="intro-copy"><p>${esc(t.fit[lang])}</p><p>${esc(ui.note)}</p></div></div></section><section class="day"><div class="shell"><div class="day-head"><h2>${esc(ui.route)}</h2></div><div class="day-grid"><ol class="route">${t.route[lang].map(x=>'<li>'+esc(x)+'</li>').join('')}</ol><figure class="day-media"><img src="${esc(t.image)}" alt="" loading="lazy"></figure></div></div></section><section class="practical"><div class="shell practical-grid"><article><h2>${esc(ui.included)}</h2><ul>${included.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></article><article><h2>${esc(ui.excluded)}</h2><ul>${excluded.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></article></div></section><section class="booking"><div class="shell booking-grid"><div class="booking-copy"><p class="eyebrow">About Culture Things</p><h2>${esc(ui.book)}</h2><p>${esc(ui.note)}</p></div><div class="booking-action"><p class="price">€${t.price}<span>${esc(ui.price)}</span></p><a class="button" href="../../?lang=${lang}&book=${esc(key)}">${esc(ui.book)}</a><p class="micro">${esc(ui.cancel)}</p></div></div></section>`;
+  const schema=document.createElement('script');schema.type='application/ld+json';schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'TouristTrip',name,description:deck,provider:{'@type':'TourOperator',name:'About Culture Things'},offers:{'@type':'Offer',price:t.price,priceCurrency:'EUR',availability:'https://schema.org/InStock'}});document.head.appendChild(schema);
+}());

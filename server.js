@@ -1,471 +1,119 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
+const fs=require('fs');
+const path=require('path');
+const crypto=require('crypto');
+const express=require('express');
+const nodemailer=require('nodemailer');
 require('dotenv').config();
+const TOURS_CONFIG=require('./site/tours-config.js');
 
-const TOURS_CONFIG = require('./site/tours-config.js');
+const app=express();
+const PORT=Number(process.env.PORT||3000);
+const SITE_URL=(process.env.SITE_URL||`http://localhost:${PORT}`).replace(/\/$/,'');
+const stripe=process.env.STRIPE_SECRET_KEY&&!/placeholder/i.test(process.env.STRIPE_SECRET_KEY)?require('stripe')(process.env.STRIPE_SECRET_KEY):null;
+const DATA_DIR=path.join(__dirname,'data');
+const BOOKINGS_FILE=path.join(DATA_DIR,'bookings.json');
+fs.mkdirSync(DATA_DIR,{recursive:true});
+if(!fs.existsSync(BOOKINGS_FILE))fs.writeFileSync(BOOKINGS_FILE,'[]\n','utf8');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-const SITE_URL = process.env.SITE_URL || `http://localhost:${PORT}`;
+function readBookings(){try{const value=JSON.parse(fs.readFileSync(BOOKINGS_FILE,'utf8'));return Array.isArray(value)?value:[];}catch(error){console.error('Booking store read failed:',error.message);return[];}}
+function writeBookings(items){const temp=BOOKINGS_FILE+'.tmp';fs.writeFileSync(temp,JSON.stringify(items,null,2)+'\n','utf8');fs.renameSync(temp,BOOKINGS_FILE);}
+function reference(){return'ACT-'+crypto.randomBytes(8).toString('hex').toUpperCase();}
+function text(value,max=500){return String(value||'').trim().slice(0,max);}
+function email(value){const v=text(value,254).toLowerCase();return/^\S+@\S+\.\S+$/.test(v)?v:'';}
+function ymd(date){return`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;}
+function minDate(){const d=new Date(Date.now()+TOURS_CONFIG.minAdvanceBookingHours*36e5);if(d.getHours()>=9)d.setDate(d.getDate()+1);return ymd(d);}
+function validDate(value){return/^\d{4}-\d{2}-\d{2}$/.test(value||'')&&value>=minDate();}
+function publicBooking(b){return{reference:b.reference,tourName:b.tourName,date:b.date,persons:b.persons,tourLanguage:b.tourLanguage,pickup:b.pickup,totalPrice:b.totalPrice,currency:'EUR',status:b.status,customerName:b.customerName,customerEmail:b.customerEmail,createdAt:b.createdAt};}
+function holdsCapacity(booking){
+  if(booking.status==='confirmed')return true;
+  if(booking.status!=='awaiting_payment')return false;
+  const expiresAt=Date.parse(booking.checkoutExpiresAt||'');
+  return Number.isFinite(expiresAt)&&expiresAt>Date.now();
+}
+function tourById(id){return TOURS_CONFIG.tours.find(t=>t.id===id);}
+function hasResourceConflict(bookings,tour,date){return bookings.some(b=>b.date===date&&holdsCapacity(b)&&b.tourId!==tour.id&&tourById(b.tourId)?.resource===tour.resource);}
 
-// Initialize Stripe if secret key is present
-let stripe = null;
-if (process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY !== 'sk_test_placeholder') {
-  stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+async function sendConfirmation(booking){
+  const smtpHost=process.env.SMTP_HOST||process.env.EMAIL_HOST,smtpUser=process.env.SMTP_USER||process.env.EMAIL_USER,smtpPass=process.env.SMTP_PASS||process.env.EMAIL_PASS;
+  if(!smtpHost||!smtpUser||!smtpPass||/placeholder/i.test(smtpPass))return;
+  const transport=nodemailer.createTransport({host:smtpHost,port:Number(process.env.SMTP_PORT||process.env.EMAIL_PORT||587),secure:String(process.env.SMTP_SECURE)==='true',auth:{user:smtpUser,pass:smtpPass}});
+  const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const html=`<div style="max-width:620px;margin:auto;font:15px/1.6 Arial;color:#1f2b28"><div style="padding:28px;background:#153b32;color:white"><h1 style="margin:0;font:30px Georgia">About Culture Things</h1><p style="margin:6px 0 0">Booking confirmed · ${esc(booking.reference)}</p></div><div style="padding:28px;border:1px solid #ddd"><p>Dear ${esc(booking.customerName)},</p><p>Your payment is confirmed. We will email the precise pickup time and any monument-ticket recommendation separately.</p><table style="width:100%;border-collapse:collapse"><tr><td>Experience</td><td><strong>${esc(booking.tourName)}</strong></td></tr><tr><td>Date</td><td>${esc(booking.date)}</td></tr><tr><td>Guests</td><td>${booking.persons}</td></tr><tr><td>Tour language</td><td>${esc(booking.tourLanguage)}</td></tr><tr><td>Pickup / meeting</td><td>${esc(booking.pickup)}</td></tr><tr><td>Total paid</td><td><strong>€${booking.totalPrice} EUR</strong></td></tr></table><p>Free cancellation is available until 48 hours before departure.</p></div></div>`;
+  await transport.sendMail({from:process.env.SMTP_FROM||smtpUser,to:booking.customerEmail,bcc:process.env.ADMIN_EMAIL||process.env.NOTIFICATION_EMAIL||'aboutculturethings@gmail.com',subject:`Booking confirmed ${booking.reference} · ${booking.tourName}`,html});
 }
 
-// Ensure data directory exists for booking persistence
-const DATA_DIR = path.join(__dirname, 'data');
-const BOOKINGS_FILE = path.join(DATA_DIR, 'bookings.json');
-
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-if (!fs.existsSync(BOOKINGS_FILE)) {
-  fs.writeFileSync(BOOKINGS_FILE, JSON.stringify([], null, 2), 'utf-8');
-}
-
-function loadBookings() {
-  try {
-    const data = fs.readFileSync(BOOKINGS_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (err) {
-    console.error('Error reading bookings file:', err);
-    return [];
-  }
-}
-
-function saveBookings(bookings) {
-  try {
-    fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(bookings, null, 2), 'utf-8');
-  } catch (err) {
-    console.error('Error saving bookings file:', err);
-  }
-}
-
-function generateReference() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = '';
-  for (let i = 0; i < 5; i++) {
-    code += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return `ACT-${code}`;
-}
-
-// Calculate price on server side
-function calculateServerPrice(tour, persons) {
-  const personsNum = parseInt(persons, 10);
-  if (isNaN(personsNum) || personsNum < 1 || personsNum > tour.maxPersons) {
-    throw new Error(`Invalid person count. Maximum allowed is ${tour.maxPersons}.`);
-  }
-
-  if (tour.pricingType === 'per_group') {
-    return {
-      unitPrice: tour.price,
-      subtotal: tour.price,
-      discountPercent: 0,
-      discountAmount: 0,
-      totalPrice: tour.price
-    };
-  }
-
-  const subtotal = tour.price * personsNum;
-  let discountPercent = 0;
-
-  if (TOURS_CONFIG.quantityDiscounts) {
-    for (const rule of TOURS_CONFIG.quantityDiscounts) {
-      if (personsNum >= rule.minGuests && personsNum <= rule.maxGuests) {
-        discountPercent = rule.discountPercent;
-        break;
-      }
+/* Stripe needs the untouched request body for signature verification. */
+app.post('/api/stripe-webhook',express.raw({type:'application/json'}),(req,res)=>{
+  if(!stripe||!process.env.STRIPE_WEBHOOK_SECRET)return res.status(503).send('Webhook is not configured');
+  let event;try{event=stripe.webhooks.constructEvent(req.body,req.headers['stripe-signature'],process.env.STRIPE_WEBHOOK_SECRET);}catch(error){return res.status(400).send('Invalid signature');}
+  if(event.type==='checkout.session.completed'&&event.data.object.payment_status==='paid'){
+    const session=event.data.object,items=readBookings(),index=items.findIndex(b=>b.reference===session.metadata?.reference||b.stripeSessionId===session.id);
+    if(index>=0&&items[index].status!=='confirmed'){
+      items[index].status='confirmed';items[index].paidAt=new Date().toISOString();items[index].stripePaymentIntentId=session.payment_intent;writeBookings(items);
+      sendConfirmation(items[index]).catch(error=>console.error('Confirmation email failed:',error.message));
     }
   }
-
-  const discountAmount = Math.round((subtotal * discountPercent) / 100);
-  const totalPrice = subtotal - discountAmount;
-
-  return {
-    unitPrice: tour.price,
-    subtotal,
-    discountPercent,
-    discountAmount,
-    totalPrice
-  };
-}
-
-// 24-hour advance validation
-function validateTourDate(dateString) {
-  if (!dateString) return false;
-  const tourDate = new Date(`${dateString}T09:00:00`);
-  if (isNaN(tourDate.getTime())) return false;
-
-  const now = new Date();
-  const minAllowed = new Date(now.getTime() + TOURS_CONFIG.minAdvanceBookingHours * 60 * 60 * 1000);
-
-  // Set minAllowed to start of that target date for clean comparison if needed, or exact 24h gap
-  return tourDate.getTime() >= minAllowed.getTime() - (12 * 60 * 60 * 1000); // 24h rule margin
-}
-
-// Transactonal Email Sender
-async function sendTransactionalEmails(booking) {
-  const {
-    reference, tourName, date, persons, totalPrice,
-    paymentMethod, status, customerName, customerEmail, customerPhone
-  } = booking;
-
-  const paymentLabels = {
-    stripe: 'Credit Card / Stripe',
-    mbway: 'MB WAY',
-    wise: 'Wise',
-    revolut: 'Revolut',
-    sepa: 'SEPA Direct Bank Transfer'
-  };
-
-  const paymentLabel = paymentLabels[paymentMethod] || paymentMethod;
-  const statusLabel = status === 'confirmed' ? 'CONFIRMED / PAGADO' : 'AWAITING PAYMENT / PENDIENTE DE PAGO';
-
-  const meetingInfo = `${TOURS_CONFIG.meetingPoint.time} — ${TOURS_CONFIG.meetingPoint.location} (${TOURS_CONFIG.meetingPoint.address})`;
-
-  const subjectCustomer = `About Culture Things — Booking Request ${reference} (${tourName})`;
-  const subjectAdmin = `[NEW BOOKING] ${reference} — ${customerName} (${paymentLabel})`;
-
-  const htmlContent = `
-    <div style="font-family: 'DM Sans', Arial, sans-serif; color: #1c2b26; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-      <div style="background-color: #13342E; color: #ffffff; padding: 24px; text-align: center;">
-        <h1 style="font-family: 'Cormorant Garamond', Georgia, serif; margin: 0; font-size: 26px; color: #D4AF37;">About Culture Things</h1>
-        <p style="margin: 6px 0 0 0; font-size: 14px; opacity: 0.9;">Boutique Tours & Experiences in Portugal</p>
-      </div>
-
-      <div style="padding: 24px;">
-        <h2 style="color: #13342E; margin-top: 0;">Reservation Reference: <span style="color: #D4AF37;">${reference}</span></h2>
-        <p style="font-size: 15px; line-height: 1.5;">Dear ${customerName},</p>
-        <p style="font-size: 15px; line-height: 1.5;">Thank you for choosing About Culture Things. Here are your booking details:</p>
-
-        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px;">
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Experience:</td><td style="padding: 10px;">${tourName}</td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Date & Departure:</td><td style="padding: 10px;">${date} at 09:00 AM</td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Meeting Point:</td><td style="padding: 10px;"><strong>${meetingInfo}</strong></td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Guests:</td><td style="padding: 10px;">${persons} person(s)</td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Total Price:</td><td style="padding: 10px; font-weight: bold; color: #13342E;">€${totalPrice} EUR</td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Payment Method:</td><td style="padding: 10px;">${paymentLabel}</td></tr>
-          <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 10px; font-weight: bold; color: #4a5568;">Status:</td><td style="padding: 10px;"><span style="padding: 4px 8px; border-radius: 4px; background-color: ${status === 'confirmed' ? '#C6F6D5' : '#FEFCBF'}; color: ${status === 'confirmed' ? '#22543D' : '#744210'}; font-weight: bold;">${statusLabel}</span></td></tr>
-        </table>
-
-        ${paymentMethod === 'mbway' ? `<div style="background: #f7fafc; padding: 16px; border-left: 4px solid #D4AF37; margin-bottom: 20px;"><p style="margin: 0; font-weight: bold;">MB WAY Payment Instructions:</p><p style="margin: 5px 0 0 0;">Please send <strong>€${totalPrice} EUR</strong> to <strong>${process.env.MBWAY_PHONE || '+351968510019'}</strong> with reference <strong>${reference}</strong> in the description.</p></div>` : ''}
-
-        ${paymentMethod === 'wise' ? `<div style="background: #f7fafc; padding: 16px; border-left: 4px solid #D4AF37; margin-bottom: 20px;"><p style="margin: 0; font-weight: bold;">Wise Payment Instructions:</p><p style="margin: 5px 0 0 0;">Please complete payment of <strong>€${totalPrice} EUR</strong> via Wise link: <a href="${process.env.WISE_LINK || 'https://wise.com/pay/me/anaritac83'}">${process.env.WISE_LINK || 'https://wise.com/pay/me/anaritac83'}</a> using reference <strong>${reference}</strong>.</p></div>` : ''}
-
-        ${paymentMethod === 'revolut' ? `<div style="background: #f7fafc; padding: 16px; border-left: 4px solid #D4AF37; margin-bottom: 20px;"><p style="margin: 0; font-weight: bold;">Revolut Payment Instructions:</p><p style="margin: 5px 0 0 0;">Please complete payment of <strong>€${totalPrice} EUR</strong> via Revolut link: <a href="${process.env.REVOLUT_LINK || 'https://revolut.me/ritaa89'}">${process.env.REVOLUT_LINK || 'https://revolut.me/ritaa89'}</a> using reference <strong>${reference}</strong>.</p></div>` : ''}
-
-        ${paymentMethod === 'sepa' ? `<div style="background: #f7fafc; padding: 16px; border-left: 4px solid #D4AF37; margin-bottom: 20px;"><p style="margin: 0; font-weight: bold;">SEPA Bank Transfer Instructions:</p><p style="margin: 5px 0 0 0;">IBAN: <strong>${process.env.SEPA_IBAN || 'PT50 0023 0000 45799874051 94'}</strong><br>Beneficiary: <strong>${process.env.SEPA_BENEFICIARY || 'About Culture Things'}</strong><br>Reference: <strong>${reference}</strong></p></div>` : ''}
-
-        <p style="font-size: 14px; color: #718096; margin-top: 24px;">Cancellation policy: Free cancellation up to 48 hours prior to departure.</p>
-        <p style="font-size: 14px; color: #718096;">If you have any questions, reply to this email or contact us at <a href="mailto:aboutculturethings@gmail.com" style="color: #13342E;">aboutculturethings@gmail.com</a>.</p>
-      </div>
-
-      <div style="background-color: #f7fafc; padding: 16px; text-align: center; font-size: 12px; color: #a0aec0; border-top: 1px solid #edf2f7;">
-        © About Culture Things · Sintra & Lisbon, Portugal
-      </div>
-    </div>
-  `;
-
-  // Check if SMTP is configured
-  if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-    try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-        port: parseInt(process.env.EMAIL_PORT || '587', 10),
-        secure: process.env.EMAIL_PORT === '465',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
-
-      // Send to Customer
-      await transporter.sendMail({
-        from: `"About Culture Things" <${process.env.EMAIL_USER}>`,
-        to: customerEmail,
-        subject: subjectCustomer,
-        html: htmlContent
-      });
-
-      // Send to Admin
-      await transporter.sendMail({
-        from: `"About Culture Things Web" <${process.env.EMAIL_USER}>`,
-        to: process.env.NOTIFICATION_EMAIL || 'aboutculturethings.com@gmail.com',
-        subject: subjectAdmin,
-        html: htmlContent
-      });
-
-      console.log(`Transactional emails dispatched successfully for reference ${reference}`);
-    } catch (error) {
-      console.error(`Email sending error for reference ${reference}:`, error.message);
-    }
-  } else {
-    console.log(`[EMAIL LOG - SMTP NOT CONFIGURED] Reference: ${reference} | Customer: ${customerEmail} | Amount: €${totalPrice}`);
-  }
-}
-
-// Middleware
-app.use(cors());
-// Raw body parsing for Stripe Webhooks
-app.use((req, res, next) => {
-  if (req.originalUrl === '/api/stripe-webhook') {
-    express.raw({ type: 'application/json' })(req, res, next);
-  } else {
-    express.json()(req, res, next);
-  }
+  res.json({received:true});
 });
 
-// Serve static assets
-app.use(express.static(__dirname));
+app.use(express.json({limit:'50kb'}));
+app.get('/favicon.ico',(req,res)=>res.sendFile(path.join(__dirname,'favicon.png')));
+app.use('/data',(req,res)=>res.status(404).send('Not found'));
+app.use(express.static(__dirname,{extensions:['html'],dotfiles:'deny',maxAge:process.env.NODE_ENV==='production'?'1h':0}));
 
-// --- API ENDPOINTS ---
+app.get('/api/health',(req,res)=>res.json({ok:true,paymentConfigured:Boolean(stripe&&process.env.STRIPE_WEBHOOK_SECRET),minDate:minDate()}));
+app.get('/api/tours',(req,res)=>res.json({tours:TOURS_CONFIG.tours.filter(t=>t.active),currency:'EUR',minDate:minDate(),tourLanguages:TOURS_CONFIG.tourLanguages,cancellationPolicyHours:TOURS_CONFIG.cancellationPolicyHours}));
 
-// GET /api/tours — Get active tour configurations
-app.get('/api/tours', (req, res) => {
-  const activeTours = TOURS_CONFIG.tours.filter(t => t.active);
-  res.json({
-    meetingPoint: TOURS_CONFIG.meetingPoint,
-    cancellationPolicyHours: TOURS_CONFIG.cancellationPolicyHours,
-    minAdvanceBookingHours: TOURS_CONFIG.minAdvanceBookingHours,
-    tours: activeTours,
-    paymentMethods: {
-      stripe: Boolean(stripe),
-      mbway: true,
-      wise: true,
-      revolut: true,
-      sepa: true,
-      bizum: process.env.BIZUM_ACTIVE === 'true'
-    },
-    paymentDetails: {
-      mbwayPhone: process.env.MBWAY_PHONE || '+351968510019',
-      wiseLink: process.env.WISE_LINK || 'https://wise.com/pay/me/anaritac83',
-      revolutLink: process.env.REVOLUT_LINK || 'https://revolut.me/ritaa89',
-      sepaIban: process.env.SEPA_IBAN || 'PT50 0023 0000 45799874051 94',
-      sepaBeneficiary: process.env.SEPA_BENEFICIARY || 'About Culture Things'
-    }
-  });
+let checkoutQueue=Promise.resolve();
+async function createCheckout(req,res){
+  try{
+    if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
+    const p=req.body||{},tour=TOURS_CONFIG.tours.find(t=>t.active&&t.id===p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.get('Idempotency-Key'),100);
+    if(!tour)return res.status(404).json({error:'Experience not found.'});
+    if(!Number.isInteger(persons)||persons<1||persons>tour.maxPersons)return res.status(400).json({error:'Invalid guest count.'});
+    if(!validDate(p.date)||!customerName||!customerEmail||!TOURS_CONFIG.tourLanguages.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
+    const bookings=readBookings(),existing=bookings.find(b=>b.bookingAttemptId===attempt);
+    if(existing?.checkoutUrl&&holdsCapacity(existing))return res.json({checkoutUrl:existing.checkoutUrl,reference:existing.reference});
+    if(hasResourceConflict(bookings,tour,p.date))return res.status(409).json({error:'The transport assigned to this date is already reserved for another route.'});
+    const reservedSeats=bookings.filter(b=>b.tourId===tour.id&&b.date===p.date&&holdsCapacity(b)).reduce((sum,b)=>sum+Number(b.persons||0),0);
+    if(reservedSeats+persons>tour.maxPersons)return res.status(409).json({error:'This date no longer has enough places for your group.'});
+    const ref=reference(),lang=['en','pt','es','fr','de'].includes(p.lang)?p.lang:'en',tourName=tour.name[lang]||tour.name.en,totalPrice=tour.price*persons;
+    const session=await stripe.checkout.sessions.create({
+      mode:'payment',customer_email:customerEmail,locale:lang==='pt'?'pt-BR':lang,
+      automatic_payment_methods:{enabled:true},
+      line_items:[{quantity:persons,price_data:{currency:'eur',unit_amount:tour.price*100,product_data:{name:tourName,description:`${tour.duration} · guided in ${tourLanguage.toUpperCase()}`}}}],
+      metadata:{reference:ref,tourId:tour.id,date:p.date,persons:String(persons),tourLanguage},
+      payment_intent_data:{metadata:{reference:ref}},
+      success_url:`${SITE_URL}/thank-you/?session_id={CHECKOUT_SESSION_ID}&ref=${encodeURIComponent(ref)}`,
+      cancel_url:`${SITE_URL}/?book=${encodeURIComponent(tour.id)}&payment=cancelled&lang=${encodeURIComponent(lang)}`,
+      expires_at:Math.floor(Date.now()/1000)+30*60
+    },{idempotencyKey:attempt});
+    const booking={reference:ref,bookingAttemptId:attempt,tourId:tour.id,tourName,lang,date:p.date,persons,tourLanguage,pickup,requests:text(p.requests,1000),unitPrice:tour.price,totalPrice,currency:'EUR',customerName,customerEmail,customerPhone:text(p.phone,60),status:'awaiting_payment',stripeSessionId:session.id,checkoutUrl:session.url,checkoutExpiresAt:new Date(session.expires_at*1000).toISOString(),createdAt:new Date().toISOString()};
+    bookings.push(booking);writeBookings(bookings);res.json({checkoutUrl:session.url,reference:ref});
+  }catch(error){console.error('Checkout session failed:',error.message);res.status(500).json({error:'Secure payment could not be started.'});}
+}
+app.post('/api/create-checkout-session',(req,res)=>{
+  const current=checkoutQueue.then(()=>createCheckout(req,res));
+  checkoutQueue=current.catch(()=>{});
+  return current;
 });
 
-// POST /api/bookings — Manual payment booking (MB WAY, Wise, Revolut, SEPA)
-app.post('/api/bookings', async (req, res) => {
-  try {
-    const { tourId, date, persons, name, email, phone, paymentMethod, lang } = req.body;
-
-    if (!tourId || !date || !persons || !name || !email || !paymentMethod) {
-      return res.status(400).json({ error: 'Missing required booking fields.' });
-    }
-
-    const tour = TOURS_CONFIG.tours.find(t => t.id === tourId && t.active);
-    if (!tour) {
-      return res.status(404).json({ error: 'Tour not found or currently unavailable.' });
-    }
-
-    // Validate 24h date rule
-    if (!validateTourDate(date)) {
-      return res.status(400).json({ error: 'Bookings must be made at least 24 hours in advance.' });
-    }
-
-    // Validate and calculate exact price on server
-    const priceCalculation = calculateServerPrice(tour, persons);
-
-    const reference = generateReference();
-    const tourName = tour.name[lang] || tour.name.en || tour.name;
-
-    const newBooking = {
-      reference,
-      tourId: tour.id,
-      tourName: typeof tourName === 'object' ? tourName.en : tourName,
-      date,
-      time: TOURS_CONFIG.meetingPoint.time,
-      meetingPoint: `${TOURS_CONFIG.meetingPoint.time} — ${TOURS_CONFIG.meetingPoint.location}`,
-      persons: parseInt(persons, 10),
-      unitPrice: priceCalculation.unitPrice,
-      subtotal: priceCalculation.subtotal,
-      discountAmount: priceCalculation.discountAmount,
-      totalPrice: priceCalculation.totalPrice,
-      currency: TOURS_CONFIG.currency,
-      customerName: name.trim(),
-      customerEmail: email.trim().toLowerCase(),
-      customerPhone: phone ? phone.trim() : '',
-      paymentMethod,
-      status: 'awaiting_payment',
-      createdAt: new Date().toISOString()
-    };
-
-    const bookings = loadBookings();
-    bookings.push(newBooking);
-    saveBookings(bookings);
-
-    // Send emails asynchronously
-    sendTransactionalEmails(newBooking);
-
-    res.json({
-      success: true,
-      reference: newBooking.reference,
-      booking: newBooking
-    });
-  } catch (err) {
-    console.error('Error creating booking:', err);
-    res.status(400).json({ error: err.message || 'Error processing reservation request.' });
-  }
+app.get('/api/bookings/:ref',async(req,res)=>{
+  const items=readBookings();let booking=items.find(b=>b.reference===req.params.ref);if(!booking)return res.status(404).json({error:'Booking not found.'});
+  if(!req.query.sessionId||req.query.sessionId!==booking.stripeSessionId)return res.status(403).json({error:'Booking verification is required.'});
+  if(stripe&&booking.status==='awaiting_payment'&&booking.stripeSessionId){try{const session=await stripe.checkout.sessions.retrieve(booking.stripeSessionId);if(session.payment_status==='paid'){booking.status='confirmed';booking.paidAt=new Date().toISOString();booking.stripePaymentIntentId=session.payment_intent;writeBookings(items);sendConfirmation(booking).catch(error=>console.error('Confirmation email failed:',error.message));}}catch(error){console.error('Payment status refresh failed:',error.message);}}
+  res.json(publicBooking(booking));
 });
 
-// POST /api/create-checkout-session — Create Stripe Checkout session
-app.post('/api/create-checkout-session', async (req, res) => {
-  try {
-    const { tourId, date, persons, name, email, phone, lang } = req.body;
-
-    if (!tourId || !date || !persons || !name || !email) {
-      return res.status(400).json({ error: 'Missing required booking fields.' });
-    }
-
-    const tour = TOURS_CONFIG.tours.find(t => t.id === tourId && t.active);
-    if (!tour) {
-      return res.status(404).json({ error: 'Tour not found or currently unavailable.' });
-    }
-
-    if (!validateTourDate(date)) {
-      return res.status(400).json({ error: 'Bookings must be made at least 24 hours in advance.' });
-    }
-
-    const priceCalculation = calculateServerPrice(tour, persons);
-    const reference = generateReference();
-    const tourName = tour.name[lang] || tour.name.en || tour.name;
-    const displayName = typeof tourName === 'object' ? tourName.en : tourName;
-
-    const newBooking = {
-      reference,
-      tourId: tour.id,
-      tourName: displayName,
-      date,
-      time: TOURS_CONFIG.meetingPoint.time,
-      meetingPoint: `${TOURS_CONFIG.meetingPoint.time} — ${TOURS_CONFIG.meetingPoint.location}`,
-      persons: parseInt(persons, 10),
-      unitPrice: priceCalculation.unitPrice,
-      subtotal: priceCalculation.subtotal,
-      discountAmount: priceCalculation.discountAmount,
-      totalPrice: priceCalculation.totalPrice,
-      currency: TOURS_CONFIG.currency,
-      customerName: name.trim(),
-      customerEmail: email.trim().toLowerCase(),
-      customerPhone: phone ? phone.trim() : '',
-      paymentMethod: 'stripe',
-      status: 'awaiting_payment',
-      createdAt: new Date().toISOString()
-    };
-
-    const bookings = loadBookings();
-
-    if (stripe) {
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        customer_email: newBooking.customerEmail,
-        line_items: [
-          {
-            price_data: {
-              currency: 'eur',
-              product_data: {
-                name: `${displayName} (${reference})`,
-                description: `Date: ${date} at 09:00 AM | Meeting: Hard Rock Cafe Lisbon | Guests: ${persons}`
-              },
-              unit_amount: Math.round(priceCalculation.totalPrice * 100) // in cents
-            },
-            quantity: 1
-          }
-        ],
-        mode: 'payment',
-        success_url: `${SITE_URL}/?booking_ref=${reference}&status=success`,
-        cancel_url: `${SITE_URL}/?booking_ref=${reference}&status=cancelled`,
-        metadata: {
-          reference: newBooking.reference,
-          tourId: newBooking.tourId,
-          date: newBooking.date,
-          persons: String(newBooking.persons)
-        }
-      });
-
-      newBooking.stripeSessionId = session.id;
-      bookings.push(newBooking);
-      saveBookings(bookings);
-
-      return res.json({ checkoutUrl: session.url, reference });
-    } else {
-      // Fallback for test mode without live Stripe credentials
-      bookings.push(newBooking);
-      saveBookings(bookings);
-      sendTransactionalEmails(newBooking);
-
-      return res.json({
-        checkoutUrl: `${SITE_URL}/?booking_ref=${reference}&status=success_demo`,
-        reference,
-        demo: true
-      });
-    }
-  } catch (err) {
-    console.error('Error creating Stripe session:', err);
-    res.status(500).json({ error: err.message || 'Stripe payment initialization error.' });
-  }
+app.get('/api/availability',(req,res)=>{
+  const tour=TOURS_CONFIG.tours.find(t=>t.active&&t.id===req.query.tourId),date=text(req.query.date,10);
+  if(!tour||!validDate(date))return res.status(400).json({error:'Invalid experience or date.'});
+  const bookings=readBookings();
+  if(hasResourceConflict(bookings,tour,date))return res.json({available:false,availableSeats:0});
+  const reserved=bookings.filter(b=>b.tourId===tour.id&&b.date===date&&holdsCapacity(b)).reduce((sum,b)=>sum+Number(b.persons||0),0);
+  const availableSeats=Math.max(0,tour.maxPersons-reserved);
+  res.json({available:availableSeats>0,availableSeats});
 });
 
-// POST /api/stripe-webhook — Verified Stripe webhook handler
-app.post('/api/stripe-webhook', (req, res) => {
-  const sig = req.headers['stripe-signature'];
-  let event;
-
-  if (stripe && process.env.STRIPE_WEBHOOK_SECRET && process.env.STRIPE_WEBHOOK_SECRET !== 'whsec_placeholder') {
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
-    } catch (err) {
-      console.error('Stripe webhook signature error:', err.message);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-  } else {
-    // If webhook secret is placeholder, parse JSON body directly for testing
-    try {
-      event = JSON.parse(req.body.toString());
-    } catch (e) {
-      return res.status(400).send('Invalid webhook JSON payload');
-    }
-  }
-
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object;
-    const reference = session.metadata ? session.metadata.reference : null;
-
-    const bookings = loadBookings();
-    const index = bookings.findIndex(b => (reference && b.reference === reference) || b.stripeSessionId === session.id);
-
-    if (index !== -1) {
-      bookings[index].status = 'confirmed';
-      bookings[index].stripePaymentIntentId = session.payment_intent;
-      bookings[index].updatedAt = new Date().toISOString();
-      saveBookings(bookings);
-
-      console.log(`Booking ${bookings[index].reference} confirmed via Stripe webhook!`);
-      sendTransactionalEmails(bookings[index]);
-    }
-  }
-
-  res.json({ received: true });
-});
-
-// GET /api/bookings/:ref — Query booking by reference
-app.get('/api/bookings/:ref', (req, res) => {
-  const bookings = loadBookings();
-  const booking = bookings.find(b => b.reference.toUpperCase() === req.params.ref.toUpperCase());
-  if (!booking) {
-    return res.status(404).json({ error: 'Booking not found.' });
-  }
-  res.json({ booking });
-});
-
-// Start Server
-app.listen(PORT, () => {
-  console.log(`About Culture Things server running at http://localhost:${PORT}`);
-});
+app.use('/api',(req,res)=>res.status(404).json({error:'Not found.'}));
+app.listen(PORT,()=>console.log(`About Culture Things running at ${SITE_URL}`));

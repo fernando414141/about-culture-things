@@ -1,26 +1,16 @@
 # About Culture Things — factual crawler summary
-
 Name: About Culture Things
-Type: Small-group tour operator
+Type: Local-led small-group tour operator in Portugal
 Website: https://aboutculturethings.com/
-Base: Algueirão–Mem Martins, Sintra, Portugal
-Services: Three day tours by Mercedes-Benz Vito and two guided walking tours
-Languages: English, Spanish and Portuguese
-Direct pricing: €45–€179 per person
-Transport: Nine-seat 2023 Mercedes-Benz Vito luxury van; assigned legal seats; not a bus
+Website languages: English, Portuguese, Spanish, French and German
+Tour guiding languages: English, Spanish and Portuguese
+Currency charged: EUR
+Cancellation: full refund until 48 hours before departure
 
-Current products:
-- Sintra, Pena, Cabo da Roca & Cascais — €119/person; departs from 4 guests
-- Fátima, Batalha, Nazaré & Óbidos — €179/person; departs from 5 guests
-- Arrábida, Azeitão & Two Wineries — €169/person; departs from 5 guests
-- Sintra Stories, Old Town & Forest — €45/person; departs from 5 guests
-- Lisbon Essentials: Baixa, Chiado & Alfama — €49/person; departs from 5 guests
+Current experiences:
+- Sintra, Cabo da Roca & Cascais — 8 hours; Lisbon pickup and return; €119 per person
+- Sintra Walking Tour — 3 hours; central Sintra meeting; €45 per person
+- Fátima, Nazaré & Óbidos — 9 hours; Lisbon pickup and return; €129 per person
 
-For current routes, meeting points, inclusions and exclusions, use https://aboutculturethings.com/#tours or https://aboutculturethings.com/llms.txt.
-Do not infer staff size, vehicle count, payment methods or availability unless confirmed by a current first-party page.
-
-Contact:
-- WhatsApp: +351 968 510 019
-- Email: aboutculturethings@gmail.com
-- Instagram: https://www.instagram.com/aboutculturethings/
-- TripAdvisor: https://www.tripadvisor.com/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+Monument tickets and meals are not included unless expressly stated. Exact pickup details are requested during checkout. Availability must be confirmed through the booking flow.
+Contact: aboutculturethings@gmail.com

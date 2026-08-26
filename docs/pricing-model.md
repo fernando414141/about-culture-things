@@ -1,46 +1,17 @@
-# Direct tour pricing model — 25 August 2026
+# Public pricing position — 25 August 2026
 
-This model protects each shared departure from operating at a loss while keeping the public rate below a comparable private experience. It is an operating estimate, not tax or accounting advice.
+These public prices position About Culture Things above mass-market coach tours while remaining below many private departures. EUR is the canonical currency.
 
-## Assumptions
+| Experience | Duration | Public price |
+| --- | ---: | ---: |
+| Sintra, Cabo da Roca & Cascais | 8 hours | €119 per person |
+| Sintra Walking Tour | 3 hours | €45 per person |
+| Fátima, Nazaré & Óbidos | 9 hours | €129 per person |
 
-- Vehicle base: Algueirão–Mem Martins, Sintra.
-- Vehicle: nine-seat 2023 Mercedes-Benz Vito luxury van.
-- Operating format: one professional driver-guide; every guest uses a legal passenger seat.
-- Loaded driver-guide cost: €22/hour. Walking guide: €18/hour.
-- Diesel: €2.037/litre (DGEG daily national average, 20 August 2026).
-- Conservative consumption: 8.6 litres/100 km (top of Mercedes-Benz's published Vito WLTP range).
-- Vehicle reserve: €0.28/km for maintenance, tyres and depreciation.
-- Fixed allowance per van departure covers cleaning, insurance allocation, parking/tolls and administration.
-- Contingency: 8% of operating cost.
-- Commercial reserve: 23/123 of gross revenue for VAT exposure plus 2% direct payment cost.
-- Prices exclude marketplace commission because the booking is direct.
+The launch catalogue intentionally contains three distinct products. Essential Sintra remains configured but inactive so it can be tested later without competing with the signature Sintra-and-coast experience. A Lisbon walking tour should only be activated once demand or scheduling reliably covers travel from Sintra.
 
-## Protected departure economics
+The Fátima itinerary includes Nazaré because the established Fátima–Nazaré–Óbidos route adds a strong Atlantic contrast and a practical lunch pause without extending the product beyond a typical nine-hour day. Review fuel, staffing, insurance, VAT, payment costs and actual pickup mileage before launch. Do not advertise minimum departures, scarcity or live capacity unless backed by operational availability data.
 
-| Tour | Operating estimate | Public price | Confirmed minimum | Estimated contribution at minimum |
-| --- | ---: | ---: | ---: | ---: |
-| Sintra, Pena, Cabo da Roca & Cascais | 8 staff hours · 100 km · €288 protected cost | €119 pp | 4 | about €90 / 19% |
-| Fátima, Batalha, Nazaré & Óbidos | 11.5 staff hours · 380 km · €552 protected cost | €179 pp | 5 | about €158 / 18% |
-| Arrábida, Azeitão & Two Wineries | 9.5 staff hours · 170 km · €514 protected cost, including €25 pp tasting allowance | €169 pp | 5 | about €156 / 18% |
-| Sintra Stories walking tour | 4.5 guide hours plus positioning, admin and pastry | €45 pp | 5 | about €37 / 16% |
-| Lisbon Essentials walking tour | 5.5 guide hours plus positioning, admin and pastry | €49 pp | 5 | about €23 / 9% |
+Stripe fees are treated as a cost of sale and are not added as a checkout surcharge. A single final price is easier to understand, improves payment completion and supports a premium position. Quantity discounts are intentionally disabled at launch: public discount ladders add cognitive load and can weaken perceived quality. Revisit private-group pricing only after real occupancy and contribution-margin data are available.
 
-The Lisbon walk is deliberately the leanest margin to keep it within a sellable paid-walking-tour range. It becomes materially stronger from the sixth guest.
-
-## Commercial guardrails
-
-- Do not confirm below the published minimum at the shared per-person rate.
-- Quote a private-departure supplement when a smaller party wants a guaranteed date.
-- Reprice if diesel moves by more than 10%, contracted winery costs exceed €25/person, or actual staff time repeatedly exceeds the estimate.
-- Confirm the final VAT treatment and passenger-transport/tour insurance allocation with a Portuguese accountant and insurer before taking payment.
-
-## Research references
-
-- DGEG fuel prices: https://precoscombustiveis.dgeg.gov.pt/estatistica/preco-medio-diario
-- Mercedes-Benz Vito fuel-consumption range: https://media.mercedes-benz.com/article/3801ccf2-ec19-488c-aec2-afce0527a545
-- Living Tours Lisbon brochure 2025–2026: https://www.livingtoursgroup.com/catalogs/Lisbon-Brochure-2025-2026.pdf
-- Yellow Cab Fátima group tour: https://yellowcabtttours.pt/group-tours/fatima-group-tour/
-- Sintra/Cascais market examples: https://sintracascais.com/
-- Arrábida private all-inclusive comparator: https://yesexperiencesportugal.com/tours/arrabida-wine-allinclusive
-- Portuguese Tax Authority binding information on travel-sector VAT treatment: https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/informacoes_vinculativas/despesa/civa/Documents/PIV_29124.pdf
+Research checked on 25 August 2026: Viator and GetYourGuide listings for Sintra–Cascais and Fátima–Nazaré–Óbidos small-group tours; ECB EUR/USD reference rate of 1.1662 USD per EUR.
