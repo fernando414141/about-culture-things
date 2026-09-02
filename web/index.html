@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#153b32">
+  <title>About Culture Things — Preview</title>
+  <meta name="description" content="Private and small-group tours from Lisbon to Sintra and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <a class="brand" href="#top">About Culture Things</a>
+    <nav aria-label="Primary navigation"><a href="#tours" data-copy="navTours">Tours</a><a href="#why" data-copy="navWhy">Why us</a><a href="#reviews" data-copy="navReviews">Reviews</a></nav>
+    <div class="header-actions"><select id="language" aria-label="Language"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option><option value="fr">FR</option><option value="de">DE</option></select><a class="button small" href="#tours" data-copy="book">Book now</a></div>
+  </header>
+
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="../site/images/hero-960.webp" aria-hidden="true"><source src="../site/hero.mp4" type="video/mp4"></video>
+    <div class="hero-overlay"></div>
+    <div class="hero-copy"><p class="eyebrow" data-copy="heroKicker">Small-group and private tours</p><h1 data-copy="heroTitle">Portugal, with a local sense of place.</h1><p data-copy="heroText">Thoughtfully paced days from Lisbon to Sintra, the Atlantic coast and beyond.</p><div class="hero-actions"><a class="button light" href="#tours" data-copy="explore">Explore tours</a><a class="text-link light-link" href="#private" data-copy="plan">Plan a private tour</a></div></div>
+    <div class="hero-proof"><span>★★★★★ <span data-copy="rating">5.0 from 40 TripAdvisor reviews</span></span><span data-copy="heroFacts">Local guides · Maximum 6 guests · EN / ES / PT</span></div>
+  </section>
+
+  <main id="main">
+    <section class="trust"><span data-copy="trust1">Local guides</span><span data-copy="trust2">Small groups</span><span data-copy="trust3">Free cancellation up to 48 hours</span></section>
+
+    <section class="section tours" id="tours">
+      <div class="section-head"><p class="eyebrow dark" data-copy="toursKicker">Choose your day</p><h2 data-copy="toursTitle">Four ways to experience Portugal.</h2><p data-copy="toursText">Clear itineraries, personal attention and no unnecessary stops.</p></div>
+      <div class="tour-grid" id="tour-grid"></div>
+    </section>
+
+    <section class="section why" id="why">
+      <div class="section-head"><p class="eyebrow" data-copy="whyKicker">The difference</p><h2 data-copy="whyTitle">A better day is in the details.</h2></div>
+      <div class="principles"><article><span>01</span><h3 data-copy="why1Title">Local knowledge</h3><p data-copy="why1Text">Guides who understand the stories, roads and rhythms of each place.</p></article><article><span>02</span><h3 data-copy="why2Title">Thoughtful pacing</h3><p data-copy="why2Text">Enough time to look, ask questions and enjoy the day without rushing.</p></article><article><span>03</span><h3 data-copy="why3Title">Personal attention</h3><p data-copy="why3Text">A maximum of six guests creates space for conversation and flexibility.</p></article></div>
+    </section>
+
+    <section class="section private" id="private">
+      <figure><img src="../site/images/guests-sintra-coast-720.webp" alt="Guests enjoying the Atlantic coast near Sintra" loading="lazy"></figure>
+      <div><p class="eyebrow dark" data-copy="privateKicker">Private by design</p><h2 data-copy="privateTitle">Your group. Your pace.</h2><p data-copy="privateText">Hotel pickup in Lisbon, Sintra or Cascais, a flexible route and a dedicated local guide.</p><button class="button" data-open-tour="sintra-private" data-copy="privateCta">Plan your private day</button></div>
+    </section>
+
+    <section class="section reviews" id="reviews">
+      <div class="section-head"><p class="eyebrow" data-copy="reviewsKicker">Guest notes</p><h2 data-copy="reviewsTitle">What travellers remember.</h2></div>
+      <div class="review-grid"><blockquote><p>“Friendly, knowledgeable and made everything feel relaxed and personal.”</p><footer>Jose M. · TripAdvisor</footer></blockquote><blockquote><p>“Rita made the entire day incredibly comfortable and enjoyable for our family.”</p><footer>Kristina P. · TripAdvisor</footer></blockquote><blockquote><p>“It was the highlight of our trip. Passionate, flexible and full of local knowledge.”</p><footer>TripAdvisor guest</footer></blockquote></div>
+    </section>
+
+    <section class="section faq"><div class="section-head"><p class="eyebrow dark">FAQ</p><h2 data-copy="faqTitle">Good to know.</h2></div><div id="faq-list" class="faq-list"></div></section>
+  </main>
+
+  <footer><div><a class="brand" href="#top">About Culture Things</a><p data-copy="footerText">Thoughtful local experiences across Portugal.</p></div><div><a href="mailto:aboutculturethings@gmail.com">Email</a><a href="https://www.instagram.com/aboutculturethings/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tripadvisor.co.uk/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener">TripAdvisor</a></div><small>© 2026 About Culture Things · Portugal · Preview</small></footer>
+
+  <dialog id="tour-dialog"><button class="dialog-close" aria-label="Close">×</button><div id="dialog-content"></div></dialog>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
