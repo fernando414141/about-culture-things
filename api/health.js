@@ -1,0 +1,2 @@
+const {stripe,TOURS,minDate}=require('../lib/booking');
+module.exports=function handler(req,res){if(req.method!=='GET')return res.status(405).json({error:'Method not allowed.'});res.status(200).json({ok:true,paymentConfigured:Boolean(stripe),emailConfigured:Boolean(process.env.SMTP_HOST&&process.env.SMTP_USER&&process.env.SMTP_PASS),minDate:minDate(),products:TOURS.map(t=>({id:t.id,price:t.price}))})};
