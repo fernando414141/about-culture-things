@@ -6,7 +6,7 @@ module.exports=async function handler(req,res){
   if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
   const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.headers['idempotency-key'],100);
   if(!tour)return res.status(404).json({error:'Tour not found.'});
-  if(!Number.isInteger(persons)||persons<2||persons>30)return res.status(400).json({error:'Minimum booking is 2 guests.'});
+  if(!Number.isInteger(persons)||persons<2||persons>6)return res.status(400).json({error:'Each booking must include between 2 and 6 guests.'});
   if(!validDate(p.date))return res.status(400).json({error:'Bookings close at 7:00 pm Lisbon time on the day before the tour.'});
   if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
   if(await isBlocked(p.date))return res.status(409).json({error:'This date is not available. Please choose another day.'});

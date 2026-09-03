@@ -16,8 +16,8 @@ if(!fs.existsSync(BOOKINGS_FILE))fs.writeFileSync(BOOKINGS_FILE,'[]\n','utf8');
 
 const TOURS=[
  {id:'sintra',price:75,duration:'8 h',name:{en:'Sintra, Cabo da Roca & Cascais',pt:'Sintra, Cabo da Roca e Cascais',es:'Sintra, Cabo da Roca y Cascais'}},
- {id:'fatima',price:95,duration:'9–10 h',name:{en:'Fátima, Nazaré & Óbidos',pt:'Fátima, Nazaré e Óbidos',es:'Fátima, Nazaré y Óbidos'}},
- {id:'evora',price:105,duration:'8–9 h',name:{en:'Évora & Alentejo',pt:'Évora e Alentejo',es:'Évora y Alentejo'}}
+ {id:'fatima',price:105,duration:'10 h',name:{en:'Fátima, Nazaré & Óbidos',pt:'Fátima, Nazaré e Óbidos',es:'Fátima, Nazaré y Óbidos'}},
+ {id:'evora',price:105,duration:'10 h',name:{en:'Évora & Alentejo',pt:'Évora e Alentejo',es:'Évora y Alentejo'}}
 ];
 const LANGUAGES=['en','es','pt'];
 const BOOKING_CUTOFF_HOUR=19;
@@ -79,7 +79,7 @@ async function createCheckout(req,res){
   if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
   const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.get('Idempotency-Key'),100);
   if(!tour)return res.status(404).json({error:'Tour not found.'});
-  if(!Number.isInteger(persons)||persons<2||persons>30)return res.status(400).json({error:'Minimum booking is 2 guests.'});
+  if(!Number.isInteger(persons)||persons<2||persons>6)return res.status(400).json({error:'Each booking must include between 2 and 6 guests.'});
   if(!validDate(p.date))return res.status(400).json({error:'Bookings close at 7:00 pm Lisbon time on the day before the tour.'});
   if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
   const bookings=readBookings(),existing=bookings.find(b=>b.bookingAttemptId===attempt);
