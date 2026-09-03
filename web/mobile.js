@@ -1,4 +1,7 @@
 (()=>{
+  if(!document.querySelector('link[href^="/web/booking-ux.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/web/booking-ux.css?v=1';document.head.appendChild(l)}
+  if(!document.querySelector('script[src^="/web/calendar.js"]')){const s=document.createElement('script');s.src='/web/calendar.js?v=1';s.defer=true;document.head.appendChild(s)}
+
   const header=document.querySelector('.header');
   const actions=document.querySelector('.header-actions');
   if(!header||!actions)return;
@@ -75,7 +78,7 @@
     const phone=form.querySelector('input[name="phone"]');
     const requests=form.querySelector('input[name="requests"]');
     const status=form.querySelector('.booking-status');
-    if(date){date.autocomplete='off';date.addEventListener('change',async()=>{await loadBlocked();if(blocked.has(date.value)){date.value='';date.setCustomValidity(unavailableMessage());status.textContent=unavailableMessage();date.reportValidity();setTimeout(()=>date.setCustomValidity(''),200)}else{date.setCustomValidity('');if(status?.textContent===unavailableMessage())status.textContent=''}})}
+    if(date){date.autocomplete='off';date.addEventListener('change',async()=>{await loadBlocked();if(blocked.has(date.value)){date.value='';date.setCustomValidity(unavailableMessage());if(status)status.textContent=unavailableMessage();date.reportValidity();setTimeout(()=>date.setCustomValidity(''),200)}else{date.setCustomValidity('')}})}
     if(pickup){pickup.autocomplete='street-address';pickup.autocapitalize='words';pickup.enterKeyHint='next'}
     if(name){name.autocomplete='name';name.autocapitalize='words';name.enterKeyHint='next'}
     if(email){email.autocomplete='email';email.inputMode='email';email.autocapitalize='none';email.spellcheck=false;email.enterKeyHint='next'}
@@ -88,7 +91,7 @@
   document.querySelectorAll('[data-booking-form]').forEach(enhanceForm);
 
   document.addEventListener('click',e=>{
-    if(e.target.closest('[data-open-tour]'))setTimeout(()=>{loadBlocked();const d=document.getElementById('tour-dialog');if(d&&innerWidth<=760)d.scrollTop=0},80);
+    if(e.target.closest('[data-open-tour]'))setTimeout(()=>{loadBlocked();const d=document.getElementById('tour-dialog');if(d)d.scrollTop=0},80);
   });
 
   window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>12),{passive:true});
