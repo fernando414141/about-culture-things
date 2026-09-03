@@ -31,7 +31,13 @@ function holdsCapacity(booking){
   return Number.isFinite(expiresAt)&&expiresAt>Date.now();
 }
 function tourById(id){return TOURS_CONFIG.tours.find(t=>t.id===id);}
-function hasResourceConflict(bookings,tour,date){return bookings.some(b=>b.date===date&&holdsCapacity(b)&&b.tourId!==tour.id&&tourById(b.tourId)?.resource===tour.resource);}
+const WEB_TOURS=[
+  {id:'sintra-small-group',active:true,price:99,pricingType:'per_person',duration:'8–9 h',maxPersons:30,pickupType:'meeting',name:{en:'Sintra, Pena, Cabo da Roca & Cascais',pt:'Sintra, Pena, Cabo da Roca e Cascais',es:'Sintra, Pena, Cabo da Roca y Cascais'}},
+  {id:'sintra-private',active:true,price:449,pricingType:'per_vehicle',seatsPerVehicle:6,duration:'8–9 h',maxPersons:30,pickupType:'hotel',name:{en:'Private Sintra Complete',pt:'Sintra Completa Privada',es:'Sintra Completa Privada'}},
+  {id:'fatima-private',active:true,price:549,pricingType:'per_vehicle',seatsPerVehicle:6,duration:'9–10 h',maxPersons:30,pickupType:'hotel',name:{en:'Private Fátima, Nazaré & Óbidos',pt:'Fátima, Nazaré e Óbidos Privado',es:'Fátima, Nazaré y Óbidos Privado'}},
+  {id:'evora-private',active:true,price:569,pricingType:'per_vehicle',seatsPerVehicle:6,duration:'8–9 h',maxPersons:30,pickupType:'hotel',name:{en:'Private Évora Heritage & Wine',pt:'Évora Património e Vinhos Privado',es:'Évora Patrimonio y Vinos Privado'}}
+];
+function checkoutTourById(id){return WEB_TOURS.find(t=>t.id===id)||tourById(id);}
 
 async function sendConfirmation(booking){
   const smtpHost=process.env.SMTP_HOST||process.env.EMAIL_HOST,smtpUser=process.env.SMTP_USER||process.env.EMAIL_USER,smtpPass=process.env.SMTP_PASS||process.env.EMAIL_PASS;
@@ -68,20 +74,18 @@ let checkoutQueue=Promise.resolve();
 async function createCheckout(req,res){
   try{
     if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
-    const p=req.body||{},tour=TOURS_CONFIG.tours.find(t=>t.active&&t.id===p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.get('Idempotency-Key'),100);
+    const p=req.body||{},tour=checkoutTourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.get('Idempotency-Key'),100);
     if(!tour)return res.status(404).json({error:'Experience not found.'});
     if(!Number.isInteger(persons)||persons<1||persons>tour.maxPersons)return res.status(400).json({error:'Invalid guest count.'});
     if(!validDate(p.date)||!customerName||!customerEmail||!TOURS_CONFIG.tourLanguages.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
     const bookings=readBookings(),existing=bookings.find(b=>b.bookingAttemptId===attempt);
     if(existing?.checkoutUrl&&holdsCapacity(existing))return res.json({checkoutUrl:existing.checkoutUrl,reference:existing.reference});
-    if(hasResourceConflict(bookings,tour,p.date))return res.status(409).json({error:'The transport assigned to this date is already reserved for another route.'});
-    const reservedSeats=bookings.filter(b=>b.tourId===tour.id&&b.date===p.date&&holdsCapacity(b)).reduce((sum,b)=>sum+Number(b.persons||0),0);
-    if(reservedSeats+persons>tour.maxPersons)return res.status(409).json({error:'This date no longer has enough places for your group.'});
-    const ref=reference(),lang=['en','pt','es','fr','de'].includes(p.lang)?p.lang:'en',tourName=tour.name[lang]||tour.name.en,totalPrice=tour.price*persons;
+    const ref=reference(),lang=['en','pt','es','fr','de'].includes(p.lang)?p.lang:'en',tourName=tour.name[lang]||tour.name.en;
+    const quantity=tour.pricingType==='per_vehicle'?Math.ceil(persons/(tour.seatsPerVehicle||6)):persons,totalPrice=tour.price*quantity;
     const session=await stripe.checkout.sessions.create({
       mode:'payment',customer_email:customerEmail,locale:lang==='pt'?'pt-BR':lang,
       automatic_payment_methods:{enabled:true},
-      line_items:[{quantity:persons,price_data:{currency:'eur',unit_amount:tour.price*100,product_data:{name:tourName,description:`${tour.duration} · guided in ${tourLanguage.toUpperCase()}`}}}],
+      line_items:[{quantity,price_data:{currency:'eur',unit_amount:tour.price*100,product_data:{name:tourName,description:`${persons} guest${persons===1?'':'s'} · ${tour.duration} · guided in ${tourLanguage.toUpperCase()}`}}}],
       metadata:{reference:ref,tourId:tour.id,date:p.date,persons:String(persons),tourLanguage},
       payment_intent_data:{metadata:{reference:ref}},
       success_url:`${SITE_URL}/thank-you/?session_id={CHECKOUT_SESSION_ID}&ref=${encodeURIComponent(ref)}`,
@@ -106,13 +110,9 @@ app.get('/api/bookings/:ref',async(req,res)=>{
 });
 
 app.get('/api/availability',(req,res)=>{
-  const tour=TOURS_CONFIG.tours.find(t=>t.active&&t.id===req.query.tourId),date=text(req.query.date,10);
+  const tour=checkoutTourById(req.query.tourId),date=text(req.query.date,10);
   if(!tour||!validDate(date))return res.status(400).json({error:'Invalid experience or date.'});
-  const bookings=readBookings();
-  if(hasResourceConflict(bookings,tour,date))return res.json({available:false,availableSeats:0});
-  const reserved=bookings.filter(b=>b.tourId===tour.id&&b.date===date&&holdsCapacity(b)).reduce((sum,b)=>sum+Number(b.persons||0),0);
-  const availableSeats=Math.max(0,tour.maxPersons-reserved);
-  res.json({available:availableSeats>0,availableSeats});
+  res.json({available:true,availableSeats:tour.maxPersons});
 });
 
 app.use('/api',(req,res)=>res.status(404).json({error:'Not found.'}));
