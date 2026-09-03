@@ -1,6 +1,8 @@
 (()=>{
   if(!document.querySelector('link[href^="/web/booking-ux.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/web/booking-ux.css?v=1';document.head.appendChild(l)}
+  if(!document.querySelector('link[href^="/web/booking-redesign.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/web/booking-redesign.css?v=1';document.head.appendChild(l)}
   if(!document.querySelector('script[src^="/web/calendar.js"]')){const s=document.createElement('script');s.src='/web/calendar.js?v=1';s.defer=true;document.head.appendChild(s)}
+  if(!document.querySelector('script[src^="/web/booking-redesign.js"]')){const s=document.createElement('script');s.src='/web/booking-redesign.js?v=1';s.defer=true;document.head.appendChild(s)}
 
   const header=document.querySelector('.header');
   const actions=document.querySelector('.header-actions');
@@ -77,7 +79,7 @@
     const name=form.querySelector('input[name="name"]');
     const email=form.querySelector('input[name="email"]');
     const phone=form.querySelector('input[name="phone"]');
-    const requests=form.querySelector('input[name="requests"]');
+    const requests=form.querySelector('input[name="requests"], textarea[name="requests"]');
     const status=form.querySelector('.booking-status');
     if(date){date.autocomplete='off';date.addEventListener('change',async()=>{await loadBlocked();const unavailable=blocked.has(date.value),tooLate=Boolean(serverMinDate&&date.value<serverMinDate);if(unavailable||tooLate){date.value='';date.setCustomValidity(tooLate?'Bookings close at 7:00 pm Lisbon time on the day before the tour.':unavailableMessage());if(status)status.textContent=date.validationMessage;date.reportValidity();setTimeout(()=>date.setCustomValidity(''),200)}else{date.setCustomValidity('')}})}
     if(pickup){pickup.autocomplete='street-address';pickup.autocapitalize='words';pickup.enterKeyHint='next'}
