@@ -5,12 +5,14 @@
 1. Add live Stripe keys and the production `SITE_URL` to the hosting environment.
 2. Register `/api/stripe-webhook` in Stripe and subscribe to `checkout.session.completed`.
 3. Add working SMTP credentials and set `ADMIN_EMAIL` to the reservations inbox.
-4. Make one low-value live booking, confirm the customer email and verify the owner receives the BCC copy.
-5. Check the booking in `data/bookings.json` on the server. This directory is blocked from public HTTP access and must remain excluded from source control.
+4. Add a long random `ADMIN_AVAILABILITY_TOKEN` to the hosting environment. Rita enters this private key at `/admin/`; never commit or share the real value publicly.
+5. Make one low-value live booking, confirm the customer email and verify the owner receives the BCC copy.
+6. Check the booking in Stripe and confirm the availability panel can block and unblock a test date.
 
 ## What happens after a sale
 
 - The checkout validates date, guest count, language and pickup details.
+- Reservations close at 19:00 Europe/Lisbon time on the day before departure. At or after 19:00, the earliest bookable date moves forward by one additional day.
 - One transport resource is protected across both day-tour routes, so two different van routes cannot be sold for the same date by mistake.
 - Stripe holds the checkout for 30 minutes. Unpaid holds then stop consuming capacity.
 - A successful webhook marks the booking confirmed and emails both the customer and the reservations inbox.

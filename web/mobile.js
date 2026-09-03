@@ -62,8 +62,9 @@
   matchMedia('(min-width:1051px)').addEventListener?.('change',e=>{if(e.matches)setMenu(false)});
 
   let blocked=new Set();
+  let serverMinDate='';
   async function loadBlocked(){
-    try{const r=await fetch('/api/availability',{cache:'no-store'});if(r.ok){const d=await r.json();blocked=new Set(d.blockedDates||[])}}catch{}
+    try{const r=await fetch('/api/availability',{cache:'no-store'});if(r.ok){const d=await r.json();blocked=new Set(d.blockedDates||[]);serverMinDate=d.minDate||serverMinDate}}catch{}
   }
   loadBlocked();
 
@@ -78,7 +79,7 @@
     const phone=form.querySelector('input[name="phone"]');
     const requests=form.querySelector('input[name="requests"]');
     const status=form.querySelector('.booking-status');
-    if(date){date.autocomplete='off';date.addEventListener('change',async()=>{await loadBlocked();if(blocked.has(date.value)){date.value='';date.setCustomValidity(unavailableMessage());if(status)status.textContent=unavailableMessage();date.reportValidity();setTimeout(()=>date.setCustomValidity(''),200)}else{date.setCustomValidity('')}})}
+    if(date){date.autocomplete='off';date.addEventListener('change',async()=>{await loadBlocked();const unavailable=blocked.has(date.value),tooLate=Boolean(serverMinDate&&date.value<serverMinDate);if(unavailable||tooLate){date.value='';date.setCustomValidity(tooLate?'Bookings close at 7:00 pm Lisbon time on the day before the tour.':unavailableMessage());if(status)status.textContent=date.validationMessage;date.reportValidity();setTimeout(()=>date.setCustomValidity(''),200)}else{date.setCustomValidity('')}})}
     if(pickup){pickup.autocomplete='street-address';pickup.autocapitalize='words';pickup.enterKeyHint='next'}
     if(name){name.autocomplete='name';name.autocapitalize='words';name.enterKeyHint='next'}
     if(email){email.autocomplete='email';email.inputMode='email';email.autocapitalize='none';email.spellcheck=false;email.enterKeyHint='next'}

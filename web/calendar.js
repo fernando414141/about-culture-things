@@ -1,17 +1,22 @@
 (()=>{
   let blocked=new Set();
   let loaded=false;
+  let serverMinDate='';
   const lang=()=>document.documentElement.lang||'en';
   const copy=()=>lang()==='pt'?{select:'Escolher data',unavailable:'Indisponível',available:'Disponível',selected:'Selecionada'}:lang()==='es'?{select:'Elegir fecha',unavailable:'No disponible',available:'Disponible',selected:'Seleccionada'}:{select:'Choose date',unavailable:'Unavailable',available:'Available',selected:'Selected'};
   async function loadBlocked(){
     try{
       const r=await fetch('/api/availability',{cache:'no-store'});
-      if(r.ok){const d=await r.json();blocked=new Set(d.blockedDates||[]);loaded=true;}
+      if(r.ok){const d=await r.json();blocked=new Set(d.blockedDates||[]);serverMinDate=d.minDate||serverMinDate;loaded=true;}
     }catch{}
   }
   const pad=n=>String(n).padStart(2,'0');
   const iso=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
-  function firstBookable(){return new Date(Date.now()+86400000).toISOString().slice(0,10)}
+  function firstBookable(){
+    if(serverMinDate)return serverMinDate;
+    const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).filter(x=>x.type!=='literal').map(x=>[x.type,Number(x.value)]));
+    return new Date(Date.UTC(p.year,p.month-1,p.day+(p.hour>=19?2:1))).toISOString().slice(0,10);
+  }
   function formatSelected(value){
     if(!value)return copy().select;
     const [y,m,d]=value.split('-').map(Number);
@@ -43,7 +48,7 @@
       panel.innerHTML=`<div class="calendar-head"><button type="button" class="calendar-nav" data-prev aria-label="Previous month">‹</button><strong>${monthLabel}</strong><button type="button" class="calendar-nav" data-next aria-label="Next month">›</button></div><div class="calendar-weekdays">${weekdays.map(w=>`<span>${w}</span>`).join('')}</div><div class="calendar-grid">${cells}</div><div class="calendar-legend"><span><i></i>${copy().available}</span><span class="blocked"><i></i>${copy().unavailable}</span></div>`;
     }
     async function open(){
-      trigger.disabled=true;await loadBlocked();trigger.disabled=false;render();panel.hidden=false;trigger.setAttribute('aria-expanded','true');
+      trigger.disabled=true;await loadBlocked();trigger.disabled=false;if(input.value&&input.value<firstBookable()){input.value='';trigger.textContent=formatSelected('');}render();panel.hidden=false;trigger.setAttribute('aria-expanded','true');
       panel.scrollIntoView({block:'nearest',behavior:'smooth'});
     }
     function close(){panel.hidden=true;trigger.setAttribute('aria-expanded','false')}
