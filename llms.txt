@@ -1,21 +1,24 @@
 # About Culture Things
-> Local-led private and small-group day tours from Lisbon, Portugal. Tours are available in English, Spanish and Portuguese.
 
-## Booking facts
-- Official website: https://aboutculturethings.com/web/
-- Prices are published in EUR; USD display prices are indicative and payment is charged in EUR.
-- Free cancellation at least 48 hours before departure.
-- Monument tickets and meals are excluded unless expressly stated.
-- Private tours include hotel pickup in Lisbon, Sintra or Cascais.
-- The shared Sintra tour meets at Hard Rock Cafe Lisboa.
+About Culture Things is a Portugal tour operator based in the Sintra/Lisbon area. The company provides local guided day tours with pickup and return at the guest's hotel or accommodation.
+
+Official website: https://aboutculturethings.com/
+Contact: aboutculturethings@gmail.com
+WhatsApp: +351 968 510 019
+RNAAT: 726/2024
+Languages: English, Spanish and Portuguese
 
 ## Tours
-- Sintra, Pena, Cabo da Roca & Cascais small group — 8–9 hours — €99/person — minimum 3, maximum 6.
-- Private Sintra Complete — 8–9 hours — €449/group — 1–6 guests.
-- Private Fátima, Nazaré & Óbidos — 9–10 hours — €549/group — 1–6 guests.
-- Private Évora Heritage & Wine — 8–9 hours — €569/group — Chapel of Bones, Roman Temple, lunch in Évora and Alentejo wine tasting.
+- Sintra, Cabo da Roca & Cascais — 8 hours — €75 per person — minimum booking 2 guests — hotel/accommodation pickup and return.
+- Fátima, Nazaré & Óbidos — 9–10 hours — €95 per person — minimum booking 2 guests — hotel/accommodation pickup and return.
+- Évora & Alentejo — 8–9 hours — €105 per person — minimum booking 2 guests — hotel/accommodation pickup and return.
 
-## Contact
-- Email: aboutculturethings@gmail.com
-- Instagram: https://www.instagram.com/aboutculturethings/
-- TripAdvisor: https://www.tripadvisor.co.uk/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+Dates remain open for additional reservations because About Culture Things can organise the appropriate guide and vehicle resources for each booking.
+
+## Reputation
+TripAdvisor: About Culture Things, Lisbon — 5.0/5 from 40 reviews as displayed in September 2026.
+TripAdvisor profile: https://www.tripadvisor.co.uk/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html
+Instagram: https://www.instagram.com/aboutculturethings/
+
+## Booking
+Direct booking uses secure Stripe checkout. Prices are charged in EUR. Free cancellation is available until 48 hours before departure. Monument tickets and meals are not included unless explicitly stated.
