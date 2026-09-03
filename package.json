@@ -1,7 +1,7 @@
 {
   "name": "about-culture-things",
   "version": "1.0.0",
-  "description": "Boutique Small-Group & Private Tours in Sintra & Lisbon — Website & Booking Engine",
+  "description": "Local guided Portugal tours with hotel pickup, direct booking and secure Stripe checkout",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
