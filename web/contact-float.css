@@ -1,10 +1,10 @@
-/* Floating WhatsApp — simple, familiar and unobtrusive. */
-.contact-float{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,calc(env(safe-area-inset-bottom) + 20px));z-index:48;font-family:var(--apple-font,"Manrope",sans-serif)}
-.contact-float__button{width:60px;height:60px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;-webkit-tap-highlight-color:transparent}
-.contact-float__button:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+/* Floating WhatsApp — simple, familiar and correctly proportioned. */
+.contact-float{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,calc(env(safe-area-inset-bottom) + 18px));z-index:48;font-family:var(--apple-font,"Manrope",sans-serif)}
+.contact-float__button{width:56px;height:56px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.17);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;-webkit-tap-highlight-color:transparent}
+.contact-float__button:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.21)}
 .contact-float__button:active{transform:scale(.96)}
 .contact-float__button:focus-visible{outline:3px solid rgba(37,211,102,.28);outline-offset:4px}
-.contact-float__button svg{width:33px;height:33px;display:block;fill:currentColor}
+.contact-float__button svg{width:30px;height:30px;display:block;fill:currentColor}
 .contact-float__panel{display:none!important}
-@media(max-width:760px){.contact-float{right:max(18px,env(safe-area-inset-right));bottom:max(18px,calc(env(safe-area-inset-bottom) + 14px))}.contact-float__button{width:56px;height:56px}.contact-float__button svg{width:31px;height:31px}}
+@media(max-width:760px){.contact-float{right:max(16px,env(safe-area-inset-right));bottom:max(16px,calc(env(safe-area-inset-bottom) + 12px))}.contact-float__button{width:56px;height:56px}.contact-float__button svg{width:30px;height:30px}}
 @media(prefers-reduced-motion:reduce){.contact-float__button{transition:none}}
