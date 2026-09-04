@@ -59,7 +59,7 @@
       const day=e.target.closest('[data-date]');if(!day)return;
       input.value=day.dataset.date;input.dispatchEvent(new Event('change',{bubbles:true}));trigger.textContent=formatSelected(input.value);close();
     });
-    document.addEventListener('click',e=>{if(!wrap.contains(e.target)&&!panel.hidden)close()});
+    document.addEventListener('click',e=>{const path=typeof e.composedPath==='function'?e.composedPath():[];if(!path.includes(wrap)&&!panel.hidden)close()});
     const form=input.closest('form');
     form?.addEventListener('submit',e=>{
       if(!input.value){e.preventDefault();e.stopImmediatePropagation();open();trigger.focus();}
