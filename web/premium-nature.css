@@ -31,7 +31,19 @@ html,body{background:var(--premium-ivory)!important;color:var(--premium-ink)!imp
 .hero h1,.section h2,.tour-body h3,.booking-modal__top h3,.booking-modal__tour h2,.faq summary,.principles h3,.review-grid blockquote p{font-family:var(--display-font)!important}.hero h1{font-weight:500!important;letter-spacing:-.04em!important}
 .tours{background:var(--premium-stone)!important}.tour-card{background:var(--premium-ivory)!important;border:1px solid rgba(176,141,87,.14)!important}.tour-card:hover{border-color:rgba(176,141,87,.30)!important}.tour-meta,.booking-modal__eyebrow{color:var(--premium-gold)!important}
 .tour-bottom .button,.booking-submit,.mobile-menu-book,.header.scrolled .button.small{background:var(--premium-pine)!important;color:#fff!important}.tour-bottom .button:hover,.booking-submit:hover{background:#1d5144!important}
-.why,.reviews,.booking-modal__tour{background:var(--premium-forest)!important}.principles span,.review-grid blockquote footer{color:var(--premium-gold-soft)!important}
+/* Section rhythm: benefits on a quiet light surface, social proof on a rich brand surface. */
+.why{background:var(--premium-ivory)!important;color:var(--premium-ink)!important}
+.why .eyebrow{color:var(--premium-gold)!important}
+.why .section-head h2,.why .principles h3{color:var(--premium-ink)!important}
+.why .principles{border-top-color:rgba(23,50,44,.14)!important}
+.why .principles article+article{border-left-color:rgba(23,50,44,.14)!important}
+.why .principles span{color:var(--premium-gold)!important}
+.why .principles p{color:var(--premium-muted)!important}
+.reviews,.booking-modal__tour{background:var(--premium-forest)!important;color:#fff!important}
+.reviews .principles span,.reviews .review-grid blockquote footer,.review-grid blockquote footer{color:var(--premium-gold-soft)!important}
 .credential-strip,.faq,.booking-modal__form-wrap{background:var(--premium-ivory)!important}.credential-strip a,.credential-strip span,.booking-pricebox{background:var(--premium-stone)!important}
 .booking-field input,.booking-field select,.booking-field textarea{background:#fffdf8!important;border-color:rgba(23,50,44,.16)!important}.booking-field input:focus,.booking-field select:focus,.booking-field textarea:focus{border-color:var(--premium-gold)!important;box-shadow:0 0 0 4px rgba(176,141,87,.10)!important}
 .mobile-menu{background:rgba(249,247,241,.98)!important}::selection{background:rgba(176,141,87,.22)}
+@media(max-width:760px){
+  .why .principles article+article{border-left:0!important;border-top:1px solid rgba(23,50,44,.12)!important}
+}
