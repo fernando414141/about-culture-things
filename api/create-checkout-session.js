@@ -4,11 +4,11 @@ module.exports=async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed.'});
  try{
   if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
-  const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.headers['idempotency-key'],100);
+  const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500)||'To be confirmed',attempt=text(p.bookingAttemptId||req.headers['idempotency-key'],100);
   if(!tour)return res.status(404).json({error:'Tour not found.'});
   if(!Number.isInteger(persons)||persons<MIN_GUESTS||persons>MAX_GUESTS)return res.status(400).json({error:`Each booking must include between ${MIN_GUESTS} and ${MAX_GUESTS} guests.`});
   if(!validDate(p.date))return res.status(400).json({error:'Bookings close at 7:00 pm Lisbon time on the day before the tour.'});
-  if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
+  if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!attempt)return res.status(400).json({error:'Please check the booking details.'});
   if(await isBlocked(p.date))return res.status(409).json({error:'This date is not available. Please choose another day.'});
   const lng=['en','pt','es'].includes(p.lang)?p.lang:'en',tourName=tour.name[lng]||tour.name.en,ref=reference();
   const metadata={reference:ref,tourId:tour.id,tourName,date:p.date,persons:String(persons),tourLanguage,pickup,customerName,customerEmail,customerPhone:text(p.phone,60),requests:text(p.requests,500)};
