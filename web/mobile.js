@@ -5,7 +5,7 @@
   if(!document.getElementById('apple-menu-toggle-fix')){const s=document.createElement('style');s.id='apple-menu-toggle-fix';s.textContent='.menu-toggle.is-open span:nth-child(1){transform:translateY(2.75px) rotate(45deg)!important}.menu-toggle.is-open span:nth-child(2){opacity:1!important;transform:translateY(-2.75px) rotate(-45deg)!important}';document.head.appendChild(s)}
   if(!document.querySelector('script[src^="/web/business-rules.js"]')){const s=document.createElement('script');s.src='/web/business-rules.js?v=1';s.async=false;document.head.appendChild(s)}
   if(!document.querySelector('script[src^="/web/calendar.js"]')){const s=document.createElement('script');s.src='/web/calendar.js?v=2';s.async=false;document.head.appendChild(s)}
-  if(!document.querySelector('script[src^="/web/booking-redesign.js"]')){const s=document.createElement('script');s.src='/web/booking-redesign.js?v=3';s.async=false;document.head.appendChild(s)}
+  if(!document.querySelector('script[src^="/web/booking-redesign.js"]')){const s=document.createElement('script');s.src='/web/booking-redesign.js?v=4';s.async=false;document.head.appendChild(s)}
 
   const header=document.querySelector('.header');const actions=document.querySelector('.header-actions');if(!header||!actions)return;
   const menu=document.createElement('button');menu.type='button';menu.className='menu-toggle';menu.setAttribute('aria-label','Open menu');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-controls','mobile-menu');menu.innerHTML='<span></span><span></span>';actions.appendChild(menu);
