@@ -1,0 +1,48 @@
+/* Premium nature travel identity: refined, warm, understated. */
+:root{
+  --premium-forest:#102f29;
+  --premium-pine:#173f35;
+  --premium-moss:#71806f;
+  --premium-sage:#a9b3a6;
+  --premium-ivory:#fbfaf6;
+  --premium-stone:#f0ece3;
+  --premium-gold:#b08d57;
+  --premium-gold-soft:#d9c7a5;
+  --premium-ink:#17322c;
+  --premium-muted:#6f7772;
+  --apple-font:"Manrope",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --display-font:"Newsreader",Georgia,serif;
+  --apple-bg:var(--premium-stone);
+  --apple-card:var(--premium-ivory);
+  --apple-ink:var(--premium-ink);
+  --apple-muted:var(--premium-muted);
+  --apple-blue:var(--premium-pine);
+  --forest:var(--premium-pine);
+  --forest-deep:var(--premium-forest);
+  --sand:var(--premium-stone);
+  --paper:var(--premium-ivory);
+  --gold:var(--premium-gold);
+  --gold-soft:var(--premium-gold-soft);
+}
+html,body{background:var(--premium-ivory)!important;color:var(--premium-ink)!important;font-family:var(--apple-font)!important}
+.header{background:rgba(8,35,30,.28)!important}
+.header.scrolled{background:rgba(251,250,246,.92)!important}
+.header .brand{font-family:var(--display-font)!important;font-weight:500!important;letter-spacing:-.02em!important}
+.hero{background:var(--premium-forest)!important}
+.hero-overlay{background:linear-gradient(180deg,rgba(7,35,29,.38) 0%,rgba(11,48,40,.14) 43%,rgba(7,33,28,.72) 100%)!important}
+.hero h1,.section h2,.tour-body h3,.booking-modal__top h3,.booking-modal__tour h2,.faq summary,.principles h3,.review-grid blockquote p{font-family:var(--display-font)!important}
+.hero h1{font-weight:500!important;letter-spacing:-.04em!important}
+.tours{background:var(--premium-stone)!important}
+.tour-card{background:var(--premium-ivory)!important;border:1px solid rgba(176,141,87,.14)!important}
+.tour-card:hover{border-color:rgba(176,141,87,.30)!important}
+.tour-meta,.booking-modal__eyebrow{color:var(--premium-gold)!important}
+.tour-bottom .button,.booking-submit,.mobile-menu-book,.header.scrolled .button.small{background:var(--premium-pine)!important;color:#fff!important}
+.tour-bottom .button:hover,.booking-submit:hover{background:#1d5144!important}
+.why,.reviews,.booking-modal__tour{background:var(--premium-forest)!important}
+.principles span,.review-grid blockquote footer{color:var(--premium-gold-soft)!important}
+.credential-strip,.faq,.booking-modal__form-wrap{background:var(--premium-ivory)!important}
+.credential-strip a,.credential-strip span,.booking-pricebox{background:var(--premium-stone)!important}
+.booking-field input,.booking-field select,.booking-field textarea{background:#fffdf8!important;border-color:rgba(23,50,44,.16)!important}
+.booking-field input:focus,.booking-field select:focus,.booking-field textarea:focus{border-color:var(--premium-gold)!important;box-shadow:0 0 0 4px rgba(176,141,87,.10)!important}
+.mobile-menu{background:rgba(249,247,241,.98)!important}
+::selection{background:rgba(176,141,87,.22)}
