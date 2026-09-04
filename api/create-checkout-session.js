@@ -1,4 +1,4 @@
-const {stripe,SITE_URL,text,email,reference,tourById,validDate,LANGUAGES,MIN_GUESTS,MAX_GUESTS}=require('../lib/booking');
+const {stripe,SITE_URL,text,email,validEmailDomain,reference,tourById,validDate,LANGUAGES,MIN_GUESTS,MAX_GUESTS}=require('../lib/booking');
 const {isBlocked}=require('../lib/availability');
 module.exports=async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed.'});
@@ -9,6 +9,7 @@ module.exports=async function handler(req,res){
   if(!Number.isInteger(persons)||persons<MIN_GUESTS||persons>MAX_GUESTS)return res.status(400).json({error:`Each booking must include between ${MIN_GUESTS} and ${MAX_GUESTS} guests.`});
   if(!validDate(p.date))return res.status(400).json({error:'Online bookings require at least 24 hours notice based on Lisbon time.'});
   if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!attempt)return res.status(400).json({error:'Please check the booking details.'});
+  if(!(await validEmailDomain(customerEmail)))return res.status(400).json({error:'Please enter a valid email address that can receive booking confirmation.'});
   if(await isBlocked(p.date))return res.status(409).json({error:'This date is not available. Please choose another day.'});
   const lng=['en','pt','es'].includes(p.lang)?p.lang:'en',tourName=tour.name[lng]||tour.name.en,ref=reference();
   const metadata={reference:ref,tourId:tour.id,tourName,date:p.date,persons:String(persons),tourLanguage,pickup,customerName,customerEmail,customerPhone:text(p.phone,60),requests:text(p.requests,500)};
