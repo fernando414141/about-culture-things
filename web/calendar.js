@@ -2,7 +2,7 @@
   let blocked=new Set();
   let loaded=false;
   let serverMinDate='';
-  const MAX_VISIBLE_MONTHS=2;
+  const MAX_VISIBLE_MONTHS=3;
   const lang=()=>document.documentElement.lang||'en';
   const copy=()=>lang()==='pt'?{select:'Escolher data',unavailable:'Indisponível',available:'Disponível',selected:'Selecionada'}:lang()==='es'?{select:'Elegir fecha',unavailable:'No disponible',available:'Disponible',selected:'Seleccionada'}:{select:'Choose date',unavailable:'Unavailable',available:'Available',selected:'Selected'};
   async function loadBlocked(){
@@ -13,14 +13,15 @@
   }
   const pad=n=>String(n).padStart(2,'0');
   const iso=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
+  function lisbonNowParts(){return Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).filter(x=>x.type!=='literal').map(x=>[x.type,Number(x.value)]))}
+  function currentMonth(){const p=lisbonNowParts();return new Date(p.year,p.month-1,1)}
   function firstBookable(){
     if(serverMinDate)return serverMinDate;
-    const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).filter(x=>x.type!=='literal').map(x=>[x.type,Number(x.value)]));
+    const p=lisbonNowParts();
     const nowMinutes=p.hour*60+p.minute,cutoffMinutes=8*60+30;
     return new Date(Date.UTC(p.year,p.month-1,p.day+(nowMinutes>cutoffMinutes?2:1))).toISOString().slice(0,10);
   }
-  function monthStart(value){const [y,m]=value.split('-').map(Number);return new Date(y,m-1,1)}
-  function lastVisibleMonth(){const start=monthStart(firstBookable());return new Date(start.getFullYear(),start.getMonth()+MAX_VISIBLE_MONTHS-1,1)}
+  function lastVisibleMonth(){const start=currentMonth();return new Date(start.getFullYear(),start.getMonth()+MAX_VISIBLE_MONTHS-1,1)}
   function sameMonth(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()}
   function beforeMonth(a,b){return a.getFullYear()<b.getFullYear()||(a.getFullYear()===b.getFullYear()&&a.getMonth()<b.getMonth())}
   function afterMonth(a,b){return a.getFullYear()>b.getFullYear()||(a.getFullYear()===b.getFullYear()&&a.getMonth()>b.getMonth())}
@@ -38,8 +39,8 @@
     const trigger=document.createElement('button');trigger.type='button';trigger.className='date-picker-trigger';trigger.textContent=formatSelected(input.value);trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');
     const panel=document.createElement('div');panel.className='date-picker-panel';panel.hidden=true;
     wrap.append(trigger,panel);input.after(wrap);
-    let view=input.value?new Date(`${input.value}T12:00:00`):monthStart(firstBookable());
-    const minMonth=()=>monthStart(firstBookable());
+    let view=input.value?new Date(`${input.value}T12:00:00`):currentMonth();
+    const minMonth=()=>currentMonth();
     function clampView(){const min=minMonth(),max=lastVisibleMonth();if(beforeMonth(view,min))view=min;if(afterMonth(view,max))view=max}
     clampView();
     function render(){
@@ -63,9 +64,10 @@
       panel.scrollIntoView({block:'nearest',behavior:'smooth'});
     }
     function close(){panel.hidden=true;trigger.setAttribute('aria-expanded','false')}
-    trigger.addEventListener('click',e=>{e.stopPropagation();panel.hidden?open():close()});
+    trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();panel.hidden?open():close()});
+    panel.addEventListener('pointerdown',e=>{e.stopPropagation()});
     panel.addEventListener('click',e=>{
-      e.stopPropagation();
+      e.preventDefault();e.stopPropagation();
       const prev=e.target.closest('[data-prev]'),next=e.target.closest('[data-next]');
       if(prev&&!prev.disabled){view=new Date(view.getFullYear(),view.getMonth()-1,1);render();return}
       if(next&&!next.disabled){view=new Date(view.getFullYear(),view.getMonth()+1,1);render();return}
