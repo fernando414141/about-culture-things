@@ -7,11 +7,15 @@ module.exports=async function handler(req,res){
  try{
   const body=await rawBody(req),event=stripe.webhooks.constructEvent(body,req.headers['stripe-signature'],process.env.STRIPE_WEBHOOK_SECRET);
   if(event.type==='checkout.session.completed'&&event.data.object.payment_status==='paid'){
-   const session=event.data.object;
-   if(session.metadata?.confirmationSent!=='true'){
-    try{const booking=bookingFromSession(session),sent=await sendConfirmation(booking);if(sent)await stripe.checkout.sessions.update(session.id,{metadata:{...session.metadata,confirmationSent:'true'}})}catch(e){console.error('Webhook confirmation failed:',e.message)}
-   }
+   const eventSession=event.data.object;
+   try{
+    const session=await stripe.checkout.sessions.retrieve(eventSession.id);
+    if(session.metadata?.confirmationSent!=='true'){
+      const booking=bookingFromSession(session),sent=await sendConfirmation(booking);
+      if(sent)await stripe.checkout.sessions.update(session.id,{metadata:{...session.metadata,confirmationSent:'true',confirmationSentAt:new Date().toISOString()}});
+    }
+   }catch(e){console.error('Webhook confirmation failed:',e.message);throw e}
   }
-  res.status(200).json({received:true});
- }catch(error){console.error('Webhook failed:',error.message);res.status(400).send('Invalid webhook')}
+  return res.status(200).json({received:true});
+ }catch(error){console.error('Webhook failed:',error.message);return res.status(400).send('Invalid webhook')}
 };
