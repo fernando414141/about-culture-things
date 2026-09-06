@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Teste de pagamento · About Culture Things</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f1e8;color:#17362f;font-family:Inter,Arial,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}.card{width:min(100%,520px);background:#fff;border:1px solid #ddd8cc;border-radius:24px;padding:32px;box-shadow:0 18px 60px rgba(23,54,47,.10)}h1{font:600 34px/1.08 Georgia,serif;margin:0 0 12px}p{line-height:1.55;color:#53635e}.price{font:600 42px/1 Georgia,serif;margin:24px 0 6px}.note{font-size:14px;background:#f7f5ef;border-radius:14px;padding:14px;margin:20px 0}label{display:block;font-size:14px;font-weight:600;margin:18px 0 7px}input{width:100%;padding:14px 15px;border:1px solid #cfc9bd;border-radius:12px;font:inherit}button{width:100%;border:0;border-radius:999px;padding:15px 20px;margin-top:22px;background:#173f35;color:white;font:600 16px/1 Arial;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.status{min-height:22px;margin-top:14px;font-size:14px}.ok{background:#eef7f2;border:1px solid #cfe6d8;border-radius:14px;padding:16px;margin:20px 0;color:#245a47}.back{display:inline-block;margin-top:18px;color:#173f35}small{display:block;margin-top:16px;color:#74817d;line-height:1.5}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Teste real de pagamento</h1>
+    <p>Esta página não faz parte do processo normal de reserva. Serve apenas para verificar o checkout real da Stripe, o webhook e o email de confirmação.</p>
+    <div class="price">€1,00</div>
+    <p>Pagamento real com cartão. Não reserva nenhum tour.</p>
+
+    <div id="success" class="ok" hidden><strong>Pagamento concluído.</strong><br><span id="verification">A verificar a confirmação...</span></div>
+    <div id="cancelled" class="note" hidden>Pagamento cancelado. Não foi efetuada nenhuma cobrança.</div>
+
+    <form id="form">
+      <label for="name">Nome</label>
+      <input id="name" name="name" autocomplete="name" required>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <button id="pay" type="submit">Pagar €1 com Stripe</button>
+      <div id="status" class="status" aria-live="polite"></div>
+    </form>
+
+    <div class="note"><strong>Importante:</strong> usar um cartão real. A cobrança é real e será de €1. Depois do teste, o pagamento pode ser reembolsado no Stripe Dashboard.</div>
+    <small>O objetivo é confirmar o mesmo ambiente Stripe live usado pelos clientes. Esta página está marcada como noindex e não está ligada à página principal.</small>
+    <a class="back" href="/">Voltar ao site</a>
+  </main>
+<script>
+const qs=new URLSearchParams(location.search),form=document.getElementById('form'),status=document.getElementById('status'),pay=document.getElementById('pay');
+if(qs.get('cancelled'))document.getElementById('cancelled').hidden=false;
+if(qs.get('success')){
+ document.getElementById('success').hidden=false;form.hidden=true;
+ const ref=qs.get('ref'),sessionId=qs.get('session_id');
+ if(ref&&sessionId){
+  fetch(`/api/bookings/${encodeURIComponent(ref)}?sessionId=${encodeURIComponent(sessionId)}`,{cache:'no-store'})
+   .then(r=>r.ok?r.json():Promise.reject())
+   .then(b=>{document.getElementById('verification').textContent=b.status==='confirmed'?`Stripe confirmou o pagamento de €${Number(b.totalPrice).toFixed(2)}. Verifique agora o email de confirmação.`:'O pagamento foi recebido, mas ainda está a ser confirmado.'})
+   .catch(()=>{document.getElementById('verification').textContent='O pagamento regressou com sucesso. Verifique o Stripe Dashboard e o email de confirmação.'});
+ }
+}
+form.addEventListener('submit',async e=>{
+ e.preventDefault();status.textContent='A abrir o checkout seguro...';pay.disabled=true;
+ try{
+  const r=await fetch('/api/create-test-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:form.name.value,email:form.email.value})});
+  const d=await r.json();
+  if(!r.ok||!d.checkoutUrl)throw new Error(d.error||'Não foi possível iniciar o pagamento.');
+  location.href=d.checkoutUrl;
+ }catch(err){status.textContent=err.message||'Não foi possível iniciar o pagamento.';pay.disabled=false;}
+});
+</script>
+</body>
+</html>
