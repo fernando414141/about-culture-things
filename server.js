@@ -70,8 +70,8 @@ app.use('/data',(req,res)=>res.status(404).send('Not found'));
 app.use(express.static(__dirname,{extensions:['html'],dotfiles:'deny',maxAge:process.env.NODE_ENV==='production'?'1h':0}));
 
 app.get('/api/health',(req,res)=>res.json({ok:true,paymentConfigured:Boolean(stripe&&process.env.STRIPE_WEBHOOK_SECRET),emailConfigured:Boolean(process.env.SMTP_HOST&&process.env.SMTP_USER&&process.env.SMTP_PASS),minDate:minDate(),bookingCutoffHour:BOOKING_CUTOFF_HOUR,bookingTimeZone:BOOKING_TIME_ZONE,products:TOURS.map(t=>({id:t.id,price:t.price}))}));
-app.get('/api/tours',(req,res)=>res.json({tours:TOURS,currency:'EUR',minGuests:2,minDate:minDate(),bookingCutoffHour:BOOKING_CUTOFF_HOUR,bookingTimeZone:BOOKING_TIME_ZONE,languages:LANGUAGES,cancellationPolicyHours:48}));
-app.get('/api/availability',(req,res)=>{const tour=tourById(req.query.tourId),date=text(req.query.date,10);if(!tour||!validDate(date))return res.status(400).json({error:'Invalid tour or date.'});res.json({available:true})});
+app.get('/api/tours',(req,res)=>res.json({tours:TOURS,currency:'EUR',minGuests:2,maxGuests:4,minDate:minDate(),bookingCutoffHour:BOOKING_CUTOFF_HOUR,bookingTimeZone:BOOKING_TIME_ZONE,languages:LANGUAGES,cancellationPolicyHours:48}));
+app.get('/api/availability',(req,res)=>{if(!req.query.tourId&&!req.query.date)return res.json({available:true,blockedDates:[],minDate:minDate()});const tour=tourById(req.query.tourId),date=text(req.query.date,10);if(!tour||!validDate(date))return res.status(400).json({error:'Invalid tour or date.'});res.json({available:true,blockedDates:[],minDate:minDate()})});
 
 let checkoutQueue=Promise.resolve();
 async function createCheckout(req,res){
@@ -79,7 +79,7 @@ async function createCheckout(req,res){
   if(!stripe)return res.status(503).json({error:'Secure card payment is not configured yet.'});
   const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.get('Idempotency-Key'),100);
   if(!tour)return res.status(404).json({error:'Tour not found.'});
-  if(!Number.isInteger(persons)||persons<2||persons>6)return res.status(400).json({error:'Each booking must include between 2 and 6 guests.'});
+  if(!Number.isInteger(persons)||persons<2||persons>4)return res.status(400).json({error:'Each booking must include between 2 and 4 guests.'});
   if(!validDate(p.date))return res.status(400).json({error:'Bookings close at 7:00 pm Lisbon time on the day before the tour.'});
   if(!customerName||!customerEmail||!LANGUAGES.includes(tourLanguage)||!pickup||!attempt)return res.status(400).json({error:'Please check the booking details.'});
   const bookings=readBookings(),existing=bookings.find(b=>b.bookingAttemptId===attempt);
