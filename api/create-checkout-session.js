@@ -10,7 +10,7 @@ module.exports=async function handler(req,res){
   const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500)||'To be confirmed',attempt=text(p.bookingAttemptId||req.headers['idempotency-key'],100);
   if(!tour)return fail(res,404,'TOUR_NOT_FOUND','Tour not found.');
   if(!Number.isInteger(persons)||persons<MIN_GUESTS||persons>MAX_GUESTS)return fail(res,400,'INVALID_GUESTS',`Each booking must include between ${MIN_GUESTS} and ${MAX_GUESTS} guests.`);
-  if(!validDate(p.date))return fail(res,400,'INVALID_DATE','Online bookings require at least 24 hours notice based on Lisbon time.');
+  if(!validDate(p.date))return fail(res,400,'INVALID_DATE','Book by 7:00 pm Lisbon time on the previous day.');
   if(!customerName)return fail(res,400,'INVALID_NAME','Please enter your full name.');
   if(!customerEmail)return fail(res,400,'INVALID_EMAIL','Please enter a valid email address.');
   if(!LANGUAGES.includes(tourLanguage))return fail(res,400,'INVALID_LANGUAGE','Please choose a tour language.');
