@@ -11,8 +11,8 @@
 
 ## What happens after a sale
 
-- The checkout validates the selected tour, date, guest count, tour language, customer name and email. Pickup details may be confirmed later.
-- Online bookings require at least 24 hours of notice based on Europe/Lisbon time. For the standard 08:30 start, the booking cutoff is 08:30 on the previous day; after that cutoff the earliest bookable date moves forward one additional day.
+- The checkout validates the selected tour, date, guest count (2–6 travellers per booking), tour language, customer name and email. Pickup details may be confirmed later.
+- Online bookings close at 19:00 (7:00 pm) Europe/Lisbon time on the previous day. At or after that cutoff, the earliest bookable date moves forward one additional day.
 - A normal booking does not automatically close the date. Additional bookings can remain available while About Culture Things organises the required guide and vehicle resources.
 - Dates are closed only when they are explicitly blocked through `/admin/` or otherwise rejected by the availability rules.
 - Stripe Checkout expires after 30 minutes if payment is not completed.
