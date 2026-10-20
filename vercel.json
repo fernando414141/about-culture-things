@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm test",
+  "routes": [
+    { "src": "/(?:lib|tests|docs|data)(?:/.*)?", "status": 404 },
+    { "src": "/(?:server\\.js|package(?:-lock)?\\.json|TEMPLATE\\.md|\\.env.*)", "status": 404 },
+    { "handle": "filesystem" }
+  ]
+}

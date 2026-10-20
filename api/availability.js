@@ -10,5 +10,5 @@ module.exports=async function handler(req,res){
   const action=req.body?.action==='unblock'?'unblock':'block';
   const dates=Array.isArray(req.body?.dates)?req.body.dates:[];
   return res.status(200).json({ok:true,blockedDates:await updateDates(action,dates)});
- }catch(error){console.error('Availability API failed:',error.message);return res.status(500).json({error:'Availability could not be updated.'})}
+ }catch(error){console.error('Availability API failed:',error.name);return res.status(500).json({error:'Availability could not be updated.'})}
 };

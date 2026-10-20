@@ -11,12 +11,12 @@
 </head>
 <body>
   <main class="card">
-    <h1>Teste real de pagamento</h1>
+    <h1>Teste sandbox de pagamento</h1>
     <p>Esta página não faz parte do processo normal de reserva. Serve apenas para verificar o checkout real da Stripe, o webhook e o email de confirmação.</p>
     <div class="price">€1,00</div>
     <p>Pagamento real com cartão. Não reserva nenhum tour.</p>
 
-    <div id="success" class="ok" hidden><strong>Pagamento concluído.</strong><br><span id="verification">A verificar a confirmação...</span></div>
+    <div id="success" class="ok" hidden><strong>A verificar pagamento.</strong><br><span id="verification">A verificar a confirmação...</span></div>
     <div id="cancelled" class="note" hidden>Pagamento cancelado. Não foi efetuada nenhuma cobrança.</div>
 
     <form id="form">
@@ -24,12 +24,12 @@
       <input id="name" name="name" autocomplete="name" required>
       <label for="email">Email</label>
       <input id="email" name="email" type="email" autocomplete="email" required>
-      <button id="pay" type="submit">Pagar €1 com Stripe</button>
+      <button id="pay" type="submit">Simular pagamento de €1</button>
       <div id="status" class="status" aria-live="polite"></div>
     </form>
 
-    <div class="note"><strong>Importante:</strong> usar um cartão real. A cobrança é real e será de €1. Depois do teste, o pagamento pode ser reembolsado no Stripe Dashboard.</div>
-    <small>O objetivo é confirmar o mesmo ambiente Stripe live usado pelos clientes. Esta página está marcada como noindex e não está ligada à página principal.</small>
+    <div class="note"><strong>Importante:</strong> utilize apenas cartões de teste Stripe. O endpoint rejeita credenciais de produção; não há cobrança real.</div>
+    <small>O objetivo é confirmar o ambiente de testes Stripe. Esta página está marcada como noindex e não está ligada à página principal.</small>
     <a class="back" href="/">Voltar ao site</a>
   </main>
 <script>
@@ -41,8 +41,8 @@ if(qs.get('success')){
  if(ref&&sessionId){
   fetch(`/api/bookings/${encodeURIComponent(ref)}?sessionId=${encodeURIComponent(sessionId)}`,{cache:'no-store'})
    .then(r=>r.ok?r.json():Promise.reject())
-   .then(b=>{document.getElementById('verification').textContent=b.status==='confirmed'?`Stripe confirmou o pagamento de €${Number(b.totalPrice).toFixed(2)}. Verifique agora o email de confirmação.`:'O pagamento foi recebido, mas ainda está a ser confirmado.'})
-   .catch(()=>{document.getElementById('verification').textContent='O pagamento regressou com sucesso. Verifique o Stripe Dashboard e o email de confirmação.'});
+   .then(b=>{document.getElementById('verification').textContent=b.status==='test_paid'?`Stripe confirmou o pagamento simulado de €${Number(b.totalPrice).toFixed(2)}. Não foi criada nenhuma reserva.`:'O pagamento foi recebido, mas ainda está a ser confirmado.'})
+   .catch(()=>{document.getElementById('verification').textContent='Não foi possível verificar o pagamento. Consulte o Stripe Dashboard de testes.'});
  }
 }
 form.addEventListener('submit',async e=>{

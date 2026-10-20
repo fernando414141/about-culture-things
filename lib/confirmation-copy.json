@@ -1,0 +1,65 @@
+{
+  "en": {
+    "confirmed": "Booking confirmed",
+    "pending": "Payment pending",
+    "expired": "Payment expired",
+    "hello": "Hello",
+    "paid": "Your payment has been verified. Your booking is confirmed.",
+    "waiting": "Your booking is not confirmed yet. Check your payment status before trying again.",
+    "fields": [
+      "Experience",
+      "Date",
+      "Guests",
+      "Tour language",
+      "Meeting / pickup",
+      "Total paid"
+    ],
+    "policy": "Free cancellation until 48 hours before departure.",
+    "home": "Return home",
+    "error": "We could not verify your payment. Check your confirmation email before paying again, or contact Rita with your reference.",
+    "contact": "Contact Rita",
+    "calendar": "Add to calendar"
+  },
+  "es": {
+    "confirmed": "Reserva confirmada",
+    "pending": "Pago pendiente",
+    "expired": "Pago caducado",
+    "hello": "Hola",
+    "paid": "Hemos verificado tu pago. Tu reserva está confirmada.",
+    "waiting": "Tu reserva aún no está confirmada. Comprueba el estado del pago antes de volver a intentarlo.",
+    "fields": [
+      "Experiencia",
+      "Fecha",
+      "Personas",
+      "Idioma del tour",
+      "Encuentro / recogida",
+      "Total pagado"
+    ],
+    "policy": "Cancelación gratuita hasta 48 horas antes de la salida.",
+    "home": "Volver al inicio",
+    "error": "No hemos podido verificar tu pago. Revisa el correo de confirmación antes de pagar de nuevo o contacta con Rita indicando tu referencia.",
+    "contact": "Contactar con Rita",
+    "calendar": "Añadir al calendario"
+  },
+  "pt": {
+    "confirmed": "Reserva confirmada",
+    "pending": "Pagamento pendente",
+    "expired": "Pagamento expirado",
+    "hello": "Olá",
+    "paid": "Verificámos o seu pagamento. A sua reserva está confirmada.",
+    "waiting": "A sua reserva ainda não está confirmada. Verifique o estado do pagamento antes de tentar novamente.",
+    "fields": [
+      "Experiência",
+      "Data",
+      "Pessoas",
+      "Idioma do passeio",
+      "Encontro / recolha",
+      "Total pago"
+    ],
+    "policy": "Cancelamento gratuito até 48 horas antes da partida.",
+    "home": "Voltar ao início",
+    "error": "Não foi possível verificar o pagamento. Consulte o email de confirmação antes de pagar novamente ou contacte a Rita com a referência.",
+    "contact": "Contactar a Rita",
+    "calendar": "Adicionar ao calendário"
+  }
+}

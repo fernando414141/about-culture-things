@@ -1,17 +1,15 @@
-# Public pricing position — 25 August 2026
+# Public catalogue — 20 October 2026
 
-These public prices position About Culture Things above mass-market coach tours while remaining below many private departures. EUR is the canonical currency.
+EUR is the payment currency; the website also displays approximate USD prices using the ECB reference rate. Prices below are per person, with no added booking or Stripe surcharge. At the owner’s request, the website shows the existing 30% direct-booking discount against the catalogue reference rates of €98, €138 and €35 respectively. This is not a live comparison with third-party platform listings.
 
-| Experience | Duration | Public price |
-| --- | ---: | ---: |
-| Sintra, Cabo da Roca & Cascais | 8 hours | €75 per person |
-| Fátima, Nazaré & Óbidos | 10 hours | €105 per person |
-| Évora & Alentejo | 10 hours | €105 per person |
+| Experience | Duration | Price | Participants per booking | Departure (Lisbon time) |
+| --- | --- | --- | --- | --- |
+| Sintra, Cabo da Roca & Cascais — shared | 6 h | €68.60 | 2–6 | 08:30, daily |
+| Sintra, Cabo da Roca & Cascais — private | 6 h | €96.60 | 2–6 | 08:30, daily |
+| Sintra walking tour with queijada and travesseiro | 2 h | €24.50 | 2–10 | 10:00, Monday–Friday |
 
-The public catalogue contains three day tours. Each purchase is for 2–6 travellers and has no quantity discount.
+Shared and private departures follow the same route. The private vehicle and guide are exclusive to the booking group. Shared participants meet in Lisbon; private customers can specify pickup accommodation; walking participants meet at Câmara Municipal de Sintra.
 
-The Fátima itinerary includes Nazaré because the established Fátima–Nazaré–Óbidos route adds a strong Atlantic contrast and a practical lunch pause within the ten-hour tour. Review fuel, staffing, insurance, VAT, payment costs and actual pickup mileage before launch. Do not advertise scarcity or live capacity unless backed by operational availability data.
+The operator confirmed that multiple vehicle tours may be organised per day and resources are coordinated operationally. There is no advertised fixed daily inventory. Booking limits apply to each purchase, and operator-blocked dates remain unavailable. A booking must not automatically block the whole date.
 
-Stripe fees are treated as a cost of sale and are not added as a checkout surcharge. A single final price is easier to understand, improves payment completion and supports a premium position. Quantity discounts are intentionally disabled at launch: public discount ladders add cognitive load and can weaken perceived quality. Revisit private-group pricing only after real occupancy and contribution-margin data are available.
-
-Research checked on 25 August 2026: Viator and GetYourGuide listings for Sintra–Cascais and Fátima–Nazaré–Óbidos small-group tours; ECB EUR/USD reference rate of 1.1662 USD per EUR.
+Server-side EUR cents determine the amount; browser-supplied price, currency and total are ignored. Tax registration/accounting treatment remains the operator's responsibility; no new tax rate or exemption has been invented.

@@ -7,6 +7,7 @@ function tomorrowLisbon(){
 
 module.exports=async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed.'});
+ if(!/^sk_test_/.test(process.env.STRIPE_SECRET_KEY||''))return res.status(403).json({error:'Test payments require a Stripe test key.'});
  if(!stripe)return res.status(503).json({error:'Stripe is not configured.'});
  try{
   const customerName=text(req.body?.name,120);
@@ -16,8 +17,8 @@ module.exports=async function handler(req,res){
   const ref=reference();
   const metadata={
    reference:ref,
-   tourId:'production-test',
-   tourName:'Production checkout test',
+   tourId:'sandbox-test',
+   tourName:'Sandbox checkout test',
    date:tomorrowLisbon(),
    persons:'1',
    tourLanguage:'en',
@@ -25,22 +26,22 @@ module.exports=async function handler(req,res){
    customerName,
    customerEmail,
    customerPhone:'',
-   requests:'€1 production payment test. No tour is booked.'
+   requests:'€1 sandbox payment test. No tour is booked.'
   };
   const session=await stripe.checkout.sessions.create({
    mode:'payment',
    customer_email:customerEmail,
    payment_method_types:['card'],
-   line_items:[{quantity:1,price_data:{currency:'eur',unit_amount:100,product_data:{name:'About Culture Things — production payment test',description:'€1 real payment to verify the live checkout, webhook and confirmation flow.'}}}],
+   line_items:[{quantity:1,price_data:{currency:'eur',unit_amount:100,product_data:{name:'About Culture Things — sandbox payment test',description:'€1 simulated payment to verify the live checkout, webhook and confirmation flow.'}}}],
    metadata,
-   payment_intent_data:{metadata:{reference:ref,tourId:'production-test'}},
+   payment_intent_data:{metadata:{reference:ref,tourId:'sandbox-test'}},
    success_url:`${SITE_URL}/test/?success=1&session_id={CHECKOUT_SESSION_ID}&ref=${encodeURIComponent(ref)}`,
    cancel_url:`${SITE_URL}/test/?cancelled=1`,
    expires_at:Math.floor(Date.now()/1000)+30*60
   });
   return res.status(200).json({checkoutUrl:session.url,reference:ref});
  }catch(error){
-  console.error('Production test checkout failed:',error.message);
+  console.error('Production test checkout failed:',error.name);
   return res.status(500).json({error:'Could not start the test payment.'});
  }
 };
