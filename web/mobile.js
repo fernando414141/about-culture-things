@@ -2,12 +2,12 @@
 (() => {
  const header=document.querySelector('.header');
  const button=document.createElement('button');
- button.className='mobile-menu-button';button.type='button';button.textContent='☰';
+ button.className='mobile-menu-button';button.type='button';button.textContent='☰';button.setAttribute('aria-label','Open menu');
  button.setAttribute('aria-controls','mobile-navigation');button.setAttribute('aria-expanded','false');
  header.querySelector('.header-actions').append(button);
  const drawer=document.createElement('nav');drawer.id='mobile-navigation';drawer.className='mobile-drawer';drawer.hidden=true;
  document.body.append(drawer);
- function close(){drawer.hidden=true;button.setAttribute('aria-expanded','false');button.textContent='☰';button.setAttribute('aria-label',c().menuOpen);document.body.classList.remove('menu-open')}
+ function close(){drawer.hidden=true;button.setAttribute('aria-expanded','false');button.textContent='☰';button.setAttribute('aria-label',c().menuOpen);document.body.classList.remove('menu-open');button.focus({preventScroll:true})}
  function translate(){button.setAttribute('aria-label',drawer.hidden?c().menuOpen:c().menuClose);drawer.setAttribute('aria-label',c().menuOpen);drawer.innerHTML=`<a href="${document.body.dataset.tour?'/':''}#tours">${esc(c().navTours)}</a><a href="${document.body.dataset.tour?'/':''}#why">${esc(c().navWhy)}</a><a href="${document.body.dataset.tour?'/':''}#reviews">${esc(c().navReviews)}</a>`}
  button.addEventListener('click',()=>{if(!drawer.hidden){close();return}drawer.hidden=false;button.setAttribute('aria-expanded','true');button.setAttribute('aria-label',c().menuClose);button.textContent='×';document.body.classList.add('menu-open');drawer.querySelector('a').focus()});
  drawer.addEventListener('click',e=>{if(e.target.closest('a'))close()});
@@ -16,5 +16,7 @@
  const video=document.querySelector('.hero-video');
  const reduced=matchMedia('(prefers-reduced-motion:reduce)');if(video&&reduced.matches){video.autoplay=false;video.pause()}reduced.addEventListener('change',e=>{if(video&&e.matches)video.pause()});
  window.addEventListener('act:language-changed',translate);translate();
+ document.addEventListener('pointerdown',e=>{if(!drawer.hidden&&!drawer.contains(e.target)&&!button.contains(e.target))close()});
+ window.addEventListener('hashchange',()=>{if(!drawer.hidden)close()});
  const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>24);window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 })();
