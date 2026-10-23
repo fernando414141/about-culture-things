@@ -56,3 +56,13 @@ dialog{width:min(1160px,calc(100% - 48px));max-height:92svh;border-radius:4px;ov
 .tour-body .tour-bottom{margin-top:15px}
 #booking{scroll-margin-top:96px}
 @media(max-width:760px){#booking{scroll-margin-top:82px}.tour-keyline{min-height:0}.tour-body .tour-bottom{margin-top:16px}}
+
+/* Read-before-book trust panel: unambiguous product inclusions and realistic expectations. */
+.tour-decision{border:1px solid #d7e2d8;background:#f4f7f2;padding:22px 24px;margin:24px 0 28px;border-radius:8px}
+.tour-detail .tour-decision h3{font:500 24px/1.2 var(--serif);margin:0 0 14px;color:var(--ink)}
+.tour-decision ul{list-style:none;margin:0 0 14px;padding:0}
+.tour-decision li{position:relative;padding:8px 0 8px 25px;font-size:13px;line-height:1.5;color:var(--ink)}
+.tour-decision li::before{content:"✓";position:absolute;left:0;top:7px;font-weight:700;color:var(--green)}
+.tour-decision .tour-expectation{margin:12px 0!important;padding:12px 0 0;border-top:1px solid #d7e2d8;font-size:12px;line-height:1.65;color:#40554c}
+.tour-decision>a{display:inline-block;padding:8px 0;font:600 13px/1.3 var(--sans);color:var(--green);text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.tour-decision{padding:16px;margin:18px 0 24px;border-radius:7px}.tour-detail .tour-decision h3{font-size:22px}}
