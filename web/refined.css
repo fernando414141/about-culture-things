@@ -33,3 +33,16 @@ dialog{width:min(1160px,calc(100% - 48px));max-height:92svh;border-radius:4px;ov
 }
 @media(max-width:760px){:root{--mobile-nav-top:72px}.header-actions{min-width:0}.header .brand{overflow-wrap:normal}.mobile-drawer:not([hidden]){padding-inline:20px}.hero-copy{max-width:100%;box-sizing:border-box}.tour-card,.tour-body,.tour-bottom{min-width:0}.quick-booking{max-width:100%;box-sizing:border-box}}
 @media(max-width:380px){.header{padding-inline:12px}.header-actions{gap:3px}.header .brand{font-size:16px;max-width:120px}.header select{font-size:11px}.mobile-menu-button{width:44px}}
+
+/* Bókun: one authoritative calendar/checkout for each experience. */
+.bokun-booking{min-width:0;padding:clamp(14px,2.4vw,26px);overflow:visible}
+.bokun-booking>h3:first-child{margin:0 0 8px}
+.bokun-booking>p{margin:8px 0 16px}
+.bokun-booking .bokunWidget{display:block;width:100%;min-width:0;min-height:430px}
+.bokun-booking .bokunWidget iframe{display:block;width:100%!important;max-width:100%;border:0}
+.bokun-fallback{margin-top:14px!important;font-size:12px!important;line-height:1.5}
+.bokun-fallback a,.cancellation-note a{text-decoration:underline;text-underline-offset:3px;color:var(--green)}
+.bokun-price-prompt{display:inline-block;max-width:225px;font-size:13px!important;font-weight:600;line-height:1.4;white-space:normal;color:var(--green)}
+.tour-bottom .price{white-space:normal;line-height:1.4;margin:0}
+.mobile-book-jump{justify-content:flex-start}
+@media(max-width:760px){.bokun-booking{padding:14px}.bokun-booking .bokunWidget{min-height:490px}}
