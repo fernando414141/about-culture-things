@@ -4,7 +4,7 @@ const TOURS=[
     "id": "shared",
     "price": 68.6,
     "hours": 6,
-    "image": "/site/images/sintra-pena-960.webp",
+    "image": "/site/images/Cabo da Roca-640.webp",
     "title": {
       "en": "Sintra, Cabo da Roca & Cascais — Shared Tour",
       "pt": "Sintra, Cabo da Roca e Cascais — Tour partilhado",
@@ -140,11 +140,11 @@ const COPY={
     "navReviews": "Reviews",
     "book": "Book now",
     "heroKicker": "Sintra & the Atlantic coast",
-    "heroTitle": "Portugal, personally guided.",
-    "heroText": "Discover Sintra and the coast in a shared or private tour, or explore its culture and traditional pastries on foot.",
+    "heroTitle": "Explore Sintra & the Atlantic coast.",
+    "heroText": "Discover Sintra, Cabo da Roca and Cascais in a small-group or private tour. Or explore Sintra’s history and pastries on foot.",
     "explore": "Choose your tour",
     "rating": "5.0 from 40 Tripadvisor reviews",
-    "heroFacts": "Local guide · EN / ES / PT · Secure booking",
+    "heroFacts": "Small groups · Local guides · EN / ES / PT",
     "trust1": "Local guide",
     "trust2": "2–6 travellers per booking",
     "trust3": "Free cancellation up to 48 hours",
@@ -254,6 +254,7 @@ const COPY={
       ]
     ],
     "catalogueNote": "Shared and private tours follow the same route. Choose the company of other travellers or a vehicle and guide exclusively for your group.",
+    "cardHighlights": ["Up to 6 guests · Shared transport", "Exclusive guide & vehicle · Hotel pickup", "2 hours · Two pastries included"],
     "badge": [
       "Shared",
       "Private",
@@ -291,11 +292,11 @@ const COPY={
     "navReviews": "Avaliações",
     "book": "Reservar",
     "heroKicker": "Sintra e a costa atlântica",
-    "heroTitle": "Portugal, com guia local.",
-    "heroText": "Descubra Sintra e a costa num passeio partilhado ou privado, ou explore a pé a sua cultura e doçaria tradicional.",
+    "heroTitle": "Descubra Sintra e a costa atlântica.",
+    "heroText": "Conheça Sintra, Cabo da Roca e Cascais num passeio em grupo reduzido ou privado. Ou descubra a história e a doçaria de Sintra a pé.",
     "explore": "Escolher tour",
     "rating": "5,0 em 40 avaliações no Tripadvisor",
-    "heroFacts": "Guia local · PT / EN / ES · Reserva segura",
+    "heroFacts": "Grupos reduzidos · Guias locais · PT / EN / ES",
     "trust1": "Guia local",
     "trust2": "2–6 viajantes por reserva",
     "trust3": "Cancelamento gratuito até 48 horas",
@@ -405,6 +406,7 @@ const COPY={
       ]
     ],
     "catalogueNote": "Os passeios partilhado e privado seguem o mesmo percurso. Viaje com outros participantes ou desfrute de veículo e guia exclusivos para o seu grupo.",
+    "cardHighlights": ["Até 6 pessoas · Transporte partilhado", "Guia e veículo exclusivos · Recolha no alojamento", "2 horas · Dois doces incluídos"],
     "badge": [
       "Partilhado",
       "Privado",
@@ -442,11 +444,11 @@ const COPY={
     "navReviews": "Opiniones",
     "book": "Reservar",
     "heroKicker": "Sintra y la costa atlántica",
-    "heroTitle": "Portugal, con guía local.",
-    "heroText": "Descubre Sintra y la costa en un tour compartido o privado, o explora a pie su cultura y sus dulces tradicionales.",
+    "heroTitle": "Descubre Sintra y la costa atlántica.",
+    "heroText": "Conoce Sintra, Cabo da Roca y Cascais en un tour de grupo reducido o privado. O descubre la historia y los dulces de Sintra a pie.",
     "explore": "Elegir tour",
     "rating": "5,0 en 40 opiniones de Tripadvisor",
-    "heroFacts": "Guía local · ES / EN / PT · Reserva segura",
+    "heroFacts": "Grupos reducidos · Guías locales · ES / EN / PT",
     "trust1": "Guía local",
     "trust2": "2–6 viajeros por reserva",
     "trust3": "Cancelación gratuita hasta 48 horas",
@@ -556,6 +558,7 @@ const COPY={
       ]
     ],
     "catalogueNote": "Los tours compartido y privado recorren la misma ruta. Elige viajar con otros participantes o disfrutar de vehículo y guía exclusivos para tu grupo.",
+    "cardHighlights": ["Hasta 6 personas · Transporte compartido", "Guía y vehículo exclusivos · Recogida", "2 horas · Dos dulces incluidos"],
     "badge": [
       "Compartido",
       "Privado",
@@ -607,9 +610,21 @@ const otherMoney=price=>money(price,currency==='EUR'?'USD':'EUR');
 function priceBlock(t){return '<span class="bokun-price-prompt">'+esc(({en:'See live price and availability',pt:'Ver preço e disponibilidade',es:'Ver precio y disponibilidad'})[lang()])+'</span>';}
 function refreshPrices(){renderTours();document.querySelectorAll('[data-price-tour]').forEach(n=>{const t=TOURS.find(t=>t.id===n.dataset.priceTour);if(t)n.innerHTML=priceBlock(t);});const note=document.getElementById('fx-note');if(note)note.textContent='';}
 
-function renderTours(){const x=c();grid.innerHTML=TOURS.map(t=>`<article class="tour-card"><div class="tour-media"><span class="tour-badge">${esc(x.badge[TOURS.indexOf(t)])}</span><img src="${t.image}" alt="${esc(tourText(t,'title'))}" loading="lazy" decoding="async" srcset="${t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w'}" sizes="(max-width:760px) 100vw, 33vw" width="640" height="480"></div><div class="tour-body"><span class="tour-meta">${t.hours} ${esc(x.hours)}</span><h3>${esc(tourText(t,'title'))}</h3><p>${esc(tourText(t,'summary'))}</p><div class="tour-bottom"><p class="price">${priceBlock(t)}</p><a href="/experiences/${({shared:'sintra-coast',private:'private-sintra',walk:'sintra-walk'})[t.id]}/?lang=${lang()}" class="button card-cta" aria-label="${esc(x.view)}: ${esc(tourText(t,'title'))}">${esc(x.view)}</a></div></div></article>`).join('');}
+function renderTours(){
+  if(!grid)return;
+  const x=c();
+  const urls={shared:'sintra-coast',private:'private-sintra',walk:'sintra-walk'};
+  grid.innerHTML=TOURS.map((t,i)=>{
+    const srcset=t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':t.id==='private'?'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w':'';
+    return `<article class="tour-card">
+      <div class="tour-media"><span class="tour-badge">${esc(x.badge[i])}</span><img src="${t.image}" ${srcset?'srcset="'+srcset+'"':''} alt="${esc(tourText(t,'title'))}" loading="lazy" decoding="async" sizes="(max-width:760px) 100vw, 33vw" width="640" height="480"></div>
+      <div class="tour-body"><span class="tour-meta">${t.hours} ${esc(x.hours)}</span><h3>${esc(tourText(t,'title'))}</h3><p>${esc(tourText(t,'summary'))}</p>
+      <div class="tour-keyline">${esc(x.cardHighlights[i])}</div>
+      <div class="tour-bottom"><p class="price">${priceBlock(t)}</p><a data-open-tour="${t.id}" href="/experiences/${urls[t.id]}/?lang=${lang()}" class="button card-cta" aria-label="${esc(x.view)}: ${esc(tourText(t,'title'))}">${esc(x.view)}</a></div></div></article>`;
+  }).join('');
+}
 
-async function openTour(id){const t=TOURS.find(item=>item.id===id);if(!t)return;const x=c(),title=tourText(t,'title'),route=t.route[lang()]||t.route.en;dialogContent.innerHTML=`<img class="dialog-hero" src="${t.image}" srcset="${t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w, /site/images/sintra-pena-1440.webp 1440w'}" sizes="(max-width:760px) 100vw, 1160px" decoding="async" alt="${esc(title)}"><div class="dialog-body"><section class="tour-detail"><p class="eyebrow dark">${t.hours} ${esc(x.hours)} · ${t.minGuests}–${t.maxGuests} ${esc(x.limit)}</p><${document.body.dataset.tour?'h1':'h2'} id="tour-title" tabindex="-1">${esc(title)}</${document.body.dataset.tour?'h1':'h2'}><p>${esc(tourText(t,'summary'))}</p><div class="mobile-book-jump"><span class="price" data-price-tour="${t.id}">${priceBlock(t)}</span><button class="button" type="button" data-jump-booking>${esc(x.book)}</button></div><h3>${esc(x.routeLabel)}</h3><ol class="route">${route.map(item=>`<li>${esc(item)}</li>`).join('')}</ol><div class="booking-inclusions"><div><h3>${esc(x.included)}</h3><p>${esc(x.includedTour[TOURS.indexOf(t)])}</p></div><div><h3>${esc(x.excluded)}</h3><p>${esc(({en:'Monument tickets and meals (except included pastries).',pt:'Bilhetes de monumentos e refeições.',es:'Entradas a monumentos y comidas.',})[lang()])}</p></div></div><p class="cancellation-note"><a href="/cancellation/?lang=${lang()}" target="_blank" rel="noopener">${esc(({en:"Cancellation terms",pt:"Condições de cancelamento",es:"Condiciones de cancelación"})[lang()])} ↗</a></p></section><aside class="quick-booking bokun-booking"><h3>${esc(x.bookTour)}</h3><p>${esc(({en:"Select your date and group in the live booking calendar.",es:"Selecciona la fecha y el grupo en el calendario.",pt:"Selecione a data e o grupo no calendário."})[lang()])}</p><div class="bokunWidget" data-src="${BOKUN_CALENDARS[t.id]}"></div><noscript>Please enable JavaScript to book.</noscript><p class="bokun-fallback"><a href="${BOKUN_CALENDARS[t.id]}" target="_blank" rel="noopener noreferrer">${esc(({en:"Open booking in new tab",es:"Abrir reserva en otra pestaña",pt:"Abrir reserva noutra janela"})[lang()])} ↗</a></p></aside></div>`;dialog.querySelector('.dialog-close').setAttribute('aria-label',x.close);dialog.scrollTop=0;if(!dialog.open)dialog.showModal();if(!document.body.dataset.tour)document.body.classList.add('dialog-open');window.ACT_ANALYTICS?.track('view_item',{items:[{item_id:t.id,item_name:title}]});if(!document.body.dataset.tour)requestAnimationFrame(()=>dialog.querySelector('#tour-title')?.focus({preventScroll:true}));}
+async function openTour(id){const t=TOURS.find(item=>item.id===id);if(!t)return;const x=c(),title=tourText(t,'title'),route=t.route[lang()]||t.route.en;dialogContent.innerHTML=`<img class="dialog-hero" src="${t.image}" srcset="${t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':t.id==='private'?'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w, /site/images/sintra-pena-1440.webp 1440w':'/site/images/Cabo da Roca-640.webp 640w'}" sizes="(max-width:760px) 100vw, 1160px" decoding="async" alt="${esc(title)}"><div class="dialog-body"><section class="tour-detail"><p class="eyebrow dark">${t.hours} ${esc(x.hours)} · ${t.minGuests}–${t.maxGuests} ${esc(x.limit)}</p><${document.body.dataset.tour?'h1':'h2'} id="tour-title" tabindex="-1">${esc(title)}</${document.body.dataset.tour?'h1':'h2'}><p>${esc(tourText(t,'summary'))}</p><p class="tour-keyline tour-keyline-detail">${esc(x.cardHighlights[TOURS.indexOf(t)])}</p><div class="mobile-book-jump"><span class="price" data-price-tour="${t.id}">${priceBlock(t)}</span><button class="button" type="button" data-jump-booking>${esc(x.book)}</button></div><h3>${esc(x.routeLabel)}</h3><ol class="route">${route.map(item=>`<li>${esc(item)}</li>`).join('')}</ol><div class="booking-inclusions"><div><h3>${esc(x.included)}</h3><p>${esc(x.includedTour[TOURS.indexOf(t)])}</p></div><div><h3>${esc(x.excluded)}</h3><p>${esc(({en:'Monument tickets and meals (except included pastries).',pt:'Bilhetes de monumentos e refeições.',es:'Entradas a monumentos y comidas.',})[lang()])}</p></div></div><p class="cancellation-note"><a href="/cancellation/?lang=${lang()}" target="_blank" rel="noopener">${esc(({en:"Cancellation terms",pt:"Condições de cancelamento",es:"Condiciones de cancelación"})[lang()])} ↗</a></p></section><aside id="booking" class="quick-booking bokun-booking"><h3>${esc(x.bookTour)}</h3><p>${esc(({en:"Select your date and group in the live booking calendar.",es:"Selecciona la fecha y el grupo en el calendario.",pt:"Selecione a data e o grupo no calendário."})[lang()])}</p><div class="bokunWidget" data-src="${BOKUN_CALENDARS[t.id]}"></div><noscript>Please enable JavaScript to book.</noscript><p class="bokun-fallback"><a href="${BOKUN_CALENDARS[t.id]}" target="_blank" rel="noopener noreferrer">${esc(({en:"Open booking in new tab",es:"Abrir reserva en otra pestaña",pt:"Abrir reserva noutra janela"})[lang()])} ↗</a></p></aside></div>`;dialog.querySelector('.dialog-close').setAttribute('aria-label',x.close);dialog.scrollTop=0;if(!dialog.open)dialog.showModal();if(!document.body.dataset.tour)document.body.classList.add('dialog-open');window.ACT_ANALYTICS?.track('view_item',{items:[{item_id:t.id,item_name:title}]});if(!document.body.dataset.tour)requestAnimationFrame(()=>dialog.querySelector('#tour-title')?.focus({preventScroll:true}));}
 
 function setText(selector,value){const node=document.querySelector(selector);if(node)node.textContent=value;}
 function applyCopy(){const x=c();localStorage.setItem('act-lang',lang());document.querySelector('.product-heading')?.remove();document.querySelector('.header nav')?.setAttribute('aria-label',x.navTours);document.documentElement.lang=lang()==='pt'?'pt-PT':lang();document.title=`${document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'title'):x.heroKicker} | About Culture Things`;const description=document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'summary'):x.heroText;document.querySelector('meta[name="description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);document.querySelectorAll('[data-copy]').forEach(node=>{if(x[node.dataset.copy])node.textContent=x[node.dataset.copy];});setText('.skip',({en:'Skip to content',es:'Saltar al contenido',pt:'Saltar para o conteúdo',})[lang()]);setText('.direct-benefit strong',x.directTitle);setText('.direct-benefit span',x.directText);setText('.direct-benefit a',x.directCta+' →');document.querySelector('.booking-flow')?.setAttribute('aria-label',x.flowLabel);document.querySelectorAll('.booking-flow>div').forEach((node,i)=>{const pair=x.flow[i];if(pair){node.querySelector('strong').textContent=pair[0];node.querySelector('span').lastChild.textContent=pair[1];}});document.querySelector('.credential-strip')?.setAttribute('aria-label',x.directTitle);const credentialLinks=document.querySelectorAll('.credential-strip a');if(credentialLinks[1])credentialLinks[1].setAttribute('aria-label',x.google);const reviews=document.querySelector('.review-grid');if(reviews)reviews.innerHTML=x.reviews.map(([quote,by])=>`<blockquote><p>“${esc(quote)}”</p><footer>${esc(by)}</footer></blockquote>`).join('');const reviewLinks=document.querySelectorAll('.review-links a');if(reviewLinks[0])reviewLinks[0].textContent=x.tripadvisor+' ↗';if(reviewLinks[1])reviewLinks[1].textContent=x.google+' ↗';const faq=document.getElementById('faq-list');if(faq)faq.innerHTML=x.faq.map(([question,answer])=>`<details><summary>${esc(question)}<span aria-hidden="true">+</span></summary><p>${esc(answer)}</p></details>`).join('');const footerLinks=document.querySelectorAll('body>footer a');const mobileCta=document.querySelector('.mobile-cta');if(mobileCta)mobileCta.textContent=x.book;languageSelect.setAttribute('aria-label',x.languageLabel);currencySelect?.setAttribute('aria-label',x.currencyLabel);const whatsapp=document.querySelector('.whatsapp-float');if(whatsapp)whatsapp.setAttribute('aria-label',x.whatsapp);document.querySelectorAll('a[href^="/terms/"],a[href^="/cancellation/"],a[href^="/privacy/"]').forEach(a=>{const i=['terms','cancellation','privacy'].indexOf(a.pathname.split('/')[1]);a.textContent=x.legal[i];a.search='?lang='+lang()});document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/351968510019?text='+encodeURIComponent(x.whatsappMessage));const help=document.getElementById('rita-help');help.innerHTML=`<h2>${esc(x.help)}</h2><a href="https://wa.me/351968510019?text=${encodeURIComponent(x.whatsappMessage)}" target="_blank" rel="noopener">WhatsApp ↗</a><a href="tel:+351968510019">${esc(x.call)}</a>`;refreshPrices();window.ACT_MOBILE_COPY={navTours:x.navTours,navWhy:x.navWhy,navReviews:x.navReviews,book:x.book,language:x.languageLabel,currency:x.currencyLabel,open:x.menuOpen,close:x.menuClose};dispatchEvent(new CustomEvent('act:language-changed',{detail:window.ACT_MOBILE_COPY}));}
