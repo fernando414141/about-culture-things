@@ -591,6 +591,64 @@ const COPY={
     "referencePrice": "Tarifa habitual"
   }
 };
+
+// Clear expectations on each product page, especially for travellers comparing tour operators.
+// Do not advertise entrance to monuments: the published 6h road tour does not include it.
+const TOUR_DECISIONS={
+ en:{
+  heading:"Before you book",
+  trust:"Read genuine guest reviews on Tripadvisor",
+  private:["Exclusive guide and vehicle for your group","Pickup and return at your accommodation","6-hour tour · 2–6 guests"],
+  shared:["Small shared group · up to 6 guests","Meet at the designated location in Lisbon","6-hour tour · Sintra, Cabo da Roca and Cascais"],
+  walk:["2-hour guided walk in historic Sintra","Queijada and travesseiro tastings included","Meet at Sintra Town Hall · 2–10 guests"],
+  notices:{
+   private:"Important: The Pena Palace is pictured as a Sintra landmark. The published tour covers historic Sintra, Cabo da Roca and Cascais; admission to Pena Palace or other monuments is not included.",
+   shared:"Monument admissions, including Pena Palace tickets, and meals are not included. Meet at the confirmed Lisbon meeting point.",
+   walk:"Pastry tastings are included. Admission to monument interiors and transport to Sintra are not included."
+  },
+  bookHint:"Check the live calendar for the final total, availability and group size.",
+  reviews:"See independent reviews"
+ },
+ es:{
+  heading:"Antes de reservar",
+  trust:"Lee opiniones auténticas en Tripadvisor",
+  private:["Guía y vehículo exclusivos para tu grupo","Recogida y regreso a tu alojamiento","Tour de 6 horas · 2–6 personas"],
+  shared:["Grupo compartido reducido · hasta 6 personas","Encuentro en el punto indicado de Lisboa","Tour de 6 horas · Sintra, Cabo da Roca y Cascais"],
+  walk:["Visita guiada de 2 horas por Sintra","Degustación de queijada y travesseiro incluida","Encuentro en el Ayuntamiento de Sintra · 2–10 personas"],
+  notices:{
+   private:"Importante: la imagen del Palacio da Pena representa Sintra. El recorrido publicado visita el centro histórico, Cabo da Roca y Cascais; las entradas al Palacio da Pena y otros monumentos no están incluidas.",
+   shared:"No incluye entradas a monumentos, incluido el Palacio da Pena, ni comidas. El punto de encuentro en Lisboa se confirma con la reserva.",
+   walk:"Las degustaciones están incluidas. Las entradas a monumentos y el transporte hasta Sintra no están incluidos."
+  },
+  bookHint:"Comprueba el precio final, la disponibilidad y el tamaño del grupo en el calendario.",
+  reviews:"Ver opiniones independientes"
+ },
+ pt:{
+  heading:"Antes de reservar",
+  trust:"Leia avaliações autênticas no Tripadvisor",
+  private:["Guia e veículo exclusivos para o seu grupo","Recolha e regresso ao alojamento","Passeio de 6 horas · 2–6 pessoas"],
+  shared:["Grupo partilhado reduzido · até 6 pessoas","Encontro no local indicado em Lisboa","Passeio de 6 horas · Sintra, Cabo da Roca e Cascais"],
+  walk:["Visita guiada de 2 horas pelo centro histórico de Sintra","Prova de queijada e travesseiro incluída","Encontro na Câmara Municipal de Sintra · 2–10 pessoas"],
+  notices:{
+   private:"Importante: a fotografia do Palácio da Pena ilustra Sintra. O percurso anunciado inclui o centro histórico, Cabo da Roca e Cascais; os bilhetes para o Palácio da Pena e outros monumentos não estão incluídos.",
+   shared:"Não estão incluídos bilhetes para monumentos, incluindo o Palácio da Pena, nem refeições. O ponto de encontro em Lisboa é confirmado na reserva.",
+   walk:"As provas de doçaria estão incluídas. Os bilhetes para monumentos e o transporte até Sintra não estão incluídos."
+  },
+  bookHint:"Confirme o preço final, a disponibilidade e o número de participantes no calendário.",
+  reviews:"Ver avaliações independentes"
+ }
+};
+const TRIPADVISOR_REVIEWS='https://www.tripadvisor.co.uk/Attraction_Review-g189158-d28016472-Reviews-About_Culture_Things-Lisbon_Lisbon_District_Central_Portugal.html';
+function decisionBlock(t){
+ const copy=TOUR_DECISIONS[lang()];
+ return `<section class="tour-decision" aria-label="${esc(copy.heading)}">
+   <h3>${esc(copy.heading)}</h3>
+   <ul>${copy[t.id].map(item=>`<li>${esc(item)}</li>`).join('')}</ul>
+   <p class="tour-expectation">${esc(copy.notices[t.id])}</p>
+   <a href="${TRIPADVISOR_REVIEWS}" target="_blank" rel="noopener noreferrer">${esc(copy.reviews)} ↗</a>
+  </section>`;
+}
+
 const BOKUN_CALENDARS={shared:'https://widgets.bokun.io/online-sales/0ad24c27-4662-4b4a-84b5-529459e1edd9/experience-calendar/1333724',private:'https://widgets.bokun.io/online-sales/0ad24c27-4662-4b4a-84b5-529459e1edd9/experience-calendar/1333723',walk:'https://widgets.bokun.io/online-sales/0ad24c27-4662-4b4a-84b5-529459e1edd9/experience-calendar/1333725'};
 const grid=document.getElementById('tour-grid');
 const dialog=document.getElementById('tour-dialog');
@@ -624,7 +682,7 @@ function renderTours(){
   }).join('');
 }
 
-async function openTour(id){const t=TOURS.find(item=>item.id===id);if(!t)return;const x=c(),title=tourText(t,'title'),route=t.route[lang()]||t.route.en;dialogContent.innerHTML=`<img class="dialog-hero" src="${t.image}" srcset="${t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':t.id==='private'?'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w, /site/images/sintra-pena-1440.webp 1440w':'/site/images/Cabo%20da%20Roca-640.webp 640w'}" sizes="(max-width:760px) 100vw, 1160px" decoding="async" alt="${esc(title)}"><div class="dialog-body"><section class="tour-detail"><p class="eyebrow dark">${t.hours} ${esc(x.hours)} · ${t.minGuests}–${t.maxGuests} ${esc(x.limit)}</p><${document.body.dataset.tour?'h1':'h2'} id="tour-title" tabindex="-1">${esc(title)}</${document.body.dataset.tour?'h1':'h2'}><p>${esc(tourText(t,'summary'))}</p><p class="tour-keyline tour-keyline-detail">${esc(x.cardHighlights[TOURS.indexOf(t)])}</p><div class="mobile-book-jump"><span class="price" data-price-tour="${t.id}">${priceBlock(t)}</span><button class="button" type="button" data-jump-booking>${esc(x.book)}</button></div><h3>${esc(x.routeLabel)}</h3><ol class="route">${route.map(item=>`<li>${esc(item)}</li>`).join('')}</ol><div class="booking-inclusions"><div><h3>${esc(x.included)}</h3><p>${esc(x.includedTour[TOURS.indexOf(t)])}</p></div><div><h3>${esc(x.excluded)}</h3><p>${esc(({en:'Monument tickets and meals (except included pastries).',pt:'Bilhetes de monumentos e refeições.',es:'Entradas a monumentos y comidas.',})[lang()])}</p></div></div><p class="cancellation-note"><a href="/cancellation/?lang=${lang()}" target="_blank" rel="noopener">${esc(({en:"Cancellation terms",pt:"Condições de cancelamento",es:"Condiciones de cancelación"})[lang()])} ↗</a></p></section><aside id="booking" class="quick-booking bokun-booking"><h3>${esc(x.bookTour)}</h3><p>${esc(({en:"Select your date and group in the live booking calendar.",es:"Selecciona la fecha y el grupo en el calendario.",pt:"Selecione a data e o grupo no calendário."})[lang()])}</p><div class="bokunWidget" data-src="${BOKUN_CALENDARS[t.id]}"></div><noscript>Please enable JavaScript to book.</noscript><p class="bokun-fallback"><a href="${BOKUN_CALENDARS[t.id]}" target="_blank" rel="noopener noreferrer">${esc(({en:"Open booking in new tab",es:"Abrir reserva en otra pestaña",pt:"Abrir reserva noutra janela"})[lang()])} ↗</a></p></aside></div>`;dialog.querySelector('.dialog-close').setAttribute('aria-label',x.close);dialog.scrollTop=0;if(!dialog.open)dialog.showModal();if(!document.body.dataset.tour)document.body.classList.add('dialog-open');window.ACT_ANALYTICS?.track('view_item',{items:[{item_id:t.id,item_name:title}]});if(!document.body.dataset.tour)requestAnimationFrame(()=>dialog.querySelector('#tour-title')?.focus({preventScroll:true}));}
+async function openTour(id){const t=TOURS.find(item=>item.id===id);if(!t)return;const x=c(),title=tourText(t,'title'),route=t.route[lang()]||t.route.en;dialogContent.innerHTML=`<img class="dialog-hero" src="${t.image}" srcset="${t.id==='walk'?'/site/images/sintra-pastries-480.webp 480w, /site/images/sintra-pastries-960.webp 960w':t.id==='private'?'/site/images/sintra-pena-480.webp 480w, /site/images/sintra-pena-960.webp 960w, /site/images/sintra-pena-1440.webp 1440w':'/site/images/Cabo%20da%20Roca-640.webp 640w'}" sizes="(max-width:760px) 100vw, 1160px" decoding="async" alt="${esc(title)}"><div class="dialog-body"><section class="tour-detail"><p class="eyebrow dark">${t.hours} ${esc(x.hours)} · ${t.minGuests}–${t.maxGuests} ${esc(x.limit)}</p><${document.body.dataset.tour?'h1':'h2'} id="tour-title" tabindex="-1">${esc(title)}</${document.body.dataset.tour?'h1':'h2'}><p>${esc(tourText(t,'summary'))}</p><p class="tour-keyline tour-keyline-detail">${esc(x.cardHighlights[TOURS.indexOf(t)])}</p><div class="mobile-book-jump"><span class="price" data-price-tour="${t.id}">${priceBlock(t)}</span><button class="button" type="button" data-jump-booking>${esc(x.book)}</button></div><h3>${esc(x.routeLabel)}</h3><ol class="route">${route.map(item=>`<li>${esc(item)}</li>`).join('')}</ol>${decisionBlock(t)}<div class="booking-inclusions"><div><h3>${esc(x.included)}</h3><p>${esc(x.includedTour[TOURS.indexOf(t)])}</p></div><div><h3>${esc(x.excluded)}</h3><p>${esc(({en:'Monument tickets and meals (except included pastries).',pt:'Bilhetes de monumentos e refeições.',es:'Entradas a monumentos y comidas.',})[lang()])}</p></div></div><p class="cancellation-note"><a href="/cancellation/?lang=${lang()}" target="_blank" rel="noopener">${esc(({en:"Cancellation terms",pt:"Condições de cancelamento",es:"Condiciones de cancelación"})[lang()])} ↗</a></p></section><aside id="booking" class="quick-booking bokun-booking"><h3>${esc(x.bookTour)}</h3><p>${esc(TOUR_DECISIONS[lang()].bookHint)}</p><div class="bokunWidget" data-src="${BOKUN_CALENDARS[t.id]}"></div><noscript>Please enable JavaScript to book.</noscript><p class="bokun-fallback"><a href="${BOKUN_CALENDARS[t.id]}" target="_blank" rel="noopener noreferrer">${esc(({en:"Open booking in new tab",es:"Abrir reserva en otra pestaña",pt:"Abrir reserva noutra janela"})[lang()])} ↗</a></p></aside></div>`;dialog.querySelector('.dialog-close').setAttribute('aria-label',x.close);dialog.scrollTop=0;if(!dialog.open)dialog.showModal();if(!document.body.dataset.tour)document.body.classList.add('dialog-open');window.ACT_ANALYTICS?.track('view_item',{items:[{item_id:t.id,item_name:title}]});if(!document.body.dataset.tour)requestAnimationFrame(()=>dialog.querySelector('#tour-title')?.focus({preventScroll:true}));}
 
 function setText(selector,value){const node=document.querySelector(selector);if(node)node.textContent=value;}
 function applyCopy(){const x=c();localStorage.setItem('act-lang',lang());document.querySelector('.product-heading')?.remove();document.querySelector('.header nav')?.setAttribute('aria-label',x.navTours);document.documentElement.lang=lang()==='pt'?'pt-PT':lang();document.title=`${document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'title'):x.heroKicker} | About Culture Things`;const description=document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'summary'):x.heroText;document.querySelector('meta[name="description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);document.querySelectorAll('[data-copy]').forEach(node=>{if(x[node.dataset.copy])node.textContent=x[node.dataset.copy];});setText('.skip',({en:'Skip to content',es:'Saltar al contenido',pt:'Saltar para o conteúdo',})[lang()]);setText('.direct-benefit strong',x.directTitle);setText('.direct-benefit span',x.directText);setText('.direct-benefit a',x.directCta+' →');document.querySelector('.booking-flow')?.setAttribute('aria-label',x.flowLabel);document.querySelectorAll('.booking-flow>div').forEach((node,i)=>{const pair=x.flow[i];if(pair){node.querySelector('strong').textContent=pair[0];node.querySelector('span').lastChild.textContent=pair[1];}});document.querySelector('.credential-strip')?.setAttribute('aria-label',x.directTitle);const credentialLinks=document.querySelectorAll('.credential-strip a');if(credentialLinks[1])credentialLinks[1].setAttribute('aria-label',x.google);const reviews=document.querySelector('.review-grid');if(reviews)reviews.innerHTML=x.reviews.map(([quote,by])=>`<blockquote><p>“${esc(quote)}”</p><footer>${esc(by)}</footer></blockquote>`).join('');const reviewLinks=document.querySelectorAll('.review-links a');if(reviewLinks[0])reviewLinks[0].textContent=x.tripadvisor+' ↗';if(reviewLinks[1])reviewLinks[1].textContent=x.google+' ↗';const faq=document.getElementById('faq-list');if(faq)faq.innerHTML=x.faq.map(([question,answer])=>`<details><summary>${esc(question)}<span aria-hidden="true">+</span></summary><p>${esc(answer)}</p></details>`).join('');const footerLinks=document.querySelectorAll('body>footer a');const mobileCta=document.querySelector('.mobile-cta');if(mobileCta)mobileCta.textContent=x.book;languageSelect.setAttribute('aria-label',x.languageLabel);currencySelect?.setAttribute('aria-label',x.currencyLabel);const whatsapp=document.querySelector('.whatsapp-float');if(whatsapp)whatsapp.setAttribute('aria-label',x.whatsapp);document.querySelectorAll('a[href^="/terms/"],a[href^="/cancellation/"],a[href^="/privacy/"]').forEach(a=>{const i=['terms','cancellation','privacy'].indexOf(a.pathname.split('/')[1]);a.textContent=x.legal[i];a.search='?lang='+lang()});document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/351968510019?text='+encodeURIComponent(x.whatsappMessage));const help=document.getElementById('rita-help');help.innerHTML=`<h2>${esc(x.help)}</h2><a href="https://wa.me/351968510019?text=${encodeURIComponent(x.whatsappMessage)}" target="_blank" rel="noopener">WhatsApp ↗</a><a href="tel:+351968510019">${esc(x.call)}</a>`;refreshPrices();window.ACT_MOBILE_COPY={navTours:x.navTours,navWhy:x.navWhy,navReviews:x.navReviews,book:x.book,language:x.languageLabel,currency:x.currencyLabel,open:x.menuOpen,close:x.menuClose};dispatchEvent(new CustomEvent('act:language-changed',{detail:window.ACT_MOBILE_COPY}));}
@@ -633,7 +691,7 @@ document.addEventListener('click',event=>{
  const opener=event.target.closest('[data-open-tour]');
  if(opener){const dest={shared:'sintra-coast',private:'private-sintra',walk:'sintra-walk'}[opener.dataset.openTour];if(dest){event.preventDefault();location.href='/experiences/'+dest+'/?lang='+lang();}}
  if(event.target.closest('.dialog-close')){if(document.body.dataset.tour)location.href='/?lang='+lang()+'#tours';else dialog.close();}
- if(event.target.closest('[data-jump-booking]'))dialog.querySelector('.bokun-booking')?.scrollIntoView({behavior:'smooth',block:'start'});
+ if(event.target.closest('[data-jump-booking]')){window.ACT_ANALYTICS?.track('booking_section_click',{tour_id:document.body.dataset.tour||'unknown'});dialog.querySelector('.bokun-booking')?.scrollIntoView({behavior:'smooth',block:'start'});} if(event.target.closest('.bokun-fallback a'))window.ACT_ANALYTICS?.track('external_booking_click',{tour_id:document.body.dataset.tour||'unknown'});
 });
 dialog.addEventListener('close',()=>document.body.classList.remove('dialog-open'));
 dialog.addEventListener('click',event=>{const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
