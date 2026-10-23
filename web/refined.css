@@ -46,3 +46,13 @@ dialog{width:min(1160px,calc(100% - 48px));max-height:92svh;border-radius:4px;ov
 .tour-bottom .price{white-space:normal;line-height:1.4;margin:0}
 .mobile-book-jump{justify-content:flex-start}
 @media(max-width:760px){.bokun-booking{padding:14px}.bokun-booking .bokunWidget{min-height:490px}}
+
+
+/* Tour comparison: one factual benefit per experience, with no extra CTA. */
+.tour-keyline{font:600 12px/1.5 var(--sans);color:var(--green);padding:9px 0 0;margin:0;min-height:30px}
+.tour-keyline-detail{font-size:13px!important;margin:14px 0 8px!important;color:var(--green)!important}
+.tour-body{display:flex;flex-direction:column}
+.tour-body>.tour-keyline{margin-top:auto}
+.tour-body .tour-bottom{margin-top:15px}
+#booking{scroll-margin-top:96px}
+@media(max-width:760px){#booking{scroll-margin-top:82px}.tour-keyline{min-height:0}.tour-body .tour-bottom{margin-top:16px}}
