@@ -706,7 +706,7 @@ dialog.addEventListener('click',event=>{const r=dialog.getBoundingClientRect();i
 const detected=(navigator.language||'en').slice(0,2),requested=new URLSearchParams(location.search).get('lang');
 languageSelect.value=LANGS.includes(requested)?requested:LANGS.includes(localStorage.getItem('act-lang'))?localStorage.getItem('act-lang'):LANGS.includes(detected)?detected:'en';
 if(currencySelect)currencySelect.value=currency;
-languageSelect.addEventListener('change',()=>{localStorage.setItem('act-lang',lang());if(document.body.dataset.tour){location.assign(location.pathname+'?lang='+lang());return;}applyCopy();});
+languageSelect.addEventListener('change',()=>{localStorage.setItem('act-lang',lang());if(document.body.dataset.tour){location.assign(location.pathname+'?lang='+lang());return;}applyCopy();window.BokunWidgets?.setLanguage?.(lang());});
 currencySelect?.addEventListener('change',()=>{currency=currencySelect.value;localStorage.setItem('act-currency',currency);refreshPrices();});
 applyCopy();
 const bookingParam=document.body.dataset.tour||new URLSearchParams(location.search).get('book');
