@@ -150,7 +150,7 @@ const COPY={
     "trust3": "Free cancellation up to 48 hours",
     "toursKicker": "Choose your day",
     "toursTitle": "Sintra, your way.",
-    "productListHint": "Select an experience to see dates and book securely.",
+    "productListHint": "Book direct: select an experience to check dates and reserve.",
     "toursText": "Shared and private tours: 2–6 guests. Walking tour: 2–10. All prices are per person.",
     "whyKicker": "Why book with us",
     "whyTitle": "A local day, without the logistics.",
@@ -303,7 +303,7 @@ const COPY={
     "trust3": "Cancelamento gratuito até 48 horas",
     "toursKicker": "Escolha o seu dia",
     "toursTitle": "Sintra, à sua maneira.",
-    "productListHint": "Selecione uma experiência para consultar as datas e reservar.",
+    "productListHint": "Reserve diretamente: escolha uma experiência, consulte as datas e reserve.",
     "toursText": "Partilhado e privado: 2–6 pessoas. A pé: 2–10. Preços por pessoa.",
     "whyKicker": "Porquê reservar connosco",
     "whyTitle": "Um dia local, sem complicações.",
@@ -456,7 +456,7 @@ const COPY={
     "trust3": "Cancelación gratuita hasta 48 horas",
     "toursKicker": "Elige tu día",
     "toursTitle": "Sintra, a tu manera.",
-    "productListHint": "Selecciona una experiencia para consultar fechas y reservar.",
+    "productListHint": "Reserva directamente: elige una experiencia, consulta las fechas y reserva.",
     "toursText": "Compartido y privado: 2–6 personas. A pie: 2–10. Precios por persona.",
     "whyKicker": "Por qué reservar con nosotros",
     "whyTitle": "Un día local, sin complicaciones.",
@@ -709,7 +709,7 @@ dialog.addEventListener('click',event=>{const r=dialog.getBoundingClientRect();i
 const detected=(navigator.language||'en').slice(0,2),requested=new URLSearchParams(location.search).get('lang');
 languageSelect.value=LANGS.includes(requested)?requested:LANGS.includes(localStorage.getItem('act-lang'))?localStorage.getItem('act-lang'):LANGS.includes(detected)?detected:'en';
 if(currencySelect)currencySelect.value=currency;
-languageSelect.addEventListener('change',()=>{localStorage.setItem('act-lang',lang());if(document.body.dataset.tour){location.assign(location.pathname+'?lang='+lang());return;}applyCopy();window.BokunWidgets?.setLanguage?.(lang());});
+languageSelect.addEventListener('change',()=>{localStorage.setItem('act-lang',lang());location.assign(location.pathname+'?lang='+encodeURIComponent(lang())+(location.hash||''));});
 currencySelect?.addEventListener('change',()=>{currency=currencySelect.value;localStorage.setItem('act-currency',currency);refreshPrices();});
 applyCopy();
 const bookingParam=document.body.dataset.tour||new URLSearchParams(location.search).get('book');
