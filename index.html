@@ -6,7 +6,7 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#163f35">
   <title>About Culture Things | Sintra & Portugal Tours from Lisbon</title>
-  <meta name="description" content="Book three local-led experiences: shared and private Sintra, Cabo da Roca and Cascais tours, plus a Sintra walking tour with traditional pastries. English, Spanish and Portuguese.">
+  <meta name="description" content="Discover guided local experiences in Sintra, Cabo da Roca and Cascais. Book online with live availability in English, Spanish and Portuguese.">
   <link rel="canonical" href="https://aboutculturethings.com/">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -22,8 +22,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/web/styles.css?v=3">
-  <link rel="stylesheet" href="/web/refined.css?v=6">
+  <link rel="stylesheet" href="/web/refined.css?v=7">
   <link rel="stylesheet" href="/web/analytics.css?v=1">
+  <link rel="preconnect" href="https://widgets.bokun.io" crossorigin>
+  <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=0ad24c27-4662-4b4a-84b5-529459e1edd9" async></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -42,8 +44,11 @@
 
   <main id="main">
     <section class="section tours" id="tours">
-      <div class="section-head"><p class="eyebrow dark" data-copy="toursKicker">Choose your day</p><h2 data-copy="toursTitle">Choose your route.</h2><p data-copy="toursText">2–6 travellers per booking. Prices are per person.</p></div>
-      <div class="direct-booking"><h3 data-copy="directTitle">Book direct. Discover Portugal.</h3><p data-copy="directText">Book directly with live availability and support from Rita.</p></div><div class="tour-grid" id="tour-grid"></div><p class="catalogue-note" data-copy="catalogueNote"></p><p id="fx-note" class="fx-note"></p>
+      <div class="section-head"><p class="eyebrow dark" data-copy="toursKicker">Choose your day</p><h2 data-copy="toursTitle">Choose your route.</h2></div>
+      <div class="direct-booking"><h3 data-copy="directTitle">Book direct. Discover Portugal.</h3><p data-copy="directText">Book directly with live availability and support from Rita.</p></div>
+      <!-- Bókun is the catalogue source of truth: products are managed in Product List 115653. -->
+      <div class="bokunWidget bokun-product-list" data-src="https://widgets.bokun.io/online-sales/0ad24c27-4662-4b4a-84b5-529459e1edd9/product-list/115653"></div>
+      <noscript><p><a href="https://widgets.bokun.io/online-sales/0ad24c27-4662-4b4a-84b5-529459e1edd9/product-list/115653">Enable JavaScript to see tours and book online.</a></p></noscript>
     </section>
 
     <section class="section why" id="why">
@@ -65,10 +70,10 @@
 
   <dialog id="tour-dialog" aria-labelledby="tour-title"><button class="dialog-close" aria-label="Close">×</button><div id="dialog-content"></div></dialog>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"About Culture Things — three guided Sintra experiences","itemListElement":[{"@type":"ListItem","position":1,"name":"Sintra, Cabo da Roca & Cascais — Shared Tour","url":"https://aboutculturethings.com/experiences/sintra-coast/"},{"@type":"ListItem","position":2,"name":"Sintra, Cabo da Roca & Cascais — Private Tour","url":"https://aboutculturethings.com/experiences/private-sintra/"},{"@type":"ListItem","position":3,"name":"Sintra Walking Tour — History, Pastries & Culture","url":"https://aboutculturethings.com/experiences/sintra-walk/"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"About Culture Things","url":"https://aboutculturethings.com/","logo":"https://aboutculturethings.com/favicon.png","description":"Locally guided tours and experiences in Sintra, Cascais and Portugal."}</script>
 
   <script src="/web/analytics.js?v=1"></script>
-  <script src="/web/app.js?v=13"></script>
+  <script src="/web/app.js?v=14"></script>
   <script src="/web/mobile.js?v=6"></script>
 </body>
 </html>
