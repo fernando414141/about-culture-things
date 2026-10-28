@@ -21,6 +21,29 @@ test('booking copy is translated while the redundant tour directory is removed',
  assert.match(js,/private bookings are priced per group/);
 });
 
+test('tour detail pages use the current shared CSS and JavaScript assets',()=>{
+ for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
+  const html=read('experiences/'+slug+'/index.html');
+  assert.ok(html.includes('web/refined.css?v=10'),slug);
+  assert.ok(html.includes('web/app.js?v=19'),slug);
+ }
+});
+
+test('the walking tour advertises only its supported guide languages',()=>{
+ const html=read('experiences/sintra-walk/index.html');
+ assert.ok(html.includes('"inLanguage":["en","es"]'));
+});
+
+test('individual tour links stay discoverable without a second visible tour directory',()=>{
+ const html=read('index.html');
+ const noscript=html.match(/<noscript>([\\s\\S]*?)<\\/noscript>/);
+ assert.ok(noscript,'missing no-JavaScript fallback');
+ for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
+  assert.ok(noscript[1].includes('href="/experiences/'+slug+'/"'),slug);
+ }
+ assert.match(html,/BokunWidgetsLoader\\.js[^"]*" defer><\\/script>/);
+});
+
 test('legal policies have accessible HTML content before scripts run',()=>{
  for(const p of ['terms','cancellation','privacy']){
   const html=read(p+'/index.html');
