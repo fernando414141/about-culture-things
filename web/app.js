@@ -151,7 +151,14 @@ const COPY={
     "toursKicker": "Choose your day",
     "toursTitle": "Sintra, your way.",
     "productListHint": "Book direct: select an experience to check dates and reserve.",
-    "toursText": "Shared and private tours: 2–6 guests. Walking tour: 1–10. All prices are per person.",
+    "directoryShared": "Sintra, Cabo da Roca & Cascais · Small group",
+    "directorySharedText": "A guided coastal day trip from Lisbon in a small shared group. Monument tickets are not included.",
+    "directoryPrivate": "Sintra, Cabo da Roca & Cascais · Private",
+    "directoryPrivateText": "Your own vehicle and local guide, with accommodation pickup and return. Monument tickets are not included.",
+    "directoryWalk": "Sintra walking tour · Pastries & history",
+    "directoryWalkText": "A two-hour guided walk with a queijada at Sapa and a travesseiro at Piriquita included.",
+    "directoryCta": "Tour details & booking →",
+    "toursText": "Shared and private tours: 2–6 guests. Walking tour: 1–10. Check live prices in Bókun; private bookings are priced per group.",
     "whyKicker": "Why book with us",
     "whyTitle": "A local day, without the logistics.",
     "why1Title": "Local knowledge",
@@ -243,7 +250,7 @@ const COPY={
       ],
       [
         "How many people can book?",
-        "Shared and private tours: 2–6 guests. Walking tour: 1–10. All prices are per person."
+        "Shared and private tours: 2–6 guests. Walking tour: 1–10. Check live prices in Bókun; private bookings are priced per group."
       ],
       [
         "Which tour languages are available?",
@@ -304,7 +311,14 @@ const COPY={
     "toursKicker": "Escolha o seu dia",
     "toursTitle": "Sintra, à sua maneira.",
     "productListHint": "Reserve diretamente: escolha uma experiência, consulte as datas e reserve.",
-    "toursText": "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Preços por pessoa.",
+    "directoryShared": "Sintra, Cabo da Roca e Cascais · Grupo reduzido",
+    "directorySharedText": "Passeio guiado desde Lisboa num grupo pequeno. Os bilhetes para monumentos não estão incluídos.",
+    "directoryPrivate": "Sintra, Cabo da Roca e Cascais · Privado",
+    "directoryPrivateText": "Guia e veículo exclusivos, com recolha e regresso ao alojamento. Bilhetes para monumentos não incluídos.",
+    "directoryWalk": "Sintra a pé · Doçaria e história",
+    "directoryWalkText": "Visita guiada de duas horas com uma queijada da Sapa e um travesseiro da Piriquita incluídos.",
+    "directoryCta": "Detalhes e reservas →",
+    "toursText": "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Consulte os preços no Bókun; o passeio privado tem preço por grupo.",
     "whyKicker": "Porquê reservar connosco",
     "whyTitle": "Um dia local, sem complicações.",
     "why1Title": "Conhecimento local",
@@ -396,7 +410,7 @@ const COPY={
       ],
       [
         "Quantas pessoas podem reservar?",
-        "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Preços por pessoa."
+        "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Consulte os preços no Bókun; o passeio privado tem preço por grupo."
       ],
       [
         "Que idiomas estão disponíveis?",
@@ -457,7 +471,14 @@ const COPY={
     "toursKicker": "Elige tu día",
     "toursTitle": "Sintra, a tu manera.",
     "productListHint": "Reserva directamente: elige una experiencia, consulta las fechas y reserva.",
-    "toursText": "Compartido y privado: 2–6 personas. A pie: 1–10. Precios por persona.",
+    "directoryShared": "Sintra, Cabo da Roca y Cascais · Grupo reducido",
+    "directorySharedText": "Excursión guiada desde Lisboa en grupo pequeño. Las entradas a monumentos no están incluidas.",
+    "directoryPrivate": "Sintra, Cabo da Roca y Cascais · Privado",
+    "directoryPrivateText": "Guía y vehículo exclusivos, con recogida y regreso al alojamiento. Entradas a monumentos no incluidas.",
+    "directoryWalk": "Sintra a pie · Dulces e historia",
+    "directoryWalkText": "Visita guiada de dos horas con una queijada de Sapa y un travesseiro de Piriquita incluidos.",
+    "directoryCta": "Detalles y reservas →",
+    "toursText": "Compartido y privado: 2–6 personas. A pie: 1–10. Consulta los precios en Bókun; el tour privado tiene precio por grupo.",
     "whyKicker": "Por qué reservar con nosotros",
     "whyTitle": "Un día local, sin complicaciones.",
     "why1Title": "Conocimiento local",
@@ -549,7 +570,7 @@ const COPY={
       ],
       [
         "¿Cuántas personas pueden reservar?",
-        "Compartido y privado: 2–6 personas. A pie: 1–10. Precios por persona."
+        "Compartido y privado: 2–6 personas. A pie: 1–10. Consulta los precios en Bókun; el tour privado tiene precio por grupo."
       ],
       [
         "¿Qué idiomas están disponibles?",
@@ -695,7 +716,7 @@ async function openTour(id){const t=TOURS.find(item=>item.id===id);if(!t)return;
   </div></div><div class="dialog-body"><section class="tour-detail"><p class="eyebrow dark">${t.hours} ${esc(x.hours)} · ${t.minGuests}–${t.maxGuests} ${esc(x.limit)}</p><${document.body.dataset.tour?'h1':'h2'} id="tour-title" tabindex="-1">${esc(title)}</${document.body.dataset.tour?'h1':'h2'}><p>${esc(tourText(t,'summary'))}</p><p class="tour-keyline tour-keyline-detail">${esc(x.cardHighlights[TOURS.indexOf(t)])}</p><div class="mobile-book-jump"><span class="price" data-price-tour="${t.id}">${priceBlock(t)}</span><button class="button" type="button" data-jump-booking>${esc(x.book)}</button></div><h3>${esc(x.routeLabel)}</h3><ol class="route">${route.map(item=>`<li>${esc(item)}</li>`).join('')}</ol>${decisionBlock(t)}<div class="booking-inclusions"><div><h3>${esc(x.included)}</h3><p>${esc(x.includedTour[TOURS.indexOf(t)])}</p></div><div><h3>${esc(x.excluded)}</h3><p>${esc(({en:'Monument tickets and meals (except included pastries).',pt:'Bilhetes de monumentos e refeições.',es:'Entradas a monumentos y comidas.',})[lang()])}</p></div></div><p class="cancellation-note"><a href="/cancellation/?lang=${lang()}" target="_blank" rel="noopener">${esc(({en:"Cancellation terms",pt:"Condições de cancelamento",es:"Condiciones de cancelación"})[lang()])} ↗</a></p></section><aside id="booking" class="quick-booking bokun-booking"><h3>${esc(x.bookTour)}</h3><p>${esc(TOUR_DECISIONS[lang()].bookHint)}</p><div class="bokunWidget" data-src="${localizedBokunUrl(t.id)}"></div><noscript>Please enable JavaScript to book.</noscript><p class="bokun-fallback"><a href="${localizedBokunUrl(t.id)}" target="_blank" rel="noopener noreferrer">${esc(({en:"Open booking in new tab",es:"Abrir reserva en otra pestaña",pt:"Abrir reserva noutra janela"})[lang()])} ↗</a></p></aside></div>`;dialog.querySelector('.dialog-close').setAttribute('aria-label',x.close);dialog.scrollTop=0;if(!dialog.open)dialog.showModal();if(!document.body.dataset.tour)document.body.classList.add('dialog-open');window.ACT_ANALYTICS?.track('view_item',{items:[{item_id:t.id,item_name:title}]});if(!document.body.dataset.tour)requestAnimationFrame(()=>dialog.querySelector('#tour-title')?.focus({preventScroll:true}));}
 
 function setText(selector,value){const node=document.querySelector(selector);if(node)node.textContent=value;}
-function applyCopy(){const x=c();localStorage.setItem('act-lang',lang());document.querySelector('.product-heading')?.remove();document.querySelector('.header nav')?.setAttribute('aria-label',x.navTours);document.documentElement.lang=lang()==='pt'?'pt-PT':lang();document.title=`${document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'title'):x.heroKicker} | About Culture Things`;const description=document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'summary'):x.heroText;document.querySelector('meta[name="description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);document.querySelectorAll('[data-copy]').forEach(node=>{if(x[node.dataset.copy])node.textContent=x[node.dataset.copy];});setText('.skip',({en:'Skip to content',es:'Saltar al contenido',pt:'Saltar para o conteúdo',})[lang()]);setText('.direct-benefit strong',x.directTitle);setText('.direct-benefit span',x.directText);setText('.direct-benefit a',x.directCta+' →');document.querySelector('.booking-flow')?.setAttribute('aria-label',x.flowLabel);document.querySelectorAll('.booking-flow>div').forEach((node,i)=>{const pair=x.flow[i];if(pair){node.querySelector('strong').textContent=pair[0];node.querySelector('span').lastChild.textContent=pair[1];}});document.querySelector('.credential-strip')?.setAttribute('aria-label',x.directTitle);const credentialLinks=document.querySelectorAll('.credential-strip a');if(credentialLinks[1])credentialLinks[1].setAttribute('aria-label',x.google);const reviews=document.querySelector('.review-grid');if(reviews)reviews.innerHTML=x.reviews.map(([quote,by])=>`<blockquote><p>“${esc(quote)}”</p><footer>${esc(by)}</footer></blockquote>`).join('');const reviewLinks=document.querySelectorAll('.review-links a');if(reviewLinks[0])reviewLinks[0].textContent=x.tripadvisor+' ↗';if(reviewLinks[1])reviewLinks[1].textContent=x.google+' ↗';const faq=document.getElementById('faq-list');if(faq)faq.innerHTML=x.faq.map(([question,answer])=>`<details><summary>${esc(question)}<span aria-hidden="true">+</span></summary><p>${esc(answer)}</p></details>`).join('');const footerLinks=document.querySelectorAll('body>footer a');const mobileCta=document.querySelector('.mobile-cta');if(mobileCta)mobileCta.textContent=x.book;languageSelect.setAttribute('aria-label',x.languageLabel);currencySelect?.setAttribute('aria-label',x.currencyLabel);const whatsapp=document.querySelector('.whatsapp-float');if(whatsapp)whatsapp.setAttribute('aria-label',x.whatsapp);document.querySelectorAll('a[href^="/terms/"],a[href^="/cancellation/"],a[href^="/privacy/"]').forEach(a=>{const i=['terms','cancellation','privacy'].indexOf(a.pathname.split('/')[1]);a.textContent=x.legal[i];a.search='?lang='+lang()});document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/351968510019?text='+encodeURIComponent(x.whatsappMessage));document.querySelectorAll('a[href^="/#"],a[href^="/?lang="],a.brand[href="/"]').forEach(a=>{const original=a.getAttribute('href');const hash=original.includes('#')?'#'+original.split('#')[1]:'';a.href='/?lang='+lang()+hash;});document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{a.textContent=({en:'Email',es:'Correo electrónico',pt:'Email'})[lang()];});const help=document.getElementById('rita-help');help.innerHTML=`<h2>${esc(x.help)}</h2><a href="https://wa.me/351968510019?text=${encodeURIComponent(x.whatsappMessage)}" target="_blank" rel="noopener">WhatsApp ↗</a><a href="tel:+351968510019">${esc(x.call)}</a>`;refreshPrices();window.ACT_MOBILE_COPY={navTours:x.navTours,navWhy:x.navWhy,navReviews:x.navReviews,book:x.book,language:x.languageLabel,currency:x.currencyLabel,open:x.menuOpen,close:x.menuClose};dispatchEvent(new CustomEvent('act:language-changed',{detail:window.ACT_MOBILE_COPY}));}
+function applyCopy(){const x=c();localStorage.setItem('act-lang',lang());document.querySelector('.product-heading')?.remove();document.querySelector('.header nav')?.setAttribute('aria-label',x.navTours);document.documentElement.lang=lang()==='pt'?'pt-PT':lang();document.title=`${document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'title'):x.heroKicker} | About Culture Things`;const description=document.body.dataset.tour?tourText(TOURS.find(t=>t.id===document.body.dataset.tour),'summary'):x.heroText;document.querySelector('meta[name="description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:description"]')?.setAttribute('content',description);document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);document.querySelectorAll('[data-copy]').forEach(node=>{if(x[node.dataset.copy])node.textContent=x[node.dataset.copy];});document.querySelectorAll('[data-tour-link]').forEach(a=>{a.search='?lang='+lang();});setText('.skip',({en:'Skip to content',es:'Saltar al contenido',pt:'Saltar para o conteúdo',})[lang()]);setText('.direct-benefit strong',x.directTitle);setText('.direct-benefit span',x.directText);setText('.direct-benefit a',x.directCta+' →');document.querySelector('.booking-flow')?.setAttribute('aria-label',x.flowLabel);document.querySelectorAll('.booking-flow>div').forEach((node,i)=>{const pair=x.flow[i];if(pair){node.querySelector('strong').textContent=pair[0];node.querySelector('span').lastChild.textContent=pair[1];}});document.querySelector('.credential-strip')?.setAttribute('aria-label',x.directTitle);const credentialLinks=document.querySelectorAll('.credential-strip a');if(credentialLinks[1])credentialLinks[1].setAttribute('aria-label',x.google);const reviews=document.querySelector('.review-grid');if(reviews)reviews.innerHTML=x.reviews.map(([quote,by])=>`<blockquote><p>“${esc(quote)}”</p><footer>${esc(by)}</footer></blockquote>`).join('');const reviewLinks=document.querySelectorAll('.review-links a');if(reviewLinks[0])reviewLinks[0].textContent=x.tripadvisor+' ↗';if(reviewLinks[1])reviewLinks[1].textContent=x.google+' ↗';const faq=document.getElementById('faq-list');if(faq)faq.innerHTML=x.faq.map(([question,answer])=>`<details><summary>${esc(question)}<span aria-hidden="true">+</span></summary><p>${esc(answer)}</p></details>`).join('');const footerLinks=document.querySelectorAll('body>footer a');const mobileCta=document.querySelector('.mobile-cta');if(mobileCta)mobileCta.textContent=x.book;languageSelect.setAttribute('aria-label',x.languageLabel);currencySelect?.setAttribute('aria-label',x.currencyLabel);const whatsapp=document.querySelector('.whatsapp-float');if(whatsapp)whatsapp.setAttribute('aria-label',x.whatsapp);document.querySelectorAll('a[href^="/terms/"],a[href^="/cancellation/"],a[href^="/privacy/"]').forEach(a=>{const i=['terms','cancellation','privacy'].indexOf(a.pathname.split('/')[1]);a.textContent=x.legal[i];a.search='?lang='+lang()});document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/351968510019?text='+encodeURIComponent(x.whatsappMessage));document.querySelectorAll('a[href^="/#"],a[href^="/?lang="],a.brand[href="/"]').forEach(a=>{const original=a.getAttribute('href');const hash=original.includes('#')?'#'+original.split('#')[1]:'';a.href='/?lang='+lang()+hash;});document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{a.textContent=({en:'Email',es:'Correo electrónico',pt:'Email'})[lang()];});const help=document.getElementById('rita-help');help.innerHTML=`<h2>${esc(x.help)}</h2><a href="https://wa.me/351968510019?text=${encodeURIComponent(x.whatsappMessage)}" target="_blank" rel="noopener">WhatsApp ↗</a><a href="tel:+351968510019">${esc(x.call)}</a>`;refreshPrices();window.ACT_MOBILE_COPY={navTours:x.navTours,navWhy:x.navWhy,navReviews:x.navReviews,book:x.book,language:x.languageLabel,currency:x.currencyLabel,open:x.menuOpen,close:x.menuClose};dispatchEvent(new CustomEvent('act:language-changed',{detail:window.ACT_MOBILE_COPY}));}
 
 document.addEventListener('click',event=>{
  const opener=event.target.closest('[data-open-tour]');
