@@ -7,10 +7,10 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 
 test('homepage renders exactly one Bókun tour catalogue',()=>{
  const html=read('index.html');
- assert.match(html,/product-list\\/115653/);
+ assert.ok(html.includes('product-list/115653'));
  assert.doesNotMatch(html,/class="tour-directory"/);
  assert.equal((html.match(/data-tour-link=/g)||[]).length,0);
- assert.match(html,/web\\/refined\\.css\\?v=10/);
+ assert.ok(html.includes('web/refined.css?v=10'));
 });
 
 test('booking copy is translated while the redundant tour directory is removed',()=>{
