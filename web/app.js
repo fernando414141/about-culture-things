@@ -127,9 +127,9 @@ const TOURS=[
         "Vistas al Castillo de los Moros"
       ]
     },
-    "minGuests": 2,
+    "minGuests": 1,
     "maxGuests": 10,
-    "startTime": "10:00",
+    "startTime": "09:30",
     "listPrice": 35
   }
 ];
@@ -151,7 +151,7 @@ const COPY={
     "toursKicker": "Choose your day",
     "toursTitle": "Sintra, your way.",
     "productListHint": "Book direct: select an experience to check dates and reserve.",
-    "toursText": "Shared and private tours: 2–6 guests. Walking tour: 2–10. All prices are per person.",
+    "toursText": "Shared and private tours: 2–6 guests. Walking tour: 1–10. All prices are per person.",
     "whyKicker": "Why book with us",
     "whyTitle": "A local day, without the logistics.",
     "why1Title": "Local knowledge",
@@ -243,7 +243,7 @@ const COPY={
       ],
       [
         "How many people can book?",
-        "Shared and private tours: 2–6 guests. Walking tour: 2–10. All prices are per person."
+        "Shared and private tours: 2–6 guests. Walking tour: 1–10. All prices are per person."
       ],
       [
         "Which tour languages are available?",
@@ -304,7 +304,7 @@ const COPY={
     "toursKicker": "Escolha o seu dia",
     "toursTitle": "Sintra, à sua maneira.",
     "productListHint": "Reserve diretamente: escolha uma experiência, consulte as datas e reserve.",
-    "toursText": "Partilhado e privado: 2–6 pessoas. A pé: 2–10. Preços por pessoa.",
+    "toursText": "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Preços por pessoa.",
     "whyKicker": "Porquê reservar connosco",
     "whyTitle": "Um dia local, sem complicações.",
     "why1Title": "Conhecimento local",
@@ -396,7 +396,7 @@ const COPY={
       ],
       [
         "Quantas pessoas podem reservar?",
-        "Partilhado e privado: 2–6 pessoas. A pé: 2–10. Preços por pessoa."
+        "Partilhado e privado: 2–6 pessoas. A pé: 1–10. Preços por pessoa."
       ],
       [
         "Que idiomas estão disponíveis?",
@@ -457,7 +457,7 @@ const COPY={
     "toursKicker": "Elige tu día",
     "toursTitle": "Sintra, a tu manera.",
     "productListHint": "Reserva directamente: elige una experiencia, consulta las fechas y reserva.",
-    "toursText": "Compartido y privado: 2–6 personas. A pie: 2–10. Precios por persona.",
+    "toursText": "Compartido y privado: 2–6 personas. A pie: 1–10. Precios por persona.",
     "whyKicker": "Por qué reservar con nosotros",
     "whyTitle": "Un día local, sin complicaciones.",
     "why1Title": "Conocimiento local",
@@ -549,7 +549,7 @@ const COPY={
       ],
       [
         "¿Cuántas personas pueden reservar?",
-        "Compartido y privado: 2–6 personas. A pie: 2–10. Precios por persona."
+        "Compartido y privado: 2–6 personas. A pie: 1–10. Precios por persona."
       ],
       [
         "¿Qué idiomas están disponibles?",
@@ -603,7 +603,7 @@ const TOUR_DECISIONS={
   trust:"Read genuine guest reviews on Tripadvisor",
   private:["Exclusive guide and vehicle for your group","Pickup and return at your accommodation","6-hour tour · 2–6 guests"],
   shared:["Small shared group · up to 6 guests","Meet at the designated location in Lisbon","6-hour tour · Sintra, Cabo da Roca and Cascais"],
-  walk:["2-hour guided walk in historic Sintra","Queijada and travesseiro tastings included","Meet at Sintra Town Hall · 2–10 guests"],
+  walk:["2-hour guided walk in historic Sintra","Queijada and travesseiro tastings included","Meet at Sintra Town Hall · 1–10 guests"],
   notices:{
    private:"Important: The Pena Palace is pictured as a Sintra landmark. The published tour covers historic Sintra, Cabo da Roca and Cascais; admission to Pena Palace or other monuments is not included.",
    shared:"Monument admissions, including Pena Palace tickets, and meals are not included. Meet at the confirmed Lisbon meeting point.",
@@ -617,7 +617,7 @@ const TOUR_DECISIONS={
   trust:"Lee opiniones auténticas en Tripadvisor",
   private:["Guía y vehículo exclusivos para tu grupo","Recogida y regreso a tu alojamiento","Tour de 6 horas · 2–6 personas"],
   shared:["Grupo compartido reducido · hasta 6 personas","Encuentro en el punto indicado de Lisboa","Tour de 6 horas · Sintra, Cabo da Roca y Cascais"],
-  walk:["Visita guiada de 2 horas por Sintra","Degustación de queijada y travesseiro incluida","Encuentro en el Ayuntamiento de Sintra · 2–10 personas"],
+  walk:["Visita guiada de 2 horas por Sintra","Degustación de queijada y travesseiro incluida","Encuentro en el Ayuntamiento de Sintra · 1–10 personas"],
   notices:{
    private:"Importante: la imagen del Palacio da Pena representa Sintra. El recorrido publicado visita el centro histórico, Cabo da Roca y Cascais; las entradas al Palacio da Pena y otros monumentos no están incluidas.",
    shared:"No incluye entradas a monumentos, incluido el Palacio da Pena, ni comidas. El punto de encuentro en Lisboa se confirma con la reserva.",
@@ -631,7 +631,7 @@ const TOUR_DECISIONS={
   trust:"Leia avaliações autênticas no Tripadvisor",
   private:["Guia e veículo exclusivos para o seu grupo","Recolha e regresso ao alojamento","Passeio de 6 horas · 2–6 pessoas"],
   shared:["Grupo partilhado reduzido · até 6 pessoas","Encontro no local indicado em Lisboa","Passeio de 6 horas · Sintra, Cabo da Roca e Cascais"],
-  walk:["Visita guiada de 2 horas pelo centro histórico de Sintra","Prova de queijada e travesseiro incluída","Encontro na Câmara Municipal de Sintra · 2–10 pessoas"],
+  walk:["Visita guiada de 2 horas pelo centro histórico de Sintra","Prova de queijada e travesseiro incluída","Encontro na Câmara Municipal de Sintra · 1–10 pessoas"],
   notices:{
    private:"Importante: a fotografia do Palácio da Pena ilustra Sintra. O percurso anunciado inclui o centro histórico, Cabo da Roca e Cascais; os bilhetes para o Palácio da Pena e outros monumentos não estão incluídos.",
    shared:"Não estão incluídos bilhetes para monumentos, incluindo o Palácio da Pena, nem refeições. O ponto de encontro em Lisboa é confirmado na reserva.",
