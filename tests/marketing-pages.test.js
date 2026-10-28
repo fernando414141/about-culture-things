@@ -10,7 +10,7 @@ test('homepage renders exactly one Bókun tour catalogue',()=>{
  assert.ok(html.includes('product-list/115653'));
  assert.doesNotMatch(html,/class="tour-directory"/);
  assert.equal((html.match(/data-tour-link=/g)||[]).length,0);
- assert.ok(html.includes('web/refined.css?v=10'));
+ assert.ok(html.includes('web/refined.css?v=11'));
 });
 
 test('booking copy is translated while the redundant tour directory is removed',()=>{
@@ -24,8 +24,8 @@ test('booking copy is translated while the redundant tour directory is removed',
 test('tour detail pages use the current shared CSS and JavaScript assets',()=>{
  for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
   const html=read('experiences/'+slug+'/index.html');
-  assert.ok(html.includes('web/refined.css?v=10'),slug);
-  assert.ok(html.includes('web/app.js?v=19'),slug);
+  assert.ok(html.includes('web/refined.css?v=11'),slug);
+  assert.ok(html.includes('web/app.js?v=20'),slug);
  }
 });
 
@@ -62,4 +62,25 @@ test('sitemap lists each tour and reflects the latest website changes',()=>{
  for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
   assert.match(xml,new RegExp('/experiences/'+slug+'/'));
  }
+});
+
+test('desktop navigation links to real sections on the homepage',()=>{
+ const home=read('index.html');
+ for(const id of ['tours','reviews','faq']){
+  assert.ok(home.includes('id="'+id+'"'),id+' section');
+  assert.ok(home.includes('href="#'+id+'"'),id+' navigation link');
+ }
+ assert.ok(!home.includes('href="#why" data-copy="navWhy"'));
+ for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
+  const detail=read('experiences/'+slug+'/index.html');
+  for(const id of ['tours','reviews','faq'])assert.ok(detail.includes('href="/#'+id+'"'),slug+' '+id);
+  assert.ok(detail.includes('href="#booking" data-copy="book"'),slug+' direct booking');
+ }
+});
+test('translated mobile navigation has FAQ and direct tour booking',()=>{
+ const app=read('web/app.js'), mobile=read('web/mobile.js');
+ for(const key of ['navLabel','navFAQ'])assert.equal((app.match(new RegExp('"'+key+'"','g'))||[]).length,3);
+ for(const section of ['#tours','#reviews','#faq'])assert.ok(mobile.includes(section));
+ assert.ok(mobile.includes('href="#booking"'));
+ assert.ok(mobile.includes('c().navLabel'));
 });
