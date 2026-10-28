@@ -6,6 +6,8 @@ function fail(res,status,code,error){return res.status(status).json({code,error}
 
 module.exports=async function handler(req,res){
  if(req.method!=='POST')return fail(res,405,'METHOD_NOT_ALLOWED','Method not allowed.');
+ // Bókun is the sole source of new bookings. Retain the legacy flow only for explicit migration testing.
+ if(process.env.LEGACY_CHECKOUT_ENABLED!=='true')return fail(res,410,'LEGACY_CHECKOUT_DISABLED','New tour reservations are now managed in Bókun. Visit https://aboutculturethings.com/#tours to book.');
  try{
   if(!stripe)return fail(res,503,'PAYMENT_UNAVAILABLE','Secure card payment is not configured yet.');
   const p=req.body||{},tour=tourById(p.tourId),persons=Number(p.persons),customerEmail=email(p.email),customerName=text(p.name,120),tourLanguage=text(p.tourLanguage,2),pickup=text(p.pickup,500),attempt=text(p.bookingAttemptId||req.headers['idempotency-key'],100);

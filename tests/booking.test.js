@@ -1,5 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
+// Exercise retired checkout validation without reopening it in production.
+process.env.LEGACY_CHECKOUT_ENABLED='true';
 const booking=require('../lib/booking');
 const availability=require('../lib/availability');
 let calls=[],blocked=false;
