@@ -36,12 +36,14 @@ test('the walking tour advertises only its supported guide languages',()=>{
 
 test('individual tour links stay discoverable without a second visible tour directory',()=>{
  const html=read('index.html');
- const noscript=html.match(/<noscript>([\\s\\S]*?)<\\/noscript>/);
- assert.ok(noscript,'missing no-JavaScript fallback');
+ const start=html.indexOf('<noscript>'),end=html.indexOf('</noscript>',start);
+ assert.ok(start>=0&&end>start,'missing no-JavaScript fallback');
+ const noscript=html.slice(start,end);
  for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
-  assert.ok(noscript[1].includes('href="/experiences/'+slug+'/"'),slug);
+  assert.ok(noscript.includes('href="/experiences/'+slug+'/"'),slug);
  }
- assert.match(html,/BokunWidgetsLoader\\.js[^"]*" defer><\\/script>/);
+ const loader=html.split('\n').find(line=>line.includes('BokunWidgetsLoader.js'));
+ assert.ok(loader&&loader.includes(' defer></script>'),'Bókun loader should run after locale is set');
 });
 
 test('legal policies have accessible HTML content before scripts run',()=>{
