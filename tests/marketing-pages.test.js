@@ -5,22 +5,19 @@ const fs=require('node:fs');
 const path=require('node:path');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 
-test('homepage exposes all three tour pages to search engines without depending on Bókun',()=>{
+test('homepage renders exactly one Bókun tour catalogue',()=>{
  const html=read('index.html');
- const expected=['sintra-coast','private-sintra','sintra-walk'];
- for(const slug of expected)assert.match(html,new RegExp('href="/experiences/'+slug+'/"'));
- assert.equal((html.match(/data-tour-link=/g)||[]).length,3);
- assert.match(html,/product-list\/115653/);
- assert.match(html,/web\/refined\.css\?v=9/);
+ assert.match(html,/product-list\\/115653/);
+ assert.doesNotMatch(html,/class="tour-directory"/);
+ assert.equal((html.match(/data-tour-link=/g)||[]).length,0);
+ assert.match(html,/web\\/refined\\.css\\?v=10/);
 });
 
-test('directory translations and language-aware links exist',()=>{
+test('booking copy is translated while the redundant tour directory is removed',()=>{
  const js=read('web/app.js');
- for(const key of ['directoryShared','directoryPrivate','directoryWalk','directoryCta']){
-  assert.equal((js.match(new RegExp('"'+key+'"','g'))||[]).length,3);
- }
- assert.match(js,/data-tour-link/);
- assert.match(js,/a\.search='\?lang='\+lang\(\)/);
+ assert.equal((js.match(/"productListHint"/g)||[]).length,3);
+ assert.doesNotMatch(js,/"directoryShared"/);
+ assert.doesNotMatch(js,/data-tour-link/);
  assert.match(js,/private bookings are priced per group/);
 });
 
