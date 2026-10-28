@@ -175,7 +175,7 @@ const COPY={
       ],
       [
         "Select your date",
-        "Book until 7 pm the day before."
+        "Check available dates and times."
       ],
       [
         "Pay securely",
@@ -198,7 +198,7 @@ const COPY={
     "phone": "Phone / WhatsApp",
     "requests": "Notes or special requests",
     "pay": "Continue to secure payment",
-    "bookingHelp": "Bookings close at 7:00 pm Lisbon time on the previous day.",
+    "bookingHelp": "Booking deadlines depend on the experience and departure time. Check the live calendar.",
     "minGuests": "2–6 travellers per booking",
     "terms": "I accept the booking terms and cancellation policy.",
     "termsLink": "View terms",
@@ -206,7 +206,7 @@ const COPY={
     "secure": "Secure Stripe payment in EUR. No booking surcharge.",
     "dateRequired": "Choose a tour date.",
     "unavailable": "This date is unavailable. Please choose another day.",
-    "cutoff": "This date can no longer be booked. Book by 7:00 pm Lisbon time on the previous day.",
+    "cutoff": "This departure is no longer available for booking. Please choose another date or time.",
     "formError": "Please complete the required fields.",
     "paymentError": "We could not open secure payment. Please try again or contact us.",
     "processing": "Opening secure payment…",
@@ -247,7 +247,7 @@ const COPY={
       ],
       [
         "Which tour languages are available?",
-        "Tours are guided in English, Spanish or Portuguese."
+        "Shared and private tours are available in English, Spanish or Portuguese. The walking tour is available in English or Spanish."
       ],
       [
         "What is the cancellation policy?",
@@ -328,15 +328,15 @@ const COPY={
       ],
       [
         "Selecione a data",
-        "Reserve até às 19h do dia anterior."
+        "Consulte as datas e os horários disponíveis."
       ],
       [
         "Pague com segurança",
         "Receba confirmação imediata."
       ]
     ],
-    "view": "Ver tour e reservar",
-    "from": "Desde",
+    "view": "Ver experiência e reservar",
+    "from": "A partir de",
     "perPerson": "por pessoa",
     "hours": "horas",
     "pickup": "Recolha e regresso ao alojamento",
@@ -351,7 +351,7 @@ const COPY={
     "phone": "Telefone / WhatsApp",
     "requests": "Notas ou pedidos especiais",
     "pay": "Continuar para pagamento seguro",
-    "bookingHelp": "As reservas fecham às 19:00, hora de Lisboa, no dia anterior.",
+    "bookingHelp": "O prazo de reserva depende da experiência e do horário de partida. Consulte o calendário atualizado.",
     "minGuests": "2–6 viajantes por reserva",
     "terms": "Aceito os termos da reserva e a política de cancelamento.",
     "termsLink": "Ver termos",
@@ -359,7 +359,7 @@ const COPY={
     "secure": "Pagamento seguro pela Stripe em EUR. Sem taxas de reserva.",
     "dateRequired": "Escolha a data do tour.",
     "unavailable": "Esta data não está disponível. Escolha outro dia.",
-    "cutoff": "Esta data já não pode ser reservada. Reserve até às 19:00, hora de Lisboa, no dia anterior.",
+    "cutoff": "Esta partida já não está disponível para reserva. Escolha outra data ou horário.",
     "formError": "Preencha os campos obrigatórios.",
     "paymentError": "Não foi possível abrir o pagamento seguro. Tente novamente ou contacte-nos.",
     "processing": "A abrir pagamento seguro…",
@@ -400,7 +400,7 @@ const COPY={
       ],
       [
         "Que idiomas estão disponíveis?",
-        "Os tours são guiados em inglês, espanhol ou português."
+        "Os passeios partilhados e privados estão disponíveis em inglês, espanhol ou português. A visita a pé está disponível em inglês ou espanhol."
       ],
       [
         "Qual é a política de cancelamento?",
@@ -481,14 +481,14 @@ const COPY={
       ],
       [
         "Selecciona la fecha",
-        "Reserva hasta las 19h del día anterior."
+        "Consulta las fechas y horas disponibles."
       ],
       [
         "Paga con seguridad",
         "Recibe confirmación inmediata."
       ]
     ],
-    "view": "Ver tour y reservar",
+    "view": "Ver experiencia y reservar",
     "from": "Desde",
     "perPerson": "por persona",
     "hours": "horas",
@@ -504,7 +504,7 @@ const COPY={
     "phone": "Teléfono / WhatsApp",
     "requests": "Notas o peticiones especiales",
     "pay": "Continuar al pago seguro",
-    "bookingHelp": "Las reservas cierran a las 19:00, hora de Lisboa, del día anterior.",
+    "bookingHelp": "El plazo de reserva depende de la experiencia y de la hora de salida. Consulta el calendario actualizado.",
     "minGuests": "2–6 viajeros por reserva",
     "terms": "Acepto los términos de reserva y la política de cancelación.",
     "termsLink": "Ver condiciones",
@@ -512,7 +512,7 @@ const COPY={
     "secure": "Pago seguro con Stripe en EUR. Sin recargos de reserva.",
     "dateRequired": "Elige la fecha del tour.",
     "unavailable": "Esta fecha no está disponible. Elige otro día.",
-    "cutoff": "Esta fecha ya no se puede reservar. Reserva hasta las 19:00, hora de Lisboa, del día anterior.",
+    "cutoff": "Esta salida ya no se puede reservar. Elige otra fecha u horario.",
     "formError": "Completa los campos obligatorios.",
     "paymentError": "No pudimos abrir el pago seguro. Inténtalo de nuevo o contáctanos.",
     "processing": "Abriendo pago seguro…",
@@ -553,7 +553,7 @@ const COPY={
       ],
       [
         "¿Qué idiomas están disponibles?",
-        "Los tours se realizan en inglés, español o portugués."
+        "Los tours compartidos y privados están disponibles en inglés, español o portugués. El recorrido a pie está disponible en inglés o español."
       ],
       [
         "¿Cuál es la política de cancelación?",
@@ -603,7 +603,7 @@ const TOUR_DECISIONS={
   trust:"Read genuine guest reviews on Tripadvisor",
   private:["Exclusive guide and vehicle for your group","Pickup and return at your accommodation","6-hour tour · 2–6 guests"],
   shared:["Small shared group · up to 6 guests","Meet at the designated location in Lisbon","6-hour tour · Sintra, Cabo da Roca and Cascais"],
-  walk:["2-hour guided walk in historic Sintra","Queijada and travesseiro tastings included","Meet at Sintra Town Hall · 1–10 guests"],
+  walk:["2-hour guided walk in historic Sintra","Two tastings included: queijada and travesseiro","Meet at Sintra Town Hall · 1–10 guests"],
   notices:{
    private:"Important: The Pena Palace is pictured as a Sintra landmark. The published tour covers historic Sintra, Cabo da Roca and Cascais; admission to Pena Palace or other monuments is not included.",
    shared:"Monument admissions, including Pena Palace tickets, and meals are not included. Meet at the confirmed Lisbon meeting point.",
@@ -617,7 +617,7 @@ const TOUR_DECISIONS={
   trust:"Lee opiniones auténticas en Tripadvisor",
   private:["Guía y vehículo exclusivos para tu grupo","Recogida y regreso a tu alojamiento","Tour de 6 horas · 2–6 personas"],
   shared:["Grupo compartido reducido · hasta 6 personas","Encuentro en el punto indicado de Lisboa","Tour de 6 horas · Sintra, Cabo da Roca y Cascais"],
-  walk:["Visita guiada de 2 horas por Sintra","Degustación de queijada y travesseiro incluida","Encuentro en el Ayuntamiento de Sintra · 1–10 personas"],
+  walk:["Visita guiada de 2 horas por Sintra","Dos degustaciones incluidas: queijada y travesseiro","Encuentro en el Ayuntamiento de Sintra · 1–10 personas"],
   notices:{
    private:"Importante: la imagen del Palacio da Pena representa Sintra. El recorrido publicado visita el centro histórico, Cabo da Roca y Cascais; las entradas al Palacio da Pena y otros monumentos no están incluidas.",
    shared:"No incluye entradas a monumentos, incluido el Palacio da Pena, ni comidas. El punto de encuentro en Lisboa se confirma con la reserva.",
@@ -631,7 +631,7 @@ const TOUR_DECISIONS={
   trust:"Leia avaliações autênticas no Tripadvisor",
   private:["Guia e veículo exclusivos para o seu grupo","Recolha e regresso ao alojamento","Passeio de 6 horas · 2–6 pessoas"],
   shared:["Grupo partilhado reduzido · até 6 pessoas","Encontro no local indicado em Lisboa","Passeio de 6 horas · Sintra, Cabo da Roca e Cascais"],
-  walk:["Visita guiada de 2 horas pelo centro histórico de Sintra","Prova de queijada e travesseiro incluída","Encontro na Câmara Municipal de Sintra · 1–10 pessoas"],
+  walk:["Visita guiada de 2 horas pelo centro histórico de Sintra","Duas degustações incluídas: queijada e travesseiro","Encontro na Câmara Municipal de Sintra · 1–10 pessoas"],
   notices:{
    private:"Importante: a fotografia do Palácio da Pena ilustra Sintra. O percurso anunciado inclui o centro histórico, Cabo da Roca e Cascais; os bilhetes para o Palácio da Pena e outros monumentos não estão incluídos.",
    shared:"Não estão incluídos bilhetes para monumentos, incluindo o Palácio da Pena, nem refeições. O ponto de encontro em Lisboa é confirmado na reserva.",
