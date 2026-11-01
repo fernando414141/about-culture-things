@@ -25,7 +25,7 @@ test('tour detail pages use the current shared CSS and JavaScript assets',()=>{
  for(const slug of ['sintra-coast','private-sintra','sintra-walk']){
   const html=read('experiences/'+slug+'/index.html');
   assert.ok(html.includes('web/refined.css?v=11'),slug);
-  assert.ok(html.includes('web/app.js?v=20'),slug);
+  assert.ok(html.includes('web/app.js?v=21'),slug);
  }
 });
 
@@ -83,4 +83,13 @@ test('translated mobile navigation has FAQ and direct tour booking',()=>{
  for(const section of ['#tours','#reviews','#faq'])assert.ok(mobile.includes(section));
  assert.ok(mobile.includes('href="#booking"'));
  assert.ok(mobile.includes('c().navLabel'));
+});
+
+
+test('homepage retains targeted SEO title and analytics intent tracking',()=>{
+ const home=read('index.html'),app=read('web/app.js'),analytics=read('web/analytics.js');
+ assert.match(home,/<title>Sintra Tours from Lisbon \\| About Culture Things<\\/title>/);
+ assert.ok(app.includes('SEO_HOME[lang()].title'));
+ assert.ok(analytics.includes('booking_cta_click'));
+ assert.ok(analytics.includes('contact_click'));
 });
