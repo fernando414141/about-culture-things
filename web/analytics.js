@@ -128,8 +128,8 @@
   document.addEventListener('click',function(event) {
     var opener = event.target.closest('[data-open-tour]');
     if (opener) track('select_item',{item_list_name:'Website tours',items:[{item_id:opener.dataset.openTour}]});
-    var bookButton = event.target.closest('a.button[href="#tours"],a.mobile-cta[href="#tours"],[data-jump-booking]');
-    if (bookButton) track('booking_cta_click',{page_path:location.pathname,cta_type:bookButton.hasAttribute('data-jump-booking')?'booking_calendar':'browse_tours'});
+    var bookButton = event.target.closest('a.button[href="#tours"],a.button[href="#booking"],a.mobile-cta[href="#tours"],a.mobile-cta[href="#booking"],[data-jump-booking]');
+    if (bookButton) track('booking_cta_click',{page_path:location.pathname,cta_type:bookButton.hasAttribute('data-jump-booking')||bookButton.getAttribute('href')==='#booking'?'booking_calendar':'browse_tours'});
     var contact = event.target.closest('a[href^="https://wa.me/"],a[href^="tel:"]');
     if (contact) track('contact_click',{page_path:location.pathname,contact_method:contact.href.startsWith('tel:')?'phone':'whatsapp'});
   });
