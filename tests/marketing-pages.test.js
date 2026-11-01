@@ -88,7 +88,7 @@ test('translated mobile navigation has FAQ and direct tour booking',()=>{
 
 test('homepage retains targeted SEO title and analytics intent tracking',()=>{
  const home=read('index.html'),app=read('web/app.js'),analytics=read('web/analytics.js');
- assert.match(home,/<title>Sintra Tours from Lisbon \\| About Culture Things<\\/title>/);
+ assert.ok(home.includes('<title>Sintra Tours from Lisbon | About Culture Things</title>'));
  assert.ok(app.includes('SEO_HOME[lang()].title'));
  assert.ok(analytics.includes('booking_cta_click'));
  assert.ok(analytics.includes('contact_click'));
